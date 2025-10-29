@@ -28,33 +28,16 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import HariPage1 from "./pages/Hari/Page1";
-import HariPage2 from "./pages/Hari/Page2";
-
-import SouravPage1 from "./pages/Sourav/Page1";
-import SouravPage2 from "./pages/Sourav/Page2";
-
-import AbhinayPage1 from "./pages/Abhinay/Page1";
-import AbhinayPage2 from "./pages/Abhinay/Page2";
-
 function App() {
   return (
     <Router>
       <Routes>
         {/* Hari Pages */}
-        <Route path="/hari/page1" element={<HariPage1 />} />
-        <Route path="/hari/page2" element={<HariPage2 />} />
 
         {/* Sourav Pages */}
-        <Route path="/sourav/page1" element={<SouravPage1 />} />
-        <Route path="/sourav/page2" element={<SouravPage2 />} />
 
         {/* Abhinay Pages */}
-        <Route path="/abhinay/page1" element={<AbhinayPage1 />} />
-        <Route path="/abhinay/page2" element={<AbhinayPage2 />} />
 
-        {/* Optional: Default/Home page */}
-        <Route path="/" element={<HariPage1 />} />
       </Routes>
     </Router>
   );
