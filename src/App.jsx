@@ -27,12 +27,15 @@
 
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import ScrollToTop from './hari/components/ScrollToTop';
+import HariRoutes from "./hari/HariRoutes";
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         {/* Hari Pages */}
+        {HariRoutes()}
 
         {/* Sourav Pages */}
 
