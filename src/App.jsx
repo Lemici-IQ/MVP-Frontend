@@ -27,19 +27,28 @@
 
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AbhinayRoutes from "./abhinay-s/AbhinayRoutes";
+import { testAlias } from "@/abhinay-s/testAlias"; // src/testAlias.js
+import ScrollToTop from "./abhinay-s/components/ScrollToTop";
+import Header from "./abhinay-s/components/Header";
 
 function App() {
+  console.log(testAlias);
   return (
-    <Router>
-      <Routes>
-        {/* Hari Pages */}
+    <>
+      <Router>
+        <ScrollToTop />
+        <Header style={{ position: "sticky", top: 0, zIndex: 1000 }} />
+        <Routes>
+          {/* Hari Pages */}
 
-        {/* Sourav Pages */}
+          {/* Sourav Pages */}
 
-        {/* Abhinay Pages */}
-
-      </Routes>
-    </Router>
+          {/* Abhinay Pages */}
+          {AbhinayRoutes()}
+        </Routes>
+      </Router>
+    </>
   );
 }
 
