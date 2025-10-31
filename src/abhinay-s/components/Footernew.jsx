@@ -91,40 +91,40 @@ export default function Footernew() {
           <div>
             <h4 className="text-sm font-semibold text-gray-900">Contact</h4>
             <ul className="mt-4 space-y-4 ">
-              <li><Link to="/abhinay/aboutus" className="hover:text-gray-900">Contact Us</Link></li>
-              <li><Link to="/abhinay/become-client" className="hover:text-gray-900">Become a client</Link></li>
-              <li><Link to="/abhinay/office-locations" className="hover:text-gray-900">Office Locations</Link></li>
-              <li><Link to="/abhinay/technical-support" className="hover:text-gray-900">Technical Support</Link></li>
+              <li><Link to="/aboutus" className="hover:text-gray-900">Contact Us</Link></li>
+              <li><Link to="/become-client" className="hover:text-gray-900">Become a client</Link></li>
+              <li><Link to="/office-locations" className="hover:text-gray-900">Office Locations</Link></li>
+              <li><Link to="/technical-support" className="hover:text-gray-900">Technical Support</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-sm font-semibold text-gray-900">Careers</h4>
             <ul className="mt-4 space-y-4 ">
-              <li><Link to="/abhinay/coming-soon" className="hover:text-gray-900">Why LeMiCi</Link></li>
-              <li><Link to="/abhinay/coming-soon" className="hover:text-gray-900">Search Careers</Link></li>
-              <li><Link to="/abhinay/coming-soon" className="hover:text-gray-900">Our Culture</Link></li>
-              <li><Link to="/abhinay/coming-soon" className="hover:text-gray-900">Careers Blog</Link></li>
+              <li><Link to="/coming-soon" className="hover:text-gray-900">Why LeMiCi</Link></li>
+              <li><Link to="/coming-soon" className="hover:text-gray-900">Search Careers</Link></li>
+              <li><Link to="/coming-soon" className="hover:text-gray-900">Our Culture</Link></li>
+              <li><Link to="/coming-soon" className="hover:text-gray-900">Careers Blog</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-sm font-semibold text-gray-900">Resources</h4>
             <ul className="mt-4 space-y-4 ">
-              <li><Link to="/abhinay/coming-soon" className="hover:text-gray-900">Featured insights</Link></li>
-              <li><Link to="/abhinay/coming-soon" className="hover:text-gray-900">Webinars</Link></li>
-              <li><Link to="/abhinay/coming-soon" className="hover:text-gray-900">Glossary</Link></li>
-              <li><Link to="/abhinay/coming-soon" className="hover:text-gray-900">Client Stories</Link></li>
+              <li><Link to="/coming-soon" className="hover:text-gray-900">Featured insights</Link></li>
+              <li><Link to="/coming-soon" className="hover:text-gray-900">Webinars</Link></li>
+              <li><Link to="/coming-soon" className="hover:text-gray-900">Glossary</Link></li>
+              <li><Link to="/coming-soon" className="hover:text-gray-900">Client Stories</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-sm font-semibold text-gray-900">What we Do</h4>
             <ul className="mt-4 space-y-4 ">
-              <li><Link to="/abhinay/coming-soon" className="hover:text-gray-900">Research & Advisory</Link></li>
-              <li><Link to="/abhinay/coming-soon" className="hover:text-gray-900">Conferences</Link></li>
-              <li><Link to="/abhinay/coming-soon" className="hover:text-gray-900">Consulting</Link></li>
-              <li><Link to="/abhinay/coming-soon" className="hover:text-gray-900">Data</Link></li>
+              <li><Link to="/coming-soon" className="hover:text-gray-900">Research & Advisory</Link></li>
+              <li><Link to="/coming-soon" className="hover:text-gray-900">Conferences</Link></li>
+              <li><Link to="/coming-soon" className="hover:text-gray-900">Consulting</Link></li>
+              <li><Link to="/coming-soon" className="hover:text-gray-900">Data</Link></li>
             </ul>
           </div>
         </div>

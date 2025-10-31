@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 export default function Offerings() {
   // Mapping for button names to their routes
   const buttonRoutes = {
-    "startups Zone": "/abhinay/startups-zone",
-    "B2B Marketplace": "/hari/eB2B-home",
-    "Softwarehunt": "/abhinay/coming-soon",
-    "Franchise finder": "/abhinay/franchise",
-    "Market and industry research": "/hari/research",
-    "Business directory": "/abhinay/coming-soon",
-    "Industrial solution": "/abhinay/coming-soon",
-    "Govt navigator": "/abhinay/offerings/govtnavigator"
+    "startups Zone": "/startups-zone",
+    "B2B Marketplace": "/eB2B-home",
+    "Softwarehunt": "/coming-soon",
+    "Franchise finder": "/franchise",
+    "Market and industry research": "/research",
+    "Business directory": "/coming-soon",
+    "Industrial solution": "/coming-soon",
+    "Govt navigator": "/offerings/govtnavigator"
   };
 
   return (

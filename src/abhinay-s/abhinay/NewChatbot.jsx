@@ -111,7 +111,7 @@ const NewChatbot = () => {
 
         // B2B Products (fallback to coming-soon until route exists)
         {
-            path: '/eb2b-product-category',
+            path: '/product-category',
             keys: ['sports', 'equipment', 'suppliers', 'moq', 'marketplace', 'wholesale', 'bulk', 'order', 'manufacturing', 'companies', 'industrial', 'machinery', 'supplier', 'cnc', 'machines', 'construction', 'steel', 'chemicals', 'packaging', 'materials', 'electrical', 'mro', 'supplies', 'power', 'tools', 'basmati', 'rice', 'cashew', 'nuts', 'wheat', 'flour', 'spices', 'processing', 'bakery', 't-shirts', 'ladies', 'kurtis', 'garment', 'manufacturers', 'cotton', 'fabric', 'synthetic', 'fabrics', 'medical', 'surgical', 'ppe', 'kits', 'pharmaceutical', 'medicines', 'ayurvedic', 'indiamart', 'pipes', 'amazon', 'moglix', 'safety', 'cricket', 'bat', 'b2b']
         },
 
@@ -123,14 +123,14 @@ const NewChatbot = () => {
 
         // Market Research (fallback)
         {
-            path: '/coming-soon',
+            path: '/research',
             keys: ['market', 'research', 'economy', 'growth', 'rate', 'consumer', 'behavior', 'demographic', 'mosp', 'economic', 'census', 'ibef', 'industry', 'reports', 'kantar', 'nielsen', 'marketsandmarkets', 'techsci', 'moneycontrol', 'trading', 'economics', 'think', 'google', 'statista', 'fmcg', 'report', 'automotive', 'trends', 'pharmaceutical', 'sector', 'analysis', 'e-commerce', 'statistics', 'golf', 'ball', 'indian']
         },
         // Investment (fallback)
 
         // Experts & Consulting (fallback)
         {
-            path: '/expert-connect',
+            path: '/expert-listing',
             keys: ['expert',
                 'consultant',
                 'name', 'subject', 'matter', 'expert', 'sales', 'talcum', 'organizational', 'strategy', 'upwork', 'consulting', 'top', 'consultants', 'firms', 'advisory', 'smes', 'msme', 'big4', 'operations', 'supply', 'chain', 'entry', 'financial', 'corporate', 'finance', 'tax', 'legal', 'ip', 'digital', 'transformation', 'artificial', 'intelligence', 'cybersecurity', 'brand', 'hr', 'executive', 'search', 'recruitment', 'esg', 'sustainability', 'environmental']
@@ -181,17 +181,17 @@ const NewChatbot = () => {
         }
         // Fallbacks for common words
         if (/price|plan|cost/.test(q)) return '/pricings';
-        if (/invest(or|ment)|fund/i.test(q)) return '/abhinay/startups-zone-investorhub';
-        if (/startup/i.test(q)) return '/abhinay/startups-zone';
-        if (/franchise/i.test(q)) return '/abhinay/franchise';
-        if (/offer|deal|discount|promotion/i.test(q)) return '/abhinay/offerings';
-        if (/schemes?|subsid(y|ies)|grant|msme|government|govt/i.test(q)) return '/abhinay/offerings/govtnavigator';
-        if (/product|catalog|list/i.test(q)) return '/abhinay/products';
-        if (/compliance|license|registration/i.test(q)) return '/abhinay/compliance';
-        if (/partner|collab/i.test(q)) return '/abhinay/partnership';
-        if (/train|skill|growth/i.test(q)) return '/abhinay/training';
-        if (/account|login|signup|sign up|register/i.test(q)) return '/abhinay/account';
-        if (/support|help|customer/i.test(q)) return '/abhinay/support';
+        if (/invest(or|ment)|fund/i.test(q)) return '/startups-zone-investorhub';
+        if (/startup/i.test(q)) return '/startups-zone';
+        if (/franchise/i.test(q)) return '/franchise';
+        if (/offer|deal|discount|promotion/i.test(q)) return '/offerings';
+        if (/schemes?|subsid(y|ies)|grant|msme|government|govt/i.test(q)) return '/offerings/govtnavigator';
+        if (/product|catalog|list/i.test(q)) return '/products';
+        if (/compliance|license|registration/i.test(q)) return '/compliance';
+        if (/partner|collab/i.test(q)) return '/partnership';
+        if (/train|skill|growth/i.test(q)) return '/training';
+        if (/account|login|signup|sign up|register/i.test(q)) return '/account';
+        if (/support|help|customer/i.test(q)) return '/support';
         return null;
     }, [intentMatchers]);
 

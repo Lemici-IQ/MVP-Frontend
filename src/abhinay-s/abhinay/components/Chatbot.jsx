@@ -21,116 +21,116 @@ const Chatbot = () => {
         
         // Offerings & Services
         {
-            path: '/abhinay/offerings',
+            path: '/offerings',
             keys: ['offering', 'offerings', 'offers', 'promotions', 'seasonal offers', 'deals', 'discounts', 'special deals', 'what you do']
         },
         {
-            path: '/abhinay/offerings/govtnavigator',
+            path: '/offerings/govtnavigator',
             keys: ['govt', 'government', 'scheme', 'schemes', 'subsidies', 'support programs', 'msme schemes', 'grants', 'women entrepreneur schemes', 'startup india schemes', 'navigator', 'govt scheme finder']
         },
         {
-            path: '/abhinay/pricings',
+            path: '/pricings',
             keys: ['pricing', 'pricings', 'price', 'plan', 'plans', 'cost', 'subscription', 'fees']
         },
 
         // Startups Zone
         {
-            path: '/abhinay/startups-zone-opportunities',
+            path: '/startups-zone-opportunities',
             keys: ['startup', 'startups zone', 'founder', 'incubation', 'accelerator', 'startups', 'agri', 'tech', 'seed', 'funding', 'mrr', 'fintech', 'deeptech', 'healthtech', 'climate', 'edtech', 'saas', 'space', 'angel', 'venture', 'capital', 'india', 'dpiit', 'recognition', 'top', 'unicorns', 'ecosystem']
         },
         {
-            path: '/abhinay/startups-zone-opportunities',
+            path: '/startups-zone-opportunities',
             keys: ['opportunity', 'opportunities', 'startup opportunities']
         },
         {
-            path: '/abhinay/startups-zone-investorhub',
+            path: '/startups-zone-investorhub',
             keys: ['Investor page', 'Investors', 'Exits', 'Investment Themes']
         },
         
         // Franchise
         {
-            path: '/abhinay/franchise/oppurtunties',
+            path: '/franchise/oppurtunties',
             keys: ['franchise', 'franchising', 'food franchise', 'franchise partnerships', 'franchise investment', 'franchise cost', 'franchise location', 'franchise setup', 'franchise application', 'biryani', 'delhi', 'lakh', 'low', '2025', 'profitable', 'business', 'high', 'roi', 'small', 'budget', 'ideas', 'beverage', 'cloud', 'kitchen', 'education', 'beauty', 'wellness', 'automotive', 'retail', 'courier', 'logistics', 'pharmacy', 'amul', 'domino', 'mcdonald', 'kfc', 'subway', 'lakme', 'salon', 'tumbledry', 'firstcry', 'patanjali', 'lenskart', 'jan', 'aushadhi', 'kendra', 'expos', 'news', 'trends', 'franchisebazar', 'bharat', 'discovery', 'mart', 'frankart', 'global', 'getdistributors', 'consultants']
         },
         {
-            path: '/abhinay/franchise/oppurtunties',
+            path: '/franchise/oppurtunties',
             keys: ['franchise opportunities', 'franchise oppurtunities']
         },
         {
-            path: '/abhinay/franchise/details',
+            path: '/franchise/details',
             keys: ['franchise details', 'individual franchise', 'franchise profile']
         },
         {
-            path: '/abhinay/franchise/category',
+            path: '/franchise/category',
             keys: ['category', 'categories', 'business categories']
         },
 
         // Dynamic Pages
         // {
-        //     path: '/abhinay/investment',
+        //     path: '/investment',
         //     keys: ['investment', 'investment opportunities', 'investors']
         // },
         {
-            path: '/abhinay/govt-schemes',
+            path: '/govt-schemes',
             keys: ['govt schemes', 'government schemes', 'scheme finder', 'govt scheme finder']
         },
         {
-            path: '/abhinay/products',
+            path: '/products',
             keys: ['products', 'catalog', 'product list', 'available products', 'food products', 'product showcase']
         },
         {
-            path: '/abhinay/compliance',
+            path: '/compliance',
             keys: ['licenses', 'food license', 'compliance requirements', 'registration', 'licensing']
         },
         {
-            path: '/abhinay/partnership',
+            path: '/partnership',
             keys: ['partnership', 'partnership opportunities', 'collaboration']
         },
         {
-            path: '/abhinay/training',
+            path: '/training',
             keys: ['training', 'growth programs', 'skill development']
         },
         {
-            path: '/abhinay/account',
+            path: '/account',
             keys: ['account setup', 'account login', 'login', 'signup', 'sign up', 'register']
         },
         {
-            path: '/abhinay/support',
+            path: '/support',
             keys: ['support', 'customer care', 'customer support', 'help']
         },
         {
-            path: '/abhinay/aboutus',
+            path: '/aboutus',
             keys: ['about', 'about us', 'company', 'team', 'who we are']
         },
 
         // Government Schemes
         {
-            path: '/abhinay/govt-schemes',
-            keys: ['govt schemes', 'government schemes', 'scheme finder', 'agri', 'goa', , 'loan', 'central', 'farmers', 'application', 'pmegp', 'rashtriya', 'krishi', 'vikas', 'yojana']
+            path: '/govt-schemes',
+            keys: ['govt schemes', 'government schemes', 'scheme finder', 'agri', 'goa', 'loan', 'central', 'farmers', 'application', 'pmegp', 'rashtriya', 'krishi', 'vikas', 'yojana']
         },
 
         // B2B Products (fallback to coming-soon until route exists)
         {
-            path: '/abhinay/eb2b-product-category',
+            path: '/product-category',
             keys: ['sports', 'equipment', 'suppliers', 'moq', 'marketplace', 'wholesale', 'bulk', 'order', 'manufacturing', 'companies', 'industrial', 'machinery', 'supplier', 'cnc', 'machines', 'construction', 'steel', 'chemicals', 'packaging', 'materials', 'electrical', 'mro', 'supplies', 'power', 'tools', 'basmati', 'rice', 'cashew', 'nuts', 'wheat', 'flour', 'spices', 'processing', 'bakery', 't-shirts', 'ladies', 'kurtis', 'garment', 'manufacturers', 'cotton', 'fabric', 'synthetic', 'fabrics', 'medical', 'surgical', 'ppe', 'kits', 'pharmaceutical', 'medicines', 'ayurvedic', 'indiamart', 'pipes', 'amazon', 'moglix', 'safety', 'cricket', 'bat', 'b2b']
         },
 
         // Software Products (fallback)
         {
-            path: '/abhinay/data',
+            path: '/data',
             keys: ['hrms', 'software', 'employees', 'applicant', 'tracking', 'system', 'crm', 'accounting', 'payroll', 'lms', 'hospital', 'management', 'enterprise', 'bfsi', 'automate', 'gst', 'billing', 'track', 'leads', 'clients', 'data', 'backup', 'solutions', 'inventory', 'development', 'it', 'services', 'managed', 'capterra']
         },
 
         // Market Research (fallback)
         {
-            path: '/abhinay/coming-soon',
+            path: '/coming-soon',
             keys: ['market', 'research', 'economy', 'growth', 'rate', 'consumer', 'behavior', 'demographic', 'mosp', 'economic', 'census', 'ibef', 'industry', 'reports', 'kantar', 'nielsen', 'marketsandmarkets', 'techsci', 'moneycontrol', 'trading', 'economics', 'think', 'google', 'statista', 'fmcg', 'report', 'automotive', 'trends', 'pharmaceutical', 'sector', 'analysis', 'e-commerce', 'statistics', 'golf', 'ball', 'indian']
         },
         // Investment (fallback)
         
         // Experts & Consulting (fallback)
         {
-            path: '/abhinay/expert-connect',
+            path: '/expert-connect',
             keys: ['expert',
                 'consultant',
                 'name', 'subject', 'matter', 'expert', 'sales', 'talcum', 'organizational', 'strategy', 'upwork', 'consulting', 'top', 'consultants', 'firms', 'advisory', 'smes', 'msme', 'big4', 'operations', 'supply', 'chain', 'entry', 'financial', 'corporate', 'finance', 'tax', 'legal', 'ip', 'digital', 'transformation', 'artificial', 'intelligence', 'cybersecurity', 'brand', 'hr', 'executive', 'search', 'recruitment', 'esg', 'sustainability', 'environmental']
@@ -138,31 +138,31 @@ const Chatbot = () => {
 
         // Business Events & Associations (fallback)
         {
-            path: '/abhinay/coming-soon',
+            path: '/coming-soon',
             keys: ['events', 'networking', 'conferences', 'trade', 'fairs', 'mahakumbh', 'expo', 'world', 'shrm', 'mumbai', 'bengaluru', 'eventbrite', 'associations', 'chambers', 'commerce', 'nasscom', 'siam', 'ficci', 'cii']
         },
 
         // Data, Surveys, Dashboards (fallback)
         {
-            path: '/abhinay/data',
+            path: '/data',
             keys: ['list', 'database', 'hospitals', 'bangalore', 'beds', 'director', 'email', 'directory', 'jewellery', 'stores', 'pin', 'code', 'survey', 'eyewear', 'glasses', 'dashboard', 'cement', 'xyz', 'par', 'abc', 'detailed', 'project', 'dpr', 'cardboard', 'jharkhand', 'bank']
         },
 
         // AI Features (fallback)
         {
-            path: '/abhinay/coming-soon',
+            path: '/coming-soon',
             keys: ['ai', 'search', 'find', 'query', 'lookup', 'mega', 'menu', 'dropdown', 'buttons', 'navigation', 'upload', 'file', 'summary', 'extract', 'pdf', 'word', 'excel', 'multiple', 'llm', 'chatgpt', 'grok', 'perplexity', 'model', 'comparison', 'vernacular', 'language', 'results', 'english']
         },
 
         // Company Info (fallback)
         {
-            path: '/abhinay/coming-soon',
+            path: '/coming-soon',
             keys: ['cosco', 'information', 'master', 'tofler', 'financials']
         },
 
         // Generic Coming Soon
         {
-            path: '/abhinay/coming-soon',
+            path: '/coming-soon',
             keys: ['coming soon', 'beta', 'preview']
         },
     ]), []);

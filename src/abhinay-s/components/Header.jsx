@@ -144,7 +144,7 @@ export default function Header(props) {
             })}
             <div className="p-2">
               <Link
-                to="/abhinay/get-started"
+                to="/get-started"
                 className="block w-full text-center rounded-xl bg-[#6D3E93] text-white text-sm font-semibold px-4 py-3"
               >
                 Get Started
