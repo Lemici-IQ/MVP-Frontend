@@ -54,7 +54,7 @@ const ProductCard = () => {
                         </div>
 
                         {product.itemName === "Cricket Bat" ? (
-                            <Link to="/cricket-bat">
+                            <Link to="/individual-product">
                                 <button className="mt-4 flex items-center justify-center gap-2 bg-black text-white rounded-full w-full py-2 hover:bg-[#FC0C10F2] cursor-pointer">
                                     <FaShoppingBag />
                                     Buy Now

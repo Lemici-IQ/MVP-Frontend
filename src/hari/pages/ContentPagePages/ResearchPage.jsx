@@ -9,7 +9,7 @@ import Footer from "../../components/ContentPageComponents/ResearchPageComponent
 function ResearchPage() {
   return (
     <>
-      <Navbar /> 
+      {/* <Navbar />  */}
       <Research />
       <ResearchHighlight />
       <Methods101 />

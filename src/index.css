@@ -11,6 +11,10 @@
   font-family: 'Space Grotesk', sans-serif;
 }
 
+.font-space02 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
 /* Added smooth infinite scroll animation */
 @keyframes infinite-scroll {
   0% {
@@ -43,3 +47,10 @@
     animation-duration: 35s;
   }
 }
+
+/* @font-face {
+  font-family: 'Digital-7';
+  src: url('/digital-7.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+} */

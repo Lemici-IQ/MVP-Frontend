@@ -14,7 +14,7 @@ import FooterSection from '../../components/DataProviderComponents/HomePageCompo
 function DataProviderHome() {
   return (
     <>
-      <Navbar /> 
+      {/* <Navbar />  */}
       <HeroSection />
       <ExploreProducts />
       <PopularData />

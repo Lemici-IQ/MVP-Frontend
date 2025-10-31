@@ -62,7 +62,7 @@ const ProductCard = () => {
                             </div>
 
                             {Bat.itemName === "MRF" ? (
-                                <Link to="/mrf-bat">
+                                <Link to="/single-product">
                                     <button className="mt-4 flex items-center justify-center gap-2 bg-black text-white rounded-full w-full py-2 hover:bg-[#FC0C10F2] cursor-pointer">
                                         <FaShoppingBag />
                                         Contact supplier
