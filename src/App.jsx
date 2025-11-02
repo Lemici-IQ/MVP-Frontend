@@ -29,20 +29,35 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from './hari/components/ScrollToTop';
 import HariRoutes from "./hari/HariRoutes";
+import AbhinayRoutes from "./abhinay-s/AbhinayRoutes";
+import AbhinayLayout from "./abhinay-s/AbhinayLayout";
+import { testAlias } from "@/abhinay-s/testAlias"; // src/testAlias.js
+// import ScrollToTop from "./abhinay-s/components/ScrollToTop";
+import Header from "./abhinay-s/components/Header";
+import UserRoutes from "./routes/UserRoutes";
+
 function App() {
+  console.log(testAlias);
   return (
-    <Router>
-      <ScrollToTop />
-      <Routes>
-        {/* Hari Pages */}
-        {HariRoutes()}
+  <>
+      <Router>
+        <ScrollToTop />
+        {/* <Header style={{ position: "sticky", top: 0, zIndex: 1000 }} /> */}
+        <Routes>
+          {/* Hari Pages */}
 
-        {/* Sourav Pages */}
+          {/* Sourav Pages */}
 
-        {/* Abhinay Pages */}
-
-      </Routes>
-    </Router>
+          {/* Abhinay Pages */}
+          {/* {AbhinayRoutes()} */}
+          {UserRoutes()}
+          <Route path="/" element={<AbhinayLayout />}>
+            {HariRoutes()}
+            {AbhinayRoutes()}
+          </Route>
+        </Routes>
+      </Router>
+    </>
   );
 }
 

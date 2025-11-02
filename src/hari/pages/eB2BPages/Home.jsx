@@ -10,7 +10,7 @@ import Footer from '../../components/eB2BComponents/HomePageComponents/Footer';
 function eB2BHome() {
   return (
     <>
-      <Navbar /> 
+      {/* <Navbar />  */}
       <HeroSection />
       <ExploreProducts />
       <ExploreSection />

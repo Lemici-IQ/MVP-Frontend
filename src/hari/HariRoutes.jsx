@@ -17,20 +17,18 @@ import ListingWithUsHome from './pages/ListingWithUsPages/HomePage';
 function HariRoutes() {
     return (
         <>
-            <Route path="/hari/research" element={<ResearchPage />} />
-            <Route path="/hari/dataprovider-home" element={<DataProviderHome />} />
-            <Route path="/hari/eB2B-home" element={<EB2BHome />} />
-            <Route path="/hari/product-category" element={<ProductCategory />} />
-            <Route path="/hari/individual-product" element={<IndividualProduct />} />
-            <Route path="/hari/single-product" element={<SingleProduct />} />
-            <Route path="/hari/expertConnect-home" element={<ExpertConnectHome />} />
-            <Route path="/hari/expert-join" element={<ExpertJoin />} />
-            <Route path="/hari/expert-listing" element={<ExpertListing />} />
-            <Route path="/hari/signin" element={<SignIn />} />
-            <Route path="/hari/signup" element={<SignUp />} />
-            <Route path="/hari/what-we-do" element={<WhatWeDo />} />
-            <Route path="/hari/listing-with-us-home" element={<ListingWithUsHome />} />
-        </>
+            <Route path="research" element={<ResearchPage />} />
+            <Route path="dataprovider-home" element={<DataProviderHome />} />
+            <Route path="eB2B-home" element={<EB2BHome />} />
+            <Route path="product-category" element={<ProductCategory />} />
+            <Route path="individual-product" element={<IndividualProduct />} />
+            <Route path="single-product" element={<SingleProduct />} />
+            <Route path="expertConnect-home" element={<ExpertConnectHome />} />
+            <Route path="expert-join" element={<ExpertJoin />} />
+            <Route path="expert-listing" element={<ExpertListing />} />
+            <Route path="what-we-do" element={<WhatWeDo />} />
+            <Route path="listing-with-us-home" element={<ListingWithUsHome />} />
+        </> 
     );
 }
 
