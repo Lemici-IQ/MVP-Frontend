@@ -2,7 +2,7 @@ import React from "react";
 
 const PublishBanner = () => {
   return (
-    <section className="bg-[#FF6105] text-white py-12 md:py-16 px-6 md:px-12 rounded-2xl overflow-hidden max-w-screen-xl mx-8 my-8">
+    <section className="bg-[#FF6105] text-white py-12 md:py-16 px-6 md:px-12 rounded-2xl overflow-hidden max-w-screen-xl mx-auto my-8">
       <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
         
         {/* Left Section */}
