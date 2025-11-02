@@ -64,21 +64,19 @@ const ExploreProducts = () => {
   return (
     <div className="pt-16 pb-10 max-w-screen-xl mx-auto px-6">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-        <div>
-          <h1 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-2">
-            Explore Products by Category
-          </h1>
+      <div>
+        <button className='bg-[#D9D9D9] w-full my-4 rounded-4xl text-left px-4 py-2 font-medium'>Explore Products by Category</button>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 mx-2">
           <p className="text-gray-500 text-sm md:text-base">
             Find the right data from more than 560+ data categories
           </p>
-        </div>
-        <Link
+          <Link
           to="/data-listing"
           className="text-sm text-blue-600 hover:underline mt-3 md:mt-0 flex items-center gap-1"
         >
           View all categories →
         </Link>
+        </div>
       </div>
 
       {/* Categories Grid */}
