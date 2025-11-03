@@ -6,6 +6,7 @@ import {
   FaEnvelope,
   FaLock,
   FaStar,
+  FaArrowLeft,
 } from "react-icons/fa";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
@@ -16,11 +17,20 @@ const SignIn = () => {
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-white mx-10 my-10">
       {/* Left Side - Form */}
-      <div className="w-full md:w-1/2 flex justify-center items-center px-6 sm:px-10 py-10">
+      <div className="w-full md:w-1/2 flex justify-center items-center px-6 sm:px-10 py-10 pt-16 md:pt-10 relative">
+        <button
+          onClick={() => window.history.back()}
+          className="absolute top-6 left-6 flex items-center text-gray-600 hover:text-[#6D3E93] transition cursor-pointer"
+        >
+          <FaArrowLeft className="mr-2" /> Back
+        </button>
+
         <div className="w-full max-w-sm">
           {/* Header */}
           <div className="mb-8 text-center">
-            <h1 className="text-3xl sm:text-2xl font-bold text-gray-800">Welcome!</h1>
+            <h1 className="text-3xl sm:text-2xl font-bold text-gray-800">
+              Welcome!
+            </h1>
             <p className="text-gray-600 mt-2 text-sm sm:text-base">
               Signing up is quick and easy. <br className="hidden sm:block" />
               Let's get started on something great.
