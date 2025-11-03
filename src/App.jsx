@@ -35,13 +35,17 @@ import { testAlias } from "@/abhinay-s/testAlias"; // src/testAlias.js
 // import ScrollToTop from "./abhinay-s/components/ScrollToTop";
 import Header from "./abhinay-s/components/Header";
 import UserRoutes from "./routes/UserRoutes";
+import SouravRoutes from "./sourav/SouravRoutes";
+import IndBiSol from "./sourav/pages/IndBiSol/IndBiSol";
+import IndBiSolListing from "./sourav/pages/IndBiSol/IndBiSolListing";
+import GovNavigator from "./sourav/pages/GovNavigator/GovNavigator";
 
 function App() {
   console.log(testAlias);
   return (
   <>
       <Router>
-        <ScrollToTop />
+        {/* <ScrollToTop /> */}
         {/* <Header style={{ position: "sticky", top: 0, zIndex: 1000 }} /> */}
         <Routes>
           {/* Hari Pages */}
@@ -51,9 +55,10 @@ function App() {
           {/* Abhinay Pages */}
           {/* {AbhinayRoutes()} */}
           {UserRoutes()}
-          <Route path="/" element={<AbhinayLayout />}>
+          <Route path="/" element={<AbhinayLayout/>}>
             {HariRoutes()}
             {AbhinayRoutes()}
+            {SouravRoutes()}
           </Route>
         </Routes>
       </Router>

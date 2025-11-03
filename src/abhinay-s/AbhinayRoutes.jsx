@@ -37,7 +37,7 @@ function AbhinayRoutes() {
         <Route path="" element={<NewHomePage />} />
         <Route path="coming-soon" element={<ComingSoon />} />
         <Route path="offerings" element={<Offerings />} />
-        <Route path="offerings/govtnavigator" element={<GovtNavigator />} />
+        {/* <Route path="offerings/govtnavigator" element={<GovtNavigator />} /> */}
         <Route path="govt-schemes" element={<GovtNavigator />} />
         <Route path="pricings" element={<Pricing />} />
         <Route path="startups-zone" element={<StartUpsZone />} />
