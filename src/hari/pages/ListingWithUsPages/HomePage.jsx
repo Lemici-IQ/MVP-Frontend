@@ -10,7 +10,7 @@ import Footer from '../../components/ListingWithUsComponents/HomePageComponents/
 function ListingWithUsHome() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <BusinessOpportunities />
       <SellingCategory />
       <HowItWorks />

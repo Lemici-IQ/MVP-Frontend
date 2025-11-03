@@ -40,7 +40,7 @@ const NewChatbot = () => {
         },
         {
             path: '/startups-zone-opportunities',
-            keys: ['opportunity', 'opportunities', 'startup opportunities']
+            keys: ['opportunity', 'opportunities', 'startup opportunities','business models']
         },
         {
             path: '/startups-zone-investorhub',
@@ -55,7 +55,7 @@ const NewChatbot = () => {
         {
             path: '/franchise/oppurtunties',
             keys: ['franchise opportunities', 'franchise oppurtunities']
-        },
+        },  
         {
             path: '/franchise/details',
             keys: ['franchise details', 'individual franchise', 'franchise profile']
@@ -117,14 +117,14 @@ const NewChatbot = () => {
 
         // Software Products (fallback)
         {
-            path: '/data',
+            path: '/software-hunt-home',
             keys: ['hrms', 'software', 'employees', 'applicant', 'tracking', 'system', 'crm', 'accounting', 'payroll', 'lms', 'hospital', 'management', 'enterprise', 'bfsi', 'automate', 'gst', 'billing', 'track', 'leads', 'clients', 'data', 'backup', 'solutions', 'inventory', 'development', 'it', 'services', 'managed', 'capterra']
         },
 
         // Market Research (fallback)
         {
             path: '/research',
-            keys: ['market', 'research', 'economy', 'growth', 'rate', 'consumer', 'behavior', 'demographic', 'mosp', 'economic', 'census', 'ibef', 'industry', 'reports', 'kantar', 'nielsen', 'marketsandmarkets', 'techsci', 'moneycontrol', 'trading', 'economics', 'think', 'google', 'statista', 'fmcg', 'report', 'automotive', 'trends', 'pharmaceutical', 'sector', 'analysis', 'e-commerce', 'statistics', 'golf', 'ball', 'indian']
+            keys: ['market', 'research', 'economy', 'growth', 'rate', 'consumer', 'behavior', 'demographic', 'mosp', 'economic', 'census', 'ibef', 'industry', 'reports', 'kantar', 'nielsen', 'marketsandmarkets', 'techsci', 'moneycontrol', 'trading', 'economics', 'think', 'google', 'statista', 'fmcg', 'report', 'automotive', 'trends', 'pharmaceutical', 'sector', 'analysis', 'e-commerce', 'statistics', 'golf', 'ball', 'indian','keka','bitrix']
         },
         // Investment (fallback)
 
@@ -142,9 +142,9 @@ const NewChatbot = () => {
             keys: ['events', 'networking', 'conferences', 'trade', 'fairs', 'mahakumbh', 'expo', 'world', 'shrm', 'mumbai', 'bengaluru', 'eventbrite', 'associations', 'chambers', 'commerce', 'nasscom', 'siam', 'ficci', 'cii']
         },
 
-        // Data, Surveys, Dashboards (fallback)
+        // Data, Surveys, Dashboards
         {
-            path: '/data',
+            path: '/data-listing',
             keys: ['list', 'database', 'hospitals', 'bangalore', 'beds', 'director', 'email', 'directory', 'jewellery', 'stores', 'pin', 'code', 'survey', 'eyewear', 'glasses', 'dashboard', 'cement', 'xyz', 'par', 'abc', 'detailed', 'project', 'dpr', 'cardboard', 'jharkhand', 'bank']
         },
 
@@ -154,9 +154,9 @@ const NewChatbot = () => {
             keys: ['ai', 'search', 'find', 'query', 'lookup', 'mega', 'menu', 'dropdown', 'buttons', 'navigation', 'upload', 'file', 'summary', 'extract', 'pdf', 'word', 'excel', 'multiple', 'llm', 'chatgpt', 'grok', 'perplexity', 'model', 'comparison', 'vernacular', 'language', 'results', 'english']
         },
 
-        // Company Info (fallback)
+        // Company Info
         {
-            path: '/coming-soon',
+            path: '/data-listing',
             keys: ['cosco', 'information', 'master', 'tofler', 'financials']
         },
 
