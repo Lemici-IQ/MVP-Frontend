@@ -6,11 +6,11 @@ export default function Offerings() {
   const buttonRoutes = {
     "startups Zone": "/startups-zone",
     "B2B Marketplace": "/eB2B-home",
-    "Softwarehunt": "/coming-soon",
+    "Softwarehunt": "/software-hunt-home",
     "Franchise finder": "/franchise",
     "Market and industry research": "/research",
-    "Business directory": "/coming-soon",
-    "Industrial solution": "/coming-soon",
+    // "Business directory": "/coming-soon",
+    "Industrial solution": "/industrial-solution",
     "Govt navigator": "/offerings/govtnavigator"
   };
 
@@ -52,49 +52,49 @@ export default function Offerings() {
               title: "Market and industry research",
               subtitle: "Your single source of truth",
               src: "/abhinay/offerings/1.svg",
-              route: "/abhinay/coming-soon"
+              route: "/research"
             },
             {
               title: "B2B Marketplace",
               subtitle: "Security at its simplest",
               src: "/abhinay/offerings/2.svg",
-              route: "/abhinay/coming-soon"
+              route: "/eb2b-home"
             },
             {
               title: "Softwarehunt",
               subtitle: "Marketplace for business-ready data",
               src: "/abhinay/offerings/3.svg",
-              route: "/abhinay/coming-soon"
+              route: "/software-hunt-home"
             },
             {
               title: "Business directory",
               subtitle: "Map your entire data landscape",
               src: "/abhinay/offerings/4.svg",
-              route: "/abhinay/coming-soon"
+              // route: "/abhinay/coming-soon"
             },
             {
               title: "Industrial solution",
               subtitle: "360° visibility for every asset",
               src: "/abhinay/offerings/5.svg",
-              route: "/abhinay/coming-soon"
+              route: "/industrial-solution"
             },
             {
               title: "Franchise finder",
               subtitle: "Your business’s second brain",
               src: "/abhinay/offerings/6.svg",
-              route: "/abhinay/coming-soon"
+              route: "/franchise"
             },
             {
               title: "Startups Zone",
               subtitle: "Active metadata use cases",
               src: "/abhinay/offerings/7.svg",
-              route: "/abhinay/startups-zone"
+              route: "/startups-zone"
             },
             {
               title: "Govt navigator",
               subtitle: "Blazing fast, no-code setup",
               src: "/abhinay/offerings/8.svg",
-              route: "/abhinay/offerings/govtnavigator"
+              route: "/offerings/govtnavigator"
             },
           ].map((item, idx) => (
             <Link key={idx} to={item.route} className="block">
