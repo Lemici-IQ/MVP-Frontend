@@ -4,298 +4,298 @@ import { useNavigate } from 'react-router-dom';
 import { Toaster, toast } from 'react-hot-toast';
 
 const NewChatbot = () => {
-    const navigate = useNavigate();
-    const [query, setQuery] = useState("");
-    const [isListening, setIsListening] = useState(false);
-    const [speechSupported, setSpeechSupported] = useState(true);
-    const recognitionRef = useRef(null);
+  const navigate = useNavigate();
+  const [query, setQuery] = useState("");
+  const [isListening, setIsListening] = useState(false);
+  const [speechSupported, setSpeechSupported] = useState(true);
+  const recognitionRef = useRef(null);
 
-    // input based routing - comprehensive intent map
-    const intentMatchers = useMemo(() => ([
-        // Home Page
-        {
-            path: '/',
-            keys: ['home', 'homepage', 'main', 'landing', 'lemici', 'lemici demo']
-        },
-
-
-        // Offerings & Services
-        {
-            path: '/offerings',
-            keys: ['offering', 'offerings', 'offers', 'promotions', 'seasonal offers', 'deals', 'discounts', 'special deals', 'what you do']
-        },
-        
-        // Government Schemes
-        {
-            path: '/government-scheme-listing',
-            keys: ['govt', 'government', 'scheme', 'schemes', 'subsidies', 'support programs', 'msme schemes', 'grants', 'women entrepreneur schemes', 'startup india schemes', 'navigator', 'govt scheme finder']
-        },
-        {
-            path: '/pricings',
-            keys: ['pricing', 'pricings', 'price', 'plan', 'plans', 'cost', 'subscription', 'fees']
-        },
-
-        // Startups Zone
-        {
-            path: '/startups-zone-opportunities',
-            keys: ['startup', 'startups zone', 'founder', 'incubation', 'accelerator', 'startups', 'agri', 'tech', 'seed', 'funding', 'mrr', 'fintech', 'deeptech', 'healthtech', 'climate', 'edtech', 'saas', 'space', 'angel', 'venture', 'capital', 'india', 'dpiit', 'recognition', 'top', 'unicorns', 'ecosystem']
-        },
-        {
-            path: '/startups-zone-opportunities',
-            keys: ['opportunity', 'opportunities', 'startup opportunities','business models']
-        },
-        {
-            path: '/startups-zone-investorhub',
-            keys: ['Investor page', 'Investors', 'Investment Themes']
-        },
-
-        // Franchise
-        {
-            path: '/franchise/oppurtunties',
-            keys: ['franchise', 'franchising', 'food franchise', 'franchise partnerships', 'franchise investment', 'franchise cost', 'franchise location', 'franchise setup', 'franchise application', 'biryani', 'delhi', 'lakh', 'low', '2025', 'profitable', 'business', 'high', 'roi', 'small', 'budget', 'ideas', 'beverage', 'cloud', 'kitchen', 'education', 'beauty', 'wellness', 'automotive', 'retail', 'courier', 'logistics', 'pharmacy', 'amul', 'domino', 'mcdonald', 'kfc', 'subway', 'lakme', 'salon', 'tumbledry', 'firstcry', 'patanjali', 'lenskart', 'jan', 'aushadhi', 'kendra', 'expos', 'news', 'franchisebazar', 'bharat', 'discovery', 'mart', 'frankart', 'global', 'getdistributors']
-        },
-
-        // Dynamic Pages
-        // {
-        //     path: '/investment',
-        //     keys: ['investment', 'investment opportunities', 'investors']
-        // },
-        // {
-        //     path: '/products',
-        //     keys: ['products', 'catalog', 'product list', 'available products', 'food products', 'product showcase']
-        // },
-        {
-            path: '/compliance',
-            keys: ['licenses', 'food license', 'compliance requirements', 'registration', 'licensing']
-        },
-        {
-            path: '/partnership',
-            keys: ['partnership', 'partnership opportunities', 'collaboration']
-        },
-        {
-            path: '/training',
-            keys: ['training', 'growth programs', 'skill development']
-        },
-        {
-            path: '/account',
-            keys: ['account setup', 'account login', 'login', 'signup', 'sign up', 'register']
-        },
-        {
-            path: '/support',
-            keys: ['support', 'customer care', 'customer support', 'help']
-        },
-        {
-            path: '/aboutus',
-            keys: ['about', 'about us', 'company', 'team', 'who we are']
-        },
+  // input based routing - comprehensive intent map
+  const intentMatchers = useMemo(() => ([
+    // Home Page
+    // {
+    //     path: '/',
+    //     keys: ['home', 'homepage', 'main', 'landing', 'lemici', 'lemici demo']
+    // },
 
 
-        // B2B Products (fallback to coming-soon until route exists)
-        {
-            path: '/product-category',
-            keys: ['sports', 'equipment', 'suppliers', 'moq', 'marketplace', 'wholesale', 'bulk', 'order', 'manufacturing', 'companies', 'industrial', 'machinery', 'supplier', 'cnc', 'machines', 'construction', 'steel', 'chemicals', 'packaging', 'materials', 'electrical', 'mro', 'supplies', 'power', 'tools', 'basmati', 'rice', 'cashew', 'nuts', 'wheat', 'flour', 'spices', 'processing', 'bakery', 't-shirts', 'ladies', 'kurtis', 'garment', 'manufacturers', 'cotton', 'fabric', 'synthetic', 'fabrics', 'medical', 'surgical', 'ppe', 'kits', 'pharmaceutical', 'medicines', 'ayurvedic', 'indiamart', 'pipes', 'amazon', 'moglix', 'safety', 'cricket', 'bat', 'b2b', 'products']
-        },
+    // Offerings & Services
+    // {
+    //     path: '/offerings',
+    //     keys: ['offering', 'offerings', 'offers', 'promotions', 'seasonal offers', 'deals', 'discounts', 'special deals', 'what you do']
+    // },
 
-        // Software Products (fallback)
-        {
-            path: '/software-hunt-home',
-            keys: ['hrms', 'software', 'employees', 'system', 'crm', 'payroll', 'lms', 'hospital', 'management',  'billing', 'track', 'leads', 'clients', 'it', 'capterra', 'keka','bitrix']
-        },
+    // Government Schemes
+    {
+      path: '/government-scheme-listing',
+      keys: ['govt', 'government', 'scheme', 'schemes', 'subsidies', 'support programs', 'govt scheme finder']
+    },
+    // {
+    //     path: '/pricings',
+    //     keys: ['pricing', 'pricings', 'price', 'plan', 'plans', 'cost', 'subscription', 'fees']
+    // },
 
-        // Market Research (fallback)
-        {
-            path: '/research',
-            keys: ['market', 'research', 'economy', 'growth', 'rate', 'consumer', 'behavior', 'demographic', 'mosp', 'economic', 'census', 'ibef', 'industry', 'reports', 'kantar', 'nielsen', 'marketsandmarkets', 'techsci', 'moneycontrol', 'trading', 'economics', 'think', 'google', 'statista', 'fmcg', 'report','trends', 'sector', 'analysis', 'e-commerce', 'golf', 'ball', 'indian']
-        },
-        // Investment (fallback)
+    // Startups Zone
+    {
+      path: '/startups-zone-opportunities',
+      keys: ['startup', 'startups zone', 'startups', 'funding', 'recognition', 'unicorns', 'business models']
+    },
+    // {
+    //   path: '/startups-zone-opportunities',
+    //   keys: ['opportunity', 'opportunities', 'startup opportunities', 'business models']
+    // },
+    {
+      path: '/startups-zone-investorhub',
+      keys: ['Investor page', 'Investors', 'Investment Themes', 'investor']
+    },
 
-        // Experts & Consulting (fallback)
-        {
-            path: '/expert-listing',
-            keys: ['expert','consultant','consult', 'name', 'subject', 'expert', 'strategy', 'upwork', 'consulting', 'top', 'consultants', 'firms', 'advisory', 'smes', 'msme', 'big4', 'operations', 'supply', 'chain', 'entry', 'corporate']
-        },
+    // Franchise
+    {
+      path: '/franchise/oppurtunties',
+      keys: ['franchise', 'franchising', 'food franchise', 'franchise partnerships', 'franchise investment', 'franchise cost', 'franchise location', 'franchise setup', 'franchise application']
+    },
 
-        // Business Events & Associations (fallback)
-        {
-            path: '/coming-soon',
-            keys: ['events', 'networking', 'conferences', 'trade', 'fairs', 'mahakumbh', 'expo', 'world', 'shrm', 'mumbai', 'bengaluru', 'eventbrite', 'associations', 'chambers', 'commerce', 'nasscom', 'siam', 'ficci', 'cii']
-        },
-        {
-            path: '/project-reports-listing',
-            keys: ['project', 'reports',  'report']
-        },
+    // Dynamic Pages
+    // {
+    //     path: '/investment',
+    //     keys: ['investment', 'investment opportunities', 'investors']
+    // },
+    // {
+    //     path: '/products',
+    //     keys: ['products', 'catalog', 'product list', 'available products', 'food products', 'product showcase']
+    // },
+    // {
+    //   path: '/compliance',
+    //   keys: ['licenses', 'food license', 'compliance requirements', 'registration', 'licensing']
+    // },
+    // {
+    //   path: '/partnership',
+    //   keys: ['partnership', 'partnership opportunities', 'collaboration']
+    // },
+    // {
+    //   path: '/training',
+    //   keys: ['training', 'growth programs', 'skill development']
+    // },
+    // {
+    //   path: '/account',
+    //   keys: ['account setup', 'account login', 'login', 'signup', 'sign up', 'register']
+    // },
+    // {
+    //   path: '/support',
+    //   keys: ['support', 'customer care', 'customer support', 'help']
+    // },
+    // {
+    //   path: '/aboutus',
+    //   keys: ['about', 'about us', 'company', 'team', 'who we are']
+    // },
 
-        // Data, Surveys, Dashboards
-        {
-            path: '/data-listing',
-            keys: ['list', 'database', 'data', 'surveys','open data', 'datasets']
-        },
 
-        // AI Features (fallback)
-        {
-            path: '/coming-soon',
-            keys: ['ai', 'search', 'find', 'query', 'lookup', 'mega', 'menu', 'dropdown', 'buttons', 'navigation', 'upload', 'file', 'summary', 'extract', 'pdf', 'word', 'excel', 'multiple', 'llm', 'chatgpt', 'grok', 'model', 'comparison', 'vernacular', 'language', 'results', 'english']
-        },
+    // B2B Products (fallback to coming-soon until route exists)
+    {
+      path: '/product-category',
+      keys: ['sports', 'equipment', 'suppliers', 'marketplace', 'wholesale', 'bulk', 'machinery', 'supplier', 'machines', 'supplies', 'manufacturers', 'cotton', 'cricket', 'bat', 'b2b', 'products']
+    },
 
-        // Company Info
-        {
-            path: '/data-listing',
-            keys: ['cosco', 'information', 'master', 'tofler', 'financials']
-        },
+    // Software Products (fallback)
+    {
+      path: '/software-hunt-home',
+      keys: ['hrms', 'software', 'system', 'crm', 'lms', 'capterra', 'keka', 'bitrix']
+    },
 
-        // Generic Coming Soon
-        {
-            path: '/coming-soon',
-            keys: ['coming soon', 'beta', 'preview']
-        },
-    ]), []);
+    // Market Research (fallback)
+    {
+      path: '/research',
+      keys: ['market', 'research', 'economy', 'growth']
+    },
+    // Investment (fallback)
 
-    const resolveRoute = useCallback((text) => {
-        if (!text) return null;
-        const q = text.toLowerCase().trim();
-        // Exact page mentions like "/route"
-        console.log("Resolving route for query:", q);
-        if (q.startsWith('/')) {
-            return q; // trust explicit route input
+    // Experts & Consulting (fallback)
+    {
+      path: '/expert-listing',
+      keys: ['expert', 'consultant', 'consult', 'consulting', 'advice', 'advisor', 'mentorship', 'specialist', 'professional']
+    },
+
+    // Business Events & Associations (fallback)
+    // {
+    //   path: '/coming-soon',
+    //   keys: ['events', 'networking', 'conferences', 'trade', 'fairs', 'mahakumbh', 'expo', 'world', 'shrm', 'mumbai', 'bengaluru', 'eventbrite', 'associations', 'chambers', 'commerce', 'nasscom', 'siam', 'ficci', 'cii']
+    // },
+    {
+      path: '/project-reports-listing',
+      keys: ['project', 'reports', 'report']
+    },
+
+    // Data, Surveys, Dashboards
+    {
+      path: '/data-listing',
+      keys: ['list', 'database', 'data', 'surveys', 'open data', 'datasets']
+    },
+
+    // AI Features (fallback)
+    // {
+    //   path: '/coming-soon',
+    //   keys: ['ai', 'search', 'find', 'query', 'lookup', 'mega', 'menu', 'dropdown', 'buttons', 'navigation', 'upload', 'file', 'summary', 'extract', 'pdf', 'word', 'excel', 'multiple', 'llm', 'chatgpt', 'grok', 'model', 'comparison', 'vernacular', 'language', 'results', 'english']
+    // },
+
+    // Company Info
+    {
+      path: '/data-listing',
+      keys: ['cosco', 'information', 'master', 'tofler', 'financials']
+    },
+
+    // Generic Coming Soon
+    {
+      path: '/coming-soon',
+      keys: ['coming soon', 'beta', 'preview']
+    },
+  ]), []);
+
+  const resolveRoute = useCallback((text) => {
+    if (!text) return null;
+    const q = text.toLowerCase().trim();
+    // Exact page mentions like "/route"
+    console.log("Resolving route for query:", q);
+    if (q.startsWith('/')) {
+      return q; // trust explicit route input
+    }
+    for (const { path, keys } of intentMatchers) {
+      if (keys.some((k) => q.includes(k))) {
+        console.log(`Matched intent for query "${q}" to path "${path}" using keys:`, keys);
+        return path;
+      }
+    }
+    // Fallbacks for common words
+    if (/price|plan|cost/.test(q)) return '/pricings';
+    if (/invest(or|ment)|fund/i.test(q)) return '/startups-zone-investorhub';
+    if (/startup/i.test(q)) return '/startups-zone';
+    if (/franchise/i.test(q)) return '/franchise';
+    if (/offer|deal|discount|promotion/i.test(q)) return '/offerings';
+    if (/schemes?|subsid(y|ies)|grant|msme|government|govt/i.test(q)) return '/offerings/govtnavigator';
+    if (/product|catalog|list/i.test(q)) return '/products';
+    if (/compliance|license|registration/i.test(q)) return '/compliance';
+    if (/partner|collab/i.test(q)) return '/partnership';
+    if (/train|skill|growth/i.test(q)) return '/training';
+    if (/account|login|signup|sign up|register/i.test(q)) return '/account';
+    if (/support|help|customer/i.test(q)) return '/support';
+    return null;
+  }, [intentMatchers]);
+
+  const handleSubmit = useCallback(() => {
+    const route = resolveRoute(query);
+    if (route) {
+      navigate(route);
+    } else {
+      console.info('NewChatbot: No matching page for query ->', query);
+      toast("I couldn't find a matching page. Try keywords like 'franchise', 'investment', 'govt schemes', 'products', 'offers', 'compliance', 'partnership', 'training', 'account', or 'support'.");
+    }
+  }, [navigate, query, resolveRoute]);
+
+  const handleKeyDown = useCallback((e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSubmit();
+    }
+  }, [handleSubmit]);
+
+  const quickGo = useCallback((text) => {
+    setQuery(text);
+    const route = resolveRoute(text);
+    if (route) navigate(route);
+  }, [navigate, resolveRoute]);
+
+  // Initialize SpeechRecognition (Web Speech API)
+  useEffect(() => {
+    // Ensure we're in a browser
+    if (typeof window === 'undefined') return;
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      setSpeechSupported(false);
+      return;
+    }
+
+    try {
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'en-IN'; // choose locale as needed
+      recognition.continuous = false; // stop after a phrase
+      recognition.interimResults = true; // show partial text while speaking
+
+      recognition.onstart = () => setIsListening(true);
+      recognition.onend = () => setIsListening(false);
+      recognition.onerror = (event) => {
+        setIsListening(false);
+        // Common errors: 'no-speech', 'audio-capture', 'not-allowed'
+        const msg =
+          event.error === 'not-allowed'
+            ? 'Microphone permission denied. Please allow access in your browser settings.'
+            : event.error === 'no-speech'
+              ? "Didn't catch that. Try speaking again."
+              : 'Voice input error. Please try again.';
+        toast.error(msg);
+      };
+
+      recognition.onresult = (event) => {
+        let transcript = '';
+        let hasFinal = false;
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          const res = event.results[i];
+          transcript += res[0].transcript;
+          if (res.isFinal) hasFinal = true;
         }
-        for (const { path, keys } of intentMatchers) {
-            if (keys.some((k) => q.includes(k))) {
-                console.log(`Matched intent for query "${q}" to path "${path}" using keys:`, keys);
-                return path;
-            }
-        }
-        // Fallbacks for common words
-        if (/price|plan|cost/.test(q)) return '/pricings';
-        if (/invest(or|ment)|fund/i.test(q)) return '/startups-zone-investorhub';
-        if (/startup/i.test(q)) return '/startups-zone';
-        if (/franchise/i.test(q)) return '/franchise';
-        if (/offer|deal|discount|promotion/i.test(q)) return '/offerings';
-        if (/schemes?|subsid(y|ies)|grant|msme|government|govt/i.test(q)) return '/offerings/govtnavigator';
-        if (/product|catalog|list/i.test(q)) return '/products';
-        if (/compliance|license|registration/i.test(q)) return '/compliance';
-        if (/partner|collab/i.test(q)) return '/partnership';
-        if (/train|skill|growth/i.test(q)) return '/training';
-        if (/account|login|signup|sign up|register/i.test(q)) return '/account';
-        if (/support|help|customer/i.test(q)) return '/support';
-        return null;
-    }, [intentMatchers]);
+        const text = transcript.trim();
+        if (text) setQuery(text);
 
-    const handleSubmit = useCallback(() => {
-        const route = resolveRoute(query);
-        if (route) {
+        // On final result, attempt navigation based on intent
+        if (hasFinal && text) {
+          const route = resolveRoute(text);
+          if (route) {
             navigate(route);
-        } else {
-            console.info('NewChatbot: No matching page for query ->', query);
-            toast("I couldn't find a matching page. Try keywords like 'franchise', 'investment', 'govt schemes', 'products', 'offers', 'compliance', 'partnership', 'training', 'account', or 'support'.");
+          } else {
+            toast(
+              "I couldn't find a matching page for your voice query. Try keywords like 'franchise', 'investment', 'govt schemes', 'products', 'offers', 'compliance', 'partnership', 'training', 'account', or 'support'."
+            );
+          }
         }
-    }, [navigate, query, resolveRoute]);
+      };
 
-    const handleKeyDown = useCallback((e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            handleSubmit();
+      recognitionRef.current = recognition;
+    } catch (e) {
+      setSpeechSupported(false);
+      console.error('SpeechRecognition setup failed:', e);
+    }
+
+    return () => {
+      try {
+        if (recognitionRef.current) {
+          recognitionRef.current.onstart = null;
+          recognitionRef.current.onend = null;
+          recognitionRef.current.onerror = null;
+          recognitionRef.current.onresult = null;
+          recognitionRef.current.abort();
         }
-    }, [handleSubmit]);
+      } catch { }
+    };
+  }, [navigate, resolveRoute]);
 
-    const quickGo = useCallback((text) => {
-        setQuery(text);
-        const route = resolveRoute(text);
-        if (route) navigate(route);
-    }, [navigate, resolveRoute]);
+  const toggleListening = useCallback(() => {
+    const recognition = recognitionRef.current;
+    if (!recognition) {
+      toast('Voice input is not supported in this browser.');
+      return;
+    }
+    try {
+      if (isListening) {
+        recognition.stop();
+      } else {
+        recognition.start();
+      }
+    } catch (e) {
+      // start() can throw InvalidStateError if already started; ignore
+      console.debug('Speech start/stop error:', e);
+    }
+  }, [isListening]);
 
-    // Initialize SpeechRecognition (Web Speech API)
-    useEffect(() => {
-        // Ensure we're in a browser
-        if (typeof window === 'undefined') return;
-
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        if (!SpeechRecognition) {
-            setSpeechSupported(false);
-            return;
-        }
-
-        try {
-            const recognition = new SpeechRecognition();
-            recognition.lang = 'en-IN'; // choose locale as needed
-            recognition.continuous = false; // stop after a phrase
-            recognition.interimResults = true; // show partial text while speaking
-
-            recognition.onstart = () => setIsListening(true);
-            recognition.onend = () => setIsListening(false);
-            recognition.onerror = (event) => {
-                setIsListening(false);
-                // Common errors: 'no-speech', 'audio-capture', 'not-allowed'
-                const msg =
-                    event.error === 'not-allowed'
-                        ? 'Microphone permission denied. Please allow access in your browser settings.'
-                        : event.error === 'no-speech'
-                            ? "Didn't catch that. Try speaking again."
-                            : 'Voice input error. Please try again.';
-                toast.error(msg);
-            };
-
-            recognition.onresult = (event) => {
-                let transcript = '';
-                let hasFinal = false;
-                for (let i = event.resultIndex; i < event.results.length; i++) {
-                    const res = event.results[i];
-                    transcript += res[0].transcript;
-                    if (res.isFinal) hasFinal = true;
-                }
-                const text = transcript.trim();
-                if (text) setQuery(text);
-
-                // On final result, attempt navigation based on intent
-                if (hasFinal && text) {
-                    const route = resolveRoute(text);
-                    if (route) {
-                        navigate(route);
-                    } else {
-                        toast(
-                            "I couldn't find a matching page for your voice query. Try keywords like 'franchise', 'investment', 'govt schemes', 'products', 'offers', 'compliance', 'partnership', 'training', 'account', or 'support'."
-                        );
-                    }
-                }
-            };
-
-            recognitionRef.current = recognition;
-        } catch (e) {
-            setSpeechSupported(false);
-            console.error('SpeechRecognition setup failed:', e);
-        }
-
-        return () => {
-            try {
-                if (recognitionRef.current) {
-                    recognitionRef.current.onstart = null;
-                    recognitionRef.current.onend = null;
-                    recognitionRef.current.onerror = null;
-                    recognitionRef.current.onresult = null;
-                    recognitionRef.current.abort();
-                }
-            } catch { }
-        };
-    }, [navigate, resolveRoute]);
-
-    const toggleListening = useCallback(() => {
-        const recognition = recognitionRef.current;
-        if (!recognition) {
-            toast('Voice input is not supported in this browser.');
-            return;
-        }
-        try {
-            if (isListening) {
-                recognition.stop();
-            } else {
-                recognition.start();
-            }
-        } catch (e) {
-            // start() can throw InvalidStateError if already started; ignore
-            console.debug('Speech start/stop error:', e);
-        }
-    }, [isListening]);
-
-     return (
+  return (
     <>
       <Toaster position="bottom-center" />
       <div className="max-w-2xl px-4 py-3 mx-auto shadow-xl rounded-[64px]  border-gray-300 border-t-1">
@@ -371,13 +371,11 @@ const NewChatbot = () => {
                       : "Speak your query"
                     : "Voice input not supported"
                 }
-                className={`rounded-md p-2 transition-colors flex items-center justify-center ${
-                  isListening ? "bg-red-100" : "bg-transparent"
-                } ${
-                  !speechSupported
+                className={`rounded-md p-2 transition-colors flex items-center justify-center ${isListening ? "bg-red-100" : "bg-transparent"
+                  } ${!speechSupported
                     ? "opacity-50 cursor-not-allowed"
                     : "cursor-pointer"
-                }`}
+                  }`}
               >
                 <svg
                   width="14"
@@ -414,7 +412,7 @@ const NewChatbot = () => {
         </div>
       </div>
     </>
-    );
+  );
 };
 
 export default NewChatbot;
