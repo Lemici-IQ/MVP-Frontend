@@ -17,7 +17,7 @@ import { ChartRenderer, parseChartData, removeChartDataBlocks } from '../../../.
 // import { generateFranchiseAdvice } from '@/lib/ai.js';
 import { streamFranchiseAdvice } from '../../../../../lib/ai.js';
 
-const backendUrl = "https://cuddly-fiesta-wr76xgjx5qwj2jrr-3001.app.github.dev";
+const backendUrl = "https://ai-overview-backend.onrender.com";
 const claudeApi = import.meta.env.VITE_claudeApi;
 const tavilyApi = import.meta.env.VITE_tavilyApi;
 
