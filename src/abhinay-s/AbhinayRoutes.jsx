@@ -47,13 +47,13 @@ function AbhinayRoutes() {
         <Route path="franchise/oppurtunties" element={<Opp />} />
         <Route path="franchise/details" element={<Single />} />
         <Route path="franchise/category" element={<BusinessCategories />} />
-        {/* <Route path="investment" element={<Investment />} /> */}
-        {/* <Route path="products" element={<Products />} /> */}
-        {/* <Route path="compliance" element={<Compliance />} /> */}
-        {/* <Route path="partnership" element={<Partnership />} /> */}
-        {/* <Route path="training" element={<Training />} /> */}
-        {/* <Route path="account" element={<Account />} /> */}
-        {/* <Route path="support" element={<Support />} /> */}
+        <Route path="investment" element={<Investment />} />
+        <Route path="products" element={<Products />} />
+        <Route path="compliance" element={<Compliance />} />
+        <Route path="partnership" element={<Partnership />} />
+        <Route path="training" element={<Training />} />
+        <Route path="account" element={<Account />} />
+        <Route path="support" element={<Support />} />
         <Route path="aboutus" element={<AboutUs />} />
         {/* <Route path="investment" element={<SinglePage />} /> */}
         {/* <Route path="data" element={<B />} /> */}

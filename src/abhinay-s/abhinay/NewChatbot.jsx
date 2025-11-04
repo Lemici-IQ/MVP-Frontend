@@ -24,8 +24,10 @@ const NewChatbot = () => {
             path: '/offerings',
             keys: ['offering', 'offerings', 'offers', 'promotions', 'seasonal offers', 'deals', 'discounts', 'special deals', 'what you do']
         },
+        
+        // Government Schemes
         {
-            path: '/offerings/govtnavigator',
+            path: '/government-scheme-listing',
             keys: ['govt', 'government', 'scheme', 'schemes', 'subsidies', 'support programs', 'msme schemes', 'grants', 'women entrepreneur schemes', 'startup india schemes', 'navigator', 'govt scheme finder']
         },
         {
@@ -44,25 +46,13 @@ const NewChatbot = () => {
         },
         {
             path: '/startups-zone-investorhub',
-            keys: ['Investor page', 'Investors', 'Exits', 'Investment Themes']
+            keys: ['Investor page', 'Investors', 'Investment Themes']
         },
 
         // Franchise
         {
             path: '/franchise/oppurtunties',
-            keys: ['franchise', 'franchising', 'food franchise', 'franchise partnerships', 'franchise investment', 'franchise cost', 'franchise location', 'franchise setup', 'franchise application', 'biryani', 'delhi', 'lakh', 'low', '2025', 'profitable', 'business', 'high', 'roi', 'small', 'budget', 'ideas', 'beverage', 'cloud', 'kitchen', 'education', 'beauty', 'wellness', 'automotive', 'retail', 'courier', 'logistics', 'pharmacy', 'amul', 'domino', 'mcdonald', 'kfc', 'subway', 'lakme', 'salon', 'tumbledry', 'firstcry', 'patanjali', 'lenskart', 'jan', 'aushadhi', 'kendra', 'expos', 'news', 'trends', 'franchisebazar', 'bharat', 'discovery', 'mart', 'frankart', 'global', 'getdistributors', 'consultants']
-        },
-        {
-            path: '/franchise/oppurtunties',
-            keys: ['franchise opportunities', 'franchise oppurtunities']
-        },  
-        {
-            path: '/franchise/details',
-            keys: ['franchise details', 'individual franchise', 'franchise profile']
-        },
-        {
-            path: '/franchise/category',
-            keys: ['category', 'categories', 'business categories']
+            keys: ['franchise', 'franchising', 'food franchise', 'franchise partnerships', 'franchise investment', 'franchise cost', 'franchise location', 'franchise setup', 'franchise application', 'biryani', 'delhi', 'lakh', 'low', '2025', 'profitable', 'business', 'high', 'roi', 'small', 'budget', 'ideas', 'beverage', 'cloud', 'kitchen', 'education', 'beauty', 'wellness', 'automotive', 'retail', 'courier', 'logistics', 'pharmacy', 'amul', 'domino', 'mcdonald', 'kfc', 'subway', 'lakme', 'salon', 'tumbledry', 'firstcry', 'patanjali', 'lenskart', 'jan', 'aushadhi', 'kendra', 'expos', 'news', 'franchisebazar', 'bharat', 'discovery', 'mart', 'frankart', 'global', 'getdistributors']
         },
 
         // Dynamic Pages
@@ -70,14 +60,10 @@ const NewChatbot = () => {
         //     path: '/investment',
         //     keys: ['investment', 'investment opportunities', 'investors']
         // },
-        {
-            path: '/govt-schemes',
-            keys: ['govt schemes', 'government schemes', 'scheme finder', 'govt scheme finder']
-        },
-        {
-            path: '/products',
-            keys: ['products', 'catalog', 'product list', 'available products', 'food products', 'product showcase']
-        },
+        // {
+        //     path: '/products',
+        //     keys: ['products', 'catalog', 'product list', 'available products', 'food products', 'product showcase']
+        // },
         {
             path: '/compliance',
             keys: ['licenses', 'food license', 'compliance requirements', 'registration', 'licensing']
@@ -103,37 +89,30 @@ const NewChatbot = () => {
             keys: ['about', 'about us', 'company', 'team', 'who we are']
         },
 
-        // Government Schemes
-        {
-            path: '/govt-schemes',
-            keys: ['govt schemes', 'government schemes', 'scheme finder', 'agri', 'goa', , 'loan', 'central', 'farmers', 'application', 'pmegp', 'rashtriya', 'krishi', 'vikas', 'yojana']
-        },
 
         // B2B Products (fallback to coming-soon until route exists)
         {
             path: '/product-category',
-            keys: ['sports', 'equipment', 'suppliers', 'moq', 'marketplace', 'wholesale', 'bulk', 'order', 'manufacturing', 'companies', 'industrial', 'machinery', 'supplier', 'cnc', 'machines', 'construction', 'steel', 'chemicals', 'packaging', 'materials', 'electrical', 'mro', 'supplies', 'power', 'tools', 'basmati', 'rice', 'cashew', 'nuts', 'wheat', 'flour', 'spices', 'processing', 'bakery', 't-shirts', 'ladies', 'kurtis', 'garment', 'manufacturers', 'cotton', 'fabric', 'synthetic', 'fabrics', 'medical', 'surgical', 'ppe', 'kits', 'pharmaceutical', 'medicines', 'ayurvedic', 'indiamart', 'pipes', 'amazon', 'moglix', 'safety', 'cricket', 'bat', 'b2b']
+            keys: ['sports', 'equipment', 'suppliers', 'moq', 'marketplace', 'wholesale', 'bulk', 'order', 'manufacturing', 'companies', 'industrial', 'machinery', 'supplier', 'cnc', 'machines', 'construction', 'steel', 'chemicals', 'packaging', 'materials', 'electrical', 'mro', 'supplies', 'power', 'tools', 'basmati', 'rice', 'cashew', 'nuts', 'wheat', 'flour', 'spices', 'processing', 'bakery', 't-shirts', 'ladies', 'kurtis', 'garment', 'manufacturers', 'cotton', 'fabric', 'synthetic', 'fabrics', 'medical', 'surgical', 'ppe', 'kits', 'pharmaceutical', 'medicines', 'ayurvedic', 'indiamart', 'pipes', 'amazon', 'moglix', 'safety', 'cricket', 'bat', 'b2b', 'products']
         },
 
         // Software Products (fallback)
         {
             path: '/software-hunt-home',
-            keys: ['hrms', 'software', 'employees', 'applicant', 'tracking', 'system', 'crm', 'accounting', 'payroll', 'lms', 'hospital', 'management', 'enterprise', 'bfsi', 'automate', 'gst', 'billing', 'track', 'leads', 'clients', 'data', 'backup', 'solutions', 'inventory', 'development', 'it', 'services', 'managed', 'capterra']
+            keys: ['hrms', 'software', 'employees', 'system', 'crm', 'payroll', 'lms', 'hospital', 'management',  'billing', 'track', 'leads', 'clients', 'it', 'capterra', 'keka','bitrix']
         },
 
         // Market Research (fallback)
         {
             path: '/research',
-            keys: ['market', 'research', 'economy', 'growth', 'rate', 'consumer', 'behavior', 'demographic', 'mosp', 'economic', 'census', 'ibef', 'industry', 'reports', 'kantar', 'nielsen', 'marketsandmarkets', 'techsci', 'moneycontrol', 'trading', 'economics', 'think', 'google', 'statista', 'fmcg', 'report', 'automotive', 'trends', 'pharmaceutical', 'sector', 'analysis', 'e-commerce', 'statistics', 'golf', 'ball', 'indian','keka','bitrix']
+            keys: ['market', 'research', 'economy', 'growth', 'rate', 'consumer', 'behavior', 'demographic', 'mosp', 'economic', 'census', 'ibef', 'industry', 'reports', 'kantar', 'nielsen', 'marketsandmarkets', 'techsci', 'moneycontrol', 'trading', 'economics', 'think', 'google', 'statista', 'fmcg', 'report','trends', 'sector', 'analysis', 'e-commerce', 'golf', 'ball', 'indian']
         },
         // Investment (fallback)
 
         // Experts & Consulting (fallback)
         {
             path: '/expert-listing',
-            keys: ['expert',
-                'consultant',
-                'name', 'subject', 'matter', 'expert', 'sales', 'talcum', 'organizational', 'strategy', 'upwork', 'consulting', 'top', 'consultants', 'firms', 'advisory', 'smes', 'msme', 'big4', 'operations', 'supply', 'chain', 'entry', 'financial', 'corporate', 'finance', 'tax', 'legal', 'ip', 'digital', 'transformation', 'artificial', 'intelligence', 'cybersecurity', 'brand', 'hr', 'executive', 'search', 'recruitment', 'esg', 'sustainability', 'environmental']
+            keys: ['expert','consultant','consult', 'name', 'subject', 'expert', 'strategy', 'upwork', 'consulting', 'top', 'consultants', 'firms', 'advisory', 'smes', 'msme', 'big4', 'operations', 'supply', 'chain', 'entry', 'corporate']
         },
 
         // Business Events & Associations (fallback)
@@ -141,17 +120,21 @@ const NewChatbot = () => {
             path: '/coming-soon',
             keys: ['events', 'networking', 'conferences', 'trade', 'fairs', 'mahakumbh', 'expo', 'world', 'shrm', 'mumbai', 'bengaluru', 'eventbrite', 'associations', 'chambers', 'commerce', 'nasscom', 'siam', 'ficci', 'cii']
         },
+        {
+            path: '/project-reports-listing',
+            keys: ['project', 'reports',  'report']
+        },
 
         // Data, Surveys, Dashboards
         {
             path: '/data-listing',
-            keys: ['list', 'database', 'hospitals', 'bangalore', 'beds', 'director', 'email', 'directory', 'jewellery', 'stores', 'pin', 'code', 'survey', 'eyewear', 'glasses', 'dashboard', 'cement', 'xyz', 'par', 'abc', 'detailed', 'project', 'dpr', 'cardboard', 'jharkhand', 'bank']
+            keys: ['list', 'database', 'data', 'surveys','open data', 'datasets']
         },
 
         // AI Features (fallback)
         {
             path: '/coming-soon',
-            keys: ['ai', 'search', 'find', 'query', 'lookup', 'mega', 'menu', 'dropdown', 'buttons', 'navigation', 'upload', 'file', 'summary', 'extract', 'pdf', 'word', 'excel', 'multiple', 'llm', 'chatgpt', 'grok', 'perplexity', 'model', 'comparison', 'vernacular', 'language', 'results', 'english']
+            keys: ['ai', 'search', 'find', 'query', 'lookup', 'mega', 'menu', 'dropdown', 'buttons', 'navigation', 'upload', 'file', 'summary', 'extract', 'pdf', 'word', 'excel', 'multiple', 'llm', 'chatgpt', 'grok', 'model', 'comparison', 'vernacular', 'language', 'results', 'english']
         },
 
         // Company Info
@@ -171,11 +154,13 @@ const NewChatbot = () => {
         if (!text) return null;
         const q = text.toLowerCase().trim();
         // Exact page mentions like "/route"
+        console.log("Resolving route for query:", q);
         if (q.startsWith('/')) {
             return q; // trust explicit route input
         }
         for (const { path, keys } of intentMatchers) {
             if (keys.some((k) => q.includes(k))) {
+                console.log(`Matched intent for query "${q}" to path "${path}" using keys:`, keys);
                 return path;
             }
         }
@@ -310,93 +295,126 @@ const NewChatbot = () => {
         }
     }, [isListening]);
 
-    return (
-        <>
-            <Toaster position="bottom-center" />
-            <div className="max-w-2xl px-4 py-2 mx-auto shadow-xl rounded-[64px] border-gray-300 border-t-1">
-                <div className="relative bg-white rounded-3xl pt-6 pl-3">
-                    <div className="flex items-center space-x-3 mt-1 mb-9 ml-2">
-                        <input
-                            type="text"
-                            placeholder="Ask Anything (Industry/Company/Sector)"
-                            className="flex-1 text-gray-700 placeholder-gray-400 bg-transparent border-none outline-none text-base"
-                            value={query}
-                            onChange={(e) => setQuery(e.target.value)}
-                            onKeyDown={handleKeyDown}
-                        />
-                    </div>
+     return (
+    <>
+      <Toaster position="bottom-center" />
+      <div className="max-w-2xl px-4 py-3 mx-auto shadow-xl rounded-[64px]  border-gray-300 border-t-1">
+        <div className="relative bg-white rounded-3xl px-5 py-2">
+          {/* Main flex container: 80% left (input + icons), 20% right (mic + send) */}
+          <div className="flex items-center gap-0">
+            {/* Left section: 80% */}
+            <div className="flex-[0.8] flex flex-col gap-3">
+              {/* Input row */}
+              <div className="flex items-center">
+                <input
+                  type="text"
+                  placeholder="Ask Anything (Industry/Company/Sector)"
+                  className="flex-1 text-gray-700 placeholder-gray-400 bg-transparent border-none outline-none text-sm pr-2"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                />
+              </div>
 
-                    {/* Search Controls */}
-                    <div className="flex items-center justify-between mb-1">
-
-                        <div className="flex items-center space-x-1">
-                            <div className='flex items-center bg-[#e8f6f6] rounded-[6px] scale-90'>
-                                <img
-                                    onClick={() => quickGo('show offerings')}
-                                    className='hover:bg-white rounded-[6px] p-1 transition-colors cursor-pointer w-9 h-9'
-                                    src="/abhinay/aaaa.png"
-                                    alt="Icon A"
-                                />
-                            </div>
-
-                            <div className='flex items-center gap-1 bg-[#FCEFE0] rounded-[6px] p-1 scale-90'>
-                                <img
-                                    onClick={() => quickGo('pricing plans')}
-                                    className='hover:bg-white rounded-[6px] p-1 transition-colors cursor-pointer w-7 h-7'
-                                    src="/abhinay/bbbb.png"
-                                    alt="Icon B"
-                                />
-                                <img
-                                    onClick={() => quickGo('startups zone')}
-                                    className='hover:bg-white rounded-[6px] p-1 transition-colors cursor-pointer w-7 h-7'
-                                    src="/abhinay/cccc.png"
-                                    alt="Icon C"
-                                />
-                            </div>
-
-                            <div className='flex items-center gap-1 bg-[#F0EAF4] rounded-[6px] p-1 scale-90'>
-                                <img
-                                    onClick={() => quickGo('Investor page')}
-                                    className='hover:bg-white rounded-[6px] p-1 transition-colors cursor-pointer w-7 h-7'
-                                    src="/abhinay/dddd.png"
-                                    alt="Icon D"
-                                />
-                                <img
-                                    onClick={() => quickGo('franchise opportunities')}
-                                    className='hover:bg-white rounded-[6px] p-1 transition-colors cursor-pointer w-7 h-7'
-                                    src="/abhinay/eeee.png"
-                                    alt="Icon E"
-                                />
-                            </div>
-                        </div>
-
-
-                        {/* Search Button */}
-                        <div className="text-white p-2 rounded-lg hover:opacity-90 transition-opacity flex items-center gap-2">
-
-                            <button
-                                onClick={toggleListening}
-                                disabled={!speechSupported}
-                                title={speechSupported ? (isListening ? 'Listening… click to stop' : 'Speak your query') : 'Voice input not supported'}
-                                className={`rounded-md p-1 transition-colors ${isListening ? 'bg-red-100' : 'bg-transparent'
-                                    } ${!speechSupported ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
-                            >
-                                {/* Microphone Icon */}
-                                <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7 19V16.5455M7 16.5455C5.4087 16.5455 3.88258 15.8558 2.75736 14.6283C1.63214 13.4008 1 11.736 1 10M7 16.5455C8.5913 16.5455 10.1174 15.8558 11.2426 14.6283C12.3679 13.4008 13 11.736 13 10M7 14.0909C4.9375 14.0909 3.25 12.3138 3.25 10.1407V4.95018C3.25 2.77709 4.9375 1 7 1C9.0625 1 10.75 2.77709 10.75 4.95018V10.1407C10.75 12.3138 9.0625 14.0909 7 14.0909Z" stroke={isListening ? '#ef4444' : 'black'} stroke-opacity={isListening ? '0.8' : '0.3'} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </button>
-                            <button onClick={handleSubmit}>
-                                <div className="w-6 h-6 bg-white rounded-sm opacity-90 flex items-center justify-center cursor-pointer">
-                                    <img src="/abhinay/cube.png" alt="send" />
-                                </div>
-                            </button>
-                        </div>
-                    </div>
+              {/* Quick-go icons row */}
+              <div className="flex items-center gap-1 mt-6">
+                <div className="flex items-center bg-[#e8f6f6] rounded-[6px]">
+                  <img
+                    onClick={() => quickGo("show offerings")}
+                    className="hover:bg-white rounded-[6px] p-1 transition-colors cursor-pointer w-8 h-8"
+                    src="/abhinay/aaaa.png"
+                    alt="Icon A"
+                  />
                 </div>
+
+                <div className="flex items-center gap-1 bg-[#FCEFE0] rounded-[6px] p-1">
+                  <img
+                    onClick={() => quickGo("pricing plans")}
+                    className="hover:bg-white rounded-[6px] p-1 transition-colors cursor-pointer w-6 h-6"
+                    src="/abhinay/bbbb.png"
+                    alt="Icon B"
+                  />
+                  <img
+                    onClick={() => quickGo("startups zone")}
+                    className="hover:bg-white rounded-[6px] p-1 transition-colors cursor-pointer w-6 h-6"
+                    src="/abhinay/cccc.png"
+                    alt="Icon C"
+                  />
+                </div>
+
+                <div className="flex items-center gap-1 bg-[#F0EAF4] rounded-[6px] p-1">
+                  <img
+                    onClick={() => quickGo("Investor page")}
+                    className="hover:bg-white rounded-[6px] p-1 transition-colors cursor-pointer w-6 h-6"
+                    src="/abhinay/dddd.png"
+                    alt="Icon D"
+                  />
+                  <img
+                    onClick={() => quickGo("franchise opportunities")}
+                    className="hover:bg-white rounded-[6px] p-1 transition-colors cursor-pointer w-6 h-6"
+                    src="/abhinay/eeee.png"
+                    alt="Icon E"
+                  />
+                </div>
+              </div>
             </div>
-        </>
+
+            {/* Right section: 20% - mic + send buttons */}
+            <div className="flex-[0.2] flex items-center justify-end gap-2">
+              <button
+                onClick={toggleListening}
+                disabled={!speechSupported}
+                title={
+                  speechSupported
+                    ? isListening
+                      ? "Listening… click to stop"
+                      : "Speak your query"
+                    : "Voice input not supported"
+                }
+                className={`rounded-md p-2 transition-colors flex items-center justify-center ${
+                  isListening ? "bg-red-100" : "bg-transparent"
+                } ${
+                  !speechSupported
+                    ? "opacity-50 cursor-not-allowed"
+                    : "cursor-pointer"
+                }`}
+              >
+                <svg
+                  width="14"
+                  height="20"
+                  viewBox="0 0 14 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7 19V16.5455M7 16.5455C5.4087 16.5455 3.88258 15.8558 2.75736 14.6283C1.63214 13.4008 1 11.736 1 10M7 16.5455C8.5913 16.5455 10.1174 15.8558 11.2426 14.6283C12.3679 13.4008 13 11.736 13 10M7 14.0909C4.9375 14.0909 3.25 12.3138 3.25 10.1407V4.95018C3.25 2.77709 4.9375 1 7 1C9.0625 1 10.75 2.77709 10.75 4.95018V10.1407C10.75 12.3138 9.0625 14.0909 7 14.0909Z"
+                    stroke={isListening ? "#ef4444" : "black"}
+                    strokeOpacity={isListening ? "0.8" : "0.3"}
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+
+              <button
+                onClick={handleSubmit}
+                className="flex items-center justify-center"
+              >
+                <div className="w-7 h-7 bg-white rounded-sm opacity-90 flex items-center justify-center cursor-pointer p-1">
+                  <img
+                    src="/abhinay/cube.png"
+                    alt="send"
+                    className="w-5 h-5 object-contain"
+                  />
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
     );
-}
+};
 
 export default NewChatbot;

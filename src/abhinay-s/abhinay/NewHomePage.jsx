@@ -587,15 +587,15 @@ const NewHomePage = () => {
 
                             {/* Main Heading */}
                             <h1
-                                className="w-full mt-2 max-w-4xl mx-auto text-6xl md:text-7xl mb-6 leading-[0.9] text-center"
-                                style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: 900, color: '#6D3E93' }}
+                                className="font-space font-black w-full mt-2 max-w-4xl mx-auto text-6xl md:text-7xl mb-6 leading-[0.9] text-center"
+                                style={{color: '#6D3E93' }}
                             >
-                                Seek <span className='text-[rgba(68,185,180,1)]'>
+                                Seek <span className='text-[rgba(68,185,180,1)] font-space'>
                                     Intelligence<br />
                                 </span>
 
 
-                                <span className="block">Not Information</span>
+                                <span className="block font-space">Not Information</span>
                             </h1>
 
 
@@ -729,6 +729,7 @@ const NewHomePage = () => {
                 `}</style>
 
                 <div className='max-w-6xl bg-red-100 mx-auto overflow-x-hidden'>
+
                     <SectionData />
                 </div>
                 <ConfidenceSection />
