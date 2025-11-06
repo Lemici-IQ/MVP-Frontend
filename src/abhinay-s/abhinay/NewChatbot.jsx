@@ -305,7 +305,7 @@ const NewChatbot = () => {
             {/* Left section: 80% */}
             <div className="flex-[0.8] flex flex-col gap-3">
               {/* Input row */}
-              <div className="flex items-center">
+              <div className="flex items-center mt-2">
                 <input
                   type="text"
                   placeholder="Ask Anything (Industry/Company/Sector)"
