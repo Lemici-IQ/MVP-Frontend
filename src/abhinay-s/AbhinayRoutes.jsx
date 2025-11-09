@@ -28,6 +28,7 @@ import Individual from './abhinay/components/navbar/OfferingComponents/eb2b/Indi
 import A from './abhinay/components/A'
 import B from './abhinay/components/B'
 import NewHomePage from './abhinay/NewHomePage'
+import Dashboard from './components/Dashboard.jsx'
  
 function AbhinayRoutes() {
    
@@ -58,7 +59,8 @@ function AbhinayRoutes() {
         {/* <Route path="investment" element={<SinglePage />} /> */}
         {/* <Route path="data" element={<B />} /> */}
         {/* <Route path="newHomePage" element={<NewHomePage />} /> */}
-          
+        <Route path="/dashboard" element={<Dashboard />} />
+        
     
     </>
   )

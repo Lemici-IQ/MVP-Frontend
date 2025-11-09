@@ -21,6 +21,7 @@
     "lucide-react": "^0.548.0",
     "property-information": "^7.1.0",
     "react": "^19.2.0",
+    "react-circular-progressbar": "^2.2.0",
     "react-countup": "^6.5.3",
     "react-dom": "^19.2.0",
     "react-hot-toast": "^2.6.0",
