@@ -557,7 +557,7 @@ export default function Franchise() {
       </div>
       <div className="w-full flex items-center justify-center gap-3 my-8">
         <NavLink
-          to="/abhinay/franchise/oppurtunties"
+          to="/franchise/oppurtunties"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className={({ isActive }) =>
             `px-4 py-2 rounded-full border shadow-sm ${
@@ -571,7 +571,7 @@ export default function Franchise() {
           1
         </NavLink>
         <NavLink
-          to="/abhinay/franchise/details"
+          to="/franchise/details"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className={({ isActive }) =>
             `px-4 py-2 rounded-full border shadow-sm ${
@@ -585,7 +585,7 @@ export default function Franchise() {
           2
         </NavLink>
         <NavLink
-          to="/abhinay/franchise/category"
+          to="/franchise/category"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className={({ isActive }) =>
             `px-4 py-2 rounded-full border shadow-sm ${

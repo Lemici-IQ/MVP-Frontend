@@ -18,6 +18,7 @@ import StartupOpportunities from './abhinay/components/navbar/OfferingComponents
 import InvestorHub from './abhinay/components/navbar/OfferingComponents/StartuspsZone/InvestorHub'
 import StartupOppurtunities from './abhinay/components/navbar/OfferingComponents/StartuspsZone/StartupOppurtunities'
 import Franchise from './abhinay/components/navbar/OfferingComponents/Franchise/Franchise'
+// import NewFF from './abhinay/components/navbar/OfferingComponents/Franchise/NewFF.jsx'
 import Single from './abhinay/components/navbar/OfferingComponents/Franchise/Single'
 import BusinessCategories from './abhinay/components/navbar/OfferingComponents/Franchise/BusinessCategories'
 import Opp from './abhinay/components/navbar/OfferingComponents/Franchise/Opp'
@@ -29,13 +30,17 @@ import A from './abhinay/components/A'
 import B from './abhinay/components/B'
 import NewHomePage from './abhinay/NewHomePage'
 import Dashboard from './components/Dashboard.jsx'
+import IndFranchiseFood from './abhinay/components/navbar/OfferingComponents/Franchise/IndFranchiseFood.jsx'
+import IndFranchiseSport from './abhinay/components/navbar/OfferingComponents/Franchise/IndFranchiseSport.jsx'
  
 function AbhinayRoutes() {
    
 
   return (
     <>
+
         <Route path="" element={<NewHomePage />} />
+        <Route path="/yuji" element={<AbhiApp />} />
         <Route path="coming-soon" element={<ComingSoon />} />
         <Route path="offerings" element={<Offerings />} />
         {/* <Route path="offerings/govtnavigator" element={<GovtNavigator />} /> */}
@@ -60,10 +65,14 @@ function AbhinayRoutes() {
         {/* <Route path="data" element={<B />} /> */}
         {/* <Route path="newHomePage" element={<NewHomePage />} /> */}
         <Route path="/dashboard" element={<Dashboard />} />
-        
-    
+        <Route path="/newFranchise1" element={<IndFranchiseFood />} />
+        <Route path="/newFranchise2" element={<IndFranchiseSport />} />
+
     </>
   )
 }
 
 export default AbhinayRoutes;
+
+
+

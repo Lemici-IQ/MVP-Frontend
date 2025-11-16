@@ -120,9 +120,9 @@ const Dashboard = () => {
           <div className="bg-white rounded-2xl shadow-md overflow-hidden">
             <div className="flex flex-col">
                 <img
-              src="https://via.placeholder.com/400x200"
+              src="/abhinay/dash-1.jpg"
               alt="Projects"
-              className="w-full h-40 object-cover"
+              className="w-full h-80 object-cover"
             />
             <div className="p-4">
               <h3 className="text-lg font-semibold">Projects</h3>
@@ -142,9 +142,9 @@ const Dashboard = () => {
 
           <div className="bg-white rounded-2xl shadow-md overflow-hidden">
             <img
-              src="https://via.placeholder.com/400x200"
+              src="/abhinay/dash-2.jpg"
               alt="Analytics"
-              className="w-full h-40 object-cover"
+              className="w-full h-80 object-cover"
             />
             <div className="p-4">
               <h3 className="text-lg font-semibold">Analytics</h3>
@@ -163,9 +163,9 @@ const Dashboard = () => {
 
           <div className="bg-white rounded-2xl shadow-md overflow-hidden">
             <img
-              src="https://via.placeholder.com/400x200"
+              src="/abhinay/dash-3.jpg"
               alt="Citizen Feedback"
-              className="w-full h-40 object-cover"
+              className="w-full h-80 object-cover"
             />
             <div className="p-4">
               <h3 className="text-lg font-semibold">Citizen Feedback</h3>
