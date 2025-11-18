@@ -296,7 +296,7 @@ export default function Franchise() {
           </div>
 
           {/* Search Bar */}
-          <h1>hi</h1>
+          {/* <h1>hi</h1> */}
           <ChatbotSub
             placeholder="Ask about franchises (e.g., 'suggest biryani franchise in Ghaziabad with 20% ROI')"
             context="franchise"
@@ -571,7 +571,7 @@ export default function Franchise() {
           1
         </NavLink>
         <NavLink
-          to="/franchise/details"
+          to="/newFranchise1"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className={({ isActive }) =>
             `px-4 py-2 rounded-full border shadow-sm ${

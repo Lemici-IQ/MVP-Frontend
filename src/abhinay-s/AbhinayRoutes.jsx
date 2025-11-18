@@ -32,6 +32,7 @@ import NewHomePage from './abhinay/NewHomePage'
 import Dashboard from './components/Dashboard.jsx'
 import IndFranchiseFood from './abhinay/components/navbar/OfferingComponents/Franchise/IndFranchiseFood.jsx'
 import IndFranchiseSport from './abhinay/components/navbar/OfferingComponents/Franchise/IndFranchiseSport.jsx'
+import RandomPage from './utils/RandomPage.jsx'
  
 function AbhinayRoutes() {
    
@@ -40,7 +41,7 @@ function AbhinayRoutes() {
     <>
 
         <Route path="" element={<NewHomePage />} />
-        <Route path="/yuji" element={<AbhiApp />} />
+        {/* <Route path="/i" element={<AbhiApp />} /> */}
         <Route path="coming-soon" element={<ComingSoon />} />
         <Route path="offerings" element={<Offerings />} />
         {/* <Route path="offerings/govtnavigator" element={<GovtNavigator />} /> */}
@@ -67,6 +68,7 @@ function AbhinayRoutes() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/newFranchise1" element={<IndFranchiseFood />} />
         <Route path="/newFranchise2" element={<IndFranchiseSport />} />
+        <Route path="/random" element={<RandomPage />} />
 
     </>
   )
