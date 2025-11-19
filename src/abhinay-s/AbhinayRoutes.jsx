@@ -32,7 +32,7 @@ import NewHomePage from './abhinay/NewHomePage'
 import Dashboard from './components/Dashboard.jsx'
 import IndFranchiseFood from './abhinay/components/navbar/OfferingComponents/Franchise/IndFranchiseFood.jsx'
 import IndFranchiseSport from './abhinay/components/navbar/OfferingComponents/Franchise/IndFranchiseSport.jsx'
-import RandomPage from './utils/RandomPage.jsx'
+import Community from './utils/Community.jsx'
  
 function AbhinayRoutes() {
    
@@ -68,7 +68,7 @@ function AbhinayRoutes() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/newFranchise1" element={<IndFranchiseFood />} />
         <Route path="/newFranchise2" element={<IndFranchiseSport />} />
-        <Route path="/random" element={<RandomPage />} />
+        <Route path="/community-page" element={<Community />} />
 
     </>
   )
