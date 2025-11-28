@@ -35,15 +35,17 @@ const Dashboard = () => {
           {/* State Panel */}
           <div className="w-1/3">
             <div className="bg-pink-50 h-full rounded-3xl shadow-sm p-8 flex flex-col justify-between">
-              <div>
-                <h2 className="text-xl font-semibold">State</h2>
+              <div className="flex justify-between items-start">
+                <div>
+                    <h2 className="text-xl font-semibold">State</h2>
                 <p className="text-sm text-gray-500 mt-2">Overview Panel</p>
-              </div>
-              <div className="self-end mt-4">
+                </div>
+              
                 <div className="bg-white p-3 rounded-full shadow-md cursor-pointer hover:shadow-lg transition-shadow">
                   ➜
-                </div>
               </div>
+              </div>
+              
             </div>
           </div>
 

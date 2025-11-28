@@ -75,7 +75,75 @@ Choose appropriate components based on the query.
 Important: Return ONLY the JSON object, no markdown, no extra text.
 
 User Query:`;
-const startupsZonePrompt = ``;
+const startupsZonePrompt = `Please analyze the following query and respond with a JSON structure containing UI components.
+
+Use this exact format:
+{
+"components": [
+  {
+    "type": "summary_cards",
+    "title": "Title here",
+    "subtitle": "Subtitle here",
+    "cards": [
+      {"icon": "trending", "value": "20-25%", "label": "Expected ROI"},
+      {"icon": "money", "value": "7-8 Lakhs", "label": "Max Investment"}
+    ]
+  },
+  {
+    "type": "recommendation_list",
+    "title": "Top Recommendations",
+    "items": [
+      {"name": "Item Name", "details": "Investment: ₹X | ROI: Y% | Space: Z sq ft"}
+    ]
+  },
+  {
+    "type": "market_analysis",
+    "title": "Market Analysis",
+    "description": "Description text",
+    "tags": [
+      {"icon": "users", "label": "High Footfall"},
+      {"icon": "trending", "label": "Growing Area"}
+    ],
+    "tip": "Investment tip text here"
+  },
+  {
+    "type": "location_options",
+    "title": "Prime Location Options",
+    "subtitle": "Strategic site selection",
+    "locations": [
+      {"name": "Location Name", "description": "Details", "rent": "₹25K-35K"}
+    ]
+  },
+  {
+    "type": "evaluation_table",
+    "title": "Evaluation Matrix",
+    "headers": ["Location", "Footfall", "Rent Range", "Score"],
+    "rows": [
+      ["Metro Station", "Very High", "₹25K-35K", "9/10"]
+    ]
+  },
+  {
+    "type": "related_queries",
+    "title": "Related Queries",
+    "queries": ["Query 1", "Query 2", "Query 3"]
+  }
+]
+}
+
+Available component types:
+- summary_cards: For key metrics/stats
+- recommendation_list: For listing options/franchises
+- market_analysis: For market insights with tags
+- location_options: For location suggestions
+- evaluation_table: For comparison tables
+- related_queries: For follow-up questions
+- text: For simple text (use sparingly)
+
+Choose appropriate components based on the query.
+
+Important: Return ONLY the JSON object, no markdown, no extra text.
+
+User Query:`;
 
 const promptsArray = {
   franchise: franchisePrompt,
