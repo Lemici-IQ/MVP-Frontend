@@ -1,6 +1,115 @@
 import React, { useState } from "react";
 import { FcardGrid } from "./Fcard";
 
+
+
+
+
+
+
+
+
+
+
+const StatusIcon = ({ active }) => {
+    return (
+      <div className="flex justify-center items-center w-full">
+        {active ? (
+          <Check className="w-5 h-5 text-green-500 font-bold" strokeWidth={3} />
+        ) : (
+          <div className="w-4 h-0.5 bg-gray-200" /> 
+        )}
+      </div>
+    );
+  };
+
+  // Data Structure
+  const sections = [
+    {
+      id: 'eb2b',
+      title: 'eB2B',
+      icon: "/abhinay/pricinge2b.png",
+      headerStatus: [true, true, true, true],
+      features: [
+        {
+          name: 'Custom email for your business',
+          status: [true, true, true, true],
+        },
+        {
+          name: 'Phishing and spam protection that blocks more than 99.9% of attacks',
+          status: [true, true, true, true],
+        },
+        {
+          name: 'Phishing and spam protection that blocks more than 99.9% of attacks',
+          status: [true, true, true, true],
+        },
+      ],
+    },
+    {
+      id: 'startup',
+      title: 'Startup Zone',
+      icon: "/abhinay/pricingstartup.png",
+      headerStatus: [true, true, true, true],
+      features: [
+        {
+          name: 'Custom email for your business',
+          status: [true, true, true, true],
+        },
+        {
+          name: 'Phishing and spam protection that blocks more than 99.9% of attacks',
+          status: [true, true, true, true],
+        },
+        {
+          name: 'Phishing and spam protection that blocks more than 99.9% of attacks',
+          status: [true, true, true, true],
+        },
+      ],
+    },
+    {
+      id: 'franchise',
+      title: 'Franchise India',
+      icon: "/abhinay/pricingfranchise.png",
+      headerStatus: [true, false, true, true], // Notice the 2nd item is false (dash) based on image
+      features: [
+        {
+          name: 'Custom email for your business',
+          status: [true, false, true, true],
+        },
+        {
+          name: 'Phishing and spam protection that blocks more than 99.9% of attacks',
+          status: [true, true, false, false],
+        },
+        {
+          name: 'Phishing and spam protection that blocks more than 99.9% of attacks',
+          status: [true, true, false, false],
+        },
+      ],
+    },
+  ];
+  // Data array holding labels and specific pastel background colors for each tag
+  const offerings = [
+    { label: 'eB2B Marketplace', bgColor: 'bg-[#EEDBFF]' },
+    { label: 'Startup Zone', bgColor: 'bg-[#CEE5FF]' },
+    { label: 'Business Directory', bgColor: 'bg-[#F0C5C3]' },
+    { label: 'Govt. Navigator', bgColor: 'bg-[#AFBEDE]' },
+    { label: 'Software Hunt', bgColor: 'bg-[#B6E4E2]' },
+    { label: 'Market & Industry Research', bgColor: 'bg-[#FFF5D4]' },
+    { label: 'Franchise India', bgColor: 'bg-[#C9CCFF]' },
+    { label: 'Industrial Solution', bgColor: 'bg-[#FFC0E1]' },
+  ];
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const FoodFranchisePage = () => {
   const categories = [
     { name: "Sweets & Bakery", img: "/abhinay/franchise/food/sweets.jpg" },

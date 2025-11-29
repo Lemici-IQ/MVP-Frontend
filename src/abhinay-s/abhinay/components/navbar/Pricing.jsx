@@ -311,7 +311,7 @@ const StatusIcon = ({ active }) => {
     {
       id: 'eb2b',
       title: 'eB2B',
-      icon: Handshake, // Using Handshake as a proxy for the handshake/link icon
+      icon: "/abhinay/pricinge2b.png",
       headerStatus: [true, true, true, true],
       features: [
         {
@@ -331,7 +331,7 @@ const StatusIcon = ({ active }) => {
     {
       id: 'startup',
       title: 'Startup Zone',
-      icon: Rocket,
+      icon: "/abhinay/pricingstartup.png",
       headerStatus: [true, true, true, true],
       features: [
         {
@@ -351,7 +351,7 @@ const StatusIcon = ({ active }) => {
     {
       id: 'franchise',
       title: 'Franchise India',
-      icon: Store,
+      icon: "/abhinay/pricingfranchise.png",
       headerStatus: [true, false, true, true], // Notice the 2nd item is false (dash) based on image
       features: [
         {
@@ -530,7 +530,7 @@ const Pricing = () => {
             <div
               key={index}
               onClick={() => setSelectedPlan(index)}
-              className={`relative flex flex-col rounded-3xl h-full transition-all duration-300 cursor-pointer ${
+              className={`bg-[#14A79D] relative flex flex-col rounded-3xl h-full transition-all duration-300 cursor-pointer ${
                 selectedPlan === index
                   ? 'border-6 border-[#14A79D] shadow-lg -mt-4' // Highlight styling when selected
                   : 'border border-gray-200 hover:shadow-md'
@@ -543,7 +543,7 @@ const Pricing = () => {
                 </div>
               )}
 
-              <div className="p-6 flex flex-col flex-grow">
+              <div className="p-6 flex flex-col flex-grow bg-white rounded-t-[22px]">
                 {/* Plan Name & Desc */}
                 <div className="mb-4">
                   <h3 className="text-xl font-bold text-gray-900">{plan.name}</h3>
@@ -626,7 +626,11 @@ const Pricing = () => {
                 <div className={`${
                     section.id === 'startup' ? 'text-yellow-500' : 'text-[#6B2C91]'
                   }`}>
-                  <section.icon className="w-6 h-6" fill={section.id === 'startup' ? 'currentColor' : 'none'} />
+                  {typeof section.icon === 'string' ? (
+                    <img src={section.icon} alt={section.title} className="w-6 h-6" />
+                  ) : (
+                    <section.icon className="w-6 h-6" fill={section.id === 'startup' ? 'currentColor' : 'none'} />
+                  )}
                 </div>
                 <h3 className="text-xl font-bold text-black">{section.title}</h3>
               </div>
@@ -677,9 +681,9 @@ const Pricing = () => {
 
      <section className="w-full flex justify-center py-10">
       <div
-        className="w-full max-w-[82rem] rounded-3xl overflow-hidden relative h-[380px] md:h-[420px] flex items-center justify-center px-6"
+        className="w-full max-w-[82rem] rounded-3xl overflow-hidden relative h-[400px] md:h-[440px] flex items-center justify-center px-6"
         style={{
-          backgroundImage: "url('/your-gradient-bg.png')",
+          backgroundImage: "url('abhinay/pricingcard.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -783,11 +787,12 @@ const Pricing = () => {
                   <span className="text-lg text-gray-700 font-medium group-hover:text-black transition-colors mb-2">
                     {faq.question}
                   </span>
-                  <ChevronDown 
+                  {/* <ChevronDown 
                     className={`w-5 h-5 text-black transition-transform duration-300 ${
                       openIndex === index ? 'rotate-180' : ''
                     }`} 
-                  />
+                  /> */}
+                  <img src="/abhinay/ythger.png" alt="" />
                 </button>
                 
                 {/* Expandable Content (Placeholder) */}
