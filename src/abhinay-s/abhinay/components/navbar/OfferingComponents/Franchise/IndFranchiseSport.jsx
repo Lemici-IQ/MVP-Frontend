@@ -23,6 +23,32 @@ const IndFranchiseSport = () => {
   const chartRef = useRef(null);
   let chartInstance = null;
 
+  // Franchise Details
+  const franchiseData = {
+    logo: "/abhinay/franchise/sport-logo.png",
+    name: "Five Iron Golf India",
+    verified: true,
+    year: "2017",
+    badges: ["Trusted Seller", "Established in NYC"],
+    description: "Five Iron Golf India is the country's pioneering indoor golf entertainment destination, combining cutting-edge TrackMan simulator technology with a welcoming social and hospitality-focused environment. Opening its first location in March 2023 at The Grand Venice Mall in Greater Noida, the brand brings immersive virtual golf experiences to India, complete with a full-service bar, gourmet food menu, flexible event space, and community-driven programming.",
+    rating: 5,
+    likes: 107,
+    socialMedia: {
+      youtube: "abhinay/youtube-logo.png",
+      pinterest: "abhinay/pintrest-logo.png",
+      instagram: "abhinay/insta-logo.png",
+      twitter: "abhinay/x-logo.png",
+      facebook: "abhinay/facebook-logo.png"
+    },
+    profileImage: "/abhinay/franchise/single/nat.jpg",
+    industry: "Indoor Golf Entertainment, Leisure & Sports, Eatertainment",
+    headquarters: "New York, USA (Corporate HQ); Greater Noida, India (First Indian Franchise)",
+    parentCompany: "Independent brand; strategic backing from Enlightened Hospitality Investments and Callaway Golf",
+    website: "www.fiveirongolf.com",
+    email: "Contact via website",
+    leadership: "Jared Solomon – Co-Founder & CEO (Global); Manesh Patel – CEO (India)"
+  };
+
   useEffect(() => {
     if (chartInstance) chartInstance.destroy();
 
@@ -178,64 +204,64 @@ const IndFranchiseSport = () => {
   ];
 
   const insights = [
-    "What is a category franchise in the context of the Food industry?",
-    "Who is the target customer for a Food franchise in India?",
-    "What is the typical business model used by Food franchises?",
-    "What are the main services offered in a food franchise?",
-    "What kind of infrastructure or space is required?",
-    "What is the expected investment and ROI for a food franchise?",
+    "What is a Golf franchise in the context of Indoor Sports & Entertainment?",
+    "Who is the target customer for a Golf franchise in India?",
+    "What is the typical business model used by Golf franchises?",
+    "What are the main services offered in a golf franchise?",
+    "What kind of infrastructure or space is required for golf simulators?",
+    "What is the expected investment and ROI for a golf franchise?",
     "What kind of training and support does the franchisor provide?",
-    "In which locations does a food franchise work best in India?",
+    "In which locations does a golf franchise work best in India?",
   ];
   const info = [
     {
       label: "Initial Investment",
-      value: "₹6–18 Lakhs",
+      value: "₹10L – ₹5 Cr",
       icon: <img src="/abhinay/1a1.png" />,
     },
     {
       label: "Unit as of 2025",
-      value: "100+",
+      value: "34+ (Global)",
       icon: <img src="/abhinay/2a2.png" />,
     },
     {
       label: "Space requirement",
-      value: "600–1500 sq. ft.",
+      value: "200–13,000 sq. ft.",
       icon: <img src="/abhinay/3b3.png" />,
     },
     {
       label: "Industry",
-      value: "Food & Beverage",
+      value: "Indoor Golf Entertainment",
       icon: <img src="/abhinay/4c4.png" />,
     },
     {
       label: "Parent company",
-      value: "Yum Brand Inc.",
+      value: "Independent (Backed by Callaway Golf)",
       icon: <img src="/abhinay/5d5.png" />,
     },
     {
       label: "Business type",
-      value: "Franchise",
+      value: "Private Franchisor",
       icon: <img src="/abhinay/6d6.png" />,
     },
     {
       label: "Leadership",
-      value: "Tarun Lal, President",
+      value: "Jared Solomon (Global CEO), Manesh Patel (India CEO)",
       icon: <img src="/abhinay/7e7.png" />,
     },
     {
       label: "E-mail",
-      value: "anurag1990@gmail.com",
+      value: "Contact via website",
       icon: <img src="/abhinay/8f8.png" />,
     },
     {
-      label: "Avg. turnover per/month",
-      value: "₹2–6 Lakhs",
+      label: "Expected ROI",
+      value: "25% – 35% annually",
       icon: <img src="/abhinay/9g9.png" />,
     },
     {
       label: "Franchise Fees",
-      value: "₹3 Lakhs",
+      value: "US$50,000",
       icon: <img src="/abhinay/10h.png" />,
     },
     {
@@ -243,7 +269,7 @@ const IndFranchiseSport = () => {
       value: "5 years",
       icon: <img src="/abhinay/11i.png" />,
     },
-    { label: "Royalties", value: "4%", icon: <img src="/abhinay/12j.png" /> },
+    { label: "Royalties", value: "7%", icon: <img src="/abhinay/12j.png" /> },
   ];
   return (
     <div className="max-w-7xl mx-auto p-4">
@@ -285,32 +311,32 @@ const IndFranchiseSport = () => {
           <div className="flex flex-col items-start space-x-4">
             <div className="flex">
               <img
-                src="/abhinay/franchise/sport-logo.png"
-                alt="Kathi Junction Logo"
+                src={franchiseData.logo}
+                alt={`${franchiseData.name} Logo`}
                 className="w-16 h-16 rounded-full object-cover"
               />
               <div className="ml-2">
                 <div className="flex items-center space-x-1 flex-wrap">
-                  <h2 className="text-2xl font-bold">Five Iron Golf</h2>
-                  <img src="/abhinay/blue-tick.svg" alt="" className="w-4" />
+                  <h2 className="text-2xl font-bold">{franchiseData.name}</h2>
+                  {franchiseData.verified && (
+                    <img src="/abhinay/blue-tick.svg" alt="" className="w-4" />
+                  )}
                 </div>
                 <div className="flex flex-wrap items-center gap-2 text-sm text-gray-500 mt-1">
-                  <span className="bg-gray-100 px-2 py-0.5 rounded">2009</span>
                   <span className="bg-gray-100 px-2 py-0.5 rounded">
-                    Trusted Seller
+                    {franchiseData.year}
                   </span>
-                  {/* <span className="bg-gray-100 px-2 py-0.5 rounded">
-                    Dehradun, UK
-                  </span> */}
+                  {franchiseData.badges.map((badge, index) => (
+                    <span key={index} className="bg-gray-100 px-2 py-0.5 rounded">
+                      {badge}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
             <div>
               <p className="text-gray-700 mt-3 text-sm md:text-base max-w-2xl">
-                Kathi Junction brings the golden opportunity to start your own
-                business in the hospitality sector. Kathi Junction is a vibrant
-                food and beverage destination offering a perfect blend of taste,
-                tradition, and innovation.
+                {franchiseData.description}
               </p>
               <div className="flex flex-wrap space-x-3 mt-4">
                 <button className="bg-[#4A53FA] text-white px-12 py-3 rounded-[25px] hover:bg-indigo-700 w-full sm:w-auto">
@@ -321,10 +347,10 @@ const IndFranchiseSport = () => {
                 </button>
               </div>
               <div className="flex items-center mt-3 space-x-1 text-yellow-500">
-                {[...Array(5)].map((_, i) => (
+                {[...Array(franchiseData.rating)].map((_, i) => (
                   <span key={i}>★</span>
                 ))}
-                <span className="text-gray-600 text-sm ml-2">107 likes</span>
+                <span className="text-gray-600 text-sm ml-2">{franchiseData.likes} likes</span>
               </div>
             </div>
           </div>
@@ -333,11 +359,11 @@ const IndFranchiseSport = () => {
         {/* Social Media Icons - Bottom Right */}
         <div className="absolute bottom-6 right-6">
           <div className="flex items-center space-x-3 text-xl text-gray-600">
-            <img src="abhinay/youtube-logo.png" alt="" className="w-5 h-5" />
-            <img src="abhinay/pintrest-logo.png" alt="" className="w-5 h-5" />
-            <img src="abhinay/insta-logo.png" alt="" className="w-5 h-5" />
-            <img src="abhinay/x-logo.png" alt="" className="w-5 h-5" />
-            <img src="abhinay/facebook-logo.png" alt="" className="w-5 h-5" />
+            <img src={franchiseData.socialMedia.youtube} alt="" className="w-5 h-5" />
+            <img src={franchiseData.socialMedia.pinterest} alt="" className="w-5 h-5" />
+            <img src={franchiseData.socialMedia.instagram} alt="" className="w-5 h-5" />
+            <img src={franchiseData.socialMedia.twitter} alt="" className="w-5 h-5" />
+            <img src={franchiseData.socialMedia.facebook} alt="" className="w-5 h-5" />
           </div>
         </div>
 
@@ -353,7 +379,7 @@ const IndFranchiseSport = () => {
         >
           <div className="relative">
             <img
-              src="/abhinay/franchise/single/nat.jpg"
+              src={franchiseData.profileImage}
               alt="Profile"
               className="w-14 h-14 rounded-full border-2 border-gray-300 shadow-lg hover:scale-110 transition-transform select-none"
               draggable="false"
@@ -462,41 +488,31 @@ const IndFranchiseSport = () => {
             <div>
               <h2 className="text-lg font-bold">Products</h2>
               <ul className="list-disc pl-5 mt-3 space-y-1 text-gray-700">
-                <li>Fast Food Items (burgers, pizzas, sandwiches, fries)</li>
-                <li>Beverages (soft drinks, shakes, smoothies, coffee, tea)</li>
-                <li>Desserts (ice cream, cakes, pastries, donuts)</li>
-                <li>
-                  Packaged Food (ready-to-eat meals, frozen snacks, sauces)
-                </li>
-                <li>
-                  Healthy Options (salads, wraps, fresh juices, organic snacks)
-                </li>
-                <li>
-                  Regional/Traditional Cuisine (Indian thali, South Indian
-                  meals, street food)
-                </li>
-                <li>Meal Combos & Family Packs</li>
-                <li>Kids’ Special Menu</li>
+                <li>Golf Simulators (TrackMan Technology)</li>
+                <li>Golf Lessons & Coaching Programs</li>
+                <li>Club Fittings & Custom Equipment</li>
+                <li>Golf Merchandise & Retail</li>
+                <li>Golf League Memberships</li>
+                <li>Event Space Rentals (Corporate & Private)</li>
+                <li>Full-Service Bar & Gourmet Food Menu</li>
+                <li>Virtual Golf Experiences (Multiple Courses)</li>
               </ul>
             </div>
 
             <div>
               <h2 className="text-lg font-bold">Services</h2>
               <ul className="list-disc pl-5 mt-3 space-y-1 text-gray-700">
-                <li>Dine-in Facility</li>
-                <li>Takeaway & Delivery</li>
-                <li>Online Ordering (app/website integration)</li>
-                <li>Catering Services (parties, events, corporate orders)</li>
-                <li>Loyalty & Membership Programs</li>
-                <li>
-                  Customized Meals (diet-specific, vegetarian/vegan options)
-                </li>
-                <li>
-                  Franchise Training & Support (staff training, recipe
-                  standardization)
-                </li>
-                <li>Food Safety & Quality Control</li>
-                <li>Marketing & Branding Support</li>
+                <li>Indoor Golf Simulator Experience</li>
+                <li>Professional Golf Training & Coaching</li>
+                <li>Corporate Events & Team Building</li>
+                <li>Private Parties & Social Events</li>
+                <li>Golf Club Fitting Services</li>
+                <li>Membership & Loyalty Programs</li>
+                <li>Community Golf Leagues & Tournaments</li>
+                <li>Food & Beverage Service (Bar & Restaurant)</li>
+                <li>Franchise Training & Operational Support</li>
+                <li>Technology Setup & Software Support</li>
+                <li>Marketing & Branding Assistance</li>
               </ul>
             </div>
           </div>
@@ -505,11 +521,7 @@ const IndFranchiseSport = () => {
           <div className="flex flex-col gap-8">
             <h2 className="text-lg font-bold">Training & Support</h2>
             <p className="text-gray-700 leading-relaxed">
-              We provide complete training and ongoing support to help our
-              franchise partners succeed. From operational guidance and
-              marketing assistance to technology setup and staff training, our
-              team ensures you have the knowledge and tools to run your
-              franchise efficiently and confidently.
+              Five Iron Golf provides comprehensive training and ongoing support including 10 weeks of on-the-job training, 1-2 weeks of classroom training, detailed operating manuals, field assistance, and technology setup. We offer logistics setup, marketing support (national media, social media, SEO, loyalty programs), operational guidance, and access to purchasing co-ops, conventions, newsletters, toll-free support line, and franchisee intranet platform.
             </p>
 
             {/* Chart.js Canvas */}

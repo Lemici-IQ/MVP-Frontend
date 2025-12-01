@@ -36,6 +36,7 @@ import Community from './utils/Community.jsx'
 import DataLicensing from './pages/DataLicensing.jsx'
 import OurCulture from './pages/OurCulture.jsx'
 import NewFranchiseListing from './pages/NewFranchiseListing.jsx'
+import NewFranchiseListingGolf from './pages/NewFranchiseListingGolf.jsx'
 function AbhinayRoutes() {
    
 
@@ -72,7 +73,8 @@ function AbhinayRoutes() {
         <Route path="/community-page" element={<Community />} />
         <Route path="/data-licensing" element={<DataLicensing />} />
         <Route path="/our-culture" element={<OurCulture />} />
-        <Route path="/random1" element={<NewFranchiseListing />} />
+        <Route path="/Individual-food-listingpage" element={<NewFranchiseListing />} />
+        <Route path="/Individual-golf-listingpage" element={<NewFranchiseListingGolf />} />
 
     </>
   )

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { MdVerified } from "react-icons/md";
 import { IoMdInformationCircleOutline } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Fcard = ({
   location = "",
@@ -16,18 +16,18 @@ const Fcard = ({
   verified = true,
   ctaText = "Send Inquiry",
   c = "",
-  onClick,
+  routename = "",
+
 }) => {
   const fullStars = Math.round(rating);
-
+  const navigate = useNavigate();
   return (
     <div
-  onClick={onClick}
-  className="w-full max-w-[26rem] rounded-3xl bg-gradient-to-b from-[#FF444D] to-[#F7BEBF] p-4 shadow-md cursor-pointer"
+  className="w-full max-w-[26rem] rounded-3xl bg-[#9DD2B5] p-4 shadow-md"
 >
 
       {/* Header */}
-      <div className="flex items-center gap-3 my-4 h-16">
+      <div className="flex items-center gap-3 my-4">
         <img
           src={logoUrl}
           alt={title}
@@ -48,14 +48,14 @@ const Fcard = ({
       </div>
 
       {/* Description */}
-      <p className="mt-4 text-gray-700 text-sm leading-5 px-3 mb-4 line-clamp-4 h-20">{description}</p>
+      <p className="mt-4 text-gray-700 text-sm leading-5 px-3 mb-4">{description}</p>
 
       {/* Tags */}
-      <div className="mb-4 flex flex-wrap gap-2 mt-4 h-24 overflow-hidden">
+      <div className="mb-4 flex flex-wrap gap-2 mt-4">
         {tags.map((tag, index) => (
           <span
             key={index}
-            className="px-6 py-3 bg-white rounded-full text-xs font-medium text-gray-700 shadow-sm h-fit"
+            className="px-6 py-3 bg-white rounded-full text-xs font-medium text-gray-700 shadow-sm"
           >
             {tag}
           </span>
@@ -63,7 +63,7 @@ const Fcard = ({
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-3 text-center mt-8 h-24">
+      <div className="grid grid-cols-3 text-center mt-8">
         <div className="flex flex-col items-center gap-1">
             <img className="h-[24px] w-[24px]" src="/abhinay/franchise/space.png" alt="" />
 
@@ -86,16 +86,25 @@ const Fcard = ({
 
       {/* Bottom Bar */}
       <div className="mt-6 mb-3 bg-white/30 backdrop-blur-sm rounded-2xl px-4 py-3 flex items-center justify-between border border-white/50">
-        <button className="p-2">
+        <button className="cursor-pointer p-2">
           <img src="/abhinay/franchise/d1.png" alt="Settings" className="w-5 h-5" />
         </button>
-        <button className="p-2">
+        <button className="cursor-pointer p-2">
           <img src="/abhinay/franchise/d2.png" alt="Bookmark" className="w-5 h-5" />
         </button>
-        <button className="p-2">
+        <button className="cursor-pointer p-2">
           <img src="/abhinay/franchise/d3.png" alt="Share" className="w-5 h-5" />
         </button>
-        <button className="bg-blue-600 p-2 rounded-full">
+        <button className="bg-blue-600 p-2 rounded-full cursor-pointer"
+        onClick={() =>
+        {
+            console.log("hi");
+              navigate(
+                routename
+              )
+        }
+            }
+        >
           <img src="/abhinay/franchise/d4.png" alt="Next" className="w-5 h-5" />
         </button>
       </div>
@@ -117,13 +126,7 @@ const FcardGrid = ({
           <Fcard
             key={idx}
             {...item}
-            onClick={() =>
-              navigate(
-                item.title === "GolfEdge Academy"
-                  ? "/newFranchise2"
-                  : "/newFranchise1"
-              )
-            }
+            
           />
         ))}
       </div>
@@ -131,7 +134,7 @@ const FcardGrid = ({
   );
 };
 
-export default function NewFranchiseListing() {
+export default function NewFranchiseListingGolf() {
   const images = [
     "abhinay/franchise/carousel-1.jpg",
     "abhinay/franchise/carousel-2.jpg",
@@ -270,401 +273,167 @@ export default function NewFranchiseListing() {
     },
     { label: "Royalties", value: "4%", icon: <img src="/abhinay/12j.png" /> },
   ];
-//   const items = [
-//     {
-//       location: "Chandigarh, India",
-//       title: "Haldiram’s",
-//       since: "1997",
-//       logoUrl: "/abhinay/franchise/8.png",
-//       description:
-//         "Own a Natural Salon Franchise – where beauty meets wellness with eco-friendly products, sustainable care, and a luxurious experience for every client...",
-//       rating: 4.5,
-//       tags: [
-//         "Unit",
-//         "Verified",
-//         "2022",
-//         "Food & Beverage",
-//         "Pan-India presence",
-//       ],
-//       stats: {
-//         space: "150-250 Sq Ft.",
-//         outlets: "350",
-//         investment: "₹25-35 Lakhs",
-//       },
-//       highlights: "Pan-India presence, trusted brand",
-//       verified: true,
-//       ctaText: "Send Inquiry",
-//       c: "#FF6265",
-//     },
-//     {
-//       location: "Gurgaon, India",
-//       title: "Kathi Junction",
-//       since: "1997",
-//       logoUrl: "/abhinay/franchise/kathicard.jpg",
-//       description:
-//         "Kathi junction -brings the golden opportunity to start your own business in the hospitality sector Kathi Junction is a vibrant food and beverage...more",
-//       rating: 4.5,
-//       tags: [
-//         "Unit",
-//         "Verified",
-//         "2022",
-//         "Beauty & Health",
-//         "High brand recall",
-//       ],
-//       stats: {
-//         space: "150-250 Sq Ft.",
-//         outlets: "350",
-//         investment: "₹20-30 Lakhs",
-//       },
-//       highlights: "High brand recall, training support",
-//       verified: true,
-//       ctaText: "Send Inquiry",
-//       c: "#DD75AB",
-//     },
-//     {
-//       location: "Gurgaon, India",
-//       title: "Kathi Junction",
-//       since: "1997",
-//       logoUrl: "/abhinay/franchise/kathicard.jpg",
-//       description:
-//         "Kathi junction -brings the golden opportunity to start your own business in the hospitality sector Kathi Junction is a vibrant food and beverage...more",
-//       rating: 4.5,
-//       tags: [
-//         "Unit",
-//         "Verified",
-//         "2022",
-//         "Beauty & Health",
-//         "High brand recall",
-//       ],
-//       stats: {
-//         space: "150-250 Sq Ft.",
-//         outlets: "350",
-//         investment: "₹20-30 Lakhs",
-//       },
-//       highlights: "High brand recall, training support",
-//       verified: true,
-//       ctaText: "Send Inquiry",
-//       c: "#DD75AB",
-//     },
-//     {
-//       location: "Chandigarh, India",
-//       title: "Haldiram’s",
-//       since: "1997",
-//       logoUrl: "/abhinay/franchise/8.png",
-//       description:
-//         "Own a Natural Salon Franchise – where beauty meets wellness with eco-friendly products, sustainable care, and a luxurious experience for every client...",
-//       rating: 4.5,
-//       tags: [
-//         "Unit",
-//         "Verified",
-//         "2022",
-//         "Food & Beverage",
-//         "Pan-India presence",
-//       ],
-//       stats: {
-//         space: "150-250 Sq Ft.",
-//         outlets: "350",
-//         investment: "₹25-35 Lakhs",
-//       },
-//       highlights: "Pan-India presence, trusted brand",
-//       verified: true,
-//       ctaText: "Send Inquiry",
-//       c: "#FF6265",
-//     },
-//     {
-//       location: "Gurgaon, India",
-//       title: "Kathi Junction",
-//       since: "1997",
-//       logoUrl: "/abhinay/franchise/kathicard.jpg",
-//       description:
-//         "Kathi junction -brings the golden opportunity to start your own business in the hospitality sector Kathi Junction is a vibrant food and beverage...more",
-//       rating: 4.5,
-//       tags: [
-//         "Unit",
-//         "Verified",
-//         "2022",
-//         "Beauty & Health",
-//         "High brand recall",
-//       ],
-//       stats: {
-//         space: "150-250 Sq Ft.",
-//         outlets: "350",
-//         investment: "₹20-30 Lakhs",
-//       },
-//       highlights: "High brand recall, training support",
-//       verified: true,
-//       ctaText: "Send Inquiry",
-//       c: "#DD75AB",
-//     },
-//     {
-//       location: "Gurgaon, India",
-//       title: "Kathi Junction",
-//       since: "1997",
-//       logoUrl: "/abhinay/franchise/kathicard.jpg",
-//       description:
-//         "Kathi junction -brings the golden opportunity to start your own business in the hospitality sector Kathi Junction is a vibrant food and beverage...more",
-//       rating: 4.5,
-//       tags: [
-//         "Unit",
-//         "Verified",
-//         "2022",
-//         "Beauty & Health",
-//         "High brand recall",
-//       ],
-//       stats: {
-//         space: "150-250 Sq Ft.",
-//         outlets: "350",
-//         investment: "₹20-30 Lakhs",
-//       },
-//       highlights: "High brand recall, training support",
-//       verified: true,
-//       ctaText: "Send Inquiry",
-//       c: "#DD75AB",
-//     },
-//   ];
-    const items = [
-  {
-    location: "Major Metros & Tier-1",
-    title: "Taco Bell (India)",
-    since: "2010 (India)",
-    logoUrl: "/abhinay/franchise/tacobell.png",
-    description:
-      "International Mexican-inspired QSR known for tacos, burritos & fusion fast-food. Strong mall presence and youth-focused brand...",
-    rating: 4.1,
-    tags: ["Unit", "Verified", "QSR", "Mexican Fast Food", "Youth"],
-    stats: {
-      space: "600–1,800 sq ft",
-      outlets: "120+",
-      investment: "₹1 Cr – ₹3 Cr",
+  const items = [
+    {
+      location: "Chandigarh, India",
+      title: "Trinity Golf India",
+      since: "1997",
+      logoUrl: "/abhinay/franchise/gballg.jpg",
+      description:
+        "Own a Natural Salon Franchise – where beauty meets wellness with eco-friendly products, sustainable care, and a luxurious experience for every client...",
+      rating: 4.5,
+      tags: [
+        "Unit",
+        "Verified",
+        "2022",
+        "Food & Beverage",
+        "Pan-India presence",
+      ],
+      stats: {
+        space: "150-250 Sq Ft.",
+        outlets: "350",
+        investment: "₹25-35 Lakhs",
+      },
+      highlights: "Pan-India presence, trusted brand",
+      verified: true,
+      ctaText: "Send Inquiry",
+      c: "#FF6265",
+      routename : "/newFranchise2",
     },
-    highlights: "Backed by Burman Hospitality; aggressive expansion",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#FF8C42",
-  },
+    {
+      location: "Gurgaon, India",
+      title: "Five Golf India",
+      since: "1997",
+      logoUrl: "/abhinay/franchise/fiveirongolf.jpg",
+      description:
+        "Five Iron Golf is the country’s pioneering indoor golf entertainment destination, combining cutting-edge technology and premium amenities with a vibrant...more ",
+      rating: 4.5,
+      tags: [
+        "Unit",
+        "Verified",
+        "2022",
+        "Beauty & Health",
+        "High brand recall",
+      ],
+      stats: {
+        space: "150-250 Sq Ft.",
+        outlets: "350",
+        investment: "₹20-30 Lakhs",
+      },
+      highlights: "High brand recall, training support",
+      verified: true,
+      ctaText: "Send Inquiry",
+      c: "#DD75AB",
+      routename : "/newFranchise2",
+    },
+    {
+      location: "Chandigarh, India",
+      title: "Trackman",
+      since: "1997",
+      logoUrl: "/abhinay/franchise/trackman.png",
+      description:
+        "A turnkey Indoor Golf Business model powered by Trackman country’s pioneering indoor golf entertainment destination, combining cutting-edge...more",
+      rating: 4.5,
+      tags: [
+        "Unit",
+        "Verified",
+        "2022",
+        "Beauty & Health",
+        "High brand recall",
+      ],
+      stats: {
+        space: "150-250 Sq Ft.",
+        outlets: "350",
+        investment: "₹20-30 Lakhs",
+      },
+      highlights: "High brand recall, training support",
+      verified: true,
+      ctaText: "Send Inquiry",
+      c: "#DD75AB",
+      routename : "/NA",
 
-  {
-    location: "Pan-India",
-    title: "KFC (India)",
-    since: "1995",
-    logoUrl: "/abhinay/franchise/kfc.png",
-    description:
-      "Top chicken-based QSR chain known for fried chicken buckets and burgers. Strong dine-in and delivery presence...",
-    rating: 4.0,
-    tags: ["Unit", "Verified", "QSR", "Fried Chicken", "Pan-India"],
-    stats: {
-      space: "1,000–1,500 sq ft",
-      outlets: "600+",
-      investment: "₹1 Cr – ₹2 Cr",
     },
-    highlights: "Operated under Yum! Brands with franchise support",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#D32F2F",
-  },
+    {
+      location: "Chandigarh, India",
+      title: "Trinity Golf India",
+      since: "1997",
+      logoUrl: "/abhinay/franchise/gballg.jpg",
+      description:
+        "Own a Natural Salon Franchise – where beauty meets wellness with eco-friendly products, sustainable care, and a luxurious experience for every client...",
+      rating: 4.5,
+      tags: [
+        "Unit",
+        "Verified",
+        "2022",
+        "Food & Beverage",
+        "Pan-India presence",
+      ],
+      stats: {
+        space: "150-250 Sq Ft.",
+        outlets: "350",
+        investment: "₹25-35 Lakhs",
+      },
+      highlights: "Pan-India presence, trusted brand",
+      verified: true,
+      ctaText: "Send Inquiry",
+      c: "#FF6265",
+      routename : "/newFranchise2",
+    },
+    {
+      location: "Gurgaon, India",
+      title: "Five Golf India",
+      since: "1997",
+      logoUrl: "/abhinay/franchise/fiveirongolf.jpg",
+      description:
+        "Five Iron Golf is the country’s pioneering indoor golf entertainment destination, combining cutting-edge technology and premium amenities with a vibrant...more ",
+      rating: 4.5,
+      tags: [
+        "Unit",
+        "Verified",
+        "2022",
+        "Beauty & Health",
+        "High brand recall",
+      ],
+      stats: {
+        space: "150-250 Sq Ft.",
+        outlets: "350",
+        investment: "₹20-30 Lakhs",
+      },
+      highlights: "High brand recall, training support",
+      verified: true,
+      ctaText: "Send Inquiry",
+      c: "#DD75AB",
+      routename : "/newFranchise2",
+    },
+    {
+      location: "Chandigarh, India",
+      title: "Trackman",
+      since: "1997",
+      logoUrl: "/abhinay/franchise/trackman.png",
+      description:
+        "A turnkey Indoor Golf Business model powered by Trackman country’s pioneering indoor golf entertainment destination, combining cutting-edge...more",
+      rating: 4.5,
+      tags: [
+        "Unit",
+        "Verified",
+        "2022",
+        "Beauty & Health",
+        "High brand recall",
+      ],
+      stats: {
+        space: "150-250 Sq Ft.",
+        outlets: "350",
+        investment: "₹20-30 Lakhs",
+      },
+      highlights: "High brand recall, training support",
+      verified: true,
+      ctaText: "Send Inquiry",
+      c: "#DD75AB",
+      routename : "/NA",
 
-  {
-    location: "Pan-India",
-    title: "Domino’s (India)",
-    since: "1996",
-    logoUrl: "/abhinay/franchise/dominos.png",
-    description:
-      "India’s biggest pizza delivery chain with strong neighborhood model and 30-minute delivery focus...",
-    rating: 4.1,
-    tags: ["Unit", "Verified", "Pizza", "Delivery", "Pan-India"],
-    stats: {
-      space: "500–1,200 sq ft",
-      outlets: "1400+",
-      investment: "₹30–50 Lakh / ₹1.2–1.5 Cr",
     },
-    highlights: "Largest digital ordering base",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#0066CC",
-  },
-
-  {
-    location: "Pan-India",
-    title: "Subway (India)",
-    since: "2001",
-    logoUrl: "/abhinay/franchise/subway.png",
-    description:
-      "Health-focused sandwich QSR offering customization and multi-format models like kiosks and mall outlets...",
-    rating: 4.0,
-    tags: ["Unit", "Verified", "Sandwiches", "Healthier QSR"],
-    stats: {
-      space: "170–350 sq ft",
-      outlets: "600–800+",
-      investment: "₹6–12 Lakh (Fee) / ₹24–60 Lakh",
-    },
-    highlights: "Flexible kiosk + full store formats",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#2E7D32",
-  },
-
-  {
-    location: "Pan-India",
-    title: "Burger King (India)",
-    since: "2014",
-    logoUrl: "/abhinay/franchise/burgerking.png",
-    description:
-      "Global burger chain with flame-grilled burgers and aggressive mall-based expansion strategy...",
-    rating: 4.0,
-    tags: ["Unit", "Verified", "Burgers", "QSR"],
-    stats: {
-      space: "1,000–1,500 sq ft",
-      outlets: "300–500+",
-      investment: "₹5 Cr – ₹10 Cr",
-    },
-    highlights: "FOCO model under Restaurant Brands Asia",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#F57C00",
-  },
-
-  {
-    location: "Pan-India",
-    title: "Pizza Hut (India)",
-    since: "1996",
-    logoUrl: "/abhinay/franchise/pizzahut.png",
-    description:
-      "Global pizza dine-in & delivery chain known for pan pizzas, pasta and family-friendly ambiance...",
-    rating: 4.0,
-    tags: ["Unit", "Verified", "Pizza", "Dine-in", "Delivery"],
-    stats: {
-      space: "1,200–2,500 sq ft",
-      outlets: "300–500+",
-      investment: "₹1.5 Cr – ₹3 Cr",
-    },
-    highlights: "Strong dine-in brand recall",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#C62828",
-  },
-
-  {
-    location: "Pan-India & Exports",
-    title: "Haldiram’s",
-    since: "1937",
-    logoUrl: "/abhinay/franchise/haldirams.png",
-    description:
-      "India’s most recognized sweets & veg dining brand. Offers bakery, kiosk & restaurant franchise models...",
-    rating: 4.2,
-    tags: ["Unit", "Verified", "Sweets", "Veg Restaurant"],
-    stats: {
-      space: "Kiosk – 2000+ sq ft",
-      outlets: "150+",
-      investment: "₹10 Lakh – ₹6 Cr",
-    },
-    highlights: "High festival demand & strong brand recall",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#F4A100",
-  },
-
-  {
-    location: "Pan-India & Abroad",
-    title: "Bikanervala",
-    since: "1950s",
-    logoUrl: "/abhinay/franchise/bikanervala.png",
-    description:
-      "Popular vegetarian sweets & dining chain with strong family audience and festival-season demand...",
-    rating: 4.0,
-    tags: ["Unit", "Verified", "Sweets", "Family Dining"],
-    stats: {
-      space: "500–2,000 sq ft",
-      outlets: "90+",
-      investment: "₹40 Lakh – ₹3.75 Cr",
-    },
-    highlights: "Premium traditional brand with NRI appeal",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#D84315",
-  },
-
-  {
-    location: "Pan-India",
-    title: "Café Coffee Day (CCD)",
-    since: "1996",
-    logoUrl: "/abhinay/franchise/ccd.png",
-    description:
-      "India’s iconic café chain popular for youth hangouts, meetings, and work-friendly ambiance...",
-    rating: 3.9,
-    tags: ["Unit", "Verified", "Cafe", "Beverages"],
-    stats: {
-      space: "1,000–1,500 sq ft",
-      outlets: "1000 historically",
-      investment: "₹50 Lakh – ₹1 Cr",
-    },
-    highlights: "Strong brand recall among students",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#8D6E63",
-  },
-
-  {
-    location: "Pan-India",
-    title: "Barista",
-    since: "2000",
-    logoUrl: "/abhinay/franchise/barista.png",
-    description:
-      "Premium café offering Italian-style beverages and bakery items. Good for high-street and office zones...",
-    rating: 4.0,
-    tags: ["Unit", "Verified", "Cafe", "Beverages"],
-    stats: {
-      space: "200–1,000 sq ft",
-      outlets: "350+",
-      investment: "₹10 Lakh – ₹1 Cr",
-    },
-    highlights: "Supports kiosk & full café models",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#A0522D",
-  },
-
-  {
-    location: "Pan-India (Cloud Kitchens)",
-    title: "Rebel Foods / Faasos",
-    since: "2011",
-    logoUrl: "/abhinay/franchise/rebelfoods.png",
-    description:
-      "World’s largest cloud kitchen operator with brands like Faasos, Behrouz Biryani & Oven Story...",
-    rating: 4.0,
-    tags: ["Unit", "Verified", "Cloud Kitchen", "Delivery"],
-    stats: {
-      space: "300–800 sq ft",
-      outlets: "350+ kitchens",
-      investment: "₹1 Lakh – ₹50 Lakh",
-    },
-    highlights: "Highest scalability & delivery-first model",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#512DA8",
-  },
-
-  {
-    location: "Pan-India",
-    title: "Wow! Momo",
-    since: "2008",
-    logoUrl: "/abhinay/franchise/wowmomo.png",
-    description:
-      "Fast-growing momo QSR with strong presence in malls & metros. Offers dine-in + kiosk models...",
-    rating: 4.0,
-    tags: ["Unit", "Verified", "Momo", "Snacks"],
-    stats: {
-      space: "80–300 sq ft",
-      outlets: "300–650+",
-      investment: "₹8–22 Lakh / ₹20–35 Lakh",
-    },
-    highlights: "Low Capex and quick breakeven",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#FFB300",
-  },
-];
-  
-const [showLocal, setShowLocal] = useState(false);
+  ];
+  const [showLocal, setShowLocal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   return (
     <>
@@ -673,12 +442,11 @@ const [showLocal, setShowLocal] = useState(false);
         <div className="relative z-10 container mx-auto px-4 sm:px-8 lg:px-16 flex flex-col gap-4">
           {/* Heading + description */}
           <h2 className="text-2xl sm:text-3xl font-bold">
-            Explore Top Food Franchise <br /> Opportunities
+           Golf Franchise opportunities
           </h2>
           <p className="max-w-2xl text-xs sm:text-sm leading-relaxed">
-            With consumer demand for diverse dining experiences on the rise,
-            explore food franchises that bring authentic flavors and a
-            profitable business model.
+            Step into the fastest-growing food and café market with our exciting franchise opportunity. As consumer demand for quality dining experiences continues  to rise, now is the perfect time to invest in a proven and profitable business model. Our brand blends authentic flavors, trendy...Read more
+
           </p>
 
           {/* Search & Filters */}

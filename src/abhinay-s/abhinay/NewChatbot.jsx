@@ -49,10 +49,60 @@ const NewChatbot = () => {
       keys: ['Investor page', 'Investors', 'Investment Themes', 'investor']
     },
 
-    // Franchise
+    // Franchise – Food Category (check first for specific match)
+    {
+      path: '/Individual-food-listingpage',
+      keys: [
+        'food',
+        'restaurant',
+        'cafe',
+        'food court',
+        'fast food',
+        'dining',
+        'eatery',
+        'bistro',
+        'bakery',
+        'food franchise',
+        'franchise food',
+        'best food franchise',
+        'food business franchise',
+        'restaurant franchise',
+        'cafe franchise',
+        'food court franchise',
+        'fast food franchise',
+        'franchise in food'
+      ],
+      requiresSecondary: 'franchise'
+    },
+
+    // Franchise – Golf Category (check second for specific match)
+    {
+      path: '/Individual-golf-listingpage',
+      keys: [
+        'golf',
+        'golf franchise',
+        'franchise golf',
+        'golf business franchise',
+        'golf academy franchise',
+        'sports golf franchise',
+        'golf franchise business'
+      ],
+      requiresSecondary: 'franchise'
+    },
+
+    // Franchise – General Opportunities (fallback for generic franchise queries)
     {
       path: '/franchise/oppurtunties',
-      keys: ['franchise', 'franchising', 'food franchise', 'franchise partnerships', 'franchise investment', 'franchise cost', 'franchise location', 'franchise setup', 'franchise application']
+      keys: [
+        'franchise ideas',
+        'franchise',
+        'franchising',
+        'franchise business',
+        'franchise opportunities',
+        'franchise investment',
+        'franchise setup',
+        'franchise cost'
+      ]
     },
 
     // Dynamic Pages
@@ -158,8 +208,38 @@ const NewChatbot = () => {
     if (q.startsWith('/')) {
       return q; // trust explicit route input
     }
-    for (const { path, keys } of intentMatchers) {
-      if (keys.some((k) => q.includes(k))) {
+    
+    // Check if query contains "franchise" keyword
+    const hasFranchiseKeyword = q.includes('franchise');
+    
+    // If franchise keyword exists but not food or golf, show unavailable message
+    if (hasFranchiseKeyword && !q.includes('food') && !q.includes('restaurant') && 
+        !q.includes('cafe') && !q.includes('dining') && !q.includes('eatery') && 
+        !q.includes('golf')) {
+      // Check if it's a specific category franchise query (not just generic "franchise")
+      const franchiseGeneralKeys = ['franchise ideas', 'franchise opportunities', 'franchise business', 
+                                   'franchise investment', 'franchise setup', 'franchise cost', 
+                                   'franchising', 'franchise'];
+      const isGeneralFranchise = franchiseGeneralKeys.some(k => q === k || q === k + 's');
+      
+      if (!isGeneralFranchise) {
+        // Extract potential category name (word before or after "franchise")
+        const words = q.split(/\s+/);
+        const franchiseIndex = words.findIndex(w => w.includes('franchise'));
+        const category = franchiseIndex > 0 ? words[franchiseIndex - 1] : 
+                        franchiseIndex < words.length - 1 ? words[franchiseIndex + 1] : 'requested';
+        toast.error(`Sorry, ${category.charAt(0).toUpperCase() + category.slice(1)} franchise data is not available at the moment. We currently have data for Food and Golf franchises only.`);
+        return 'UNAVAILABLE';
+      }
+    }
+    
+    for (const { path, keys, requiresSecondary } of intentMatchers) {
+      const hasKeyMatch = keys.some((k) => q.includes(k));
+      if (hasKeyMatch) {
+        // Check if secondary keyword is required and present
+        if (requiresSecondary && !q.includes(requiresSecondary.toLowerCase())) {
+          continue;
+        }
         console.log(`Matched intent for query "${q}" to path "${path}" using keys:`, keys);
         return path;
       }
@@ -182,6 +262,10 @@ const NewChatbot = () => {
 
   const handleSubmit = useCallback(() => {
     const route = resolveRoute(query);
+    if (route === 'UNAVAILABLE') {
+      // Error message already shown in resolveRoute
+      return;
+    }
     if (route) {
       navigate(route);
     } else {
@@ -248,6 +332,10 @@ const NewChatbot = () => {
         // On final result, attempt navigation based on intent
         if (hasFinal && text) {
           const route = resolveRoute(text);
+          if (route === 'UNAVAILABLE') {
+            // Error message already shown in resolveRoute
+            return;
+          }
           if (route) {
             navigate(route);
           } else {

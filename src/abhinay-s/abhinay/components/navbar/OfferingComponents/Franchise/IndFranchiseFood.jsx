@@ -23,6 +23,33 @@ const IndFranchiseFood = () => {
   const chartRef = useRef(null);
   let chartInstance = null;
 
+  // Franchise Details
+  const franchiseData = {
+    logo: "/abhinay/franchise/single/ktt.jpg",
+    name: "Kathi Junction",
+    verified: true,
+    year: "2009",
+    badges: ["Trusted Seller", "150+ Outlets"],
+    description: "Kathi Junction is a prominent Indian quick-service restaurant (QSR) chain specializing in Kathi Rolls, Shawarma, and other Mughlai/Punjabi-inspired fast food. Founded in 2009 by Navneet Sajwan, the brand has rapidly expanded to over 150 outlets across more than 25 states in India.",
+    rating: 5,
+    likes: 107,
+    socialMedia: {
+      youtube: "abhinay/youtube-logo.png",
+      pinterest: "abhinay/pintrest-logo.png",
+      instagram: "abhinay/insta-logo.png",
+      twitter: "abhinay/x-logo.png",
+      facebook: "abhinay/facebook-logo.png"
+    },
+    profileImage: "/abhinay/franchise/single/nat.jpg",
+    industry: "Food & Beverage - Quick Service Restaurant (QSR)",
+    headquarters: "Dehradun, Uttarakhand, India",
+    parentCompany: "Kathi Junction Foods Private Limited",
+    website: "kathijunction.com",
+    email: "info@kathijunction.com",
+    leadership: "Navneet Sajwan (Founder)",
+    gstin: "07AAGCN0838A2ZU"
+  };
+
   useEffect(() => {
     if (chartInstance) chartInstance.destroy();
 
@@ -195,37 +222,37 @@ const IndFranchiseFood = () => {
     },
     {
       label: "Unit as of 2025",
-      value: "100+",
+      value: "150+ Outlets",
       icon: <img src="/abhinay/2a2.png" />,
     },
     {
       label: "Space requirement",
-      value: "600–1500 sq. ft.",
+      value: "200–1500 sq. ft.",
       icon: <img src="/abhinay/3b3.png" />,
     },
     {
       label: "Industry",
-      value: "Food & Beverage",
+      value: "Food & Beverage - QSR",
       icon: <img src="/abhinay/4c4.png" />,
     },
     {
       label: "Parent company",
-      value: "Yum Brand Inc.",
+      value: "Kathi Junction Foods Pvt Ltd",
       icon: <img src="/abhinay/5d5.png" />,
     },
     {
       label: "Business type",
-      value: "Franchise",
+      value: "Private Limited Company",
       icon: <img src="/abhinay/6d6.png" />,
     },
     {
       label: "Leadership",
-      value: "Tarun Lal, President",
+      value: "Navneet Sajwan (Founder)",
       icon: <img src="/abhinay/7e7.png" />,
     },
     {
       label: "E-mail",
-      value: "anurag1990@gmail.com",
+      value: "info@kathijunction.com",
       icon: <img src="/abhinay/8f8.png" />,
     },
     {
@@ -239,8 +266,8 @@ const IndFranchiseFood = () => {
       icon: <img src="/abhinay/10h.png" />,
     },
     {
-      label: "Term duration year",
-      value: "5 years",
+      label: "Payback Period",
+      value: "12–18 months",
       icon: <img src="/abhinay/11i.png" />,
     },
     { label: "Royalties", value: "4%", icon: <img src="/abhinay/12j.png" /> },
@@ -283,32 +310,32 @@ const IndFranchiseFood = () => {
           <div className="flex flex-col items-start space-x-4">
             <div className="flex">
               <img
-                src="/abhinay/franchise/single/ktt.jpg"
-                alt="Kathi Junction Logo"
+                src={franchiseData.logo}
+                alt={`${franchiseData.name} Logo`}
                 className="w-16 h-16 rounded-full object-cover"
               />
               <div className="">
                 <div className="flex items-center space-x-1 flex-wrap">
-                  <h2 className="text-2xl font-bold">Kathi Junction</h2>
-                  <img src="/abhinay/blue-tick.svg" alt="" className="w-4" />
+                  <h2 className="text-2xl font-bold">{franchiseData.name}</h2>
+                  {franchiseData.verified && (
+                    <img src="/abhinay/blue-tick.svg" alt="" className="w-4" />
+                  )}
                 </div>
                 <div className="flex flex-wrap items-center gap-2 text-sm text-gray-500 mt-1">
-                  <span className="bg-gray-100 px-2 py-0.5 rounded">2009</span>
                   <span className="bg-gray-100 px-2 py-0.5 rounded">
-                    Trusted Seller
+                    {franchiseData.year}
                   </span>
-                  <span className="bg-gray-100 px-2 py-0.5 rounded">
-                    Dehradun, UK
-                  </span>
+                  {franchiseData.badges.map((badge, index) => (
+                    <span key={index} className="bg-gray-100 px-2 py-0.5 rounded">
+                      {badge}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
             <div>
               <p className="text-gray-700 mt-3 text-sm md:text-base max-w-2xl">
-                Kathi Junction brings the golden opportunity to start your own
-                business in the hospitality sector. Kathi Junction is a vibrant
-                food and beverage destination offering a perfect blend of taste,
-                tradition, and innovation.
+                {franchiseData.description}
               </p>
               <div className="flex flex-wrap space-x-3 mt-4">
                 <button className="bg-[#4A53FA] text-white px-12 py-3 rounded-[25px] hover:bg-indigo-700 w-full sm:w-auto">
@@ -319,10 +346,10 @@ const IndFranchiseFood = () => {
                 </button>
               </div>
               <div className="flex items-center mt-3 space-x-1 text-yellow-500">
-                {[...Array(5)].map((_, i) => (
+                {[...Array(franchiseData.rating)].map((_, i) => (
                   <span key={i}>★</span>
                 ))}
-                <span className="text-gray-600 text-sm ml-2">107 likes</span>
+                <span className="text-gray-600 text-sm ml-2">{franchiseData.likes} likes</span>
               </div>
             </div>
           </div>
@@ -331,11 +358,11 @@ const IndFranchiseFood = () => {
         {/* Social Media Icons - Bottom Right */}
         <div className="absolute bottom-6 right-6">
           <div className="flex items-center space-x-3 text-xl text-gray-600">
-            <img src="abhinay/youtube-logo.png" alt="" className="w-5 h-5" />
-            <img src="abhinay/pintrest-logo.png" alt="" className="w-5 h-5" />
-            <img src="abhinay/insta-logo.png" alt="" className="w-5 h-5" />
-            <img src="abhinay/x-logo.png" alt="" className="w-5 h-5" />
-            <img src="abhinay/facebook-logo.png" alt="" className="w-5 h-5" />
+            <img src={franchiseData.socialMedia.youtube} alt="" className="w-5 h-5" />
+            <img src={franchiseData.socialMedia.pinterest} alt="" className="w-5 h-5" />
+            <img src={franchiseData.socialMedia.instagram} alt="" className="w-5 h-5" />
+            <img src={franchiseData.socialMedia.twitter} alt="" className="w-5 h-5" />
+            <img src={franchiseData.socialMedia.facebook} alt="" className="w-5 h-5" />
           </div>
         </div>
 
@@ -351,7 +378,7 @@ const IndFranchiseFood = () => {
         >
           <div className="relative">
             <img
-              src="/abhinay/franchise/single/nat.jpg"
+              src={franchiseData.profileImage}
               alt="Profile"
               className="w-14 h-14 rounded-full border-2 border-gray-300 shadow-lg hover:scale-110 transition-transform select-none"
               draggable="false"
