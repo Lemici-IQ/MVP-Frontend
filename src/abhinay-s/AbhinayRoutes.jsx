@@ -37,13 +37,13 @@ function AbhinayRoutes() {
         <Route path="" element={<NewHomePage />} />
         <Route path="coming-soon" element={<ComingSoon />} />
         <Route path="offerings" element={<Offerings />} />
-        <Route path="offerings/govtnavigator" element={<GovtNavigator />} />
+        {/* <Route path="offerings/govtnavigator" element={<GovtNavigator />} /> */}
         <Route path="govt-schemes" element={<GovtNavigator />} />
         <Route path="pricings" element={<Pricing />} />
         <Route path="startups-zone" element={<StartUpsZone />} />
         <Route path="startups-zone-opportunities" element={<StartupOppurtunities />} />
         <Route path="startups-zone-investorhub" element={<InvestorHub />} />
-        <Route path="franchise" element={<Franchise />} />npm
+        <Route path="franchise" element={<Franchise />} />
         <Route path="franchise/oppurtunties" element={<Opp />} />
         <Route path="franchise/details" element={<Single />} />
         <Route path="franchise/category" element={<BusinessCategories />} />
@@ -55,9 +55,9 @@ function AbhinayRoutes() {
         <Route path="account" element={<Account />} />
         <Route path="support" element={<Support />} />
         <Route path="aboutus" element={<AboutUs />} />
-        <Route path="investment" element={<SinglePage />} />
-        <Route path="data" element={<B />} />
-        <Route path="newHomePage" element={<NewHomePage />} />
+        {/* <Route path="investment" element={<SinglePage />} /> */}
+        {/* <Route path="data" element={<B />} /> */}
+        {/* <Route path="newHomePage" element={<NewHomePage />} /> */}
           
     
     </>

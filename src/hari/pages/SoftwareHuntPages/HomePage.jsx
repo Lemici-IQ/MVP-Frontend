@@ -11,7 +11,7 @@ import SoftwareReport from '../../components/SoftwareHuntComponents/SoftwareHunt
 function DataProviderHome() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <HeroSection />
       <ExploreProducts />
       <Banner />

@@ -625,16 +625,7 @@ const NewHomePage = () => {
 
                     </div>
                 </div>
-                <div className="w-full flex justify-center items-center my-4 overflow-x-hidden">
-                    <button onClick={() => setShowChatbot(true)}>
-
-                        <img
-                            className="border-[10px] border-[#9876b3] rounded-full p-2 max-w-[200px] object-contain transition-transform cursor-pointer"
-                            src="/abhinay/kube.png"
-                            alt="Kubernetes Logo"
-                        />
-                    </button>
-                </div>
+        
 
                 {/* Floating Chatbot */}
                 {showChatbot && (
@@ -737,7 +728,7 @@ const NewHomePage = () => {
                     }
                 `}</style>
 
-                <div className='max-w-6xl bg-red-100 mx-auto mt-14 overflow-x-hidden'>
+                <div className='max-w-6xl bg-red-100 mx-auto overflow-x-hidden'>
 
                     <SectionData />
                 </div>
@@ -916,6 +907,21 @@ const NewHomePage = () => {
                     </div>
                 </section>
             </div>
+                {/* Floating bottom-left chat button (hidden while chatbot is open) */}
+                {!showChatbot && (
+                    <button
+                        onClick={() => setShowChatbot(true)}
+                        aria-label="Open chat"
+                        className="fixed left-4 bottom-6 md:left-6 md:bottom-8 z-50 pointer-events-auto bg- rounded-full p-2 hover:shadow-2xl transition transform hover:scale-105"
+                    >
+                        <img
+                            src="/abhinay/kube.png"
+                            alt="Open chat"
+                            className="w-12 h-12 rounded-full border-5 border-[#9876b3] p-1 object-cover"
+                        />
+                    </button>
+                )}
+
             <Footernew />
         </div >
     );

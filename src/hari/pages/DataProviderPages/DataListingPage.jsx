@@ -10,7 +10,7 @@ import CategoryFranchise from '../../components/DataProviderComponents/DataListi
 function DataProviderHome() {
   return (
     <>
-      <Navbar /> 
+      {/* <Navbar />  */}
       <Header />
       <Cards />
       <Banner />

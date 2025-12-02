@@ -8,7 +8,7 @@ import Footer from '../../components/LemiciHomeComponents/WhatWeDo2.0Components/
 function WhatWeDo() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <CardSection />
       <WhoWeServe />
       <BusinessSolution />
