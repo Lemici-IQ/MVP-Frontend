@@ -88,18 +88,30 @@ const NewChatbot = () => {
     //   path: '/aboutus',
     //   keys: ['about', 'about us', 'company', 'team', 'who we are']
     // },
-
+    {
+      path: '/individual-product',
+      keys: ['cricket bat','cricket', 'mrf bat','mrf cricket bat']
+    },
 
     // B2B Products (fallback to coming-soon until route exists)
     {
       path: '/product-category',
-      keys: ['sports', 'equipment', 'suppliers', 'marketplace', 'wholesale', 'bulk', 'machinery', 'supplier', 'machines', 'supplies', 'manufacturers', 'cotton', 'cricket', 'bat', 'b2b', 'products']
+      keys: ['sports', 'equipment', 'suppliers', 'marketplace', 'wholesale', 'bulk', 'machinery', 'supplier', 'machines', 'supplies', 'manufacturers', 'cotton', 'cricket', 'bat', 'b2b', 'b2b products', 'b2b marketplace']
     },
+    
 
     // Software Products (fallback)
     {
-      path: '/software-hunt-home',
-      keys: ['hrms', 'software', 'system', 'crm', 'lms', 'capterra', 'keka', 'bitrix']
+      path: '/crm',
+      keys: ['software products', 'crm', 'crm softwares']
+    },
+    {
+      path: '/webdev',
+      keys: ['software services', 'software', 'web development', 'web dev']
+    },
+    {
+      path: '/ai',
+      keys: ['ai products', 'ai tools', 'ai software']
     },
 
     // Market Research (fallback)
@@ -128,7 +140,7 @@ const NewChatbot = () => {
     // Data, Surveys, Dashboards
     {
       path: '/data-listing',
-      keys: ['list', 'database', 'data', 'surveys', 'open data', 'datasets']
+      keys: ['list', 'database', 'data', 'surveys', 'open data', 'datasets', 'business directory']
     },
 
     // AI Features (fallback)
