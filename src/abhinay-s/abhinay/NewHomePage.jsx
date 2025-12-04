@@ -922,6 +922,19 @@ const NewHomePage = () => {
                     </button>
                 )}
 
+                {/* Floating bottom-right dashboard button */}
+                <button
+                    onClick={() => window.location.href = '/dashboard'}
+                    aria-label="Go to Dashboard"
+                    className="fixed right-4 bottom-6 md:right-6 md:bottom-8 z-50 pointer-events-auto bg- rounded-full p-2 hover:shadow-2xl transition transform hover:scale-105"
+                >
+                    <img
+                        src="/abhinay/dashb.jpg"
+                        alt="Go to Dashboard"
+                        className="w-12 h-12 rounded-full border-5 border-[#9876b3] p-1 object-cover"
+                    />
+                </button>
+
             <Footernew />
         </div >
     );
