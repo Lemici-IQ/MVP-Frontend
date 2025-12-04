@@ -1,5 +1,5 @@
 import React from "react";
-import businessImg from "/hari/ListingWithUsImages/businessOpp.png";
+// import businessImg from "/hari/ListingWithUsImages/businessOpp.png";
 
 const BusinessOpportunities = () => {
   const stats = [
