@@ -27,7 +27,7 @@
 
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ScrollToTop from './hari/components/ScrollToTop';
+import ScrollToTop from "./hari/components/ScrollToTop";
 import HariRoutes from "./hari/HariRoutes";
 import AbhinayRoutes from "./abhinay-s/AbhinayRoutes";
 import AbhinayLayout from "./abhinay-s/AbhinayLayout";
@@ -36,14 +36,12 @@ import { testAlias } from "@/abhinay-s/testAlias"; // src/testAlias.js
 import Header from "./abhinay-s/components/Header";
 import UserRoutes from "./routes/UserRoutes";
 import SouravRoutes from "./sourav/SouravRoutes";
-import IndBiSol from "./sourav/pages/IndBiSol/IndBiSol";
-import IndBiSolListing from "./sourav/pages/IndBiSol/IndBiSolListing";
-import GovNavigator from "./sourav/pages/GovNavigator/GovNavigator";
+
 
 function App() {
   console.log(testAlias);
   return (
-  <>
+    <>
       <Router>
         {/* <ScrollToTop /> */}
         {/* <Header style={{ position: "sticky", top: 0, zIndex: 1000 }} /> */}
@@ -55,7 +53,7 @@ function App() {
           {/* Abhinay Pages */}
           {/* {AbhinayRoutes()} */}
           {UserRoutes()}
-          <Route path="/" element={<AbhinayLayout/>}>
+          <Route path="/" element={<AbhinayLayout />}>
             {HariRoutes()}
             {AbhinayRoutes()}
             {SouravRoutes()}
