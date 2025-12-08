@@ -5,9 +5,10 @@ import {
   FaUser,
   FaPhoneAlt,
   FaStar,
+  FaArrowLeft,
 } from "react-icons/fa";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; 
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -15,8 +16,15 @@ const SignUp = () => {
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-white mx-10 my-10">
       {/* Left Side - Form */}
-      <div className="w-full md:w-1/2 flex justify-center items-center px-6 sm:px-10 py-10">
-        <div className="w-full max-w-sm">
+      <div className="w-full md:w-1/2 flex justify-center items-center px-6 sm:px-10 py-10 relative">
+        <button
+          onClick={() => window.history.back()}
+          className="absolute top-6 left-6 flex items-center text-gray-600 hover:text-[#6D3E93] transition cursor-pointer"
+        >
+          <FaArrowLeft className="mr-2" /> Back
+        </button>
+
+        <div className="w-full max-w-sm mt-8">
           {/* Header */}
           <div className="mb-8 text-center">
             <h1 className="text-3xl sm:text-2xl font-bold text-gray-800">
@@ -100,7 +108,7 @@ const SignUp = () => {
             {/* Sign Up Button */}
             <button
               type="submit"
-              className="w-full bg-[#6D3E93] text-white py-2 rounded-lg font-medium hover:bg-[#5B2E7E] transition duration-200"
+              className="w-full bg-[#6D3E93] text-white py-2 rounded-lg font-medium text-lg hover:bg-[#5B2E7E] transition duration-200"
             >
               Sign Up
             </button>
@@ -116,7 +124,7 @@ const SignUp = () => {
         </div>
       </div>
 
-      {/* Right Side - Background image with bottom-left text */}
+      {/* Right Side */}
       <div
         className="w-full md:w-1/2 relative bg-cover bg-center rounded-t-xl md:rounded-none md:rounded-l-xl h-64 md:h-auto"
         style={{
@@ -124,11 +132,9 @@ const SignUp = () => {
             "url('/hari/ExpertConnectImages/backgrounds/signin.jpg')",
         }}
       >
-        {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent rounded-t-xl md:rounded-none md:rounded-l-xl" />
 
         <div className="absolute bottom-6 left-6 text-white max-w-sm">
-          {/* 5 Yellow Stars */}
           <div className="flex space-x-1 mb-2">
             {Array.from({ length: 5 }).map((_, index) => (
               <FaStar key={index} className="text-yellow-400 text-lg" />

@@ -74,7 +74,7 @@ const ExploreProducts = () => {
           </p>
         </div>
         <Link
-          to="/product-category"
+          to="/data-listing"
           className="text-sm text-blue-600 hover:underline mt-3 md:mt-0 flex items-center gap-1"
         >
           View all categories →

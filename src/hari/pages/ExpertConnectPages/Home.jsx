@@ -11,7 +11,7 @@ import FooterSection from '../../components/ExpertConnectComponents/HomePageComp
 function ExpertConnectHome() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <HeroSection />
       <CardSection /> 
       <Banner />

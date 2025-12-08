@@ -218,17 +218,16 @@ const GovtNavigator = () => {
             <div>
               {/* Main Heading */}
               <h1
-              className="w-full mt-2 max-w-4xl mx-auto text-[64px] md:text-7xl mb-6 leading-[0.9] text-center"
+              className="font-space w-full mt-2 max-w-4xl mx-auto text-[64px] md:text-7xl mb-6 leading-[0.9] text-center"
               style={{
-                fontFamily: "Space Grotesk, sans-serif",
                 fontWeight: 900,
                 color: "black",
               }}
               >
                 Beyond 
-                <span className="text-[#093FB4]"> Sentiment</span>
+                <span className="text-[#093FB4] font-space"> Sentiment</span>
                 <br />
-                <span className="block text-black">And History</span>
+                <span className="block text-black font-space">And History</span>
               </h1>
 
               {/* Tab Navigation Buttons */}

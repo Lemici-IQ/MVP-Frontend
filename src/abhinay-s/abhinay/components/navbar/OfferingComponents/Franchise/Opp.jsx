@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FcardGrid } from "./Fcard";
 
+
 export const FoodFranchisePage = () => {
   const categories = [
     { name: "Sweets & Bakery", img: "/abhinay/franchise/food/sweets.jpg" },

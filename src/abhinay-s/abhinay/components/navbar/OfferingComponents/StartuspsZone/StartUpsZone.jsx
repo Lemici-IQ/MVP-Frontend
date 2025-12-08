@@ -6,6 +6,7 @@ import Card from './Card';
 import Insights from './Insights';
 import StartupOppurtunities from './StartupOppurtunities';
 import InvestorHub from './InvestorHub';
+import ChatbotSub from "../../../../../utils/ChatbotSub.jsx";
 
 const StartUpsZone = () => {
   const navigate = useNavigate();
@@ -1474,8 +1475,11 @@ const StartUpsZone = () => {
         </div>
 
         {/* Search Bar */}
-        <Chatbot />
-
+        {/* <Chatbot /> */}
+        <ChatbotSub
+            placeholder="Ask about startups ()"
+            context="startups"
+        />
         {/* Subtext */}
         <p className="text-sm sm:text-md text-gray-500 mt-3 sm:mt-4 max-w-xl sm:max-w-2xl mx-auto px-2 sm:px-0 leading-relaxed">
           Join a dynamic platform where bold startups meet visionary investors.
