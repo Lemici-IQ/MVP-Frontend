@@ -25,5 +25,5 @@ function SouravRoutes() {
       <Route path="/project-reports-listing" element={<IndBiSolListing />} />
     </>
   );
-
+}
 export default SouravRoutes;
