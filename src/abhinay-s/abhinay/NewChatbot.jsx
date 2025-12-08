@@ -58,12 +58,7 @@ const NewChatbot = () => {
         'cafe',
         'food court',
         'fast food',
-        'dining',
-        'eatery',
-        'bistro',
-        'bakery',
         'food franchise',
-        'franchise food',
         'best food franchise',
         'food business franchise',
         'restaurant franchise',
@@ -225,9 +220,8 @@ const NewChatbot = () => {
     const hasFranchiseKeyword = q.includes('franchise');
     
     // If franchise keyword exists but not food or golf, show unavailable message
-    if (hasFranchiseKeyword && !q.includes('food') && !q.includes('restaurant') && 
-        !q.includes('cafe') && !q.includes('dining') && !q.includes('eatery') && 
-        !q.includes('golf')) {
+    if (hasFranchiseKeyword && q.includes('food') && 
+        q.includes('golf')) {
       // Check if it's a specific category franchise query (not just generic "franchise")
       const franchiseGeneralKeys = ['franchise ideas', 'franchise opportunities', 'franchise business', 
                                    'franchise investment', 'franchise setup', 'franchise cost', 

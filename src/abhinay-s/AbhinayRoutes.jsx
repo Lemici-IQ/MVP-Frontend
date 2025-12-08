@@ -75,7 +75,6 @@ function AbhinayRoutes() {
         <Route path="/our-culture" element={<OurCulture />} />
         <Route path="/Individual-food-listingpage" element={<NewFranchiseListing />} />
         <Route path="/Individual-golf-listingpage" element={<NewFranchiseListingGolf />} />
-
     </>
   )
 }
