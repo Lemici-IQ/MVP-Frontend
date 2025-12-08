@@ -39,7 +39,7 @@ import SouravRoutes from "./sourav/SouravRoutes";
 function App() {
   console.log(testAlias);
   return (
-  <>
+    <>
       <Router>
         <ScrollToTop />
         {/* <Header style={{ position: "sticky", top: 0, zIndex: 1000 }} /> */}
@@ -51,7 +51,7 @@ function App() {
           {/* Abhinay Pages */}
           {/* {AbhinayRoutes()} */}
           {UserRoutes()}
-          <Route path="/" element={<AbhinayLayout/>}>
+          <Route path="/" element={<AbhinayLayout />}>
             {HariRoutes()}
             {AbhinayRoutes()}
             {SouravRoutes()}
