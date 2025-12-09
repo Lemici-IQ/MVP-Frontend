@@ -1,129 +1,153 @@
 import React from "react";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaYoutube,
-  FaLinkedinIn,
-  FaPaperPlane,
-  FaLightbulb,
-  FaEnvelope,
-  FaBriefcase,
-  FaBook,
-} from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaYoutube, FaLinkedinIn } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-white text-gray-800 pb-12 px-6">
-      {/* Top Section */}
-      <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-8">
-        {/* Left - Socials */}
-        <div className="flex flex-col items-start w-full md:w-1/2">
-          <h3 className="text-lg font-medium mb-4 flex items-center gap-2">
-            <FaLightbulb className="text-orange-500" /> Follow on Socials
-          </h3>
+    <footer className="w-full bg-white py-12 px-4 sm:px-6 md:px-12">
+      <div className="max-w-7xl mx-auto">
 
-          <div className="flex justify-start space-x-3">
-            <a
-              href="#"
-              className="bg-gray-100 p-3 rounded-full hover:bg-gray-200 transition"
-            >
-              <FaFacebookF className="text-gray-700 text-lg" />
-            </a>
-            <a
-              href="#"
-              className="bg-gray-100 p-3 rounded-full hover:bg-gray-200 transition"
-            >
-              <FaTwitter className="text-gray-700 text-lg" />
-            </a>
-            <a
-              href="#"
-              className="bg-gray-100 p-3 rounded-full hover:bg-gray-200 transition"
-            >
-              <FaYoutube className="text-gray-700 text-lg" />
-            </a>
-            <a
-              href="#"
-              className="bg-gray-100 p-3 rounded-full hover:bg-gray-200 transition"
-            >
-              <FaLinkedinIn className="text-gray-700 text-lg" />
-            </a>
+        {/* LOGO + SOCIAL ICONS ROW */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 gap-6 sm:gap-0">
+
+          {/* Logo + Cities */}
+          <div>
+            <img
+              src="/hari/logo-main.png"
+              alt="logo"
+              className="h-20 w-auto"
+            />
+
+            <p className="text-xs text-blue-600 mt-2">
+              Bengaluru | Mumbai | Hyderabad | Gurgaon
+            </p>
+
+            <h2 className="text-3xl font-bold mt-4">
+              Don't be a Stranger
+            </h2>
+          </div>
+
+          {/* Social Icons */}
+          <div className="flex gap-4">
+            <div className="bg-[#FFE3C4] p-3 rounded-xl cursor-pointer hover:bg-[#FFD2A3] transition-colors">
+              <FaFacebookF className="text-[#F57C00]" />
+            </div>
+
+            <div className="bg-[#FFE3C4] p-3 rounded-xl cursor-pointer hover:bg-[#FFD2A3] transition-colors">
+              <FaTwitter className="text-[#F57C00]" />
+            </div>
+
+            <div className="bg-[#FFE3C4] p-3 rounded-xl cursor-pointer hover:bg-[#FFD2A3] transition-colors">
+              <FaYoutube className="text-[#F57C00]" />
+            </div>
+
+            <div className="bg-[#FFE3C4] p-3 rounded-xl cursor-pointer hover:bg-[#FFD2A3] transition-colors">
+              <FaLinkedinIn className="text-[#F57C00]" />
+            </div>
           </div>
         </div>
 
-        {/* Right - Email Subscribe */}
-        <div className="flex items-center bg-gray-100 rounded-full px-4 py-2 w-full md:w-1/2 max-w-md">
-          <input
-            type="email"
-            placeholder="Email Address"
-            className="bg-transparent outline-none text-sm flex-1 px-2"
-          />
-          <button className="bg-orange-500 hover:bg-orange-700 text-white p-2 rounded-full transition">
-            <FaPaperPlane className="text-sm" />
-          </button>
-        </div>
-      </div>
+        {/* MAIN FOOTER GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
 
-      {/* Footer Links */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
-        <div>
-          <h4 className="font-semibold mb-3 flex items-center gap-2">
-            <FaEnvelope className="text-orange-500" /> Contact
-          </h4>
-          <ul className="space-y-2 text-sm">
-            <li>Contact Us</li>
-            <li>Become a Client</li>
-            <li>Office Locations</li>
-            <li>Technical Support</li>
-          </ul>
+          {/* LEFT BLOCK */}
+          <div>
+            <p className="text-sm text-[#F57C00] font-semibold">Newsletter</p>
+
+            <h3 className="text-xl font-semibold">Stay in the loop</h3>
+
+            <p className="text-sm font-semibold text-gray-700 mt-1">Subscribe</p>
+
+            <p className="text-xs text-gray-600 mb-4">
+              Select topics and stay current with our latest insights
+            </p>
+
+            {/* Email + Button */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+              <input
+                type="email"
+                placeholder="Email"
+                className="px-4 py-3 border-2 border-[#EDEDED] rounded-xl w-full sm:w-64 bg-[#FFFDFD] focus:outline-none"
+              />
+              <button className="bg-[#F57C00] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#7a3aa8] transition-colors w-full sm:w-auto">
+                Subscribe
+              </button>
+            </div>
+          </div>
+
+          {/* OFFERINGS */}
+          <div>
+            <h4 className="font-semibold mb-4">Offerings</h4>
+
+            <div className="grid grid-cols-2 gap-x-10 text-sm">
+              <div className="flex flex-col gap-2">
+                <p className="text-gray-700 hover:text-[#652C90] cursor-pointer">Startup Zone</p>
+                <p className="text-gray-700 hover:text-[#652C90] cursor-pointer">Franchise Zone</p>
+                <p className="text-gray-700 hover:text-[#652C90] cursor-pointer">Software Hunt</p>
+                <p className="text-gray-700 hover:text-[#652C90] cursor-pointer">Business Directory</p>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <p className="text-gray-700 hover:text-[#652C90] cursor-pointer">Government Navigator</p>
+                <p className="text-gray-700 hover:text-[#652C90] cursor-pointer">Market & Industry Research</p>
+                <p className="text-gray-700 hover:text-[#652C90] cursor-pointer">eB2B Marketplace</p>
+                <p className="text-gray-700 hover:text-[#652C90] cursor-pointer">Industry Solution</p>
+              </div>
+            </div>
+          </div>
+
+          {/* CONTACT + RESOURCES */}
+          <div className="grid grid-cols-2 gap-10 text-sm">
+            <div>
+              <h4 className="font-semibold mb-4">Contact</h4>
+              <div className="flex flex-col gap-2">
+                <p className="text-gray-700 hover:text-[#652C90] cursor-pointer">Contact Us</p>
+                <p className="text-gray-700 hover:text-[#652C90] cursor-pointer">Expert</p>
+                <p className="text-gray-700 hover:text-[#652C90] cursor-pointer">Office Location</p>
+                <p className="text-gray-700 hover:text-[#652C90] cursor-pointer">Technical Support</p>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4 text-sm">Resources</h4>
+              <div className="flex flex-col gap-2">
+                <p className="text-gray-700 hover:text-[#652C90] cursor-pointer">Featured Insights</p>
+                <p className="text-gray-700 hover:text-[#652C90] cursor-pointer">Webinars</p>
+                <p className="text-gray-700 hover:text-[#652C90] cursor-pointer">Events</p>
+                <p className="text-gray-700 hover:text-[#652C90] cursor-pointer">Client Stories</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div>
-          <h4 className="font-semibold mb-3 flex items-center gap-2">
-            <FaBriefcase className="text-orange-500" /> Careers
-          </h4>
-          <ul className="space-y-2 text-sm">
-            <li>Why LeMiCi</li>
-            <li>Search Careers</li>
-            <li>Our Culture</li>
-            <li>Careers Blog</li>
-          </ul>
+        {/* COPYRIGHT + LAST ROW (RESPONSIVE) */}
+        <div className="mt-10 flex flex-col md:flex-row justify-between items-start md:items-start text-sm text-gray-800 gap-6 md:gap-0">
+
+          {/* COPYRIGHT */}
+          <p className="text-gray-600 md:w-[45%] leading-relaxed">
+            Copyright © 2025 LeMiCi. All rights reserved.
+            Empowering Local Businesses with Digital Growth.
+          </p>
+
+          {/* LINKS (WRAPPED 2 LINES ON RIGHT) */}
+          <div className="flex flex-col items-start md:items-end w-full md:w-auto">
+
+            {/* FIRST LINE */}
+            <div className="flex flex-wrap gap-6 md:gap-8">
+              <p className="cursor-pointer hover:text-[#652C90]">FAQ</p>
+              <p className="cursor-pointer hover:text-[#652C90]">Privacy Policy</p>
+              <p className="cursor-pointer hover:text-[#652C90]">Cookie preferences</p>
+              <p className="cursor-pointer hover:text-[#652C90]">Local Language information</p>
+            </div>
+
+            {/* SECOND LINE */}
+            <div className="flex flex-wrap gap-6 md:gap-8 mt-2">
+              <p className="cursor-pointer hover:text-[#652C90]">Term of Use</p>
+              <p className="cursor-pointer hover:text-[#652C90]">Accessibility Statement</p>
+            </div>
+
+          </div>
         </div>
 
-        <div>
-          <h4 className="font-semibold mb-3 flex items-center gap-2">
-            <FaBook className="text-orange-500" /> Resources
-          </h4>
-          <ul className="space-y-2 text-sm">
-            <li>Featured Insights</li>
-            <li>Webinars</li>
-            <li>Glossary</li>
-            <li>Client Stories</li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="font-semibold mb-3 flex items-center gap-2">
-            <FaLightbulb className="text-orange-500" /> What We Do
-          </h4>
-          <ul className="space-y-2 text-sm">
-            <li>Research & Advisory</li>
-            <li>Conferences</li>
-            <li>Consulting</li>
-            <li>Digital Markets</li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Bottom Section */}
-      <div className="text-center text-sm text-gray-500 border-t pt-6">
-        <div className="flex justify-center mb-3">
-          <img src="/hari/logo-main.png" alt="LeMiCi Logo" className="h-10" />
-        </div>
-        <p>Bengaluru | Mumbai | Hyderabad | Gurgaon</p>
-        <p className="mt-2">
-          © 2025 LeMiCi. All rights reserved. Empowering Local Businesses with
-          Digital Growth.
-        </p>
       </div>
     </footer>
   );

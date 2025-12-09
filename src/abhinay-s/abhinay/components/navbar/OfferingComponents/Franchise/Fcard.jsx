@@ -161,7 +161,7 @@ export function FcardGrid({
           <Fcard
             key={idx}
             {...item}
-            onClick={() => navigate('/franchise/details')}
+            onClick={() => navigate(item.title == "GolfEdge Academy" ? '/newFranchise2' : '/newFranchise1')}
           />
         ))}
       </div>

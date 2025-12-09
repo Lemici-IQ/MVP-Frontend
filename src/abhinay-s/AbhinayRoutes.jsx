@@ -18,6 +18,7 @@ import StartupOpportunities from './abhinay/components/navbar/OfferingComponents
 import InvestorHub from './abhinay/components/navbar/OfferingComponents/StartuspsZone/InvestorHub'
 import StartupOppurtunities from './abhinay/components/navbar/OfferingComponents/StartuspsZone/StartupOppurtunities'
 import Franchise from './abhinay/components/navbar/OfferingComponents/Franchise/Franchise'
+// import NewFF from './abhinay/components/navbar/OfferingComponents/Franchise/NewFF.jsx'
 import Single from './abhinay/components/navbar/OfferingComponents/Franchise/Single'
 import BusinessCategories from './abhinay/components/navbar/OfferingComponents/Franchise/BusinessCategories'
 import Opp from './abhinay/components/navbar/OfferingComponents/Franchise/Opp'
@@ -28,12 +29,20 @@ import Individual from './abhinay/components/navbar/OfferingComponents/eb2b/Indi
 import A from './abhinay/components/A'
 import B from './abhinay/components/B'
 import NewHomePage from './abhinay/NewHomePage'
- 
+import Dashboard from './components/Dashboard.jsx'
+import IndFranchiseFood from './abhinay/components/navbar/OfferingComponents/Franchise/IndFranchiseFood.jsx'
+import IndFranchiseSport from './abhinay/components/navbar/OfferingComponents/Franchise/IndFranchiseSport.jsx'
+import Community from './utils/Community.jsx'
+import DataLicensing from './pages/DataLicensing.jsx'
+import OurCulture from './pages/OurCulture.jsx'
+import NewFranchiseListing from './pages/NewFranchiseListing.jsx'
+import NewFranchiseListingGolf from './pages/NewFranchiseListingGolf.jsx'
 function AbhinayRoutes() {
    
 
   return (
     <>
+
         <Route path="" element={<NewHomePage />} />
         <Route path="coming-soon" element={<ComingSoon />} />
         <Route path="offerings" element={<Offerings />} />
@@ -58,10 +67,19 @@ function AbhinayRoutes() {
         {/* <Route path="investment" element={<SinglePage />} /> */}
         {/* <Route path="data" element={<B />} /> */}
         {/* <Route path="newHomePage" element={<NewHomePage />} /> */}
-          
-    
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/newFranchise1" element={<IndFranchiseFood />} />
+        <Route path="/newFranchise2" element={<IndFranchiseSport />} />
+        <Route path="/community-page" element={<Community />} />
+        <Route path="/data-licensing" element={<DataLicensing />} />
+        <Route path="/our-culture" element={<OurCulture />} />
+        <Route path="/Individual-food-listingpage" element={<NewFranchiseListing />} />
+        <Route path="/Individual-golf-listingpage" element={<NewFranchiseListingGolf />} />
     </>
   )
 }
 
 export default AbhinayRoutes;
+
+
+

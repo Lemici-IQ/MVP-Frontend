@@ -5,10 +5,10 @@ import ExploreProducts from '../../components/SoftwareHuntComponents/SoftwareHun
 import Banner from '../../components/SoftwareHuntComponents/SoftwareHuntHomePageComponents/Banner';
 import SoftwareShowcase from '../../components/SoftwareHuntComponents/SoftwareHuntHomePageComponents/SoftwareShowcase';
 import TalentBanner from '../../components/SoftwareHuntComponents/SoftwareHuntHomePageComponents/TalentBanner';
-import StatsAndRegisterSection from '../../components/SoftwareHuntComponents/SoftwareHuntHomePageComponents/StatsAndRegisterSection';
 import SoftwareReport from '../../components/SoftwareHuntComponents/SoftwareHuntHomePageComponents/SoftwareReport';
+import StatsSection from '../../components/SoftwareHuntComponents/SoftwareHuntHomePageComponents/StatsSection';
 
-function DataProviderHome() {
+function SoftwareHuntHome() {
   return (
     <>
       {/* <Navbar /> */}
@@ -17,10 +17,10 @@ function DataProviderHome() {
       <Banner />
       <SoftwareShowcase />
       <TalentBanner />
-      <StatsAndRegisterSection />
+      <StatsSection />
       <SoftwareReport />
     </>
   )
 }
 
-export default DataProviderHome;
+export default SoftwareHuntHome;

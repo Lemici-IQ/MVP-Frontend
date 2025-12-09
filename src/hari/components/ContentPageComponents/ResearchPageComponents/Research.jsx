@@ -48,7 +48,10 @@ const ResearchPage = () => {
   return (
     <section className="px-5 sm:px-10 lg:px-20 py-10 bg-white">
       {/* Back Arrow */}
-      <div className="mb-6 flex items-center gap-2 text-gray-700 hover:text-gray-900 cursor-pointer transition">
+      <div
+        onClick={() => window.history.back()}
+        className="mb-6 flex items-center gap-2 text-gray-700 hover:text-gray-900 cursor-pointer transition"
+      >
         <FaArrowLeft className="text-xl" />
         <span className="text-sm font-medium">Back</span>
       </div>

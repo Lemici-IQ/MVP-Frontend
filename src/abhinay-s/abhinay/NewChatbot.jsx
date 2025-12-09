@@ -12,94 +12,83 @@ const NewChatbot = () => {
 
   // input based routing - comprehensive intent map
   const intentMatchers = useMemo(() => ([
-    // Home Page
-    // {
-    //     path: '/',
-    //     keys: ['home', 'homepage', 'main', 'landing', 'lemici', 'lemici demo']
-    // },
-
-
-    // Offerings & Services
-    // {
-    //     path: '/offerings',
-    //     keys: ['offering', 'offerings', 'offers', 'promotions', 'seasonal offers', 'deals', 'discounts', 'special deals', 'what you do']
-    // },
-
-    // Government Schemes
     {
       path: '/government-scheme-listing',
       keys: ['govt', 'government', 'scheme', 'schemes', 'subsidies', 'support programs', 'govt scheme finder']
     },
-    // {
-    //     path: '/pricings',
-    //     keys: ['pricing', 'pricings', 'price', 'plan', 'plans', 'cost', 'subscription', 'fees']
-    // },
-
-    // Startups Zone
     {
       path: '/startups-zone-opportunities',
       keys: ['startup', 'startups zone', 'startups', 'funding', 'recognition', 'unicorns', 'business models']
     },
-    // {
-    //   path: '/startups-zone-opportunities',
-    //   keys: ['opportunity', 'opportunities', 'startup opportunities', 'business models']
-    // },
     {
       path: '/startups-zone-investorhub',
       keys: ['Investor page', 'Investors', 'Investment Themes', 'investor']
     },
 
-    // Franchise
+    // Franchise – Food Category (check first for specific match)
     {
-      path: '/franchise/oppurtunties',
-      keys: ['franchise', 'franchising', 'food franchise', 'franchise partnerships', 'franchise investment', 'franchise cost', 'franchise location', 'franchise setup', 'franchise application']
+      path: '/Individual-food-listingpage',
+      keys: [
+        'food',
+        'restaurant',
+        'food franchise',
+        'best food franchise',
+        'franchise in food'
+      ],
+      requiresSecondary: 'franchise'
     },
 
-    // Dynamic Pages
-    // {
-    //     path: '/investment',
-    //     keys: ['investment', 'investment opportunities', 'investors']
-    // },
-    // {
-    //     path: '/products',
-    //     keys: ['products', 'catalog', 'product list', 'available products', 'food products', 'product showcase']
-    // },
-    // {
-    //   path: '/compliance',
-    //   keys: ['licenses', 'food license', 'compliance requirements', 'registration', 'licensing']
-    // },
-    // {
-    //   path: '/partnership',
-    //   keys: ['partnership', 'partnership opportunities', 'collaboration']
-    // },
-    // {
-    //   path: '/training',
-    //   keys: ['training', 'growth programs', 'skill development']
-    // },
-    // {
-    //   path: '/account',
-    //   keys: ['account setup', 'account login', 'login', 'signup', 'sign up', 'register']
-    // },
-    // {
-    //   path: '/support',
-    //   keys: ['support', 'customer care', 'customer support', 'help']
-    // },
-    // {
-    //   path: '/aboutus',
-    //   keys: ['about', 'about us', 'company', 'team', 'who we are']
-    // },
+    // Franchise – Golf Category (check second for specific match)
+    {
+      path: '/Individual-golf-listingpage',
+      keys: [
+        'golf',
+        'golf franchise',
+        'franchise golf',
+        'golf business franchise',
+        'golf academy franchise',
+      ],
+      requiresSecondary: 'franchise'
+    },
 
+    // Franchise – General Opportunities (fallback for generic franchise queries)
+    {
+      path: '/franchise/oppurtunties',
+      keys: [
+        'franchise ideas',
+        'franchise',
+        'franchising',
+        'franchise business',
+        'franchise opportunities',
+        'franchise investment',
+        'franchise setup',
+        'franchise cost'
+      ]
+    },
+    // Individual Products
+    {
+      path: '/individual-product',
+      keys: ['cricket bat','cricket', 'mrf bat','mrf cricket bat']
+    },
 
     // B2B Products (fallback to coming-soon until route exists)
     {
       path: '/product-category',
-      keys: ['sports', 'equipment', 'suppliers', 'marketplace', 'wholesale', 'bulk', 'machinery', 'supplier', 'machines', 'supplies', 'manufacturers', 'cotton', 'cricket', 'bat', 'b2b', 'products']
+      keys: ['sports', 'equipment', 'suppliers', 'supplier']
     },
 
     // Software Products (fallback)
     {
-      path: '/software-hunt-home',
-      keys: ['hrms', 'software', 'system', 'crm', 'lms', 'capterra', 'keka', 'bitrix']
+      path: '/crm',
+      keys: ['software products', 'crm', 'crm softwares']
+    },
+    {
+      path: '/webdev',
+      keys: ['software services','web development', 'web dev']
+    },
+    {
+      path: '/ai',
+      keys: ['ai products', 'ai tools', 'ai software']
     },
 
     // Market Research (fallback)
@@ -115,11 +104,7 @@ const NewChatbot = () => {
       keys: ['expert', 'consultant', 'consult', 'consulting', 'advice', 'advisor', 'mentorship', 'specialist', 'professional']
     },
 
-    // Business Events & Associations (fallback)
-    // {
-    //   path: '/coming-soon',
-    //   keys: ['events', 'networking', 'conferences', 'trade', 'fairs', 'mahakumbh', 'expo', 'world', 'shrm', 'mumbai', 'bengaluru', 'eventbrite', 'associations', 'chambers', 'commerce', 'nasscom', 'siam', 'ficci', 'cii']
-    // },
+    // Project Reports
     {
       path: '/project-reports-listing',
       keys: ['project', 'reports', 'report']
@@ -128,19 +113,25 @@ const NewChatbot = () => {
     // Data, Surveys, Dashboards
     {
       path: '/data-listing',
-      keys: ['list', 'database', 'data', 'surveys', 'open data', 'datasets']
+      keys: ['company data', 'business directory','Data provider']
     },
 
-    // AI Features (fallback)
+    // Company Info
     // {
-    //   path: '/coming-soon',
-    //   keys: ['ai', 'search', 'find', 'query', 'lookup', 'mega', 'menu', 'dropdown', 'buttons', 'navigation', 'upload', 'file', 'summary', 'extract', 'pdf', 'word', 'excel', 'multiple', 'llm', 'chatgpt', 'grok', 'model', 'comparison', 'vernacular', 'language', 'results', 'english']
+    //   path: '/data-listing',
+    //   keys: ['cosco', 'information', 'master', 'tofler', 'financials']
     // },
 
-    // Company Info
+    // Associations
     {
-      path: '/data-listing',
-      keys: ['cosco', 'information', 'master', 'tofler', 'financials']
+      path: '/association-listing',
+      keys: ['association', 'business association']
+    },
+
+    // Surveys
+    {
+      path: '/survey',
+      keys: ['survey', 'poll', 'questionnaire']
     },
 
     // Generic Coming Soon
@@ -158,8 +149,37 @@ const NewChatbot = () => {
     if (q.startsWith('/')) {
       return q; // trust explicit route input
     }
-    for (const { path, keys } of intentMatchers) {
-      if (keys.some((k) => q.includes(k))) {
+    
+    // Check if query contains "franchise" keyword
+    const hasFranchiseKeyword = q.includes('franchise');
+    
+    // If franchise keyword exists but not food or golf, show unavailable message
+    if (hasFranchiseKeyword && q.includes('food') && 
+        q.includes('golf')) {
+      // Check if it's a specific category franchise query (not just generic "franchise")
+      const franchiseGeneralKeys = ['franchise ideas', 'franchise opportunities', 'franchise business', 
+                                   'franchise investment', 'franchise setup', 'franchise cost', 
+                                   'franchising', 'franchise'];
+      const isGeneralFranchise = franchiseGeneralKeys.some(k => q === k || q === k + 's');
+      
+      if (!isGeneralFranchise) {
+        // Extract potential category name (word before or after "franchise")
+        const words = q.split(/\s+/);
+        const franchiseIndex = words.findIndex(w => w.includes('franchise'));
+        const category = franchiseIndex > 0 ? words[franchiseIndex - 1] : 
+                        franchiseIndex < words.length - 1 ? words[franchiseIndex + 1] : 'requested';
+        toast.error(`Sorry, ${category.charAt(0).toUpperCase() + category.slice(1)} franchise data is not available at the moment. We currently have data for Food and Golf franchises only.`);
+        return 'UNAVAILABLE';
+      }
+    }
+    
+    for (const { path, keys, requiresSecondary } of intentMatchers) {
+      const hasKeyMatch = keys.some((k) => q.includes(k));
+      if (hasKeyMatch) {
+        // Check if secondary keyword is required and present
+        if (requiresSecondary && !q.includes(requiresSecondary.toLowerCase())) {
+          continue;
+        }
         console.log(`Matched intent for query "${q}" to path "${path}" using keys:`, keys);
         return path;
       }
@@ -182,6 +202,10 @@ const NewChatbot = () => {
 
   const handleSubmit = useCallback(() => {
     const route = resolveRoute(query);
+    if (route === 'UNAVAILABLE') {
+      // Error message already shown in resolveRoute
+      return;
+    }
     if (route) {
       navigate(route);
     } else {
@@ -248,6 +272,10 @@ const NewChatbot = () => {
         // On final result, attempt navigation based on intent
         if (hasFinal && text) {
           const route = resolveRoute(text);
+          if (route === 'UNAVAILABLE') {
+            // Error message already shown in resolveRoute
+            return;
+          }
           if (route) {
             navigate(route);
           } else {
@@ -305,7 +333,7 @@ const NewChatbot = () => {
             {/* Left section: 80% */}
             <div className="flex-[0.8] flex flex-col gap-3">
               {/* Input row */}
-              <div className="flex items-center">
+              <div className="flex items-center mt-2">
                 <input
                   type="text"
                   placeholder="Ask Anything (Industry/Company/Sector)"
