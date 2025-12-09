@@ -12,38 +12,14 @@ const NewChatbot = () => {
 
   // input based routing - comprehensive intent map
   const intentMatchers = useMemo(() => ([
-    // Home Page
-    // {
-    //     path: '/',
-    //     keys: ['home', 'homepage', 'main', 'landing', 'lemici', 'lemici demo']
-    // },
-
-
-    // Offerings & Services
-    // {
-    //     path: '/offerings',
-    //     keys: ['offering', 'offerings', 'offers', 'promotions', 'seasonal offers', 'deals', 'discounts', 'special deals', 'what you do']
-    // },
-
-    // Government Schemes
     {
       path: '/government-scheme-listing',
       keys: ['govt', 'government', 'scheme', 'schemes', 'subsidies', 'support programs', 'govt scheme finder']
     },
-    // {
-    //     path: '/pricings',
-    //     keys: ['pricing', 'pricings', 'price', 'plan', 'plans', 'cost', 'subscription', 'fees']
-    // },
-
-    // Startups Zone
     {
       path: '/startups-zone-opportunities',
       keys: ['startup', 'startups zone', 'startups', 'funding', 'recognition', 'unicorns', 'business models']
     },
-    // {
-    //   path: '/startups-zone-opportunities',
-    //   keys: ['opportunity', 'opportunities', 'startup opportunities', 'business models']
-    // },
     {
       path: '/startups-zone-investorhub',
       keys: ['Investor page', 'Investors', 'Investment Themes', 'investor']
@@ -55,16 +31,8 @@ const NewChatbot = () => {
       keys: [
         'food',
         'restaurant',
-        'cafe',
-        'food court',
-        'fast food',
         'food franchise',
         'best food franchise',
-        'food business franchise',
-        'restaurant franchise',
-        'cafe franchise',
-        'food court franchise',
-        'fast food franchise',
         'franchise in food'
       ],
       requiresSecondary: 'franchise'
@@ -79,8 +47,6 @@ const NewChatbot = () => {
         'franchise golf',
         'golf business franchise',
         'golf academy franchise',
-        'sports golf franchise',
-        'golf franchise business'
       ],
       requiresSecondary: 'franchise'
     },
@@ -99,40 +65,7 @@ const NewChatbot = () => {
         'franchise cost'
       ]
     },
-
-    // Dynamic Pages
-    // {
-    //     path: '/investment',
-    //     keys: ['investment', 'investment opportunities', 'investors']
-    // },
-    // {
-    //     path: '/products',
-    //     keys: ['products', 'catalog', 'product list', 'available products', 'food products', 'product showcase']
-    // },
-    // {
-    //   path: '/compliance',
-    //   keys: ['licenses', 'food license', 'compliance requirements', 'registration', 'licensing']
-    // },
-    // {
-    //   path: '/partnership',
-    //   keys: ['partnership', 'partnership opportunities', 'collaboration']
-    // },
-    // {
-    //   path: '/training',
-    //   keys: ['training', 'growth programs', 'skill development']
-    // },
-    // {
-    //   path: '/account',
-    //   keys: ['account setup', 'account login', 'login', 'signup', 'sign up', 'register']
-    // },
-    // {
-    //   path: '/support',
-    //   keys: ['support', 'customer care', 'customer support', 'help']
-    // },
-    // {
-    //   path: '/aboutus',
-    //   keys: ['about', 'about us', 'company', 'team', 'who we are']
-    // },
+    // Individual Products
     {
       path: '/individual-product',
       keys: ['cricket bat','cricket', 'mrf bat','mrf cricket bat']
@@ -141,9 +74,8 @@ const NewChatbot = () => {
     // B2B Products (fallback to coming-soon until route exists)
     {
       path: '/product-category',
-      keys: ['sports', 'equipment', 'suppliers', 'marketplace', 'wholesale', 'bulk', 'machinery', 'supplier', 'machines', 'supplies', 'manufacturers', 'cotton', 'cricket', 'bat', 'b2b', 'b2b products', 'b2b marketplace']
+      keys: ['sports', 'equipment', 'suppliers', 'supplier']
     },
-    
 
     // Software Products (fallback)
     {
@@ -152,7 +84,7 @@ const NewChatbot = () => {
     },
     {
       path: '/webdev',
-      keys: ['software services', 'software', 'web development', 'web dev']
+      keys: ['software services','web development', 'web dev']
     },
     {
       path: '/ai',
@@ -172,11 +104,7 @@ const NewChatbot = () => {
       keys: ['expert', 'consultant', 'consult', 'consulting', 'advice', 'advisor', 'mentorship', 'specialist', 'professional']
     },
 
-    // Business Events & Associations (fallback)
-    // {
-    //   path: '/coming-soon',
-    //   keys: ['events', 'networking', 'conferences', 'trade', 'fairs', 'mahakumbh', 'expo', 'world', 'shrm', 'mumbai', 'bengaluru', 'eventbrite', 'associations', 'chambers', 'commerce', 'nasscom', 'siam', 'ficci', 'cii']
-    // },
+    // Project Reports
     {
       path: '/project-reports-listing',
       keys: ['project', 'reports', 'report']
@@ -185,19 +113,25 @@ const NewChatbot = () => {
     // Data, Surveys, Dashboards
     {
       path: '/data-listing',
-      keys: ['list', 'database', 'data', 'surveys', 'open data', 'datasets', 'business directory']
+      keys: ['company data', 'business directory','Data provider']
     },
 
-    // AI Features (fallback)
+    // Company Info
     // {
-    //   path: '/coming-soon',
-    //   keys: ['ai', 'search', 'find', 'query', 'lookup', 'mega', 'menu', 'dropdown', 'buttons', 'navigation', 'upload', 'file', 'summary', 'extract', 'pdf', 'word', 'excel', 'multiple', 'llm', 'chatgpt', 'grok', 'model', 'comparison', 'vernacular', 'language', 'results', 'english']
+    //   path: '/data-listing',
+    //   keys: ['cosco', 'information', 'master', 'tofler', 'financials']
     // },
 
-    // Company Info
+    // Associations
     {
-      path: '/data-listing',
-      keys: ['cosco', 'information', 'master', 'tofler', 'financials']
+      path: '/association-listing',
+      keys: ['association', 'business association']
+    },
+
+    // Surveys
+    {
+      path: '/survey',
+      keys: ['survey', 'poll', 'questionnaire']
     },
 
     // Generic Coming Soon

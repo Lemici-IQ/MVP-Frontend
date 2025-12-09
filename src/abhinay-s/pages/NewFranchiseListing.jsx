@@ -424,14 +424,14 @@ export default function NewFranchiseListing() {
 //   ];
     const items = [
   {
-    location: "Major Metros & Tier-1",
-    title: "Taco Bell (India)",
-    since: "2010 (India)",
-    logoUrl: "/abhinay/franchise/tacobell.png",
+    location: "Chandigarh, India",
+    title: "Haldiram’s",
+    since: "Since 1997",
+    logoUrl: "/abhinay/image.png",
     description:
-      "International Mexican-inspired QSR known for tacos, burritos & fusion fast-food. Strong mall presence and youth-focused brand...",
-    rating: 4.1,
-    tags: ["Unit", "Verified", "QSR", "Mexican Fast Food", "Youth"],
+      "Renowned Indian sweets and snacks brand offering a wide range of traditional delicacies, namkeens, and mithai...",
+    rating: 4.5,
+    tags: ["Unit", "Verified", "Indian Food", "Pan-India"],
     stats: {
       space: "600–1,800 sq ft",
       outlets: "120+",
@@ -445,9 +445,29 @@ export default function NewFranchiseListing() {
 
   {
     location: "Pan-India",
+    title: "Kathi Junction",
+    since: "2009",
+    logoUrl: "/abhinay/franchise/kathicard.jpg",
+    description:
+      "Kathi Junction is a prominent Indian quick-service restaurant (QSR) chain specializing in Kathi Rolls, Shawarma, and other Mughlai/Punjabi-inspired fast food. Founded in 2009 by Navneet Sajwan, the ...",
+    rating: 4.9,
+    tags: ["Unit", "Verified", "Trusted Seller", "Kathi Rolls", "Pan-India"],
+    stats: {
+      space: "1,200–2,500 sq ft",
+      outlets: "300–500+",
+      investment: "₹1.5 Cr – ₹3 Cr",
+    },
+    highlights: "Strong dine-in brand recall",
+    verified: true,
+    ctaText: "Send Inquiry",
+    c: "#C62828",
+  },
+
+  {
+    location: "Pan-India",
     title: "KFC (India)",
     since: "1995",
-    logoUrl: "/abhinay/franchise/kfc.png",
+    logoUrl: "/abhinay/franchise/7.png",
     description:
       "Top chicken-based QSR chain known for fried chicken buckets and burgers. Strong dine-in and delivery presence...",
     rating: 4.0,
@@ -467,7 +487,7 @@ export default function NewFranchiseListing() {
     location: "Pan-India",
     title: "Domino’s (India)",
     since: "1996",
-    logoUrl: "/abhinay/franchise/dominos.png",
+    logoUrl: "/abhinay/franchise/image.png",
     description:
       "India’s biggest pizza delivery chain with strong neighborhood model and 30-minute delivery focus...",
     rating: 4.1,
@@ -487,7 +507,7 @@ export default function NewFranchiseListing() {
     location: "Pan-India",
     title: "Subway (India)",
     since: "2001",
-    logoUrl: "/abhinay/franchise/subway.png",
+    logoUrl: "/abhinay/4f4.png",
     description:
       "Health-focused sandwich QSR offering customization and multi-format models like kiosks and mall outlets...",
     rating: 4.0,
@@ -507,7 +527,7 @@ export default function NewFranchiseListing() {
     location: "Pan-India",
     title: "Burger King (India)",
     since: "2014",
-    logoUrl: "/abhinay/franchise/burgerking.png",
+    logoUrl: "/abhinay/franchise/4.png",
     description:
       "Global burger chain with flame-grilled burgers and aggressive mall-based expansion strategy...",
     rating: 4.0,
@@ -521,146 +541,6 @@ export default function NewFranchiseListing() {
     verified: true,
     ctaText: "Send Inquiry",
     c: "#F57C00",
-  },
-
-  {
-    location: "Pan-India",
-    title: "Pizza Hut (India)",
-    since: "1996",
-    logoUrl: "/abhinay/franchise/pizzahut.png",
-    description:
-      "Global pizza dine-in & delivery chain known for pan pizzas, pasta and family-friendly ambiance...",
-    rating: 4.0,
-    tags: ["Unit", "Verified", "Pizza", "Dine-in", "Delivery"],
-    stats: {
-      space: "1,200–2,500 sq ft",
-      outlets: "300–500+",
-      investment: "₹1.5 Cr – ₹3 Cr",
-    },
-    highlights: "Strong dine-in brand recall",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#C62828",
-  },
-
-  {
-    location: "Pan-India & Exports",
-    title: "Haldiram’s",
-    since: "1937",
-    logoUrl: "/abhinay/franchise/haldirams.png",
-    description:
-      "India’s most recognized sweets & veg dining brand. Offers bakery, kiosk & restaurant franchise models...",
-    rating: 4.2,
-    tags: ["Unit", "Verified", "Sweets", "Veg Restaurant"],
-    stats: {
-      space: "Kiosk – 2000+ sq ft",
-      outlets: "150+",
-      investment: "₹10 Lakh – ₹6 Cr",
-    },
-    highlights: "High festival demand & strong brand recall",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#F4A100",
-  },
-
-  {
-    location: "Pan-India & Abroad",
-    title: "Bikanervala",
-    since: "1950s",
-    logoUrl: "/abhinay/franchise/bikanervala.png",
-    description:
-      "Popular vegetarian sweets & dining chain with strong family audience and festival-season demand...",
-    rating: 4.0,
-    tags: ["Unit", "Verified", "Sweets", "Family Dining"],
-    stats: {
-      space: "500–2,000 sq ft",
-      outlets: "90+",
-      investment: "₹40 Lakh – ₹3.75 Cr",
-    },
-    highlights: "Premium traditional brand with NRI appeal",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#D84315",
-  },
-
-  {
-    location: "Pan-India",
-    title: "Café Coffee Day (CCD)",
-    since: "1996",
-    logoUrl: "/abhinay/franchise/ccd.png",
-    description:
-      "India’s iconic café chain popular for youth hangouts, meetings, and work-friendly ambiance...",
-    rating: 3.9,
-    tags: ["Unit", "Verified", "Cafe", "Beverages"],
-    stats: {
-      space: "1,000–1,500 sq ft",
-      outlets: "1000 historically",
-      investment: "₹50 Lakh – ₹1 Cr",
-    },
-    highlights: "Strong brand recall among students",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#8D6E63",
-  },
-
-  {
-    location: "Pan-India",
-    title: "Barista",
-    since: "2000",
-    logoUrl: "/abhinay/franchise/barista.png",
-    description:
-      "Premium café offering Italian-style beverages and bakery items. Good for high-street and office zones...",
-    rating: 4.0,
-    tags: ["Unit", "Verified", "Cafe", "Beverages"],
-    stats: {
-      space: "200–1,000 sq ft",
-      outlets: "350+",
-      investment: "₹10 Lakh – ₹1 Cr",
-    },
-    highlights: "Supports kiosk & full café models",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#A0522D",
-  },
-
-  {
-    location: "Pan-India (Cloud Kitchens)",
-    title: "Rebel Foods / Faasos",
-    since: "2011",
-    logoUrl: "/abhinay/franchise/rebelfoods.png",
-    description:
-      "World’s largest cloud kitchen operator with brands like Faasos, Behrouz Biryani & Oven Story...",
-    rating: 4.0,
-    tags: ["Unit", "Verified", "Cloud Kitchen", "Delivery"],
-    stats: {
-      space: "300–800 sq ft",
-      outlets: "350+ kitchens",
-      investment: "₹1 Lakh – ₹50 Lakh",
-    },
-    highlights: "Highest scalability & delivery-first model",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#512DA8",
-  },
-
-  {
-    location: "Pan-India",
-    title: "Wow! Momo",
-    since: "2008",
-    logoUrl: "/abhinay/franchise/wowmomo.png",
-    description:
-      "Fast-growing momo QSR with strong presence in malls & metros. Offers dine-in + kiosk models...",
-    rating: 4.0,
-    tags: ["Unit", "Verified", "Momo", "Snacks"],
-    stats: {
-      space: "80–300 sq ft",
-      outlets: "300–650+",
-      investment: "₹8–22 Lakh / ₹20–35 Lakh",
-    },
-    highlights: "Low Capex and quick breakeven",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#FFB300",
   },
 ];
   
