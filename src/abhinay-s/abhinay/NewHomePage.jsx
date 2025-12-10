@@ -4,6 +4,7 @@ import {Usables1, Usables2, Usables3} from '../utils/Usables'
 import { PieChart, Expand, Puzzle } from "lucide-react";
 import Footernew from '@/abhinay-s/components/Footernew';
 import { X } from 'lucide-react';
+import FloatingChatbot from './FloatingChatbot';
 
 
 const cards = [
@@ -629,104 +630,91 @@ const NewHomePage = () => {
 
                 {/* Floating Chatbot */}
                 {showChatbot && (
-                    <div className="fixed inset-10 z-50 flex items-end justify-center pointer-events-none">
-                        <div className="pointer-events-auto bg-white rounded-t-3xl shadow-3xl w-full max-w-2xl mb-0 animate-slide-up relative">
-                            {/* Close Button - Positioned to the right */}
-                            <button
-                                onClick={() => setShowChatbot(false)}
-                                className="absolute -right-12 top-6 p-2 bg-white hover:bg-gray-100 rounded-full transition-colors shadow-lg"
-                            >
-                                <X className="w-5 h-5 text-gray-600" />
-                            </button>
+//                     <div className="fixed inset-10 z-50 flex items-end justify-center pointer-events-none">
+//                         <div className="pointer-events-auto bg-white rounded-t-3xl shadow-3xl w-full max-w-2xl mb-0 animate-slide-up relative">
+//                             {/* Close Button - Positioned to the right */}
+//                             <button
+//                                 onClick={() => setShowChatbot(false)}
+//                                 className="absolute -right-12 top-6 p-2 bg-white hover:bg-gray-100 rounded-full transition-colors shadow-lg"
+//                             >
+//                                 <X className="w-5 h-5 text-gray-600" />
+//                             </button>
 
 
-                            {/* Chatbot Content */}
+//                             {/* Chatbot Content */}
 
 
-                            {/* Input Container */}
-                            <div
-  className="
-    flex items-center gap-2
-    border-2 border-gray-200 rounded-xl
-    px-4 py-3
-    bg-white
-    shadow-[0_0_12px_#6D3E93]/40
-    hover:shadow-[0_0_16px_#6D3E93]/60
-    transition-all duration-300
-  "
->
+//                             {/* Input Container */}
+//                             <div
+//   className="
+//     flex items-center gap-2
+//     border-2 border-gray-200 rounded-xl
+//     px-4 py-3
+//     bg-white
+//     shadow-[0_0_12px_#6D3E93]/40
+//     hover:shadow-[0_0_16px_#6D3E93]/60
+//     transition-all duration-300
+//   "
+// >
 
-                                <input
-                                    type="text"
-                                    value={query}
-                                    onChange={(e) => setQuery(e.target.value)}
-                                    onKeyPress={(e) => e.key === 'Enter' && handleSubmit(e)}
-                                    placeholder="Ask me anything..."
-                                    className="flex-1 outline-none bg-transparent text-gray-800 placeholder-gray-400"
-                                />
+//                                 <input
+//                                     type="text"
+//                                     value={query}
+//                                     onChange={(e) => setQuery(e.target.value)}
+//                                     onKeyPress={(e) => e.key === 'Enter' && handleSubmit(e)}
+//                                     placeholder="Ask me anything..."
+//                                     className="flex-1 outline-none bg-transparent text-gray-800 placeholder-gray-400"
+//                                 />
 
-                                {/* Microphone Button */}
-                                <button
-                                    onClick={toggleListening}
-                                    disabled={!speechSupported}
-                                    title={
-                                        speechSupported
-                                            ? isListening
-                                                ? 'Listening… click to stop'
-                                                : 'Speak your query'
-                                            : 'Voice input not supported'
-                                    }
-                                    className={`rounded-md p-1 transition-colors ${isListening ? 'bg-red-100' : 'bg-transparent'
-                                        } ${!speechSupported
-                                            ? 'opacity-50 cursor-not-allowed'
-                                            : 'cursor-pointer'
-                                        }`}
-                                >
-                                    <svg
-                                        width="14"
-                                        height="20"
-                                        viewBox="0 0 14 20"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M7 19V16.5455M7 16.5455C5.4087 16.5455 3.88258 15.8558 2.75736 14.6283C1.63214 13.4008 1 11.736 1 10M7 16.5455C8.5913 16.5455 10.1174 15.8558 11.2426 14.6283C12.3679 13.4008 13 11.736 13 10M7 14.0909C4.9375 14.0909 3.25 12.3138 3.25 10.1407V4.95018C3.25 2.77709 4.9375 1 7 1C9.0625 1 10.75 2.77709 10.75 4.95018V10.1407C10.75 12.3138 9.0625 14.0909 7 14.0909Z"
-                                            stroke={isListening ? '#ef4444' : 'black'}
-                                            strokeOpacity={isListening ? '0.8' : '0.3'}
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                        />
-                                    </svg>
-                                </button>
+//                                 {/* Microphone Button */}
+//                                 <button
+//                                     onClick={toggleListening}
+//                                     disabled={!speechSupported}
+//                                     title={
+//                                         speechSupported
+//                                             ? isListening
+//                                                 ? 'Listening… click to stop'
+//                                                 : 'Speak your query'
+//                                             : 'Voice input not supported'
+//                                     }
+//                                     className={`rounded-md p-1 transition-colors ${isListening ? 'bg-red-100' : 'bg-transparent'
+//                                         } ${!speechSupported
+//                                             ? 'opacity-50 cursor-not-allowed'
+//                                             : 'cursor-pointer'
+//                                         }`}
+//                                 >
+//                                     <svg
+//                                         width="14"
+//                                         height="20"
+//                                         viewBox="0 0 14 20"
+//                                         fill="none"
+//                                         xmlns="http://www.w3.org/2000/svg"
+//                                     >
+//                                         <path
+//                                             d="M7 19V16.5455M7 16.5455C5.4087 16.5455 3.88258 15.8558 2.75736 14.6283C1.63214 13.4008 1 11.736 1 10M7 16.5455C8.5913 16.5455 10.1174 15.8558 11.2426 14.6283C12.3679 13.4008 13 11.736 13 10M7 14.0909C4.9375 14.0909 3.25 12.3138 3.25 10.1407V4.95018C3.25 2.77709 4.9375 1 7 1C9.0625 1 10.75 2.77709 10.75 4.95018V10.1407C10.75 12.3138 9.0625 14.0909 7 14.0909Z"
+//                                             stroke={isListening ? '#ef4444' : 'black'}
+//                                             strokeOpacity={isListening ? '0.8' : '0.3'}
+//                                             strokeWidth="1.5"
+//                                             strokeLinecap="round"
+//                                             strokeLinejoin="round"
+//                                         />
+//                                     </svg>
+//                                 </button>
 
-                                {/* Send Button */}
-                                <button onClick={handleSubmit} className="hover:scale-110 transition-transform">
-                                    <div className="w-6 h-6 bg-white rounded-sm opacity-90 flex items-center justify-center cursor-pointer">
-                                        <img src="/abhinay/cube.png" alt="send" />
-                                    </div>
-                                </button>
-                            </div>
+//                                 {/* Send Button */}
+//                                 <button onClick={handleSubmit} className="hover:scale-110 transition-transform">
+//                                     <div className="w-6 h-6 bg-white rounded-sm opacity-90 flex items-center justify-center cursor-pointer">
+//                                         <img src="/abhinay/cube.png" alt="send" />
+//                                     </div>
+//                                 </button>
+//                             </div>
 
-                        </div>
-                    </div>
+//                         </div>
+//                     </div>
+<FloatingChatbot/>
                 )}
 
-                <style jsx>{`
-                    @keyframes slide-up {
-                        from {
-                            transform: translateY(100%);
-                            opacity: 0;
-                        }
-                        to {
-                            transform: translateY(0);
-                            opacity: 1;
-                        }
-                    }
-                    .animate-slide-up {
-                        animation: slide-up 0.3s ease-out;
-                    }
-                `}</style>
+                
 
                 <div className='max-w-6xl bg-red-100 mx-auto overflow-x-hidden'>
 
