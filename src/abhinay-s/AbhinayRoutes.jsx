@@ -63,7 +63,7 @@ function AbhinayRoutes() {
         <Route path="training" element={<Training />} />
         <Route path="account" element={<Account />} />
         <Route path="support" element={<Support />} />
-        <Route path="aboutus" element={<AboutUs />} />
+        <Route path="aboutus" element={<AboutUs />}/>
         {/* <Route path="investment" element={<SinglePage />} /> */}
         {/* <Route path="data" element={<B />} /> */}
         {/* <Route path="newHomePage" element={<NewHomePage />} /> */}
