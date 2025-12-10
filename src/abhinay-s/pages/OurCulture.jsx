@@ -157,11 +157,12 @@ export default function OurCulture() {
               </div>
               <div className="h-1/2 p-4 flex flex-col">
                 <p className="text-sm font-bold">
-                 Fostering Creativity and <br /> Innvoation.
+                  Fostering Creativity and <br /> Innvoation.
                 </p>
 
                 <p className="text-sm text-[#808080] mt-4">
-                    Build and design a survey or form in no time with AI, start from scratch or use one of our 500+ templates.
+                  Build and design a survey or form in no time with AI, start
+                  from scratch or use one of our 500+ templates.
                 </p>
               </div>
             </div>
@@ -178,13 +179,14 @@ export default function OurCulture() {
                 />
               </div>
               <div className="h-1/2 p-4 flex flex-col">
-                         <p className="text-sm font-bold">
-                 Fostering Creativity and <br /> Innvoation.
+                <p className="text-sm font-bold">
+                  Fostering Creativity and <br /> Innvoation.
                 </p>
 
                 <p className="text-sm text-[#808080] mt-4">
-                    Build and design a survey or form in no time with AI, start from scratch or use one of our 500+ templates.
-            </p>
+                  Build and design a survey or form in no time with AI, start
+                  from scratch or use one of our 500+ templates.
+                </p>
               </div>
             </div>
           </div>
@@ -200,225 +202,448 @@ export default function OurCulture() {
                 />
               </div>
               <div className="h-1/2 p-4 flex flex-col">
-                    <p className="text-sm font-bold">
-                 Fostering Creativity and <br /> Innvoation.
+                <p className="text-sm font-bold">
+                  Fostering Creativity and <br /> Innvoation.
                 </p>
 
                 <p className="text-sm text-[#808080] mt-4 mb-4">
-                    Build and design a survey or form in no time with AI, start from scratch or use one of our 500+ templates.
-            </p>
+                  Build and design a survey or form in no time with AI, start
+                  from scratch or use one of our 500+ templates.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-
-
-       <section className="w-full mt-32">
-      {/* Top Purple Section */}
-      <div className="relative text-white py-20 text-center px-6 h-[32rem]">
-        <img src="/abhinay/culturee.jpg" alt="Culture Background" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative z-10">
-          <h1 className="text-3xl font-extrabold tracking-wide mt-8">OUR CULTURE</h1>
-          <p className="mt-2 font-semibold uppercase tracking-wide">Runs Deep</p>
-
-          <h2 className="mt-10 text-xl font-semibold">
-            Fostering creativity and Innovation.
-          </h2>
-
-          <p className="mt-6 max-w-[26rem] mx-auto leading-relaxed text-sm opacity-90">
-            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-            Lorem ipsum Lorem ipsum
-          </p>
-        </div>
-      </div>
-
-      {/* Image Grid Section */}
-      <div className="py-16 px-6 grid grid-cols-2 md:grid-cols-6 gap-6 place-items-center max-w-7xl mx-auto">
-
-        {/* Image 1 */}
-        <img
-          src="abhinay/clo1.jpg"
-          className="rounded-xl object-cover w-50 h-60"
-          alt="culture 1"
-        />
-
-        {/* Image 2 */}
-        <img
-          src="abhinay/clo2.jpg"
-          className="rounded-xl object-cover w-50 h-60"
-          alt="culture 2"
-        />
-
-        {/* Image 3 */}
-        <img
-          src="abhinay/clo3.jpg"
-          className="rounded-xl object-cover w-50 h-60"
-          alt="culture 3"
-        />
-
-        {/* Purple Box with Text */}
-        <div className="w-50 h-60 rounded-xl bg-[#6619A494] flex flex-col items-center justify-center text-white text-center p-4">
-          <p className="font-semibold">Let’s Unplug</p>
-          <p className="font-semibold">and</p>
-          <p className="font-semibold">unwind!</p>
-        </div>
-
-        {/* Image 4 */}
-        <img
-          src="abhinay/clo5.jpg"
-          className="rounded-xl object-cover w-50 h-60"
-          alt="culture 4"
-        />
-        {/* Image 5 */}
-        <img
-          src="abhinay/clo5.jpg"
-          className="rounded-xl object-cover w-50 h-60"
-          alt="culture 4"
-        />
-
-      </div>
-    </section>
-
-     <footer className="w-full bg-white px-6 py-16">
-      <div className="max-w-7xl mx-auto">
-
-        {/* Top Row - Logo and Social Icons */}
-        <div className="flex justify-between items-center mb-10">
-          {/* Left - Logo */}
-          <div>
-            <img
-              src="/abhinay/images/llologo.png"
-              alt="Logo"
-              className="h-25 w-55"
-            />
-            <p className="ml-4 text-[10px] text-[#268BFF] mt-2">
-              Bengaluru | Mumbai | Hyderabad | Gurgaon
-            </p>
-          </div>
-
-          {/* Right - Social Icons */}
-          <div className="flex space-x-4">
-            <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center overflow-hidden">
-              <img src="/abhinay/images/facebook.png" alt="Facebook" className="w-10 h-10 object-contain" />
-            </div>
-            <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center overflow-hidden">
-              <img src="/abhinay/images/twitter.png" alt="Twitter" className="w-10 h-10 object-contain" />
-            </div>
-            <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center overflow-hidden">
-              <img src="/abhinay/images/youtube.png" alt="YouTube" className="w-10 h-10 object-contain" />
-            </div>
-            <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center overflow-hidden">
-              <img src="/abhinay/images/linkedin.png" alt="LinkedIn" className="w-10 h-10 object-contain" />
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-
-          {/* Left Section */}
-          <div>
-
-            <h2 className="text-3xl font-semibold mb-6">Don’t be a Stranger</h2>
-
-            <p className="text-sm font-semibold text-[#6D3E93]">Newsletter</p>
-            <p className="text-lg font-semibold mt-1">Stay in the loop</p>
-            <p className="text-sm text-gray-600 mt-1 mb-4">
-              Subscribe<br />
-              Select topics and stay current with our latest insights
+      <section className="w-full mt-32">
+        {/* Top Purple Section */}
+        <div className="relative text-white py-20 text-center px-6 h-[32rem]">
+          <img
+            src="/abhinay/culturee.jpg"
+            alt="Culture Background"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="relative z-10">
+            <h1 className="text-3xl font-extrabold tracking-wide mt-8">
+              OUR CULTURE
+            </h1>
+            <p className="mt-2 font-semibold uppercase tracking-wide">
+              Runs Deep
             </p>
 
-            {/* Email Input */}
-            <div className="flex gap-2 w-full max-w-sm mt-4">
-              <input
-                type="email"
-                placeholder="Email"
-                className="border border-gray-300 rounded-[16px] px-4 py-2 flex-grow outline-none"
+            <h2 className="mt-10 text-xl font-semibold">
+              Fostering creativity and Innovation.
+            </h2>
+
+            <p className="mt-6 max-w-[26rem] mx-auto leading-relaxed text-sm opacity-90">
+              Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
+              ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+              Lorem ipsum Lorem ipsum Lorem ipsum
+            </p>
+          </div>
+        </div>
+
+        {/* Image Grid Section */}
+        <div className="py-16 px-6 grid grid-cols-2 md:grid-cols-6 gap-6 place-items-center max-w-7xl mx-auto">
+          {/* Image 1 */}
+          <img
+            src="abhinay/clo1.jpg"
+            className="rounded-xl object-cover w-50 h-60"
+            alt="culture 1"
+          />
+
+          {/* Image 2 */}
+          <img
+            src="abhinay/clo2.jpg"
+            className="rounded-xl object-cover w-50 h-60"
+            alt="culture 2"
+          />
+
+          {/* Image 3 */}
+          <img
+            src="abhinay/clo3.jpg"
+            className="rounded-xl object-cover w-50 h-60"
+            alt="culture 3"
+          />
+
+          {/* Purple Box with Text */}
+          <div className="w-50 h-60 rounded-xl bg-[#6619A494] flex flex-col items-center justify-center text-white text-center p-4">
+            <p className="font-semibold">Let’s Unplug</p>
+            <p className="font-semibold">and</p>
+            <p className="font-semibold">unwind!</p>
+          </div>
+
+          {/* Image 4 */}
+          <img
+            src="abhinay/clo5.jpg"
+            className="rounded-xl object-cover w-50 h-60"
+            alt="culture 4"
+          />
+          {/* Image 5 */}
+          <img
+            src="abhinay/clo5.jpg"
+            className="rounded-xl object-cover w-50 h-60"
+            alt="culture 4"
+          />
+        </div>
+      </section>
+
+      <style>{`
+  footer {
+    width: 100%;
+    background: white;
+    padding: 48px 16px;
+  }
+
+  .footer-container {
+    max-width: 1280px;
+    margin: auto;
+  }
+
+  /* LOGO + SOCIAL ROW */
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  @media(min-width: 640px){
+    .footer-top {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .footer-logo-img {
+    height: 100px;
+    width: 200px;
+  }
+
+  .footer-cities {
+    font-size: 12px;
+    color: #2563eb;
+    margin-top: 8px;
+  }
+
+  .footer-heading {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 16px;
+  }
+
+  /* SOCIAL ICONS */
+  .social-circle {
+    width: 40px;
+    height: 40px;
+    background: #f3e8ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .social-circle img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .social-flex {
+    display: flex;
+    gap: 16px;
+  }
+
+  /* MAIN GRID */
+  .footer-grid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  @media(min-width: 768px){
+    .footer-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* LEFT BLOCK */
+  .newsletter-title {
+    color: #622B90;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .newsletter-heading {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .newsletter-label {
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  .newsletter-desc {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 16px;
+  }
+
+  .newsletter-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #EDEDED;
+    background: #FFFDFD;
+    border-radius: 12px;
+    outline: none;
+  }
+
+  .newsletter-btn {
+    background: #6D3E93;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+  }
+
+  @media(min-width: 640px){
+    .newsletter-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .newsletter-btn {
+      margin-top: 0;
+      width: auto;
+    }
+  }
+
+  .newsletter-btn:hover {
+    background: #7a3aa8;
+  }
+
+  /* OFFERINGS GRID */
+  .footer-col-title {
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .footer-link {
+    color: #555;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 14px;
+  }
+
+  .footer-link:hover {
+    color: #652C90;
+  }
+
+  .two-col-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  /* CONTACT + RESOURCES */
+  .footer-small-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  /* COPYRIGHT SECTION */
+  .footer-bottom {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 14px;
+    color: #555;
+  }
+
+  @media(min-width: 768px){
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+
+  .footer-links-right {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-links-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+ `}</style>
+
+      <footer>
+        <div className="footer-container">
+          {/* TOP ROW */}
+          <div className="footer-top">
+            {/* Logo */}
+            <div>
+              <img
+                src="/abhinay/images/llologo.png"
+                alt="Logo"
+                className="footer-logo-img"
               />
-              <button className="bg-[#6D3E93] text-white px-6 py-2 rounded-[16px] font-medium">
-                Subscribe
-              </button>
+
+              <p className="footer-cities">
+                Bengaluru | Mumbai | Hyderabad | Gurgaon
+              </p>
+
+              <h2 className="footer-heading">Don't be a Stranger</h2>
+            </div>
+
+            {/* Social Icons */}
+            <div className="social-flex">
+              <div className="social-circle">
+                <img src="/abhinay/images/facebook.png" alt="Facebook" />
+              </div>
+              <div className="social-circle">
+                <img src="/abhinay/images/twitter.png" alt="Twitter" />
+              </div>
+              <div className="social-circle">
+                <img src="/abhinay/images/youtube.png" alt="YouTube" />
+              </div>
+              <div className="social-circle">
+                <img src="/abhinay/images/linkedin.png" alt="LinkedIn" />
+              </div>
             </div>
           </div>
 
-          {/* Middle Section - Navigation */}
-          <div className="flex gap-16">
-
-            {/* Offerings */}
+          {/* MAIN GRID */}
+          <div className="footer-grid">
+            {/* NEWSLETTER */}
             <div>
-              <h3 className="font-semibold mb-4">Offerings</h3>
-              <ul className="text-sm text-[#7B787C] space-y-2">
-                <li>Startup Zone</li>
-                <li>Franchise Zone</li>
-                <li>Software Hunt</li>
-                <li>Business Directory</li>
-              </ul>
+              <p className="newsletter-title">Newsletter</p>
+              <h3 className="newsletter-heading">Stay in the loop</h3>
+              <p className="newsletter-label">Subscribe</p>
+
+              <p className="newsletter-desc">
+                Select topics and stay current with our latest insights
+              </p>
+
+              <div className="newsletter-row">
+                <input
+                  type="email"
+                  className="newsletter-input"
+                  placeholder="Email"
+                />
+                <button className="newsletter-btn">Subscribe</button>
+              </div>
             </div>
 
-            {/* Column 2 */}
+            {/* OFFERINGS */}
             <div>
-              <h3 className="font-semibold mb-4 opacity-0">.</h3>
-              <ul className="text-sm text-[#7B787C] space-y-2">
-                <li>Government Navigator</li>
-                <li>Market & Industry Research</li>
-                <li>eB2B Marketplace</li>
-                <li>Industry Solution</li>
-              </ul>
+              <h4 className="footer-col-title">Offerings</h4>
+
+              <div className="two-col-grid">
+                <div>
+                  <p className="footer-link">
+                    <a href="/startups-zone" className="footer-link">
+                      Startup Zone
+                    </a>
+                  </p>
+                  <p className="footer-link">
+                    <a href="/franchise" className="footer-link">
+                      Franchise Zone
+                    </a>
+                  </p>
+                  <p className="footer-link">
+                    <a href="/software-hunt-home" className="footer-link">
+                      Software Hunt
+                    </a>
+                  </p>
+                  <p className="footer-link">
+                    <a href="/business-solutions/home" className="footer-link">
+                      Business Directory
+                    </a>
+                  </p>
+                </div>
+
+                <div>
+                  <p className="footer-link">
+                    <a href="/offerings/govtnavigator" className="footer-link">
+                      Government Navigator
+                    </a>
+                  </p>
+                  <p className="footer-link">
+                    <a href="/research" className="footer-link">
+                      Market & Industry Research
+                    </a>
+                  </p>
+                  <p className="footer-link">
+                    <a href="/eB2B-home" className="footer-link">
+                      eB2B Marketplace
+                    </a>
+                  </p>
+                  <p className="footer-link">
+                    <a href="/industrial-solution" className="footer-link">
+                      Industry Solution
+                    </a>
+                  </p>
+                </div>
+              </div>
             </div>
 
-            {/* Contact */}
-            <div>
-              <h3 className="font-semibold mb-4">Contact</h3>
-              <ul className="text-sm text-[#7B787C] space-y-2">
-                <li>Contact Us</li>
-                <li>Expert</li>
-                <li>Office Location</li>
-                <li>Technical Support</li>
-              </ul>
-            </div>
+            {/* CONTACT + RESOURCES */}
+            <div className="footer-small-grid">
+              <div>
+                <h4 className="footer-col-title">Contact</h4>
+                <p className="footer-link">Contact Us</p>
+                <p className="footer-link">Expert</p>
+                <p className="footer-link">Office Location</p>
+                <p className="footer-link">Technical Support</p>
+              </div>
 
-            {/* Resources */}
-            <div>
-              <h3 className="font-semibold mb-4">Resources</h3>
-              <ul className="text-sm text-[#7B787C] space-y-2">
-                <li>Featured Insights</li>
-                <li>Webinars</li>
-                <li>Events</li>
-                <li>Client Stories</li>
-              </ul>
+              <div>
+                <h4 className="footer-col-title">Resources</h4>
+                <p className="footer-link">Featured Insights</p>
+                <p className="footer-link">Webinars</p>
+                <p className="footer-link">Events</p>
+                <p className="footer-link">Client Stories</p>
+              </div>
             </div>
+          </div>
 
+          {/* BOTTOM ROW */}
+          <div className="footer-bottom">
+            <p style={{ width: "45%", lineHeight: "22px" }}>
+              Copyright © 2025 LeMiCi. All rights reserved. Empowering Local
+              Businesses with Digital Growth.
+            </p>
+
+            <div className="footer-links-right">
+              <div className="footer-links-row">
+                <p className="footer-link">FAQ</p>
+                <p className="footer-link">Privacy Policy</p>
+                <p className="footer-link">Cookie preferences</p>
+                <p className="footer-link">Local Language information</p>
+              </div>
+
+              <div className="footer-links-row">
+                <p className="footer-link">Term of Use</p>
+                <p className="footer-link">Accessibility Statement</p>
+              </div>
+            </div>
           </div>
         </div>
-
-        {/* Bottom Links */}
-        <div className="mt-2 pt-6 text-sm text-gray-600 flex justify-between">
-          <p className="mb-4 text-center md:text-left">
-            Copyright © 2025 LeMiCi. All rights reserved. Empowering Local <br />
-            Businesses with Digital Growth.
-          </p>
-
-          <div className="mt-4 font-bold">
-            <div className="flex gap-6">
-              <span>FAQ</span>
-              <span>Privacy Policy</span>
-              <span>Cookie preferences</span>
-              <span>Local Language information</span>
-            </div>
-            <div className="flex gap-6 mt-2">
-              <span>Term of Use</span>
-              <span>Accessibility Statement</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </footer>
-
+      </footer>
     </div>
   );
 }
