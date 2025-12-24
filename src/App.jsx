@@ -26,6 +26,7 @@
  */
 
 import React from "react";
+import { ChatbotProvider } from "./abhinay-s/abhinay/ChatbotContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HariRoutes from "./hari/HariRoutes";
 import AbhinayRoutes from "./abhinay-s/AbhinayRoutes";
@@ -39,15 +40,15 @@ import SouravRoutes from "./sourav/SouravRoutes";
 function App() {
   console.log(testAlias);
   return (
-    <>
+    <ChatbotProvider>
       <Router>
         <ScrollToTop />
         {/* <Header style={{ position: "sticky", top: 0, zIndex: 1000 }} /> */}
         <Routes>
           {/* Hari Pages */}
-
+  
           {/* Sourav Pages */}
-
+  
           {/* Abhinay Pages */}
           {/* {AbhinayRoutes()} */}
           {UserRoutes()}
@@ -58,7 +59,7 @@ function App() {
           </Route>
         </Routes>
       </Router>
-    </>
+    </ChatbotProvider>
   );
 }
 

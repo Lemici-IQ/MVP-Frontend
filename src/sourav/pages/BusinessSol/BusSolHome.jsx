@@ -43,6 +43,7 @@ import {
   Menu,
   X
 } from 'lucide-react';
+import ChatbotSub from '../../../abhinay-s/utils/ChatbotSub';
 
 // --- Components ---
 
@@ -61,7 +62,14 @@ const Hero = () => {
       </h1>
 
       {/* Search Bar Container */}
-      <Chatbot />
+      {/* <Chatbot /> */}
+              <div className="w-full max-w-2xl mx-auto">
+
+                <ChatbotSub
+            placeholder="Ask Anything (Industry/Company/Sector)"
+            context="business-solutions"
+          />
+                </div>
 
       <p className="mt-8 text-gray-600 max-w-lg mx-auto">
         Speed matters in business growth. <br/> Get insights that move as fast as you do.

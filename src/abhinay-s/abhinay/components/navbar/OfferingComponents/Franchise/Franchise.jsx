@@ -57,7 +57,10 @@ import {
 // import { generateFranchiseAdvice } from '@/lib/ai.js';
 import { streamFranchiseAdvice } from "../../../../../lib/ai.js";
 import ChatbotSub from "../../../../../utils/ChatbotSub.jsx";
-import axios from "axios";
+import { getFranchiseData, getFranchiseFlags } from "@/abhinay-s/lib/api";
+import PopularListing from "./PopularListing.jsx";
+import IndustryPills from "./IndustryPills.jsx";
+import ShowStats from "./ShowStats.jsx";
 
 // Insights import was unused; removed to avoid lint warnings
 export default function Franchise() {
@@ -74,20 +77,144 @@ export default function Franchise() {
       { name: "Retail", icon: <FaStore /> },
       { name: "Courier Logistics", icon: <MdLocalShipping /> },
     ];
-  const dataUrl = "http://localhost:5000";
+    
+
+
+  // Data & flags loaded via centralized API client
+
   const [data, setData] = useState({
     industries: [],
     cities: [],
     stats: [],
     items: [],
   });
+  const [showIndustryPills, setShowIndustryPills] = useState(true);
+  const [showcities, setShowCities] = useState(true);
+  const [showStats, setShowStats] = useState(true);
+  const [popularListing, setPopularListing] = useState(true);
+  
 
   useEffect(() => {
-    axios
-      .get(`${dataUrl}/api/franchise/data`)
-      .then((res) => setData(res.data))
-      .catch((err) => console.log(err));
+    const load = async () => {
+      try {
+        const [dataResp, flags] = await Promise.all([
+          getFranchiseData(),
+          getFranchiseFlags(),
+        ]);
+
+        setData({
+          industries: dataResp.industries || [],
+          cities: dataResp.cities || [],
+          stats: dataResp.stats || [],
+          items: dataResp.items || [],
+        });
+
+        if (typeof flags.popularListing === "boolean") {
+          setPopularListing(flags.popularListing);
+        }
+        if (typeof flags.showIndustryPills === "boolean") {
+          setShowIndustryPills(flags.showIndustryPills);
+        }
+        if (typeof flags.showStats === "boolean") {
+          setShowStats(flags.showStats);
+        }
+      } catch (err) {
+        console.error("Franchise API failed", err);
+      }
+    };
+
+    load();
+
   }, []);
+    const tabs1 = ["Franchise", "Brand Leasing", "Dealer", "Super Stockist"];
+  const [activeTab1, setActiveTab1] = useState("Franchise");
+const categoriesp = [
+  { label: "Automobiles", icon: "🚗" },
+  { label: "Beauty & Salon", icon: "🌸" },
+  { label: "Business", icon: "👤" },
+  { label: "Food", icon: "🍴" },
+  { label: "Health & Wellness", icon: "❤️" },
+  { label: "Dealers & Distribution", icon: "🚚" },
+  { label: "Education", icon: "🎓" },
+  { label: "Retail", icon: "🏬" },
+  { label: "Courier Logistics", icon: "📦" },
+  { label: "View All", icon: "⋯" },
+];
+
+const indust = [
+  {
+    name: "Restaurant Franchise",
+    path: "/FranchiseHomePage/icons/1.svg",
+  },
+  {
+    name: "Business professional",
+    path: "/FranchiseHomePage/icons/2.svg",
+  },
+  {
+    name: "Business opportunities",
+    path: "/FranchiseHomePage/icons/3.svg",
+  },
+  {
+    name: "Cleaning Franchise",
+    path: "/FranchiseHomePage/icons/19.svg",
+  },
+  {
+    name: "Property & Real estate",
+    path: "/FranchiseHomePage/icons/17.svg",
+  },
+  {
+    name: "Education franchise",
+    path: "/FranchiseHomePage/icons/14.svg",
+  },
+  {
+    name: "Health care franchise",
+    path: "/FranchiseHomePage/icons/7.svg",
+  },
+  {
+    name: "Home based franchise",
+    path: "/FranchiseHomePage/icons/8.svg",
+  },
+  {
+    name: "Home services franchise",
+    path: "/FranchiseHomePage/icons/9.svg",
+  },
+  {
+    name: "Fitness franchise",
+    path: "/FranchiseHomePage/icons/10.svg",
+  },
+  {
+    name: "Retail franchise",
+    path: "/FranchiseHomePage/icons/11.svg",
+  },
+  {
+    name: "Franchise services provider",
+    path: "/FranchiseHomePage/icons/12.svg",
+  },
+  {
+    name: "Pet franchise",
+    path: "/FranchiseHomePage/icons/13.svg",
+  },
+  {
+    name: "Health & beauty",
+    path: "/FranchiseHomePage/icons/14.svg",
+  },
+  {
+    name: "Fast food franchise",
+    path: "/FranchiseHomePage/icons/15.svg",
+  },
+  {
+    name: "Golf franchise",
+    path: "/FranchiseHomePage/icons/16.svg",
+  },
+  {
+    name: "Computer & internet",
+    path: "/FranchiseHomePage/icons/17.svg",
+  },
+  {
+    name: "Food franchise",
+    path: "/FranchiseHomePage/icons/18.svg",
+  },
+];
 
   return (
     <div>
@@ -106,18 +233,23 @@ export default function Franchise() {
             </h1>
           </div>
 
-          {/* Tabs */}
-          <div className="flex justify-start sm:justify-center mt-6 sm:mt-8 gap-2 sm:gap-3 text-xs sm:text-sm mb-4 sm:mb-6 overflow-x-auto scrollbar-hide px-1">
-            <button className="flex-shrink-0 px-3 sm:px-4 py-2.5 sm:py-2 rounded-[5px] bg-white text-gray-700 border-2 border-gray-300 font-semibold hover:bg-[#4A53FA] hover:text-white hover:border-[#4A53FA] transition-all duration-200 min-w-fit whitespace-nowrap">
-              Franchise
-            </button>
-            <button className="flex-shrink-0 px-3 sm:px-4 py-2.5 sm:py-2 rounded-[5px] bg-white text-gray-700 border-2 border-gray-300 font-semibold hover:bg-[#4A53FA] hover:text-white hover:border-[#4A53FA] transition-all duration-200 min-w-fit whitespace-nowrap">
-              Brand Leasing
-            </button>
-            <button className="flex-shrink-0 px-3 sm:px-4 py-2.5 sm:py-2 rounded-[5px] bg-white text-gray-700 border-2 border-gray-300 font-semibold hover:bg-[#4A53FA] hover:text-white hover:border-[#4A53FA] transition-all duration-200 min-w-fit whitespace-nowrap">
-              Dealer/Distributer
-            </button>
-          </div>
+          {/* Tabs1 */}
+        <div className="flex gap-3 bg-white p-2 rounded-full w-fit mx-auto text-center mb-3">
+      {tabs1.map((tab) => (
+        <button
+          key={tab}
+          onClick={() => setActiveTab1(tab)}
+          className={`px-5 py-2 text-sm font-semibold rounded-[16px] transition-all duration-200
+            ${
+              activeTab1 === tab
+                ? "bg-[#4A53FA] text-white"
+                : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-100"
+            }`}
+        >
+          {tab}
+        </button>
+      ))}
+    </div>
 
           {/* Search Bar */}
           {/* <h1>hi</h1> */}
@@ -128,9 +260,7 @@ export default function Franchise() {
 
           {/* Subtext */}
           <p className="text-sm sm:text-md text-gray-500 mt-3 sm:mt-4 max-w-xl sm:max-w-2xl mx-auto px-2 sm:px-0 leading-relaxed">
-            Join a dynamic platform where bold startups meet visionary
-            investors. Fuel growth, form partnerships, and shape the
-            future—together.
+            Find, Compare, and connect with the best franchise opportunities across Industries.
           </p>
 
           {/* Logo Row */}
@@ -170,183 +300,253 @@ export default function Franchise() {
         </div>
       </div>
       <div className="w-full">
-        <div className="mx-auto w-fit bg-[#13A3B533] text-center px-6 sm:px-10 lg:px-16 text-sm sm:text-base font-semibold py-2 rounded-[30px]">
-          popular listing
+ <div className="py-10 px-6">
+      {/* Heading */}
+      <h1 className="text-center mb-2 text-4xl font-bold">Top Franchise Opportunities, Curated for You</h1>
+
+      <p className="text-center text-[#615E63] mb-8 text-lg">
+        Discover high-growth brands with the strongest ROI potential.
+      </p>
+
+      {/* Grid */}
+      <div className="max-w-9xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 px-4 sm:px-8 lg:px-12 xl:px-20">
+        {categoriesp.map((item, index) => (
+          <div
+            key={index}
+            className="bg-[#E6EDFF] rounded-2xl h-28 flex flex-col items-center justify-center gap-2 cursor-pointer hover:scale-105 transition"
+          >
+            <span className="text-2xl">{item.icon}</span>
+            <p className="text-sm font-medium text-[#3A363C] text-center">
+              {item.label}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+      </div>
+      
+
+     
+        {popularListing && (
+          <PopularListing data={ data.items } />
+        )}
+
+
+       <div className="max-w-7xl mx-auto px-6 py-12">
+      {/* Heading */}
+      <h2 className="text-3xl font-bold text-gray-900">
+        Top Categories of Distribution
+      </h2>
+      <p className="text-gray-500 mt-2">
+        From retail to services-explore categories driving India’s next wave of
+        business growth.
+      </p>
+
+      {/* Content */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-8">
+        {/* Image Card */}
+        <div>
+          <IKImage
+            path="/FranchiseHomePage/golf.jpg"
+            alt="Golf"
+            className="rounded-xl w-full h-64 object-cover"
+            loading="lazy"
+          />
+          <h3 className="font-semibold text-lg mt-4">Golf Clubs</h3>
+          <p className="text-sm text-gray-500 mt-1">
+            Distributor, Super Stockist
+          </p>
+          <p className="text-sm text-gray-600">
+            Drivers, irons, wedges, putters from premium brands
+          </p>
+        </div>
+
+        {/* Text Cards */}
+        <div>
+          <IKImage
+            path="/FranchiseHomePage/golf.jpg"
+            alt="Golf"
+            className="rounded-xl w-full h-64 object-cover"
+            loading="lazy"
+          />
+          <h3 className="font-semibold">Golf Carts</h3>
+          <p className="text-sm text-gray-500 mt-1">
+            Distributor, C&F Agent
+          </p>
+          <p className="text-sm text-gray-600">
+            Electric/Manual trolleys, golf carts (Toro, Yamaha)
+          </p>
+        </div>
+
+        <div>
+          <IKImage
+            path="/FranchiseHomePage/golf.jpg"
+            alt="Golf"
+            className="rounded-xl w-full h-64 object-cover"
+            loading="lazy"
+          />
+          <h3 className="font-semibold">Golf Balls</h3>
+          <p className="text-sm text-gray-500 mt-1">
+            Stockist, C&F Agent
+          </p>
+          <p className="text-sm text-gray-600">
+            Branded and private-label balls (Callaway, Titleist, etc.)
+          </p>
+        </div>
+
+        <div>
+          <IKImage
+            path="/FranchiseHomePage/golf.jpg"
+            alt="Golf"
+            className="rounded-xl w-full h-64 object-cover"
+            loading="lazy"
+          />
+          <h3 className="font-semibold">Accessories & Apparel</h3>
+          <p className="text-sm text-gray-500 mt-1">
+            Distributor, Stockist
+          </p>
+          <p className="text-sm text-gray-600">
+            Gloves, tees, caps, golf bags, apparel
+          </p>
+
+          <p className="text-blue-600 text-sm mt-4 cursor-pointer">
+            View More →
+          </p>
         </div>
       </div>
-      <div className="w-full px-3 sm:px-4 lg:px-6 py-6 sm:py-8 lg:py-10 space-y-6 sm:space-y-8">
-        <p className="text-center text-xl sm:text-2xl leading-relaxed">
-          Explore the top{" "}
-          <span className="font-bold"> franchise opportunities </span> and
-          discover the ones with
-          <span className="hidden sm:inline">
-            <br />
-          </span>
-          the strongest return on investment potential
-        </p>
-      </div>
-      <div className="w-full flex justify-center px-3 sm:px-4">
-        <div className="mx-auto w-full sm:w-fit flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-          {/* Categories Scrollable Bar */}
-          <div className="flex items-center gap-6 sm:gap-8 px-4 sm:px-6 py-2.5 sm:py-3 bg-white rounded-full shadow border overflow-x-auto scrollbar-hide">
-            {categories.map((cat, idx) => (
-              <div
-                key={idx}
-                className="flex flex-col items-center justify-center text-blue-600 cursor-pointer hover:text-blue-800 transition"
-              >
-                <div className="text-xl sm:text-2xl">{cat.icon}</div>
-                <span className="text-[10px] sm:text-xs mt-1 whitespace-nowrap">
-                  {cat.name}
-                </span>
-              </div>
-            ))}
 
-            {/* Arrow */}
-            <div
-              className="ml-2 sm:ml-4 text-blue-600 text-lg sm:text-xl cursor-pointer hover:text-blue-800"
-              aria-hidden
-            >
-              <IoIosArrowForward />
-            </div>
+       <div className="max-w-7xl mx-auto px-6 py-12">
+      {/* Heading */}
+      <h2 className="text-3xl font-bold text-gray-900">
+        Explore by Industry
+      </h2>
+      <p className="text-gray-500 mt-2">
+        Tailored insights across 25+ industries—from food & beverage to
+        education and beyond.
+      </p>
+
+      {/* Pills */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-6">
+        {indust.map((item, index) => (
+          <div
+            key={index}
+            className="flex items-center justify-start gap-2 py-5 px-7 bg-[#EEF0FF] text-sm text-gray-700 rounded-2xl cursor-pointer hover:bg-[#E2E6FF] w-full"
+          >
+            <IKImage
+              path={item.path}
+              alt={item.name}
+              className="w-6 h-6 object-cover flex-shrink-0"
+              loading="lazy"
+            />
+            <span className="text-xs leading-tight break-words flex-1">{item.name}</span>
           </div>
+        ))}
+      </div>
 
-          {/* Add Filter Button */}
-          <button className="flex items-center gap-1 px-4 py-2 border rounded-full text-blue-600 hover:bg-blue-50 transition self-start sm:self-auto">
-            <FiFilter />
-            <span className="text-sm">Add Filter</span>
+      <p className="text-blue-600 text-sm mt-6 cursor-pointer">
+        View All →
+      </p>
+    </div>
+    </div>
+         <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="bg-[#4A53FA] rounded-2xl flex flex-col md:flex-row items-center justify-between p-8 md:p-12 mb-8">
+        
+        {/* Left Content */}
+        <div className="max-w-md text-white">
+          <h2 className="text-2xl md:text-3xl font-bold">
+            Be Your Own Boss Today!
+          </h2>
+          <p className="text-sm text-white/80 mt-3">
+            Step into success with a franchise or dealership. The future of
+            business is in your hands.
+          </p>
+
+          <button className="mt-5 bg-white text-black px-6 py-2.5 rounded-2xl text-sm font-semibold hover:bg-gray-100 transition">
+            Start Exploring
           </button>
         </div>
-      </div>
-      <div className="w-full">
-        <div className="mx-auto w-fit bg-[#FF6105] text-white text-center px-6 sm:px-10 lg:px-16 text-sm sm:text-base font-semibold py-2 rounded-[30px] mt-10">
-          popular listing
-        </div>
-      </div>
-      <FcardGrid
-        items={data.items}
-        className="max-w-9xl mx-auto px-4 sm:px-8 lg:px-12 xl:px-20 pt-6 sm:pt-8 lg:pt-10 pb-0"
-        gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-      />
-      <div className="max-w-9xl mx-auto px-4 sm:px-8 lg:px-12 xl:px-20 mt-16">
-        <p className="font-light italic text-2xl sm:text-3xl leading-tight">
-          Top Categories of Distribution
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
-          <div className="flex flex-col items-center gap-2">
-            <IKImage
-              path="/FranchiseHomePage/distribution/1.jpg"
-              alt="Food and Beverage"
-              className="w-full rounded-[10px] object-cover"
-              style={{ aspectRatio: "1 / 1" }}
-              loading="lazy"
-            />
-            <p>Food &amp; Beverage</p>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <IKImage
-              path="/FranchiseHomePage/distribution/3.png"
-              alt="Pharmaceutical"
-              className="w-full rounded-[10px] object-cover"
-              style={{ aspectRatio: "1 / 1" }}
-              loading="lazy"
-            />
-            <p>Pharmaceutical</p>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <IKImage
-              path="/FranchiseHomePage/distribution/2.jpg"
-              alt="Electronic"
-              className="w-full rounded-[10px] object-cover"
-              style={{ aspectRatio: "1 / 1" }}
-              loading="lazy"
-            />
-            <p>Electronic</p>
-          </div>
+
+        {/* Right Image */}
+        <div className="mt-6 md:mt-0">
+          <IKImage
+            path="/FranchiseHomePage/beboss.jpg"
+            alt="CTA"
+            className="w-[320px] h-[180px] object-cover rounded-xl"
+            loading="lazy"
+          />
         </div>
 
-        {/* Heading */}
-        <h2 className="text-3xl font-semibold mt-16 mb-8">
-          Explore by Industry
-        </h2>
+      </div>
+      <IKImage
+            path="FranchiseHomePage/4cards.png"
+            alt="CTA"
+            className="w-full h-auto object-contain rounded-xl mt-16"
+            loading="lazy"
+          />
 
-        {/* Industry Pills */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {data.industries.map((item) => (
-            <div
-              key={item.id}
-              className="flex items-center justify-between border border-gray-300 rounded-full px-4 py-2 bg-white shadow-sm hover:shadow-md transition"
-            >
-              <div className="flex items-center gap-2 p-2">
-                {/* SVG Icon */}
-                <IKImage
-                  path={`/${String(item.icon).replace(
-                    "/abhinay/franchise",
-                    ""
-                  )}`}
-                  alt={item.label}
-                  className="w-7 h-7"
-                  loading="lazy"
-                />
-                <span className="text-sm">{item.label}</span>
-              </div>
-              <X size={16} className="text-gray-500" />
+         <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        {/* Left Big Card */}
+        <div className="lg:col-span-2 bg-gradient-to-br from-[#5B5FFF] to-[#4A53FA] rounded-2xl p-8 md:p-10 text-white">
+          <h2 className="text-2xl md:text-3xl font-bold leading-snug">
+            How LeMiCi Can Help Your <br /> Business Thrive
+          </h2>
+
+          <p className="text-sm md:text-base text-white/90 mt-4 max-w-xl">
+            LeMiCi is your one-stop platform for discovering, evaluating, and
+            expanding with franchise and dealership opportunities. Whether
+            you're a first-time entrepreneur or an established business, we
+            make scaling smarter and easier.
+          </p>
+
+          <button className="mt-6 bg-white text-black px-6 py-2.5 rounded-2xl text-sm font-semibold hover:bg-gray-100 transition">
+            Register for free
+          </button>
+        </div>
+
+        {/* Right Small Card */}
+        <div className=" border border-gray-200 rounded-2xl p-6 flex flex-col justify-between text-center">
+          <div>
+            <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
+            <IKImage
+            path="/FranchiseHomePage/eccr.png"
+            alt="CTA"
+            className="w-12 h-12 object-contain"
+            loading="lazy"
+          />
             </div>
-          ))}
-        </div>
 
-        {/* CTA Section */}
-        <div className="grid sm:grid-cols-2 gap-6 mt-12">
-          {/* Blue Card */}
-          <div className="bg-gradient-to-r from-indigo-500 to-blue-700 text-white p-6 rounded-2xl shadow-md">
-            <h3 className="text-lg font-semibold mb-2">
-              List Your Franchise/Distributorship
+            <h3 className="text-lg font-semibold text-gray-900">
+              List Your <br />
+              Franchise/Distributorship to <br />
+              Expand Your Reach
             </h3>
-            <p className="mb-4 text-sm">
-              Expand Your Reach to Potential Buyers
+
+            <p className="text-sm text-gray-500 mt-3">
+              Connect with potential buyers and grow your network.
             </p>
-            <button className="bg-white text-indigo-600 font-semibold px-5 py-2 rounded-full shadow hover:bg-gray-100">
-              Register for free →
-            </button>
           </div>
 
-          {/* Pink/Purple Card */}
-          <div className="bg-gradient-to-r from-pink-500 to-purple-700 text-white p-6 rounded-2xl shadow-md">
-            <h3 className="text-lg font-semibold mb-2">Start Your Business</h3>
-            <p className="mb-4 text-sm">
-              Invest with Franchise or Take Distributorship
-            </p>
-            <button className="bg-white text-pink-600 font-semibold px-5 py-2 rounded-full shadow hover:bg-gray-100">
-              Get Started →
-            </button>
-          </div>
+          <button className="mt-6 bg-[#4F5BFF] text-white py-2.5 rounded-2xl text-sm font-semibold hover:bg-[#3E43E0] transition">
+            Register for free
+          </button>
         </div>
-        <div className="text-white bg-[url('/abhinay/franchise/hlc.svg')] bg-cover bg-center bg-no-repeat h-64 sm:h-60 lg:h-72 mt-7 rounded-2xl flex flex-col justify-between p-6 sm:p-8">
-          <p className="w-full sm:w-3/4 lg:w-1/2 text-base sm:text-lg leading-tight">
-            looking to expand your franchise or find the perfect franchise{" "}
-            <br />
-            opportunity ? Franchise is your one-step stop for success We <br />{" "}
-            connect franchise with qualified franchise cross various industries.
-          </p>
-          <p className="text-2xl sm:text-3xl lg:text-4xl font-bold mt-4">
-            How LeMiCi Can <br />
-            Help Your Business Thrive
-          </p>
-        </div>
-      </div>
 
-      <div className="w-full mt-20 mb-10 flex items-center justify-center px-3 sm:px-4">
-        <Svg />
       </div>
-      <div className="max-w-9xl mx-auto px-4 sm:px-8 lg:px-12 xl:px-20 mb-20">
-        <p className="text-[#4A53FA]">Why you should choose LeMiCi</p>
-        <h1 className="text-xl sm:text-2xl mt-2 leading-tight">
-          Explore franchise opportunities <br />
-          across thriving cities !
+    </div>  
+    </div>
+      
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 xl:px-20 mb-20">
+        <p className="text-center text-black text-3xl font-bold">Why you should choose LeMiCi</p>
+        <h1 className="text-lg mt-2 text-center text-[#615E63]">
+          Explore franchise opportunities 
+across thriving cities !
         </h1>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-10 lg:gap-24 mt-6">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 lg:gap-20 mt-6">
           {data.cities.map((city) => (
             <div key={city.id} className="text-center">
-              <div className="w-full aspect-square rounded-[20px] overflow-hidden">
+              <div className="w-full aspect-square h-32 rounded-[20px] overflow-hidden">
                 <IKImage
                   path={`/${city.icon}`}
                   alt={city.label}
@@ -369,24 +569,17 @@ export default function Franchise() {
             Back to top
           </button>
         </div>
-        <div className="mt-2">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {data.stats.map((stat, idx) => (
-              <div
-                key={idx}
-                className={`shadow p-8 sm:p-10 rounded-xl text-center font-semibold ${
-                  idx === 1
-                    ? "bg-blue-500 text-white"
-                    : "bg-white text-blue-600"
-                }`}
-              >
-                <p className="text-xl sm:text-2xl">{stat.value}</p>
-                <p className="text-xs sm:text-sm mt-2">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        
+      
+
       </div>
+      <div className="w-full px-4 sm:px-8 lg:px-12 xl:px-20 mb-20">
+          
+        {/* Show Stats*/}
+       {showStats && (
+         <ShowStats stats={data.stats} />
+       )}
+       </div>
       <div className="w-full flex items-center justify-center gap-3 my-8">
         <NavLink
           to="/franchise/oppurtunties"

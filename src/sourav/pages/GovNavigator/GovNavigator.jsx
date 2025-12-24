@@ -35,6 +35,7 @@ import ai4 from "../../assets/GovNavigator/ai4.jpg";
 import family from "../../assets/GovNavigator/family.png";
 
 import SchemeListings from "./SchemeListings";
+import ChatbotSub from "../../../abhinay-s/utils/ChatbotSub";
 
 const GovtNavigator = () => {
   const [showSchemes, setShowSchemes] = useState(false);
@@ -248,8 +249,15 @@ const GovtNavigator = () => {
               </div>
 
               {/* Search Interface */}
-              <Chatbot />
+              {/* <Chatbot /> */}
 
+              <div className="w-full max-w-2xl mx-auto">
+
+                <ChatbotSub
+            placeholder="Ask Anything (Industry/Company/Sector)"
+            context="Government-Navigator"
+          />
+                </div>
               
 
               <div className="flex items-center justify-center gap-4 mt-10">

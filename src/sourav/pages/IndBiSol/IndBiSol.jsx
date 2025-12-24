@@ -40,6 +40,7 @@ import grow8 from "../../assets/IndBiSol/grow8.jpg";
 
 
 import Chatbot from "../../components/Chatbot";
+import ChatbotSub from "../../../abhinay-s/utils/ChatbotSub";
 
 
 
@@ -82,7 +83,13 @@ const HeroSection = () => {
                 ))}
               </div>
 
-              <Chatbot />
+              <div className="w-full max-w-2xl mx-auto">
+
+                <ChatbotSub
+            placeholder="Ask Anything (Industry/Company/Sector)"
+            context="industrial-solution"
+          />
+                </div>
 
               <div className=" flex justify-center items-center text-center text-gray-600 m-10">
                 <p>

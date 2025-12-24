@@ -1,0 +1,97 @@
+src/
+  ├── routes/
+  │   ├── hari/
+  │   │   └── HariRoutes.jsx
+  │   ├── sourav/ 
+  │   │   └── SouravRoutes.jsx
+  │   ├── abhinay/
+  │   │   └── AbhinayRoutes.jsx
+  │   └── index.js
+
+--------------X-------------------X----------------X-----------------
+
+Individual Route File for each dev: ex: AbhinayRoutes
+import React from 'react';
+import { Route } from 'react-router-dom';
+import AbhinayPage1 from '../../pages/Abhinay/Page1';
+import AbhinayPage2 from '../../pages/Abhinay/Page2';
+
+const AbhinayRoutes = () => {
+  return (
+    <>
+      <Route path="/abhinay/page1" element={<AbhinayPage1 />} />
+      <Route path="/abhinay/page2" element={<AbhinayPage2 />} />
+    </>
+  );
+};
+
+export default AbhinayRoutes;
+
+--------------X-------------------X----------------X-----------------
+
+App.jsx
+import React from "react";
+import { BrowserRouter as Router, Routes } from "react-router-dom";
+import HariRoutes from "./routes/hari/HariRoutes";
+import SouravRoutes from "./routes/sourav/SouravRoutes";
+import AbhinayRoutes from "./routes/abhinay/AbhinayRoutes";
+import HariPage1 from "./pages/Hari/Page1";
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <HariRoutes />
+        <SouravRoutes />
+        <AbhinayRoutes />
+        
+        {/* Optional: Default/Home page */}
+        <Route path="/" element={<HariPage1 />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+
+
+
+--------------X-------------------X----------------X-----------------
+Overall
+
+
+src/
+├── assets/
+│   ├── abhinay/        # Abhinay's offering assets
+│   ├── hari/           # Hari's offering assets 
+│   └── sourav/         # Sourav's offering assets
+├── components/
+│   ├── common/         # Shared components
+│   ├── abhinay/        # Abhinay's offering components
+│   ├── hari/           # Hari's offering components
+│   └── sourav/         # Sourav's offering components
+├── pages/              # or offerings/ or apps/
+│   ├── abhinay/        # All of Abhinay's pages (e.g. Government schemes)
+│   │   ├── page1/
+│   │   ├── page2/
+│   │   └── index.js
+│   ├── hari/          # All of Hari's pages (e.g. Franchise)
+│   │   ├── page1/
+│   │   ├── page2/
+│   │   └── index.js
+│   └── sourav/        # All of Sourav's pages (e.g. Startup)
+│       ├── page1/
+│       ├── page2/
+│       └── index.js
+├── routes/
+│   ├── abhinayRoutes.jsx
+│   ├── hariRoutes.jsx
+│   └── souravRoutes.jsx
+└── services/          # API and business logic
+    ├── abhinay/
+    ├── hari/
+    └── sourav/
+
+
+
+

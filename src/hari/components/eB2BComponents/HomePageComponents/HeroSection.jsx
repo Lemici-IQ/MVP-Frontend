@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-
+import ChatbotSub from '../../../../abhinay-s/utils/ChatbotSub.jsx'
 const HeroSection = () => {
 
     const [activeButton, setActiveButton] = useState("Machinery");
@@ -42,7 +42,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Search Bar */}
-                <div className="w-full max-w-2xl h-40 bg-[#FFFDFD] px-5 py-6 rounded-3xl shadow-md border-3 border-gray-300 flex justify-between items-start flex-col">
+                {/* <div className="w-full max-w-2xl h-40 bg-[#FFFDFD] px-5 py-6 rounded-3xl shadow-md border-3 border-gray-300 flex justify-between items-start flex-col">
                     <input
                         type="text"
                         placeholder="Search product, category, brand….."
@@ -69,8 +69,14 @@ const HeroSection = () => {
                             <img src="/hari/eB2BImages/icons/cube.png" alt="mic" className="w-7 h-7" />
                         </div>
                     </div>
-                </div>
+                </div> */}
+                <div className="w-full max-w-2xl">
 
+                <ChatbotSub
+            placeholder="Ask about franchises (e.g., 'suggest biryani franchise in Ghaziabad with 20% ROI')"
+            context="franchise"
+          />
+                </div>
                 {/* Partner Logos */}
                 <div className="mt-6 pb-6 flex justify-center items-center gap-2 flex-nowrap w-full overflow-hidden px-1 sm:flex-wrap sm:gap-4">
                     {[

@@ -1,5 +1,8 @@
 import React from "react";
 import Card from "./Card";
+import Stats from "./Stats";
+import { useEffect } from "react";
+import { useState } from "react";
 
 // Internal Cardd component
 const Cardd = ({ children, className = "" }) => {
@@ -28,259 +31,7 @@ const Button = ({ children, className = "", ...props }) => {
     </button>
   );
 };
-const startupsData1 = [
-    {
-      name: "xFarm Technologies",
-      isVerified: true,
-      zer: "#268BFF80",
-      subtags: ["Actively raising", "France based"],
-      description: "Farm technologies offer smart tools and innovations to boost crop yield, reduce labor, and enhance farming efficiency",
-      categories: [
-        { name: "EdTech", isMuted: false },
-        { name: "AI/ML", isMuted: false },
-        { name: "Productivity", isMuted: false },
-        { name: "HR", isMuted: true }
-      ],
-      additionalCategoriesCount: 2,
-      location: "United Kingdom",
-      followers: 123,
-      businessModel: "B2B & B2C",
-      metrics: {
-        raise: "$842K",
-        investors: 9,
-        valuation: "£3.6M",
-        employees: 28
-      },
-      targetRaise: "£350,000",
-      monthlyRevenue: "–",
-      growthRate: "103%",
-      note: "$1.2 Million in product sold in first two years.",
-      chips: ["VC-Backed", "Last Chance", "$1M Revenue", "Veteran Founder", "Get Early Access"]
-    },
-    {
-      name: "xFarm Technologies",
-      isVerified: true,
-      zer: "#268BFF80",
-      color: "#17a35a", // Green
-      subtags: ["Actively raising", "France based"],
-      description: "Farm technologies offer smart tools and innovations to boost crop yield, reduce labor, and enhance farming efficiency",
-      categories: [
-        { name: "EdTech", isMuted: false },
-        { name: "AI/ML", isMuted: false },
-        { name: "Productivity", isMuted: false },
-        { name: "HR", isMuted: true }
-      ],
-      additionalCategoriesCount: 2,
-      location: "United Kingdom",
-      followers: 123,
-      businessModel: "B2B & B2C",
-      metrics: {
-        raise: "$842K",
-        investors: 9,
-        valuation: "£3.6M",
-        employees: 28
-      },
-      targetRaise: "£350,000",
-      monthlyRevenue: "–",
-      growthRate: "103%",
-      note: "$1.2 Million in product sold in first two years.",
-      chips: ["VC-Backed", "Last Chance", "$1M Revenue", "Veteran Founder", "Get Early Access"]
-    },
-    {
-      name: "TechFlow Solutions",
-      isVerified: false,
-      zer: "#268BFF80",
-      subtags: ["Seed stage", "US based"],
-      description: "Revolutionary workflow automation platform that helps businesses streamline their operations and increase productivity by 40%",
-      categories: [
-        { name: "SaaS", isMuted: false },
-        { name: "Automation", isMuted: false },
-        { name: "Enterprise", isMuted: true }
-      ],
-      additionalCategoriesCount: 1,
-      location: "San Francisco, CA",
-      followers: 87,
-      businessModel: "B2B",
-      metrics: {
-        raise: "$1.2M",
-        investors: 5,
-        valuation: "$8M",
-        employees: 15
-      },
-      targetRaise: "$500,000",
-      monthlyRevenue: "$45K",
-      growthRate: "180%",
-      note: "Currently serving 150+ enterprise clients globally.",
-      chips: ["Early Stage", "High Growth", "B2B SaaS", "AI-Powered"]
-    },
-    {
-      name: "GreenEnergy Innovations",
-      isVerified: true,
-      zer: "#268BFF80",
-      subtags: ["Series A", "Germany based"],
-      description: "Clean energy solutions provider focusing on solar panel efficiency and smart grid technology for sustainable future",
-      categories: [
-        { name: "CleanTech", isMuted: false },
-        { name: "Hardware", isMuted: false },
-        { name: "Energy", isMuted: false }
-      ],
-      additionalCategoriesCount: 0,
-      location: "Berlin, Germany",
-      followers: 245,
-      businessModel: "B2B & B2G",
-      metrics: {
-        raise: "$5.2M",
-        investors: 12,
-        valuation: "$25M",
-        employees: 42
-      },
-      targetRaise: "€2M",
-      monthlyRevenue: "€180K",
-      growthRate: "95%",
-      note: "Deployed solutions in 8 countries across Europe.",
-      chips: ["Clean Energy", "Hardware", "EU Market", "Patent Pending", "Government Contracts"]
-    },
-    {
-      name: "HealthTech Analytics",
-      isVerified: true,
-      zer: "#268BFF80",
-      subtags: ["Pre-Series A", "India based"],
-      description: "AI-powered healthcare analytics platform providing predictive insights for better patient outcomes and hospital management",
-      categories: [
-        { name: "HealthTech", isMuted: false },
-        { name: "AI/ML", isMuted: false },
-        { name: "Analytics", isMuted: false },
-        { name: "SaaS", isMuted: true }
-      ],
-      additionalCategoriesCount: 3,
-      location: "Bangalore, India",
-      followers: 156,
-      businessModel: "B2B",
-      metrics: {
-        raise: "$2.8M",
-        investors: 7,
-        valuation: "$12M",
-        employees: 32
-      },
-      targetRaise: "$1.5M",
-      monthlyRevenue: "$28K",
-      growthRate: "220%",
-      note: "Partnered with 50+ hospitals across India and Southeast Asia.",
-      chips: ["Healthcare", "AI-Driven", "Rapid Growth", "Strategic Partnerships", "MVP Ready"]
-    },
-    {
-      name: "FinNext Solutions",
-      isVerified: false,
-      zer: "#268BFF80",
-      subtags: ["Angel round", "Singapore based"],
-      description: "Next-generation fintech platform offering seamless cross-border payments and digital banking solutions for SMEs",
-      categories: [
-        { name: "FinTech", isMuted: false },
-        { name: "Payments", isMuted: false },
-        { name: "Banking", isMuted: false }
-      ],
-      additionalCategoriesCount: 1,
-      location: "Singapore",
-      followers: 78,
-      businessModel: "B2B & B2C",
-      metrics: {
-        raise: "$450K",
-        investors: 3,
-        valuation: "$3.2M",
-        employees: 18
-      },
-      targetRaise: "$800K",
-      monthlyRevenue: "$12K",
-      growthRate: "150%",
-      note: "Processing $2M+ in monthly transactions across 15 countries.",
-      chips: ["FinTech", "Cross-border", "SME Focus", "Regulatory Compliant", "Angel Backed"]
-    },
-    {
-      name: "xFarm Technologies",
-      isVerified: true,
-      zer: "#268BFF80",
-      subtags: ["Actively raising", "France based"],
-      description: "Farm technologies offer smart tools and innovations to boost crop yield, reduce labor, and enhance farming efficiency",
-      categories: [
-        { name: "EdTech", isMuted: false },
-        { name: "AI/ML", isMuted: false },
-        { name: "Productivity", isMuted: false },
-        { name: "HR", isMuted: true }
-      ],
-      additionalCategoriesCount: 2,
-      location: "United Kingdom",
-      followers: 123,
-      businessModel: "B2B & B2C",
-      metrics: {
-        raise: "$842K",
-        investors: 9,
-        valuation: "£3.6M",
-        employees: 28
-      },
-      targetRaise: "£350,000",
-      monthlyRevenue: "–",
-      growthRate: "103%",
-      note: "$1.2 Million in product sold in first two years.",
-      chips: ["VC-Backed", "Last Chance", "$1M Revenue", "Veteran Founder", "Get Early Access"]
-    },
-    {
-      name: "xFarm Technologies",
-      isVerified: true,
-      zer: "#268BFF80",
-      color: "#17a35a", // Green
-      subtags: ["Actively raising", "France based"],
-      description: "Farm technologies offer smart tools and innovations to boost crop yield, reduce labor, and enhance farming efficiency",
-      categories: [
-        { name: "EdTech", isMuted: false },
-        { name: "AI/ML", isMuted: false },
-        { name: "Productivity", isMuted: false },
-        { name: "HR", isMuted: true }
-      ],
-      additionalCategoriesCount: 2,
-      location: "United Kingdom",
-      followers: 123,
-      businessModel: "B2B & B2C",
-      metrics: {
-        raise: "$842K",
-        investors: 9,
-        valuation: "£3.6M",
-        employees: 28
-      },
-      targetRaise: "£350,000",
-      monthlyRevenue: "–",
-      growthRate: "103%",
-      note: "$1.2 Million in product sold in first two years.",
-      chips: ["VC-Backed", "Last Chance", "$1M Revenue", "Veteran Founder", "Get Early Access"]
-    },
-    {
-      name: "TechFlow Solutions",
-      isVerified: false,
-      zer: "#268BFF80",
-      subtags: ["Seed stage", "US based"],
-      description: "Revolutionary workflow automation platform that helps businesses streamline their operations and increase productivity by 40%",
-      categories: [
-        { name: "SaaS", isMuted: false },
-        { name: "Automation", isMuted: false },
-        { name: "Enterprise", isMuted: true }
-      ],
-      additionalCategoriesCount: 1,
-      location: "San Francisco, CA",
-      followers: 87,
-      businessModel: "B2B",
-      metrics: {
-        raise: "$1.2M",
-        investors: 5,
-        valuation: "$8M",
-        employees: 15
-      },
-      targetRaise: "$500,000",
-      monthlyRevenue: "$45K",
-      growthRate: "180%",
-      note: "Currently serving 150+ enterprise clients globally.",
-      chips: ["Early Stage", "High Growth", "B2B SaaS", "AI-Powered"]
-    },
-    
-  ];
+
 
 const categories = [
   { name: "AI & ML", icon: "🚀" },
@@ -397,12 +148,7 @@ const blogs = [
     },
   ];
 
-  const stats = [
-    { label: "Businesses", value: "4000+" },
-    { label: "Investors", value: "2 Lakhs" },
-    { label: "Industries", value: "100+" },
-    { label: "Investment size", value: "20K to 4 Cr" },
-  ];
+  
 const StartupOpportunities = () => {
   return (
     <section
@@ -429,6 +175,44 @@ const StartupOpportunities = () => {
 };
 
 function Insights() {
+
+const dataUrl = "http://localhost:5000";
+
+const [stats, setStats] = useState([]);
+const [showStats, setShowStats] = useState(true); // default true
+useEffect(() => {
+  const fetchStatsData = async () => {
+    try {
+      const res = await fetch(`${dataUrl}/api/startups/stats`);
+      if (!res.ok) return; // keep defaults
+
+      const result = await res.json();
+      setStats(result.stats || []);
+    } catch (err) {
+      console.error("Stats data API failed", err);
+    }
+  };
+
+  const fetchStatsFlags = async () => {
+    try {
+      const res = await fetch(`${dataUrl}/startups/statscomponentFlags`);
+      if (!res.ok) return; // keep default true
+
+      const flags = await res.json();
+
+      if (typeof flags.showStats === "boolean") {
+        setShowStats(flags.showStats);
+      }
+    } catch (err) {
+      console.error("Stats flags API failed", err);
+    }
+  };
+
+  fetchStatsData();
+  fetchStatsFlags();
+}, []);
+
+
   return (
     <>
     
@@ -582,23 +366,8 @@ function Insights() {
         ))}
       </div>
 
-      {/* Stats Section */}
-      <div className="mt-12">
-        <h2 className="italic text-lg mb-6">Why you should choose LeMiCi</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {stats.map((stat, idx) => (
-            <div
-              key={idx}
-              className={`rounded-2xl shadow p-18 text-center font-semibold ${
-                idx === 1 ? "bg-blue-500 text-white" : "bg-white text-blue-600"
-              }`}
-            >
-              <p className="text-2xl">{stat.value}</p>
-              <p className="text-sm mt-2">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+
+        {showStats && <Stats data={stats} />}
 
       {/* Back to Top */}
       <div className="flex justify-center mt-8">
