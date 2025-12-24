@@ -1,11 +1,12 @@
 import React, { useState, useRef } from 'react';
+import { IKImage } from 'imagekitio-react';
 import NewChatbot from './NewChatbot';
 import {Usables1, Usables2, Usables3} from '../utils/Usables'
 import { PieChart, Expand, Puzzle } from "lucide-react";
-import Footernew from '@/abhinay-s/components/Footernew';
 import { X } from 'lucide-react';
+import Footernew from '@/abhinay-s/components/Footernew';
 import FloatingChatbot from './FloatingChatbot';
-
+import  {useChatbot}  from './ChatbotContext';
 
 const cards = [
     {
@@ -195,7 +196,7 @@ const PilotProgramSection = () => {
                         <div>
                             <div className="mt-6 flex items-start gap-5">
                                 <div className="mt-0.5 h-7 w-7 rounded-md bg-violet-100 text-violet-700 grid place-items-center">
-                                    <img src="/abhinay/lock.png" alt="" />
+                                    <IKImage path="/LeMiCi/HomePageImages/lock.png" alt="" loading="lazy" />
                                 </div>
                                 <div>
                                     <p className="font-semibold text-[#6D3E93]">Exclusive Access</p>
@@ -212,7 +213,7 @@ const PilotProgramSection = () => {
                 {/* Audience tiles */}
                 <div className="mt-18 grid grid-cols-1 md:grid-cols-2 gap-5">
                     <Card accent="bg-[#6D3E93]" iconBg="bg-[#6D3E93]/30">
-                        <img src="/abhinay/bluee.png" alt="Startups" className="w-8 h-8 mr-3 mb-2" />
+                        <IKImage path="/LeMiCi/HomePageImages/bluee.png" alt="Startups" className="w-8 h-8 mr-3 mb-2" loading="lazy" />
                         <div className="flex items-start">
                             <h3 className="text-white text-xl font-semibold">Startups</h3>
                         </div>
@@ -223,7 +224,7 @@ const PilotProgramSection = () => {
                     </Card>
 
                     <Card outline>
-                        <img src="/abhinay/two2.png" alt="SMEs" className="w-8 h-8 mr-3 mb-2" />
+                        <IKImage path="/LeMiCi/HomePageImages/two2.png" alt="SMEs" className="w-8 h-8 mr-3 mb-2" loading="lazy" />
                         <div className="flex items-start">
                             <h3 className="text-slate-900 text-xl font-semibold">
                                 SMEs<span className="text-slate-500 text-sm align-top"> (Small‑Medium Enterprises)</span>
@@ -236,7 +237,7 @@ const PilotProgramSection = () => {
                     </Card>
 
                     <Card outline>
-                        <img src="/abhinay/violeet.png" alt="Researchers" className="w-8 h-8 mr-3 mb-2" />
+                        <IKImage path="/LeMiCi/HomePageImages/violeet.png" alt="Researchers" className="w-8 h-8 mr-3 mb-2" loading="lazy" />
                         <div className="flex items-start">
                             <h3 className="text-slate-900 text-xl font-semibold">Researchers</h3>
                         </div>
@@ -247,7 +248,7 @@ const PilotProgramSection = () => {
                     </Card>
 
                     <Card outline>
-                        <img src="/abhinay/yellowsquare.png" alt="Educators" className="w-8 h-8 mr-3 mb-2" />
+                        <IKImage path="/HomePageImages/yellowsquare.png" alt="Educators" className="w-8 h-8 mr-3 mb-2" loading="lazy" />
                         <div className="flex items-start">
                             <h3 className="text-slate-900 text-xl font-semibold">Educators</h3>
                         </div>
@@ -266,28 +267,28 @@ const PilotProgramSection = () => {
 const stats = [
     {
         icon: (
-            <img src="/abhinay/datapointss.png" alt="data points" />
+            <IKImage path="/HomePageImages/datapointss.png" alt="data points" loading="lazy" />
         ),
         label: "Data Points",
         value: "7B+",
     },
     {
         icon: (
-            <img src="/abhinay/techh.png" alt="technologies" />
+            <IKImage path="/HomePageImages/techh.png" alt="technologies" loading="lazy" />
         ),
         label: "Technologies",
         value: "115+",
     },
     {
         icon: (
-            <img src="/abhinay/companies.png" alt="companies" />
+            <IKImage path="/HomePageImages/companies.png" alt="companies" loading="lazy" />
         ),
         label: "Companies",
         value: "550K+",
     },
     {
         icon: (
-            <img src="/abhinay/contracts.png" alt="contracts" />
+            <IKImage path="/HomePageImages/contracts.png" alt="contracts" loading="lazy" />
         ),
         label: "Contracts",
         value: "80K+",
@@ -336,8 +337,9 @@ const ConfidenceSection = () => {
                     {/* Right: Image card */}
                     <div className="relative">
                         <div className="overflow-hidden rounded-2xl ring-1 ring-black/5">
-                            <img
-                                src="/abhinay/bis.jpg"
+                            <IKImage
+                                path="/HomePageImages/bis.jpg"
+                                
                                 alt="Abstract purple light waves"
                                 className="h-full w-full object-cover"
                             />
@@ -447,7 +449,7 @@ const SectionData = () => {
                         className="flex items-start gap-3 p-5 rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow"
                     >
                         <div className="text-3xl">
-                            <img src={`/abhinay/${feature.icon}`} alt="not available" />
+                            <IKImage path={`/HomePageImages/${feature.icon.replace('/','')}`} alt="not available" loading="lazy" />
                         </div>
                         <div className="text-left">
                             <h3 className="font-semibold text-gray-900">
@@ -461,8 +463,9 @@ const SectionData = () => {
         </div>
     );
 };
+
 const NewHomePage = () => {
-    const [showChatbot, setShowChatbot] = useState(false);
+    const { showChatbot, setShowChatbot } = useChatbot();
     const [query, setQuery] = useState('');
     const [isListening, setIsListening] = useState(false);
     const [speechSupported, setSpeechSupported] = useState(false);
@@ -529,19 +532,19 @@ const NewHomePage = () => {
 
     const cards = [
         {
-            img: "/images/1.png",
+            img: "/abhinay/HomePageImages/1.png",
             title: "Flexible workflows for every team",
         },
         {
-            img: "/images/2.png",
+            img: "/abhinay/HomePageImages/2.png",
             title: "Task , docs, spreadsheets, and more",
         },
         {
-            img: "/images/3.png",
+            img: "/abhinay/HomePageImages/3.png",
             title: "Resources and workload optimization",
         },
         {
-            img: "/images/4.png",
+            img: "/abhinay/HomePageImages/4.png",
             title: "Dashboards and insights",
         },
     ];
@@ -551,7 +554,7 @@ const NewHomePage = () => {
             <div className="min-h-screen">
                 <div className="bg-white py-8">
                     <div className="max-w-4xl mx-auto px-6 text-center">
-                        <div className="bg-[url('/abhinay/terhy.png')] bg-cover bg-center">
+                        <div className="bg-cover bg-center" style={{ backgroundImage: "url('https://ik.imagekit.io/lemiciiq/LeMiCi/HomePageImages/terhy.png')" }}>
                             {/* Overlay */}
                             {/* <div className="absolute inset-0 bg-white/40"></div> */}
                             <div className="flex items-center justify-center">
@@ -704,7 +707,7 @@ const NewHomePage = () => {
 //                                 {/* Send Button */}
 //                                 <button onClick={handleSubmit} className="hover:scale-110 transition-transform">
 //                                     <div className="w-6 h-6 bg-white rounded-sm opacity-90 flex items-center justify-center cursor-pointer">
-//                                         <img src="/abhinay/cube.png" alt="send" />
+//                                         <img src="/abhinay/HomePageImages/cube.png" alt="send" />
 //                                     </div>
 //                                 </button>
 //                             </div>
@@ -726,8 +729,8 @@ const NewHomePage = () => {
                     <Usables3 />
 
                     {/* Overlay image on top-right */}
-                    <img
-                        src="/abhinay/robo.png"
+                    <IKImage
+                        path="/HomePageImages/robo.png"
                         alt="Robot"
                         className="absolute right-50 top-[57%] -translate-y-1/2 w-[35rem] h-auto"
                     />
@@ -764,8 +767,8 @@ const NewHomePage = () => {
                                     {/* Card 1 */}
                                     <div className="bg-[#EAD9FF] rounded-3xl shadow-md p-8 w-80 h-80 flex-shrink-0 text-center flex flex-col justify-center">
                                         <div className="flex justify-center mb-4">
-                                            <img
-                                                src="/abhinay/sub.png"  // 👈 replace this with your PNG path
+                                            <IKImage
+                                                path="/HomePageImages/sub.png"  // 👈 replace this with your PNG path
                                                 alt="One Stop Platform"
                                                 className="w-16 h-16 object-contain"
                                             />
@@ -791,8 +794,8 @@ const NewHomePage = () => {
                                     {/* Card 3 */}
                                     <div className="bg-[#FFE8B2] rounded-3xl shadow-md p-8 w-80 h-80 flex-shrink-0 text-center flex flex-col justify-center">
                                         <div className="flex justify-center mb-4">
-                                            <img
-                                                src="/abhinay/gamee.png"  // 👈 replace this with your PNG path
+                                            <IKImage
+                                                path="/HomePageImages/gamee.png"  // 👈 replace this with your PNG path
                                                 alt="One Stop Platform"
                                                 className="w-16 h-16 object-contain"
                                             />
@@ -821,8 +824,8 @@ const NewHomePage = () => {
           flex items-center
         "
                     >
-                        <img
-                            src="/abhinay/bgimage.png"
+                        <IKImage
+                            path="/HomePageImages/bgimage.png"
                             alt="Overlay"
                             className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                         />
@@ -903,7 +906,7 @@ const NewHomePage = () => {
                         className="fixed left-4 bottom-6 md:left-6 md:bottom-8 z-50 pointer-events-auto bg- rounded-full p-2 hover:shadow-2xl transition transform hover:scale-105"
                     >
                         <img
-                            src="/abhinay/kube.png"
+                            src="/abhinay/HomePageImages/kube.png"
                             alt="Open chat"
                             className="w-12 h-12 rounded-full border-5 border-[#9876b3] p-1 object-cover"
                         />
@@ -916,8 +919,8 @@ const NewHomePage = () => {
                     aria-label="Go to Dashboard"
                     className="fixed right-4 bottom-6 md:right-6 md:bottom-8 z-50 pointer-events-auto bg- rounded-full p-2 hover:shadow-2xl transition transform hover:scale-105"
                 >
-                    <img
-                        src="/abhinay/dashb.jpg"
+                        <IKImage
+                            path="/HomePageImages/dashb.jpg"
                         alt="Go to Dashboard"
                         className="w-12 h-12 rounded-full border-5 border-[#9876b3] p-1 object-cover"
                     />

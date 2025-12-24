@@ -5,6 +5,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { IKImage } from "imagekitio-react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FcardGrid } from "./Fcard";
 import {
@@ -56,214 +57,37 @@ import {
 // import { generateFranchiseAdvice } from '@/lib/ai.js';
 import { streamFranchiseAdvice } from "../../../../../lib/ai.js";
 import ChatbotSub from "../../../../../utils/ChatbotSub.jsx";
-
-
-
-
+import axios from "axios";
 
 // Insights import was unused; removed to avoid lint warnings
 export default function Franchise() {
   //order is so important here
-  const industries = [
-    {
-      id: 1,
-      label: "Restaurant Franchise",
-      icon: "/abhinay/franchise/icons/1.svg",
-    },
-    {
-      id: 2,
-      label: "Business professional",
-      icon: "/abhinay/franchise/icons/2.svg",
-    },
-    {
-      id: 3,
-      label: "Business opportunities",
-      icon: "/abhinay/franchise/icons/10.svg",
-    },
-    {
-      id: 4,
-      label: "Cleaning Franchise",
-      icon: "/abhinay/franchise/icons/19.svg",
-    },
-    {
-      id: 5,
-      label: "Property & Real estate",
-      icon: "/abhinay/franchise/icons/17.svg",
-    },
-    {
-      id: 6,
-      label: "Education franchise",
-      icon: "/abhinay/franchise/icons/14.svg",
-    },
-    {
-      id: 7,
-      label: "Health care franchise",
-      icon: "/abhinay/franchise/icons/11.svg",
-    },
-    {
-      id: 8,
-      label: "Home based franchise",
-      icon: "/abhinay/franchise/icons/15.svg",
-    },
-    {
-      id: 9,
-      label: "Home services franchise",
-      icon: "/abhinay/franchise/icons/18.svg",
-    },
-    {
-      id: 10,
-      label: "Fitness franchise",
-      icon: "/abhinay/franchise/icons/16.svg",
-    },
-    {
-      id: 11,
-      label: "Retail franchise",
-      icon: "/abhinay/franchise/icons/8.svg",
-    },
-    {
-      id: 12,
-      label: "Franchise services provider",
-      icon: "/abhinay/franchise/icons/12.svg",
-    },
-    { id: 13, label: "Pet franchise", icon: "/abhinay/franchise/icons/21.svg" },
-    {
-      id: 14,
-      label: "Health & beauty",
-      icon: "/abhinay/franchise/icons/20.svg",
-    },
-    {
-      id: 15,
-      label: "Fast food franchise",
-      icon: "/abhinay/franchise/icons/13.svg",
-    },
-    {
-      id: 16,
-      label: "Online franchise",
-      icon: "/abhinay/franchise/icons/9.svg",
-    },
-    {
-      id: 17,
-      label: "Computer & internet",
-      icon: "/abhinay/franchise/icons/3.svg",
-    },
-    { id: 18, label: "Food franchise", icon: "/abhinay/franchise/icons/7.svg" },
-  ];
-  const cities = [
-    { id: 1, label: "delhi", icon: "/abhinay/franchise/cities/delhi.jpg" },
-    {
-      id: 2,
-      label: "bengaluru",
-      icon: "/abhinay/franchise/cities/bengaluru.jpg",
-    },
-    {
-      id: 3,
-      label: "hyderabad",
-      icon: "/abhinay/franchise/cities/hyderabad.jpg",
-    },
-    {
-      id: 4,
-      label: "ahmedabad",
-      icon: "/abhinay/franchise/cities/ahmedabad.png",
-    },
-    { id: 5, label: "pune", icon: "/abhinay/franchise/cities/pune.jpg" },
-    { id: 6, label: "kolkata", icon: "/abhinay/franchise/cities/kolkata.jpg" },
-    { id: 7, label: "chennai", icon: "/abhinay/franchise/cities/chennai.png" },
-    { id: 8, label: "Mumbai", icon: "/abhinay/franchise/cities/mumbai.jpg" },
-  ];
-  const stats = [
-    { label: "Businesses", value: "4000+" },
-    { label: "Investors", value: "2 Lakhs" },
-    { label: "Industries", value: "100+" },
-    { label: "Investment size", value: "20K to 4 Cr" },
-  ];
-  const items = [
-    {
-      location: "Gurgaon, India",
-      title: "Natural Salon",
-      since: "1997",
-      logoUrl: "/abhinay/franchise/rrom.jpg",
-      description:
-        "Own a Natural Salon Franchise – where beauty meets wellness with eco-friendly products, sustainable care, and a luxurious experience for every client...",
-      rating: 4.5,
-      tags: [
-        "Unit",
-        "Verified",
-        "2022",
-        "Beauty & Health",
-        "High brand recall",
-      ],
-      stats: {
-        space: "150-250 Sq Ft.",
-        outlets: "350",
-        investment: "₹20-30 Lakhs",
-      },
-      highlights: "High brand recall, training support",
-      verified: true,
-      ctaText: "Send Inquiry",
-      c: "#DD75AB",
-    },
-    {
-      location: "Gurgaon, India",
-      title: "Haldiram’s",
-      since: "1937",
-      logoUrl: "/abhinay/franchise/8.png",
-      description:
-        "Own a Haldiram’s Franchise – bringing India’s favorite snacks, sweets, and authentic flavors to your community with a trusted brand legacy.",
-      rating: 4.5,
-      tags: [
-        "Unit",
-        "Verified",
-        "2022",
-        "Food & Beverage",
-        "Pan-India presence",
-      ],
-      stats: {
-        space: "150-250 Sq Ft.",
-        outlets: "350",
-        investment: "₹25-35 Lakhs",
-      },
-      highlights: "Pan-India presence, trusted brand",
-      verified: true,
-      ctaText: "Send Inquiry",
-      c: "#FF6265",
-    },
-    {
-      location: "",
-      title: "GolfEdge Academy",
-      since: "1997",
-      logoUrl: "/abhinay/franchise/golf.jpg",
-      description:
-        "Own a Natural Salon Franchise – where beauty meets wellness with eco-friendly products, sustainable care, and a luxurious experience for every client...",
-      rating: 4.2,
-      tags: [
-        "Unit",
-        "Verified",
-        "2022",
-        "Beauty & Health",
-        "Niche sports academy",
-      ],
-      stats: {
-        space: "150-250 Sq Ft.",
-        outlets: "350",
-        investment: "₹15-25 Lakhs",
-      },
-      highlights: "Niche sports academy, rising demand",
-      verified: true,
-      ctaText: "Send Inquiry",
-      c: "#7DB3EF",
-    },
-  ];
-  const categories = [
-    { name: "Automobiles", icon: <FaCar /> },
-    { name: "Beauty & salon", icon: <GiScissors /> },
-    { name: "Business", icon: <FaUserTie /> },
-    { name: "Dealers & Distribution", icon: <FaTruck /> },
-    { name: "Food", icon: <FaUtensils /> },
-    { name: "Health and Wellness", icon: <FaHeartbeat /> },
-    { name: "Education", icon: <FaBook /> },
-    { name: "Retail", icon: <FaStore /> },
-    { name: "Courier Logistics", icon: <MdLocalShipping /> },
-  ];
+   
+    const categories = [
+      { name: "Automobiles", icon: <FaCar /> },
+      { name: "Beauty & salon", icon: <GiScissors /> },
+      { name: "Business", icon: <FaUserTie /> },
+      { name: "Dealers & Distribution", icon: <FaTruck /> },
+      { name: "Food", icon: <FaUtensils /> },
+      { name: "Health and Wellness", icon: <FaHeartbeat /> },
+      { name: "Education", icon: <FaBook /> },
+      { name: "Retail", icon: <FaStore /> },
+      { name: "Courier Logistics", icon: <MdLocalShipping /> },
+    ];
+  const dataUrl = "http://localhost:5000";
+  const [data, setData] = useState({
+    industries: [],
+    cities: [],
+    stats: [],
+    items: [],
+  });
+
+  useEffect(() => {
+    axios
+      .get(`${dataUrl}/api/franchise/data`)
+      .then((res) => setData(res.data))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div>
@@ -332,8 +156,8 @@ export default function Franchise() {
                     key={i}
                     className={`${sizeClass} rounded-full bg-white shadow-md flex items-center justify-center p-2 sm:p-3 hover:shadow-lg transition-all duration-200 hover:scale-105 active:scale-95`}
                   >
-                    <img
-                      src={`/abhinay/franchise/${logo}.png`}
+                    <IKImage
+                      path={`/FranchiseHomePage/${logo}.png`}
                       alt={logo}
                       className="max-w-full max-h-full object-contain"
                       loading="lazy"
@@ -399,7 +223,7 @@ export default function Franchise() {
         </div>
       </div>
       <FcardGrid
-        items={items}
+        items={data.items}
         className="max-w-9xl mx-auto px-4 sm:px-8 lg:px-12 xl:px-20 pt-6 sm:pt-8 lg:pt-10 pb-0"
         gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
       />
@@ -409,8 +233,8 @@ export default function Franchise() {
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
           <div className="flex flex-col items-center gap-2">
-            <img
-              src="/abhinay/franchise/distribution/1.jpg"
+            <IKImage
+              path="/FranchiseHomePage/distribution/1.jpg"
               alt="Food and Beverage"
               className="w-full rounded-[10px] object-cover"
               style={{ aspectRatio: "1 / 1" }}
@@ -419,8 +243,8 @@ export default function Franchise() {
             <p>Food &amp; Beverage</p>
           </div>
           <div className="flex flex-col items-center gap-2">
-            <img
-              src="/abhinay/franchise/distribution/3.png"
+            <IKImage
+              path="/FranchiseHomePage/distribution/3.png"
               alt="Pharmaceutical"
               className="w-full rounded-[10px] object-cover"
               style={{ aspectRatio: "1 / 1" }}
@@ -429,8 +253,8 @@ export default function Franchise() {
             <p>Pharmaceutical</p>
           </div>
           <div className="flex flex-col items-center gap-2">
-            <img
-              src="/abhinay/franchise/distribution/2.jpg"
+            <IKImage
+              path="/FranchiseHomePage/distribution/2.jpg"
               alt="Electronic"
               className="w-full rounded-[10px] object-cover"
               style={{ aspectRatio: "1 / 1" }}
@@ -447,14 +271,22 @@ export default function Franchise() {
 
         {/* Industry Pills */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {industries.map((item) => (
+          {data.industries.map((item) => (
             <div
               key={item.id}
               className="flex items-center justify-between border border-gray-300 rounded-full px-4 py-2 bg-white shadow-sm hover:shadow-md transition"
             >
               <div className="flex items-center gap-2 p-2">
                 {/* SVG Icon */}
-                <img src={item.icon} alt={item.label} className="w-7 h-7" />
+                <IKImage
+                  path={`/${String(item.icon).replace(
+                    "/abhinay/franchise",
+                    ""
+                  )}`}
+                  alt={item.label}
+                  className="w-7 h-7"
+                  loading="lazy"
+                />
                 <span className="text-sm">{item.label}</span>
               </div>
               <X size={16} className="text-gray-500" />
@@ -512,11 +344,11 @@ export default function Franchise() {
           across thriving cities !
         </h1>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-10 lg:gap-24 mt-6">
-          {cities.map((city) => (
+          {data.cities.map((city) => (
             <div key={city.id} className="text-center">
               <div className="w-full aspect-square rounded-[20px] overflow-hidden">
-                <img
-                  src={city.icon}
+                <IKImage
+                  path={`/${city.icon}`}
                   alt={city.label}
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -539,7 +371,7 @@ export default function Franchise() {
         </div>
         <div className="mt-2">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {stats.map((stat, idx) => (
+            {data.stats.map((stat, idx) => (
               <div
                 key={idx}
                 className={`shadow p-8 sm:p-10 rounded-xl text-center font-semibold ${

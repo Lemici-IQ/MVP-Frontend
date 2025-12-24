@@ -945,6 +945,7 @@ const ChatbotSub = ({
                                                 <button onClick={handleSubmit} disabled={isGenerating || !query.trim()} aria-label="Submit query">
                                                     <div className={`w-6 h-6 bg-white rounded-sm opacity-90 flex items-center justify-center ${isGenerating || !query.trim() ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}>
                                                         <img src="/abhinay/cube.png" alt="send" />
+                                                        
                                                     </div>
                                                 </button>
                                             </div>

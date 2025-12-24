@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
+import  {useChatbot}  from './ChatbotContext';
 import { Toaster, toast } from "react-hot-toast";
 import {
   X,
@@ -304,6 +305,7 @@ const FloatingChatbot = ({
   context = "general",
   quickActions = [],
 }) => {
+  const { setShowChatbot } = useChatbot();
   const [query, setQuery] = useState("");
   const [messages, setMessages] = useState([]);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -831,7 +833,7 @@ const FloatingChatbot = ({
               className="hover:scale-110 transition-transform"
             >
               <div className="w-6 h-6 bg-white rounded-sm opacity-90 flex items-center justify-center cursor-pointer">
-                <img src="/abhinay/cube.png" alt="send" />
+                <img src="abhinay/HomePageImages/cube.png" alt="send" />
               </div>
             </button>
           </div>

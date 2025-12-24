@@ -1,6 +1,7 @@
 import { MdVerified } from "react-icons/md";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { IKImage } from "imagekitio-react";
 
 // Single franchise card component - accepts dynamic data via props
 export default function Fcard({
@@ -20,6 +21,7 @@ export default function Fcard({
 }) {
   const fullStars = Math.max(0, Math.min(5, Math.round(rating)));
   const stars = "★".repeat(fullStars) + "☆".repeat(5 - fullStars);
+  const isAbsoluteLogo = typeof logoUrl === 'string' && /^(https?:)?\/\//.test(logoUrl);
 
   const handleKeyDown = (e) => {
     if (!onClick) return;
@@ -51,11 +53,14 @@ export default function Fcard({
       {/* Header */}
       <div className="flex items-center justify-between mt-3">
         <div className="flex items-center gap-3">
-          <img
-            src={logoUrl}
-            alt={title}
-            className="w-14 h-14 rounded-lg object-cover"
-          />
+          
+            <IKImage
+              path={logoUrl}
+              alt={title}
+              className="w-14 h-14 rounded-lg object-cover"
+              loading="lazy"
+            />
+          
           <div>
             <h2 className="text-lg font-semibold flex items-center gap-1">
               {title}

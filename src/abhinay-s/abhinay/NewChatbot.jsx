@@ -429,7 +429,7 @@ const NewChatbot = () => {
               >
                 <div className="w-7 h-7 bg-white rounded-sm opacity-90 flex items-center justify-center cursor-pointer p-1">
                   <img
-                    src="/abhinay/cube.png"
+                    src="/abhinay/HomePageImages/cube.png"
                     alt="send"
                     className="w-5 h-5 object-contain"
                   />
