@@ -56,6 +56,7 @@ export default function Fcard({
           
             <IKImage
               path={logoUrl}
+
               alt={title}
               className="w-14 h-14 rounded-lg object-cover"
               loading="lazy"

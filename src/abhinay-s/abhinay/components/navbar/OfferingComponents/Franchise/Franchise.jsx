@@ -22,6 +22,7 @@ import { MdLocalShipping } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
 import { FiFilter } from "react-icons/fi";
 import Svg from "./Svg";
+import LogoRow from "./LogoRow.jsx";
 import {
   Bus,
   Search,
@@ -61,24 +62,25 @@ import { getFranchiseData, getFranchiseFlags } from "@/abhinay-s/lib/api";
 import PopularListing from "./PopularListing.jsx";
 import IndustryPills from "./IndustryPills.jsx";
 import ShowStats from "./ShowStats.jsx";
-
+import { fetchFranchiseHome } from "../../../../../lib/api.js";
+import TopFranchiseOpportunities from "./TopFranchiseOpportunities.jsx";
+import DistributionCategories from "./DistributionCategories.jsx";
+import Cities from "./Cities.jsx";
 // Insights import was unused; removed to avoid lint warnings
 export default function Franchise() {
   //order is so important here
-   
-    const categories = [
-      { name: "Automobiles", icon: <FaCar /> },
-      { name: "Beauty & salon", icon: <GiScissors /> },
-      { name: "Business", icon: <FaUserTie /> },
-      { name: "Dealers & Distribution", icon: <FaTruck /> },
-      { name: "Food", icon: <FaUtensils /> },
-      { name: "Health and Wellness", icon: <FaHeartbeat /> },
-      { name: "Education", icon: <FaBook /> },
-      { name: "Retail", icon: <FaStore /> },
-      { name: "Courier Logistics", icon: <MdLocalShipping /> },
-    ];
-    
 
+  const categories = [
+    { name: "Automobiles", icon: <FaCar /> },
+    { name: "Beauty & salon", icon: <GiScissors /> },
+    { name: "Business", icon: <FaUserTie /> },
+    { name: "Dealers & Distribution", icon: <FaTruck /> },
+    { name: "Food", icon: <FaUtensils /> },
+    { name: "Health and Wellness", icon: <FaHeartbeat /> },
+    { name: "Education", icon: <FaBook /> },
+    { name: "Retail", icon: <FaStore /> },
+    { name: "Courier Logistics", icon: <MdLocalShipping /> },
+  ];
 
   // Data & flags loaded via centralized API client
 
@@ -92,7 +94,9 @@ export default function Franchise() {
   const [showcities, setShowCities] = useState(true);
   const [showStats, setShowStats] = useState(true);
   const [popularListing, setPopularListing] = useState(true);
-  
+
+
+
 
   useEffect(() => {
     const load = async () => {
@@ -124,98 +128,156 @@ export default function Franchise() {
     };
 
     load();
-
   }, []);
-    const tabs1 = ["Franchise", "Brand Leasing", "Dealer", "Super Stockist"];
+  const tabs1 = ["Franchise", "Brand Leasing", "Dealer", "Super Stockist"];
   const [activeTab1, setActiveTab1] = useState("Franchise");
-const categoriesp = [
-  { label: "Automobiles", icon: "🚗" },
-  { label: "Beauty & Salon", icon: "🌸" },
-  { label: "Business", icon: "👤" },
-  { label: "Food", icon: "🍴" },
-  { label: "Health & Wellness", icon: "❤️" },
-  { label: "Dealers & Distribution", icon: "🚚" },
-  { label: "Education", icon: "🎓" },
-  { label: "Retail", icon: "🏬" },
-  { label: "Courier Logistics", icon: "📦" },
-  { label: "View All", icon: "⋯" },
-];
+  const [logoRowData, setLogoRowData] = useState(null);
+  const [topFranchiseData, setTopFranchiseData] = useState(null);
+const [popularListingsnew, setPopularListingsnew] = useState([]);
+const [distributionData, setDistributionData] = React.useState(null);
+const [citiesData, setCitiesData] = useState(null);
+  const [showAll, setShowAll] = useState(false);
 
-const indust = [
-  {
-    name: "Restaurant Franchise",
-    path: "/FranchiseHomePage/icons/1.svg",
-  },
-  {
-    name: "Business professional",
-    path: "/FranchiseHomePage/icons/2.svg",
-  },
-  {
-    name: "Business opportunities",
-    path: "/FranchiseHomePage/icons/3.svg",
-  },
-  {
-    name: "Cleaning Franchise",
-    path: "/FranchiseHomePage/icons/19.svg",
-  },
-  {
-    name: "Property & Real estate",
-    path: "/FranchiseHomePage/icons/17.svg",
-  },
-  {
-    name: "Education franchise",
-    path: "/FranchiseHomePage/icons/14.svg",
-  },
-  {
-    name: "Health care franchise",
-    path: "/FranchiseHomePage/icons/7.svg",
-  },
-  {
-    name: "Home based franchise",
-    path: "/FranchiseHomePage/icons/8.svg",
-  },
-  {
-    name: "Home services franchise",
-    path: "/FranchiseHomePage/icons/9.svg",
-  },
-  {
-    name: "Fitness franchise",
-    path: "/FranchiseHomePage/icons/10.svg",
-  },
-  {
-    name: "Retail franchise",
-    path: "/FranchiseHomePage/icons/11.svg",
-  },
-  {
-    name: "Franchise services provider",
-    path: "/FranchiseHomePage/icons/12.svg",
-  },
-  {
-    name: "Pet franchise",
-    path: "/FranchiseHomePage/icons/13.svg",
-  },
-  {
-    name: "Health & beauty",
-    path: "/FranchiseHomePage/icons/14.svg",
-  },
-  {
-    name: "Fast food franchise",
-    path: "/FranchiseHomePage/icons/15.svg",
-  },
-  {
-    name: "Golf franchise",
-    path: "/FranchiseHomePage/icons/16.svg",
-  },
-  {
-    name: "Computer & internet",
-    path: "/FranchiseHomePage/icons/17.svg",
-  },
-  {
-    name: "Food franchise",
-    path: "/FranchiseHomePage/icons/18.svg",
-  },
-];
+useEffect(() => {
+  fetchFranchiseHome()
+    .then((res) => {
+      if (!res.success) return;
 
+      const sections = res.data?.sections || [];
+
+      // HERO
+      const heroSection = sections.find((s) => s.type === "hero" && s.enabled);
+      if (heroSection) {
+        setLogoRowData(heroSection.data);
+      }
+
+      // TOP FRANCHISE OPPORTUNITIES
+      const topFranchiseSection = sections.find(
+        (s) => s.type === "top_franchise_opportunities" && s.enabled
+      );
+      if (topFranchiseSection) {
+        setTopFranchiseData(topFranchiseSection.data);
+      }
+
+      // POPULAR LISTINGS
+      const popularListingSection = sections.find(
+        (s) => s.type === "popular_listings" && s.enabled
+      );
+      if (popularListingSection) {
+        setPopularListingsnew(popularListingSection.data);
+      }
+
+      // DISTRIBUTION CATEGORIES
+      const distributionSection = sections.find(
+        (s) => s.type === "distribution_categories" && s.enabled
+      );
+      if (distributionSection) {
+        setDistributionData(distributionSection.data);
+      }
+
+      // CITIES ✅
+      const citiesSection = sections.find((s) => s.type === "cities" && s.enabled);
+      if (citiesSection) {
+        setCitiesData(citiesSection.data);
+      }
+    })
+    .catch((err) => {
+      console.error("Error fetching franchise home data:", err);
+    });
+}, []);
+
+
+
+  
+
+  const categoriesp = [
+    { label: "Automobiles", icon: "🚗" },
+    { label: "Beauty & Salon", icon: "🌸" },
+    { label: "Business", icon: "👤" },
+    { label: "Food", icon: "🍴" },
+    { label: "Health & Wellness", icon: "❤️" },
+    { label: "Dealers & Distribution", icon: "🚚" },
+    { label: "Education", icon: "🎓" },
+    { label: "Retail", icon: "🏬" },
+    { label: "Courier Logistics", icon: "📦" },
+    { label: "View All", icon: "⋯" },
+  ];
+
+  const indust = [
+    {
+      name: "Restaurant Franchise",
+      path: "/FranchiseHomePage/icons/1.svg",
+    },
+    {
+      name: "Business professional",
+      path: "/FranchiseHomePage/icons/2.svg",
+    },
+    {
+      name: "Business opportunities",
+      path: "/FranchiseHomePage/icons/3.svg",
+    },
+    {
+      name: "Cleaning Franchise",
+      path: "/FranchiseHomePage/icons/19.svg",
+    },
+    {
+      name: "Property & Real estate",
+      path: "/FranchiseHomePage/icons/17.svg",
+    },
+    {
+      name: "Education franchise",
+      path: "/FranchiseHomePage/icons/14.svg",
+    },
+    {
+      name: "Health care franchise",
+      path: "/FranchiseHomePage/icons/7.svg",
+    },
+    {
+      name: "Home based franchise",
+      path: "/FranchiseHomePage/icons/8.svg",
+    },
+    {
+      name: "Home services franchise",
+      path: "/FranchiseHomePage/icons/9.svg",
+    },
+    {
+      name: "Fitness franchise",
+      path: "/FranchiseHomePage/icons/10.svg",
+    },
+    {
+      name: "Retail franchise",
+      path: "/FranchiseHomePage/icons/11.svg",
+    },
+    {
+      name: "Franchise services provider",
+      path: "/FranchiseHomePage/icons/12.svg",
+    },
+    {
+      name: "Pet franchise",
+      path: "/FranchiseHomePage/icons/13.svg",
+    },
+    {
+      name: "Health & beauty",
+      path: "/FranchiseHomePage/icons/14.svg",
+    },
+    {
+      name: "Fast food franchise",
+      path: "/FranchiseHomePage/icons/15.svg",
+    },
+    {
+      name: "Golf franchise",
+      path: "/FranchiseHomePage/icons/16.svg",
+    },
+    {
+      name: "Computer & internet",
+      path: "/FranchiseHomePage/icons/17.svg",
+    },
+    {
+      name: "Food franchise",
+      path: "/FranchiseHomePage/icons/18.svg",
+    },
+  ];
+ 
   return (
     <div>
       <div className="w-full px-3 sm:px-4 lg:px-6 py-6 sm:py-8 lg:py-10">
@@ -234,22 +296,22 @@ const indust = [
           </div>
 
           {/* Tabs1 */}
-        <div className="flex gap-3 bg-white p-2 rounded-full w-fit mx-auto text-center mb-3">
-      {tabs1.map((tab) => (
-        <button
-          key={tab}
-          onClick={() => setActiveTab1(tab)}
-          className={`px-5 py-2 text-sm font-semibold rounded-[16px] transition-all duration-200
+          <div className="flex gap-3 bg-white p-2 rounded-full w-fit mx-auto text-center mb-3">
+            {tabs1.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab1(tab)}
+                className={`px-5 py-2 text-sm font-semibold rounded-[16px] transition-all duration-200
             ${
               activeTab1 === tab
                 ? "bg-[#4A53FA] text-white"
                 : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-100"
             }`}
-        >
-          {tab}
-        </button>
-      ))}
-    </div>
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
 
           {/* Search Bar */}
           {/* <h1>hi</h1> */}
@@ -260,11 +322,12 @@ const indust = [
 
           {/* Subtext */}
           <p className="text-sm sm:text-md text-gray-500 mt-3 sm:mt-4 max-w-xl sm:max-w-2xl mx-auto px-2 sm:px-0 leading-relaxed">
-            Find, Compare, and connect with the best franchise opportunities across Industries.
+            Find, Compare, and connect with the best franchise opportunities
+            across Industries.
           </p>
 
           {/* Logo Row */}
-          <div className="flex justify-center mt-4 sm:mt-6 gap-2 sm:gap-3 lg:gap-4 flex-wrap px-2">
+          {/* <div className="flex justify-center mt-4 sm:mt-6 gap-2 sm:gap-3 lg:gap-4 flex-wrap px-2">
             {(() => {
               const logos = ["1", "2", "3", "4", "5", "6", "7", "8", "n"];
               const totalLogos = logos.length;
@@ -296,254 +359,164 @@ const indust = [
                 );
               });
             })()}
-          </div>
+          </div> */}
+
+          {logoRowData && <LogoRow data={logoRowData} />}
         </div>
-      </div>
-      <div className="w-full">
- <div className="py-10 px-6">
-      {/* Heading */}
-      <h1 className="text-center mb-2 text-4xl font-bold">Top Franchise Opportunities, Curated for You</h1>
-
-      <p className="text-center text-[#615E63] mb-8 text-lg">
-        Discover high-growth brands with the strongest ROI potential.
-      </p>
-
-      {/* Grid */}
-      <div className="max-w-9xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 px-4 sm:px-8 lg:px-12 xl:px-20">
-        {categoriesp.map((item, index) => (
-          <div
-            key={index}
-            className="bg-[#E6EDFF] rounded-2xl h-28 flex flex-col items-center justify-center gap-2 cursor-pointer hover:scale-105 transition"
-          >
-            <span className="text-2xl">{item.icon}</span>
-            <p className="text-sm font-medium text-[#3A363C] text-center">
-              {item.label}
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
       </div>
       
+          
+        {topFranchiseData && <TopFranchiseOpportunities data={topFranchiseData} />}
+      
 
-     
-        {popularListing && (
-          <PopularListing data={ data.items } />
-        )}
+      {popularListingsnew && (
+            <PopularListing data={popularListingsnew} />
+            )}
 
 
-       <div className="max-w-7xl mx-auto px-6 py-12">
-      {/* Heading */}
-      <h2 className="text-3xl font-bold text-gray-900">
-        Top Categories of Distribution
-      </h2>
-      <p className="text-gray-500 mt-2">
-        From retail to services-explore categories driving India’s next wave of
-        business growth.
-      </p>
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        {/* Heading */}
+        <h2 className="text-3xl font-bold text-gray-900">
+          Top Categories of Distribution
+        </h2>
+        <p className="text-gray-500 mt-2">
+          From retail to services-explore categories driving India’s next wave
+          of business growth.
+        </p>
 
-      {/* Content */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-8">
-        {/* Image Card */}
-        <div>
-          <IKImage
-            path="/FranchiseHomePage/golf.jpg"
-            alt="Golf"
-            className="rounded-xl w-full h-64 object-cover"
-            loading="lazy"
-          />
-          <h3 className="font-semibold text-lg mt-4">Golf Clubs</h3>
-          <p className="text-sm text-gray-500 mt-1">
-            Distributor, Super Stockist
-          </p>
-          <p className="text-sm text-gray-600">
-            Drivers, irons, wedges, putters from premium brands
-          </p>
-        </div>
+        {/* Content */}
+       {distributionData && (
+  <DistributionCategories data={distributionData} />
+)}
 
-        {/* Text Cards */}
-        <div>
-          <IKImage
-            path="/FranchiseHomePage/golf.jpg"
-            alt="Golf"
-            className="rounded-xl w-full h-64 object-cover"
-            loading="lazy"
-          />
-          <h3 className="font-semibold">Golf Carts</h3>
-          <p className="text-sm text-gray-500 mt-1">
-            Distributor, C&F Agent
-          </p>
-          <p className="text-sm text-gray-600">
-            Electric/Manual trolleys, golf carts (Toro, Yamaha)
-          </p>
-        </div>
-
-        <div>
-          <IKImage
-            path="/FranchiseHomePage/golf.jpg"
-            alt="Golf"
-            className="rounded-xl w-full h-64 object-cover"
-            loading="lazy"
-          />
-          <h3 className="font-semibold">Golf Balls</h3>
-          <p className="text-sm text-gray-500 mt-1">
-            Stockist, C&F Agent
-          </p>
-          <p className="text-sm text-gray-600">
-            Branded and private-label balls (Callaway, Titleist, etc.)
-          </p>
-        </div>
-
-        <div>
-          <IKImage
-            path="/FranchiseHomePage/golf.jpg"
-            alt="Golf"
-            className="rounded-xl w-full h-64 object-cover"
-            loading="lazy"
-          />
-          <h3 className="font-semibold">Accessories & Apparel</h3>
-          <p className="text-sm text-gray-500 mt-1">
-            Distributor, Stockist
-          </p>
-          <p className="text-sm text-gray-600">
-            Gloves, tees, caps, golf bags, apparel
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          {/* Heading */}
+          <h2 className="text-3xl font-bold text-gray-900">
+            Explore by Industry
+          </h2>
+          <p className="text-gray-500 mt-2">
+            Tailored insights across 25+ industries—from food & beverage to
+            education and beyond.
           </p>
 
-          <p className="text-blue-600 text-sm mt-4 cursor-pointer">
-            View More →
+          {/* Pills */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-6">
+            {indust.map((item, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-start gap-2 py-5 px-7 bg-[#EEF0FF] text-sm text-gray-700 rounded-2xl cursor-pointer hover:bg-[#E2E6FF] w-full"
+              >
+                <IKImage
+                  path={item.path}
+                  alt={item.name}
+                  className="w-6 h-6 object-cover flex-shrink-0"
+                  loading="lazy"
+                />
+                <span className="text-xs leading-tight break-words flex-1">
+                  {item.name}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-blue-600 text-sm mt-6 cursor-pointer">
+            View All →
           </p>
         </div>
       </div>
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        <div className="bg-[#4A53FA] rounded-2xl flex flex-col md:flex-row items-center justify-between p-8 md:p-12 mb-8">
+          {/* Left Content */}
+          <div className="max-w-md text-white">
+            <h2 className="text-2xl md:text-3xl font-bold">
+              Be Your Own Boss Today!
+            </h2>
+            <p className="text-sm text-white/80 mt-3">
+              Step into success with a franchise or dealership. The future of
+              business is in your hands.
+            </p>
 
-       <div className="max-w-7xl mx-auto px-6 py-12">
-      {/* Heading */}
-      <h2 className="text-3xl font-bold text-gray-900">
-        Explore by Industry
-      </h2>
-      <p className="text-gray-500 mt-2">
-        Tailored insights across 25+ industries—from food & beverage to
-        education and beyond.
-      </p>
+            <button className="mt-5 bg-white text-black px-6 py-2.5 rounded-2xl text-sm font-semibold hover:bg-gray-100 transition">
+              Start Exploring
+            </button>
+          </div>
 
-      {/* Pills */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-6">
-        {indust.map((item, index) => (
-          <div
-            key={index}
-            className="flex items-center justify-start gap-2 py-5 px-7 bg-[#EEF0FF] text-sm text-gray-700 rounded-2xl cursor-pointer hover:bg-[#E2E6FF] w-full"
-          >
+          {/* Right Image */}
+          <div className="mt-6 md:mt-0">
             <IKImage
-              path={item.path}
-              alt={item.name}
-              className="w-6 h-6 object-cover flex-shrink-0"
+              path="/FranchiseHomePage/beboss.jpg"
+              alt="CTA"
+              className="w-[320px] h-[180px] object-cover rounded-xl"
               loading="lazy"
             />
-            <span className="text-xs leading-tight break-words flex-1">{item.name}</span>
           </div>
-        ))}
-      </div>
-
-      <p className="text-blue-600 text-sm mt-6 cursor-pointer">
-        View All →
-      </p>
-    </div>
-    </div>
-         <div className="max-w-7xl mx-auto px-6 py-12">
-      <div className="bg-[#4A53FA] rounded-2xl flex flex-col md:flex-row items-center justify-between p-8 md:p-12 mb-8">
-        
-        {/* Left Content */}
-        <div className="max-w-md text-white">
-          <h2 className="text-2xl md:text-3xl font-bold">
-            Be Your Own Boss Today!
-          </h2>
-          <p className="text-sm text-white/80 mt-3">
-            Step into success with a franchise or dealership. The future of
-            business is in your hands.
-          </p>
-
-          <button className="mt-5 bg-white text-black px-6 py-2.5 rounded-2xl text-sm font-semibold hover:bg-gray-100 transition">
-            Start Exploring
-          </button>
         </div>
+        <IKImage
+          path="FranchiseHomePage/4cards.png"
+          alt="CTA"
+          className="w-full h-auto object-contain rounded-xl mt-16"
+          loading="lazy"
+        />
 
-        {/* Right Image */}
-        <div className="mt-6 md:mt-0">
-          <IKImage
-            path="/FranchiseHomePage/beboss.jpg"
-            alt="CTA"
-            className="w-[320px] h-[180px] object-cover rounded-xl"
-            loading="lazy"
-          />
-        </div>
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Left Big Card */}
+            <div className="lg:col-span-2 bg-gradient-to-br from-[#5B5FFF] to-[#4A53FA] rounded-2xl p-8 md:p-10 text-white">
+              <h2 className="text-2xl md:text-3xl font-bold leading-snug">
+                How LeMiCi Can Help Your <br /> Business Thrive
+              </h2>
 
-      </div>
-      <IKImage
-            path="FranchiseHomePage/4cards.png"
-            alt="CTA"
-            className="w-full h-auto object-contain rounded-xl mt-16"
-            loading="lazy"
-          />
+              <p className="text-sm md:text-base text-white/90 mt-4 max-w-xl">
+                LeMiCi is your one-stop platform for discovering, evaluating,
+                and expanding with franchise and dealership opportunities.
+                Whether you're a first-time entrepreneur or an established
+                business, we make scaling smarter and easier.
+              </p>
 
-         <div className="max-w-7xl mx-auto px-6 py-12">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
-        {/* Left Big Card */}
-        <div className="lg:col-span-2 bg-gradient-to-br from-[#5B5FFF] to-[#4A53FA] rounded-2xl p-8 md:p-10 text-white">
-          <h2 className="text-2xl md:text-3xl font-bold leading-snug">
-            How LeMiCi Can Help Your <br /> Business Thrive
-          </h2>
-
-          <p className="text-sm md:text-base text-white/90 mt-4 max-w-xl">
-            LeMiCi is your one-stop platform for discovering, evaluating, and
-            expanding with franchise and dealership opportunities. Whether
-            you're a first-time entrepreneur or an established business, we
-            make scaling smarter and easier.
-          </p>
-
-          <button className="mt-6 bg-white text-black px-6 py-2.5 rounded-2xl text-sm font-semibold hover:bg-gray-100 transition">
-            Register for free
-          </button>
-        </div>
-
-        {/* Right Small Card */}
-        <div className=" border border-gray-200 rounded-2xl p-6 flex flex-col justify-between text-center">
-          <div>
-            <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
-            <IKImage
-            path="/FranchiseHomePage/eccr.png"
-            alt="CTA"
-            className="w-12 h-12 object-contain"
-            loading="lazy"
-          />
+              <button className="mt-6 bg-white text-black px-6 py-2.5 rounded-2xl text-sm font-semibold hover:bg-gray-100 transition">
+                Register for free
+              </button>
             </div>
 
-            <h3 className="text-lg font-semibold text-gray-900">
-              List Your <br />
-              Franchise/Distributorship to <br />
-              Expand Your Reach
-            </h3>
+            {/* Right Small Card */}
+            <div className=" border border-gray-200 rounded-2xl p-6 flex flex-col justify-between text-center">
+              <div>
+                <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
+                  <IKImage
+                    path="/FranchiseHomePage/eccr.png"
+                    alt="CTA"
+                    className="w-12 h-12 object-contain"
+                    loading="lazy"
+                  />
+                </div>
 
-            <p className="text-sm text-gray-500 mt-3">
-              Connect with potential buyers and grow your network.
-            </p>
+                <h3 className="text-lg font-semibold text-gray-900">
+                  List Your <br />
+                  Franchise/Distributorship to <br />
+                  Expand Your Reach
+                </h3>
+
+                <p className="text-sm text-gray-500 mt-3">
+                  Connect with potential buyers and grow your network.
+                </p>
+              </div>
+
+              <button className="mt-6 bg-[#4F5BFF] text-white py-2.5 rounded-2xl text-sm font-semibold hover:bg-[#3E43E0] transition">
+                Register for free
+              </button>
+            </div>
           </div>
-
-          <button className="mt-6 bg-[#4F5BFF] text-white py-2.5 rounded-2xl text-sm font-semibold hover:bg-[#3E43E0] transition">
-            Register for free
-          </button>
         </div>
-
       </div>
-    </div>  
-    </div>
-      
+
       <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 xl:px-20 mb-20">
-        <p className="text-center text-black text-3xl font-bold">Why you should choose LeMiCi</p>
+        <p className="text-center text-black text-3xl font-bold">
+          Why you should choose LeMiCi
+        </p>
         <h1 className="text-lg mt-2 text-center text-[#615E63]">
-          Explore franchise opportunities 
-across thriving cities !
+          Explore franchise opportunities across thriving cities !
         </h1>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 lg:gap-20 mt-6">
+        {/* <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 lg:gap-20 mt-6">
           {data.cities.map((city) => (
             <div key={city.id} className="text-center">
               <div className="w-full aspect-square h-32 rounded-[20px] overflow-hidden">
@@ -559,7 +532,9 @@ across thriving cities !
               </p>
             </div>
           ))}
-        </div>
+        </div> */}
+        {citiesData && <Cities data={citiesData} />}
+
         <div className="w-full flex justify-end">
           <button
             className="border p-2 rounded-xl text-sm border-2 border-gray-300 font-semibold mt-2 hover:underline"
@@ -569,17 +544,11 @@ across thriving cities !
             Back to top
           </button>
         </div>
-        
-      
-
       </div>
       <div className="w-full px-4 sm:px-8 lg:px-12 xl:px-20 mb-20">
-          
         {/* Show Stats*/}
-       {showStats && (
-         <ShowStats stats={data.stats} />
-       )}
-       </div>
+        {showStats && <ShowStats stats={data.stats} />}
+      </div>
       <div className="w-full flex items-center justify-center gap-3 my-8">
         <NavLink
           to="/franchise/oppurtunties"

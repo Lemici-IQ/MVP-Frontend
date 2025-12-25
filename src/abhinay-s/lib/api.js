@@ -1,8 +1,7 @@
-// Centralized API client for app pages
-// Minimal, framework-agnostic helpers
+import axios from "axios";
 
 const BASE_URL = "http://localhost:5000";
-
+const DYNAMIC_URL = "http://localhost:8080";
 async function request(path, options = {}) {
   const url = path.startsWith("http") ? path : `${BASE_URL}${path}`;
   const resp = await fetch(url, {
@@ -46,3 +45,20 @@ export async function getFranchiseFlags() {
 }
 
 export { BASE_URL, request };
+
+
+// --------------------------------------------------
+
+export const fetchFranchiseHome = async () => {
+  const response = await axios.get(
+    `${DYNAMIC_URL}/api/v1/franchises/home`,
+    {
+      headers: {
+        Accept: "application/json",
+        "X-Lang": "en",
+      },
+    }
+  );
+
+  return response.data;
+};
