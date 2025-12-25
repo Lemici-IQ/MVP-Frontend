@@ -62,3 +62,16 @@ export const fetchFranchiseHome = async () => {
 
   return response.data;
 };
+export const fetchFranchiseListing = async () => {
+  const response = await axios.get(
+    `${DYNAMIC_URL}/api/v1/franchises/listing`,
+    {
+      headers: {
+        Accept: "application/json",
+        "X-Lang": "en",
+      },
+    }
+  );
+
+  return response.data;
+};

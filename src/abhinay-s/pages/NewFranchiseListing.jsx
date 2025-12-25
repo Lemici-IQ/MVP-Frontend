@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { MdVerified } from "react-icons/md";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { fetchFranchiseListing } from "../lib/api";
+import Hero from "./Hero";
+import FeaturedFranchiseCategories from "./FeaturedFranchiseCategories";
+import CategoryQuestions from "./CategoryQuestions";
+import RecommendedFranchises from "./RecommendedFranchises";
 
 const Fcard = ({
   location = "",
@@ -130,8 +135,107 @@ const FcardGrid = ({
     </div>
   );
 };
+const mapFranchiseListingToCard = (items = []) => {
+  if (!Array.isArray(items)) return [];
 
+  return items.map((item) => ({
+    title: item.brand,
+    description: item.description,
+    since: item.since,
+    location: item.location,
+    rating: item.rating,
+    tags: item.tags || [],
+    logoUrl: item.logo?.url,
+
+    stats: {
+      space: item.space,
+      outlets: item.no_of_outlets,
+      investment: `₹${(item.investmentRange.min / 100000).toFixed(
+        1
+      )}L - ₹${(item.investmentRange.max / 100000).toFixed(1)}L`,
+    },
+
+    slug: item.slug,
+    color: item.color,
+  }));
+};
 export default function NewFranchiseListing() {
+    const [heroData, setHeroData] = useState(null);
+const [franchiseItems, setFranchiseItems] = useState([]);
+const [featuredCategories, setFeaturedCategories] = useState([]);
+const [categoryQuestions, setCategoryQuestions] = useState([]);
+const [recommendedFranchises, setRecommendedFranchises] = useState([]);
+useEffect(() => {
+  fetchFranchiseListing()
+    .then((res) => {
+      if (!res?.success) return;
+
+      const sections = res.data?.sections || [];
+
+      // HERO SECTION ✅
+      const heroSection = sections.find(
+        (section) =>
+          section.type === "hero" && section.enabled === true
+      );
+
+      if (heroSection) {
+        setHeroData(heroSection.data);
+      }
+
+      // FRANCHISE LISTING SECTION ✅
+      const listingSection = sections.find(
+        (section) =>
+          section.type === "franchise_listing" &&
+          section.enabled === true
+      );
+
+      if (listingSection) {
+        const mappedData = mapFranchiseListingToCard(
+          listingSection.data
+        );
+        setFranchiseItems(mappedData);
+      }
+
+
+       const featuredSection = sections.find(
+        (s) => s.type === "featured_categories" && s.enabled === true
+      );
+
+      if (featuredSection) {
+        setFeaturedCategories(featuredSection.data);
+      }
+
+
+       const questionSection = sections.find(
+      (section) =>
+        section.type === "category_questions" &&
+        section.enabled === true
+    );
+
+    if (questionSection) {
+      setCategoryQuestions(questionSection.data?.questions || []);
+    }
+
+      const recommendedSection = sections.find(
+        (section) =>
+          section.type === "recommended_franchises" &&
+          section.enabled === true
+      );
+
+      if (recommendedSection) {
+        setRecommendedFranchises(
+          recommendedSection.data?.items || []
+        );
+      }
+
+
+    })
+    .catch((err) => {
+      console.error("Error fetching franchise listing:", err);
+    });
+}, []);
+
+
   const images = [
     "abhinay/franchise/carousel-1.jpg",
     "abhinay/franchise/carousel-2.jpg",
@@ -212,7 +316,10 @@ export default function NewFranchiseListing() {
     "What kind of training and support does the franchisor provide?",
     "In which locations does a food franchise work best in India?",
   ];
-  const info = [
+
+  
+  const info =
+   [
     {
       label: "Initial Investment",
       value: "₹6–18 Lakhs",
@@ -270,279 +377,8 @@ export default function NewFranchiseListing() {
     },
     { label: "Royalties", value: "4%", icon: <img src="/abhinay/12j.png" /> },
   ];
-//   const items = [
-//     {
-//       location: "Chandigarh, India",
-//       title: "Haldiram’s",
-//       since: "1997",
-//       logoUrl: "/abhinay/franchise/8.png",
-//       description:
-//         "Own a Natural Salon Franchise – where beauty meets wellness with eco-friendly products, sustainable care, and a luxurious experience for every client...",
-//       rating: 4.5,
-//       tags: [
-//         "Unit",
-//         "Verified",
-//         "2022",
-//         "Food & Beverage",
-//         "Pan-India presence",
-//       ],
-//       stats: {
-//         space: "150-250 Sq Ft.",
-//         outlets: "350",
-//         investment: "₹25-35 Lakhs",
-//       },
-//       highlights: "Pan-India presence, trusted brand",
-//       verified: true,
-//       ctaText: "Send Inquiry",
-//       c: "#FF6265",
-//     },
-//     {
-//       location: "Gurgaon, India",
-//       title: "Kathi Junction",
-//       since: "1997",
-//       logoUrl: "/abhinay/franchise/kathicard.jpg",
-//       description:
-//         "Kathi junction -brings the golden opportunity to start your own business in the hospitality sector Kathi Junction is a vibrant food and beverage...more",
-//       rating: 4.5,
-//       tags: [
-//         "Unit",
-//         "Verified",
-//         "2022",
-//         "Beauty & Health",
-//         "High brand recall",
-//       ],
-//       stats: {
-//         space: "150-250 Sq Ft.",
-//         outlets: "350",
-//         investment: "₹20-30 Lakhs",
-//       },
-//       highlights: "High brand recall, training support",
-//       verified: true,
-//       ctaText: "Send Inquiry",
-//       c: "#DD75AB",
-//     },
-//     {
-//       location: "Gurgaon, India",
-//       title: "Kathi Junction",
-//       since: "1997",
-//       logoUrl: "/abhinay/franchise/kathicard.jpg",
-//       description:
-//         "Kathi junction -brings the golden opportunity to start your own business in the hospitality sector Kathi Junction is a vibrant food and beverage...more",
-//       rating: 4.5,
-//       tags: [
-//         "Unit",
-//         "Verified",
-//         "2022",
-//         "Beauty & Health",
-//         "High brand recall",
-//       ],
-//       stats: {
-//         space: "150-250 Sq Ft.",
-//         outlets: "350",
-//         investment: "₹20-30 Lakhs",
-//       },
-//       highlights: "High brand recall, training support",
-//       verified: true,
-//       ctaText: "Send Inquiry",
-//       c: "#DD75AB",
-//     },
-//     {
-//       location: "Chandigarh, India",
-//       title: "Haldiram’s",
-//       since: "1997",
-//       logoUrl: "/abhinay/franchise/8.png",
-//       description:
-//         "Own a Natural Salon Franchise – where beauty meets wellness with eco-friendly products, sustainable care, and a luxurious experience for every client...",
-//       rating: 4.5,
-//       tags: [
-//         "Unit",
-//         "Verified",
-//         "2022",
-//         "Food & Beverage",
-//         "Pan-India presence",
-//       ],
-//       stats: {
-//         space: "150-250 Sq Ft.",
-//         outlets: "350",
-//         investment: "₹25-35 Lakhs",
-//       },
-//       highlights: "Pan-India presence, trusted brand",
-//       verified: true,
-//       ctaText: "Send Inquiry",
-//       c: "#FF6265",
-//     },
-//     {
-//       location: "Gurgaon, India",
-//       title: "Kathi Junction",
-//       since: "1997",
-//       logoUrl: "/abhinay/franchise/kathicard.jpg",
-//       description:
-//         "Kathi junction -brings the golden opportunity to start your own business in the hospitality sector Kathi Junction is a vibrant food and beverage...more",
-//       rating: 4.5,
-//       tags: [
-//         "Unit",
-//         "Verified",
-//         "2022",
-//         "Beauty & Health",
-//         "High brand recall",
-//       ],
-//       stats: {
-//         space: "150-250 Sq Ft.",
-//         outlets: "350",
-//         investment: "₹20-30 Lakhs",
-//       },
-//       highlights: "High brand recall, training support",
-//       verified: true,
-//       ctaText: "Send Inquiry",
-//       c: "#DD75AB",
-//     },
-//     {
-//       location: "Gurgaon, India",
-//       title: "Kathi Junction",
-//       since: "1997",
-//       logoUrl: "/abhinay/franchise/kathicard.jpg",
-//       description:
-//         "Kathi junction -brings the golden opportunity to start your own business in the hospitality sector Kathi Junction is a vibrant food and beverage...more",
-//       rating: 4.5,
-//       tags: [
-//         "Unit",
-//         "Verified",
-//         "2022",
-//         "Beauty & Health",
-//         "High brand recall",
-//       ],
-//       stats: {
-//         space: "150-250 Sq Ft.",
-//         outlets: "350",
-//         investment: "₹20-30 Lakhs",
-//       },
-//       highlights: "High brand recall, training support",
-//       verified: true,
-//       ctaText: "Send Inquiry",
-//       c: "#DD75AB",
-//     },
-//   ];
-    const items = [
-  {
-    location: "Chandigarh, India",
-    title: "Haldiram’s",
-    since: "Since 1997",
-    logoUrl: "/abhinay/image.png",
-    description:
-      "Renowned Indian sweets and snacks brand offering a wide range of traditional delicacies, namkeens, and mithai...",
-    rating: 4.5,
-    tags: ["Unit", "Verified", "Indian Food", "Pan-India"],
-    stats: {
-      space: "600–1,800 sq ft",
-      outlets: "120+",
-      investment: "₹1 Cr – ₹3 Cr",
-    },
-    highlights: "Backed by Burman Hospitality; aggressive expansion",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#FF8C42",
-  },
 
-  {
-    location: "Pan-India",
-    title: "Kathi Junction",
-    since: "2009",
-    logoUrl: "/abhinay/franchise/kathicard.jpg",
-    description:
-      "Kathi Junction is a prominent Indian quick-service restaurant (QSR) chain specializing in Kathi Rolls, Shawarma, and other Mughlai/Punjabi-inspired fast food. Founded in 2009 by Navneet Sajwan, the ...",
-    rating: 4.9,
-    tags: ["Unit", "Verified", "Trusted Seller", "Kathi Rolls", "Pan-India"],
-    stats: {
-      space: "1,200–2,500 sq ft",
-      outlets: "300–500+",
-      investment: "₹1.5 Cr – ₹3 Cr",
-    },
-    highlights: "Strong dine-in brand recall",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#C62828",
-  },
-
-  {
-    location: "Pan-India",
-    title: "KFC (India)",
-    since: "1995",
-    logoUrl: "/abhinay/franchise/7.png",
-    description:
-      "Top chicken-based QSR chain known for fried chicken buckets and burgers. Strong dine-in and delivery presence...",
-    rating: 4.0,
-    tags: ["Unit", "Verified", "QSR", "Fried Chicken", "Pan-India"],
-    stats: {
-      space: "1,000–1,500 sq ft",
-      outlets: "600+",
-      investment: "₹1 Cr – ₹2 Cr",
-    },
-    highlights: "Operated under Yum! Brands with franchise support",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#D32F2F",
-  },
-
-  {
-    location: "Pan-India",
-    title: "Domino’s (India)",
-    since: "1996",
-    logoUrl: "/abhinay/franchise/image.png",
-    description:
-      "India’s biggest pizza delivery chain with strong neighborhood model and 30-minute delivery focus...",
-    rating: 4.1,
-    tags: ["Unit", "Verified", "Pizza", "Delivery", "Pan-India"],
-    stats: {
-      space: "500–1,200 sq ft",
-      outlets: "1400+",
-      investment: "₹30–50 Lakh / ₹1.2–1.5 Cr",
-    },
-    highlights: "Largest digital ordering base",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#0066CC",
-  },
-
-  {
-    location: "Pan-India",
-    title: "Subway (India)",
-    since: "2001",
-    logoUrl: "/abhinay/4f4.png",
-    description:
-      "Health-focused sandwich QSR offering customization and multi-format models like kiosks and mall outlets...",
-    rating: 4.0,
-    tags: ["Unit", "Verified", "Sandwiches", "Healthier QSR"],
-    stats: {
-      space: "170–350 sq ft",
-      outlets: "600–800+",
-      investment: "₹6–12 Lakh (Fee) / ₹24–60 Lakh",
-    },
-    highlights: "Flexible kiosk + full store formats",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#2E7D32",
-  },
-
-  {
-    location: "Pan-India",
-    title: "Burger King (India)",
-    since: "2014",
-    logoUrl: "/abhinay/franchise/4.png",
-    description:
-      "Global burger chain with flame-grilled burgers and aggressive mall-based expansion strategy...",
-    rating: 4.0,
-    tags: ["Unit", "Verified", "Burgers", "QSR"],
-    stats: {
-      space: "1,000–1,500 sq ft",
-      outlets: "300–500+",
-      investment: "₹5 Cr – ₹10 Cr",
-    },
-    highlights: "FOCO model under Restaurant Brands Asia",
-    verified: true,
-    ctaText: "Send Inquiry",
-    c: "#F57C00",
-  },
-];
+    
   
 const [showLocal, setShowLocal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -552,14 +388,7 @@ const [showLocal, setShowLocal] = useState(false);
         {/* Content */}
         <div className="relative z-10 container mx-auto px-4 sm:px-8 lg:px-16 flex flex-col gap-4">
           {/* Heading + description */}
-          <h2 className="text-2xl sm:text-3xl font-bold">
-            Explore Top Food Franchise <br /> Opportunities
-          </h2>
-          <p className="max-w-2xl text-xs sm:text-sm leading-relaxed">
-            With consumer demand for diverse dining experiences on the rise,
-            explore food franchises that bring authentic flavors and a
-            profitable business model.
-          </p>
+           {heroData && <Hero data={heroData} />}
 
           {/* Search & Filters */}
           <div className="flex items-center gap-3 mt-1 sm:mt-2 flex-wrap">
@@ -639,61 +468,27 @@ const [showLocal, setShowLocal] = useState(false);
         </div>
       </section>
 
-      <FcardGrid items={items} />
+      {franchiseItems && (
+  <FcardGrid items={franchiseItems} />
+)}
 
       <div className="max-w-[87rem] mx-auto">
         <div className="w-full px-6 py-10 bg-white">
           <div className="flex gap-6">
             {/* Left side - Franchise grid */}
-            <div className="w-[80%]">
-              <h2 className="text-2xl font-semibold mb-6">
-                Featured food franchise categories
-              </h2>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                {franchises1.map((item, index) => (
-                  <div>
-                    <div
-                      key={index}
-                      className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition bg-white"
-                    >
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="w-full h-48 object-cover"
-                      />
-                    </div>
-                    <div className="text-center p-2">
-                      <p className="font-medium text-gray-800">{item.name}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              {/* View more link */}
-              <div className="mt-4 text-right">
-                <a href="#" className="text-blue-600 hover:underline">
-                  View more →
-                </a>
-              </div>
-            </div>
+            {featuredCategories && <FeaturedFranchiseCategories
+  title="Featured food franchise categories"
+  data={featuredCategories}   // backend mapped data
+  showViewMore={true}
+/>}
+            
+
 
             {/* Right side - Insights */}
-            <div className="border rounded-xl px-4 py-2 bg-gray-50">
-              <h3 className="text-2xl font-bold mb-4">
-                Understanding Category franchise
-              </h3>
-              <ul className="space-y-3">
-                {insights.map((q, i) => (
-                  <li key={i}>
-                    <a
-                      href="#"
-                      className="text-[#268BFF] hover:underline text-base leading-relaxed block"
-                    >
-                      {q}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {categoryQuestions && (
+  <CategoryQuestions data={categoryQuestions} />
+)}
+
           </div>
         </div>
 
@@ -701,31 +496,9 @@ const [showLocal, setShowLocal] = useState(false);
           <h2 className="text-2xl font-semibold mb-6">Recommended Franchise</h2>
           <div className="grid md:grid-cols-4 gap-6">
             {/* Left side: Franchise cards */}
-            <div className="md:col-span-3 overflow-x-auto flex gap-4 pb-2">
-              {franchises2.map((item, index) => (
-                <div
-                  key={index}
-                  className="min-w-[220px] h-full rounded-xl overflow-hidden border shadow-sm hover:shadow-md transition relative group"
-                >
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute bottom-1 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-1 pb-2">
-                    <h3 className="font-semibold text-white text-lg">
-                      {item.name}
-                    </h3>
-                    <p className="text-sm text-gray-200 mt-1">
-                      {item.category}
-                    </p>
-                    <button className="mt-3 bg-white w-full border-2 border-white px-4 py-1 rounded-full hover:bg-white hover:text-black transition">
-                      Explore
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
+            {recommendedFranchises && <RecommendedFranchises data={recommendedFranchises} />}
+            
+
 
             {/* Right side: Market insights */}
             <div className="border border-[#EDEDED] rounded-xl p-6   ">
