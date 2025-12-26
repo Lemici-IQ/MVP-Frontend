@@ -3,7 +3,7 @@ import { IKImage } from "imagekitio-react";
 
 const DistributionCategories = ({ data }) => {
   const [showAll, setShowAll] = useState(false);
-
+    console.log('S', data)
   if (!data || !Array.isArray(data.categories)) return null;
 
   // Decide which categories to show
@@ -16,7 +16,7 @@ const DistributionCategories = ({ data }) => {
       {visibleCategories.map((item) => (
         <div key={item.id}>
           <IKImage
-            path={item.image?.url || "/placeholder.jpg"}
+            path={item.image.url}
             alt={item.image?.alt || item.name}
             className="rounded-xl w-full h-64 object-cover"
             loading="lazy"

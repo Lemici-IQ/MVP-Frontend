@@ -1,4 +1,5 @@
 import React from "react";
+import { IKImage } from "imagekitio-react";
 import { useNavigate } from "react-router-dom";
 
 const RecommendedFranchises = ({ data = [] }) => {
@@ -14,8 +15,8 @@ const RecommendedFranchises = ({ data = [] }) => {
           className="min-w-[220px] h-full rounded-xl overflow-hidden border shadow-sm hover:shadow-md transition relative group cursor-pointer"
           onClick={() => navigate(`/franchise/${item.slug}`)}
         >
-          <img
-            src={item.image?.url}
+          <IKImage
+            path={item.image?.url}
             alt={item.image?.alt || item.brand}
             className="w-full h-full object-cover"
           />

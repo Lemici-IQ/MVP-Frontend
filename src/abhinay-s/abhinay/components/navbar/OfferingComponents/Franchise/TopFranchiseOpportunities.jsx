@@ -24,11 +24,7 @@ const TopFranchiseOpportunities = ({ data }) => {
               className="bg-[#E6EDFF] rounded-2xl h-28 flex flex-col items-center justify-center gap-2 cursor-pointer hover:scale-105 transition-transform duration-200 ease-out"
             >
               <IKImage
-                path={item.icon_url.replace(
-                  "https://ik.imagekit.io/lemici/",
-                  ""
-                )}
-                // Remove the domain, IKImage needs only the path part
+                path={item.icon_url}
                 alt={item.name}
                 className="w-8 h-8 object-contain"
                 loading="lazy"

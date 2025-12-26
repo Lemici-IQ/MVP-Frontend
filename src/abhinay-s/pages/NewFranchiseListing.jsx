@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { IKImage } from "imagekitio-react";
 import { MdVerified } from "react-icons/md";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
@@ -33,8 +33,8 @@ const Fcard = ({
 
       {/* Header */}
       <div className="flex items-center gap-3 my-4 h-16">
-        <img
-          src={logoUrl}
+        <IKImage
+          path={logoUrl}
           alt={title}
           className="w-12 h-12 rounded-lg object-contain"
         />
@@ -70,20 +70,20 @@ const Fcard = ({
       {/* Stats */}
       <div className="grid grid-cols-3 text-center mt-8 h-24">
         <div className="flex flex-col items-center gap-1">
-            <img className="h-[24px] w-[24px]" src="/abhinay/franchise/space.png" alt="" />
+            <IKImage className="h-[24px] w-[24px]" path="/FranchiseHomePage/space.png" alt="" />
 
           <p className="text-xs text-gray-500">Space</p>
           <p className="text-sm font-semibold">{stats.space}</p>
         </div>
 
         <div className="flex flex-col items-center gap-1">
-            <img className="h-[24px] w-[24px]" src="/abhinay/franchise/riil.png" alt="" />
+            <IKImage className="h-[24px] w-[24px]" path="/FranchiseHomePage/riil.png" alt="" />
           <p className="text-xs text-gray-500">No. of outlets</p>
           <p className="text-sm font-semibold">{stats.outlets}</p>
         </div>
 
         <div className="flex flex-col items-center gap-1">
-          <img className="h-[24px] w-[24px]" src="/abhinay/franchise/rupee.png" alt="" />
+          <IKImage className="h-[24px] w-[24px]" path="/FranchiseHomePage/rupee.png" alt="" />
           <p className="text-xs text-gray-500">Investment</p>
           <p className="text-sm font-semibold">{stats.investment}</p>
         </div>
@@ -92,16 +92,16 @@ const Fcard = ({
       {/* Bottom Bar */}
       <div className="mt-6 mb-3 bg-white/30 backdrop-blur-sm rounded-2xl px-4 py-3 flex items-center justify-between border border-white/50">
         <button className="p-2">
-          <img src="/abhinay/franchise/d1.png" alt="Settings" className="w-5 h-5" />
+          <IKImage path="/FranchiseHomePage/d1.png" alt="Settings" className="w-5 h-5" />
         </button>
         <button className="p-2">
-          <img src="/abhinay/franchise/d2.png" alt="Bookmark" className="w-5 h-5" />
+          <IKImage path="/FranchiseHomePage/d2.png" alt="Bookmark" className="w-5 h-5" />
         </button>
         <button className="p-2">
-          <img src="/abhinay/franchise/d3.png" alt="Share" className="w-5 h-5" />
+          <IKImage path="/FranchiseHomePage/d3.png" alt="Share" className="w-5 h-5" />
         </button>
         <button className="bg-blue-600 p-2 rounded-full">
-          <img src="/abhinay/franchise/d4.png" alt="Next" className="w-5 h-5" />
+          <IKImage path="/FranchiseHomePage/d4.png" alt="Next" className="w-5 h-5" />
         </button>
       </div>
     </div>
@@ -159,6 +159,8 @@ const mapFranchiseListingToCard = (items = []) => {
     color: item.color,
   }));
 };
+
+
 export default function NewFranchiseListing() {
     const [heroData, setHeroData] = useState(null);
 const [franchiseItems, setFranchiseItems] = useState([]);
@@ -235,149 +237,8 @@ useEffect(() => {
     });
 }, []);
 
-
-  const images = [
-    "abhinay/franchise/carousel-1.jpg",
-    "abhinay/franchise/carousel-2.jpg",
-    "abhinay/franchise/carousel-3.jpg",
-  ];
-  const franchises1 = [
-    {
-      name: "Wow! Momos",
-      category: "Education & Training",
-      image: "/abhinay/1f1.png",
-    },
-    {
-      name: "Tea Time",
-      category: "Fitness & Wellness",
-      image: "/abhinay/2f2.png",
-    },
-    {
-      name: "Amul Ice Cream",
-      category: "Salon & Beauty",
-      image: "/abhinay/3f3.png",
-    },
-    {
-      name: "Subway",
-      category: "Category 4",
-      image: "/abhinay/4f4.png",
-    },
-    {
-      name: "Domino’s Pizza",
-      category: "Category 5",
-      image: "/abhinay/5f5.png",
-    },
-    {
-      name: "Rolfi",
-      category: "Category 6",
-      image: "/abhinay/6f6.png",
-    },
-    {
-      name: "Zoca Cafe",
-      category: "Category 7",
-      image: "/abhinay/7f7.png",
-    },
-    {
-      name: "Lassi Corner",
-      category: "Category 8",
-      image: "/abhinay/8ff8.png",
-    },
-  ];
-  const franchises2 = [
-    {
-      name: "KidZee",
-      category: "Education & Training",
-      image: "/abhinay/unif.png",
-    },
-    {
-      name: "Jetts India",
-      category: "Fitness & Wellness",
-      image: "/abhinay/second.png",
-    },
-    {
-      name: "Lakme Salon",
-      category: "Salon & Beauty",
-      image: "/abhinay/third.png",
-    },
-    {
-      name: "Carzspa",
-      category: "Automotive",
-      image: "/abhinay/car.png",
-    },
-  ];
-
-  const insights = [
-    "What is a category franchise in the context of the Food industry?",
-    "Who is the target customer for a Food franchise in India?",
-    "What is the typical business model used by Food franchises?",
-    "What are the main services offered in a food franchise?",
-    "What kind of infrastructure or space is required?",
-    "What is the expected investment and ROI for a food franchise?",
-    "What kind of training and support does the franchisor provide?",
-    "In which locations does a food franchise work best in India?",
-  ];
-
   
-  const info =
-   [
-    {
-      label: "Initial Investment",
-      value: "₹6–18 Lakhs",
-      icon: <img src="/abhinay/1a1.png" />,
-    },
-    {
-      label: "Unit as of 2025",
-      value: "100+",
-      icon: <img src="/abhinay/2a2.png" />,
-    },
-    {
-      label: "Space requirement",
-      value: "600–1500 sq. ft.",
-      icon: <img src="/abhinay/3b3.png" />,
-    },
-    {
-      label: "Industry",
-      value: "Food & Beverage",
-      icon: <img src="/abhinay/4c4.png" />,
-    },
-    {
-      label: "Parent company",
-      value: "Yum Brand Inc.",
-      icon: <img src="/abhinay/5d5.png" />,
-    },
-    {
-      label: "Business type",
-      value: "Franchise",
-      icon: <img src="/abhinay/6d6.png" />,
-    },
-    {
-      label: "Leadership",
-      value: "Tarun Lal, President",
-      icon: <img src="/abhinay/7e7.png" />,
-    },
-    {
-      label: "E-mail",
-      value: "anurag1990@gmail.com",
-      icon: <img src="/abhinay/8f8.png" />,
-    },
-    {
-      label: "Avg. turnover per/month",
-      value: "₹2–6 Lakhs",
-      icon: <img src="/abhinay/9g9.png" />,
-    },
-    {
-      label: "Franchise Fees",
-      value: "₹3 Lakhs",
-      icon: <img src="/abhinay/10h.png" />,
-    },
-    {
-      label: "Term duration year",
-      value: "5 years",
-      icon: <img src="/abhinay/11i.png" />,
-    },
-    { label: "Royalties", value: "4%", icon: <img src="/abhinay/12j.png" /> },
-  ];
-
+ 
     
   
 const [showLocal, setShowLocal] = useState(false);

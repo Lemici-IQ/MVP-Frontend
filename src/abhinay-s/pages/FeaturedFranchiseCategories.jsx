@@ -1,4 +1,5 @@
 import React from "react";
+import { IKImage } from "imagekitio-react";
 
 const FeaturedFranchiseCategories = ({
   title = "Featured food franchise categories",
@@ -19,8 +20,8 @@ const FeaturedFranchiseCategories = ({
         {data.map((item, index) => (
           <div key={item.id || index}>
             <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition bg-white">
-              <img
-                src={item.image?.url}
+              <IKImage
+                path={item.image?.url}
                 alt={item.image?.alt || item.brand}
                 className="w-full h-48 object-cover"
               />

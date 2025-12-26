@@ -28,8 +28,8 @@ const Hero = ({ data }) => {
             title={brand.name}
           >
             <IKImage
-              urlEndpoint="https://ik.imagekit.io/lemici"
-              src={brand.logo.url}
+              
+              path={brand.logo.url}
               alt={brand.logo.alt}
               className="max-w-full max-h-full object-contain"
               loading="lazy"
