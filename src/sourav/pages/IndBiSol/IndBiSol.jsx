@@ -1,4 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios'; 
+import Chatbot from "../../components/Chatbot";
+
+// --- ASSET IMPORTS ---
 import eventsbg from '../../assets/IndBiSol/eventsbg.png';
 import communitybg from '../../assets/IndBiSol/communitybg.png';
 import report1 from '../../assets/IndBiSol/report1.jpg';
@@ -39,9 +43,7 @@ import grow7 from "../../assets/IndBiSol/grow7.jpg";
 import grow8 from "../../assets/IndBiSol/grow8.jpg";
 
 
-import Chatbot from "../../components/Chatbot";
-
-
+// --- HARDCODED SUB-COMPONENTS ---
 
 const HeroSection = () => {
   const [activeTab, setActiveTab] = useState("Project Report");
@@ -54,81 +56,76 @@ const HeroSection = () => {
 
   return (
     <div>
-              <h1
-              className="w-full mt-30 max-w-4xl mx-auto text-[64px] md:text-7xl mb-6 leading-[0.9] text-center"
-              style={{
-                fontFamily: "Space Grotesk, sans-serif",
-                fontWeight: 600,
-                color: "black",
-              }}
-              >
-                Build Your Business <br />
-                On Strong Fundamentals
-              </h1>
+      <h1
+        className="w-full mt-30 max-w-4xl mx-auto text-[64px] md:text-7xl mb-6 leading-[0.9] text-center"
+        style={{
+          fontFamily: "Space Grotesk, sans-serif",
+          fontWeight: 600,
+          color: "black",
+        }}
+      >
+        Build Your Business <br />
+        On Strong Fundamentals
+      </h1>
 
-              <div className="flex items-center justify-center gap-3 py-4">
-                {items.map((item, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setActiveTab(item.label)}
-                    className={`flex shadow-[0_4px_10px_rgba(0,0,0,0.3)] mb-8 items-center gap-2 rounded-xl px-4 py-1  font-medium transition-all ${
-                      activeTab === item.label
-                        ? "bg-[#F5008F] text-white"
-                        : "bg-white text-gray-700 hover:bg-gray-300 "
-                    }` }
-                  >
-                    <span>{item.label}</span>
-                  </button>
-                ))}
-              </div>
+      <div className="flex items-center justify-center gap-3 py-4">
+        {items.map((item, index) => (
+          <button
+            key={index}
+            onClick={() => setActiveTab(item.label)}
+            className={`flex shadow-[0_4px_10px_rgba(0,0,0,0.3)] mb-8 items-center gap-2 rounded-xl px-4 py-1  font-medium transition-all ${
+              activeTab === item.label
+                ? "bg-[#F5008F] text-white"
+                : "bg-white text-gray-700 hover:bg-gray-300 "
+            }`}
+          >
+            <span>{item.label}</span>
+          </button>
+        ))}
+      </div>
 
-              <Chatbot />
+      <Chatbot />
 
-              <div className=" flex justify-center items-center text-center text-gray-600 m-10">
-                <p>
-                Comprehensive Business Plan And Project Reports <br /> Tailored For Your Industry Needs
-              </p>
-              </div>
+      <div className=" flex justify-center items-center text-center text-gray-600 m-10">
+        <p>
+          Comprehensive Business Plan And Project Reports <br /> Tailored For Your Industry Needs
+        </p>
+      </div>
 
-              
-
-              <div className="flex items-center justify-center gap-4 mt-10 mb-10">
-                <div className="flex items-center justify-center h-[40px] rounded-full w-[40px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
-                  <img className="h-[40px] w-auto " src={comp1} alt="" />
-                </div>
-                <div className="flex items-center justify-center h-[50px] rounded-full w-[50px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
-                  <img className="h-[30px] w-auto " src={comp2} alt="" />
-                </div>
-                <div className="flex items-center justify-center h-[60px] rounded-full w-[60px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
-                  <img className="h-[35px] w-auto " src={comp3} alt="" />
-                </div>
-                <div className="flex items-center justify-center h-[70px] rounded-full w-[70px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
-                  <img className="h-[30px] w-auto " src={comp4} alt="" />
-                </div>
-                <div className="flex items-center justify-center h-[80px] rounded-full w-[80px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
-                  <img className="h-[40px] w-auto " src={comp5} alt="" />
-                </div>
-                <div className="flex items-center justify-center h-[70px] rounded-full w-[70px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
-                  <img className="h-[20px] w-auto " src={comp6} alt="" />
-                </div>
-                <div className="flex items-center justify-center h-[60px] rounded-full w-[60px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
-                  <img className="h-[35px] w-auto " src={comp7} alt="" />
-                </div>
-                <div className="flex items-center justify-center h-[50px] rounded-full w-[50px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
-                  <img className="h-[20px] w-auto " src={comp8} alt="" />
-                </div>
-                <div className="flex items-center justify-center h-[40px] rounded-full w-[40px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
-                  <img className="h-[20px] w-auto " src={comp9} alt="" />
-                </div>
-              </div>
-            </div>
+      <div className="flex items-center justify-center gap-4 mt-10 mb-10">
+        <div className="flex items-center justify-center h-[40px] rounded-full w-[40px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
+          <img className="h-[40px] w-auto " src={comp1} alt="" />
+        </div>
+        <div className="flex items-center justify-center h-[50px] rounded-full w-[50px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
+          <img className="h-[30px] w-auto " src={comp2} alt="" />
+        </div>
+        <div className="flex items-center justify-center h-[60px] rounded-full w-[60px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
+          <img className="h-[35px] w-auto " src={comp3} alt="" />
+        </div>
+        <div className="flex items-center justify-center h-[70px] rounded-full w-[70px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
+          <img className="h-[30px] w-auto " src={comp4} alt="" />
+        </div>
+        <div className="flex items-center justify-center h-[80px] rounded-full w-[80px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
+          <img className="h-[40px] w-auto " src={comp5} alt="" />
+        </div>
+        <div className="flex items-center justify-center h-[70px] rounded-full w-[70px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
+          <img className="h-[20px] w-auto " src={comp6} alt="" />
+        </div>
+        <div className="flex items-center justify-center h-[60px] rounded-full w-[60px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
+          <img className="h-[35px] w-auto " src={comp7} alt="" />
+        </div>
+        <div className="flex items-center justify-center h-[50px] rounded-full w-[50px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
+          <img className="h-[20px] w-auto " src={comp8} alt="" />
+        </div>
+        <div className="flex items-center justify-center h-[40px] rounded-full w-[40px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
+          <img className="h-[20px] w-auto " src={comp9} alt="" />
+        </div>
+      </div>
+    </div>
   );
 };
 
-
-
 const ProductsAndSolutions = () => {
-
   return (
     <section 
       className="relative w-full bg-black text-white overflow-hidden" 
@@ -168,8 +165,6 @@ const ProductsAndSolutions = () => {
 };
 
 const IndustryDPRCard = ({ imageUrl, title }) => {
-  const pinkBorderColor = '#EE008D'; 
-
   return (
     <div 
       className="flex flex-col items-center p-6 text-center rounded-xl border-2 border-gray-200 transition-all duration-300
@@ -612,18 +607,46 @@ const NumbersSection = () => {
 };
 
 
-// --- Main App Component ---
+// --- MAIN APP COMPONENT ---
+// --- MAIN APP COMPONENT ---
 function IndBiSol() {
+  // 1. STATE: Initialize control flags
+  const [flags, setFlags] = useState({
+    showHero: true,
+    showProducts: true,
+    showIndustryDPR: true,
+    showCustomReports: true,
+    showExpertise: true,
+    showNewsEvents: true,
+    showLatestReports: true,
+    showStats: true
+  });
+
+  // 2. FETCH: Get visibility control from Backend
+  useEffect(() => {
+    // Ensure there are no stray characters or text here
+    axios.get("http://localhost:5000/api/indbisol/flags")
+      .then((res) => {
+        if (res.data) {
+          setFlags(res.data);
+        }
+      })
+      .catch((err) => {
+        console.error("Error fetching flags:", err);
+      });
+  }, []);
+
+  // 3. RENDER: Conditional logic
   return (
     <div className="min-h-screen font-sans antialiased bg-white" style={{ maxWidth: '1440px', margin: '0 auto' }}>
-      <HeroSection />
-      <ProductsAndSolutions />
-      <IndustrySolutionDPR />
-      <TopCustomizedReports />
-      <OurExpertise />
-      <LatestNewsEvents />
-      <MentorsInvestors />
-      <NumbersSection />
+      {flags.showHero && <HeroSection />}
+      {flags.showProducts && <ProductsAndSolutions />}
+      {flags.showIndustryDPR && <IndustrySolutionDPR />}
+      {flags.showCustomReports && <TopCustomizedReports />}
+      {flags.showExpertise && <OurExpertise />}
+      {flags.showNewsEvents && <LatestNewsEvents />}
+      {flags.showLatestReports && <MentorsInvestors />}
+      {flags.showStats && <NumbersSection />}
     </div>
   );
 }

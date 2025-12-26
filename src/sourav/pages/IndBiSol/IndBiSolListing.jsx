@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'; // Import Axios
+
+// --- ASSET IMPORTS ---
 import header from "../../assets/IndBiSol/header.jpg";
 import mushroom from "../../assets/IndBiSol/mushroom.png";
 import robot from "../../assets/IndBiSol/robot.jpg";
@@ -19,88 +22,69 @@ import meesho from "../../assets/IndBiSol/lady.jpg";
 import cureskin from "../../assets/IndBiSol/cureskin.jpg";
 import recykal from "../../assets/IndBiSol/recykal.jpg";
 
-
-
+// --- ICONS ---
 const ShareIcon = () => (
   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 110 2.684H9m6.632-6a3 3 0 110-2.684H9"></path></svg>
 );
-
-
-
 const ArrowRightIcon = () => (
   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
 );
-
 const FacebookIcon = () => (  <div className="w-6 h-6 bg-blue-600 rounded-full" /> );
 const TwitterIcon = () => (  <div className="w-6 h-6 bg-blue-400 rounded-full" /> );
 const LinkedInIcon = () => (  <div className="w-6 h-6 bg-blue-800 rounded-full" /> );
-
-
 const BackArrowIcon = () => (
   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
 );
-
 const SearchIcon = () => (
   <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
 );
-
 const CloseIcon = () => (
   <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
 );
-
 const FilterIcon = () => (
   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8v-2m0 2a2 2 0 100 4m0-4a2 2 0 110 4m0-4h.01M6 16h.01M4 12h.01M10 12h.01M16 12h.01M18 8h.01M20 12h.01M12 20v-2m0 2a2 2 0 100 4m0-4a2 2 0 110 4m6-12v-2m0 2a2 2 0 100 4m0-4a2 2 0 110 4"></path></svg>
 );
-
 const VerifiedIcon = () => (
   <svg className="w-5 h-5 text-[#EE008D]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
   </svg>
 );
-
 const BookmarkIcon = () => (
   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
   </svg>
 );
-
 const StarIcon = () => (
   <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
   </svg>
 );
-
 const LocationIcon = () => (
   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
 );
-
 const UsersIcon = () => (
   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 016-6h6m6 3v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
 );
-
 const BriefcaseIcon = () => (
   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
 );
-
 const CloseSmallIcon = () => (
   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12"></path></svg>
 );
-
 const InfoIcon = () => (
   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 );
-
 const MessageIcon = () => (
   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
 );
-
 const RateIcon = () => (
   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.539 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.539-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
 );
-
 const WatchIcon = () => (
   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 );
+
+// --- HARDCODED COMPONENTS ---
 
 const Header = () => {
   const [searchValue, setSearchValue] = React.useState('');
@@ -117,24 +101,20 @@ const Header = () => {
         backgroundColor: '#EE008D',
       }}
     >
-
       <button className="absolute top-6 left-16 z-10 text-white hover:scale-150  transition-transform">
         <BackArrowIcon />
       </button>
       
       <div className="relative z-10 max-w-4xl  px-16 py-10">
-        
         <h1 className="text-4xl font-semibold mb-8" >
           Project Reports
         </h1>
-        
         <p className="text-md text-white text-opacity-90 mb-10 ">
           Food and Cafe Franchise Get into the fastest Growing Market <br />
           Low Cost Food and Cafe Business.
         </p>
 
         <div className="flex items-center space-x-4 mb-4">
-          {/* Search Bar */}
           <div className="relative flex-grow">
             <input 
               type="text" 
@@ -180,7 +160,6 @@ const Header = () => {
             </button>
           ))}
         </div>
-        
       </div>
     </section>
   );
@@ -237,7 +216,6 @@ const ProjectReportCard = ({ cardData }) => {
             <div className='text-[#EE008D]'>
               <LocationIcon />
             </div>
-            
             <span>{cardData.location}</span>
           </div>
           <div className="flex items-center space-x-2 text-gray-700">
@@ -331,19 +309,13 @@ const reportDataList = [
     salesNote: '$1.2 Million in product sold in first two years.',
     keywords: ['Salient features', 'Risk', 'Loans', 'Growth', 'Govt. Schemes'],
   },
-  
 ];
 
 const ReportCardGrid = () => {
   const sectionPinkBg = '#FEF6FA';
-  
   const displayData = [
-    reportDataList[0],
-    reportDataList[0],
-    reportDataList[0],
-    reportDataList[0],
-    reportDataList[0],
-    reportDataList[0],
+    reportDataList[0], reportDataList[0], reportDataList[0],
+    reportDataList[0], reportDataList[0], reportDataList[0],
   ]; 
 
   return (
@@ -375,13 +347,8 @@ const AIBanner = () => {
           key={i} 
           className="absolute rounded-full"
           style={{
-            width: `${size}px`,
-            height: `${size}px`,
-            top: `${top}%`,
-            left: `${left}%`,
-            opacity: opacity,
-            backgroundColor: color,
-            zIndex: 0, 
+            width: `${size}px`, height: `${size}px`, top: `${top}%`, left: `${left}%`,
+            opacity: opacity, backgroundColor: color, zIndex: 0, 
           }}
         />
       );
@@ -393,10 +360,8 @@ const AIBanner = () => {
     <section 
       className="relative py-12 px-6 rounded-lg overflow-hidden" 
       style={{ 
-        backgroundColor: bannerPink,
-        borderRadius: '16px', 
-        margin: '40px auto', 
-        maxWidth: '1280px', 
+        backgroundColor: bannerPink, borderRadius: '16px', 
+        margin: '40px auto', maxWidth: '1280px', 
       }}
     >
       {generateDots()}
@@ -408,10 +373,7 @@ const AIBanner = () => {
           </h2>
         </div>
         
-        <button 
-          className="py-3 px-8 bg-white text-gray-900 font-semibold rounded-lg shadow-lg 
-                     hover:bg-gray-200 transition-colors flex-shrink-0"
-        >
+        <button className="py-3 px-8 bg-white text-gray-900 font-semibold rounded-lg shadow-lg hover:bg-gray-200 transition-colors flex-shrink-0">
           Click Here
         </button>
       </div>
@@ -420,14 +382,11 @@ const AIBanner = () => {
 };
 
 const AIHero = () => {
-
   return (
     <section 
       className="relative text-white py-20 px-16"
       style={{
-        backgroundImage: `url(${robot})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundImage: `url(${robot})`, backgroundSize: 'cover', backgroundPosition: 'center',
       }}
     >
       <div className="max-w-3xl">
@@ -453,11 +412,7 @@ const AIHero = () => {
 
 const CategoryItem = ({ imageUrl, title }) => (
   <a href="#" className="flex flex-col items-center text-center group">
-    <img 
-      src={imageUrl} 
-      alt={title} 
-      className="w-12 h-12 object-contain mb-2 transition-transform duration-300 group-hover:scale-110" 
-    />
+    <img src={imageUrl} alt={title} className="w-12 h-12 object-contain mb-2 transition-transform duration-300 group-hover:scale-110" />
     <span className="text-sm font-medium text-gray-700 group-hover:text-pink-600" style={{ fontSize: '13px' }}>
       {title}
     </span>
@@ -490,7 +445,6 @@ const BrowseByIndustry = () => {
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
-        
         <div className="lg:col-span-2">
           <div className="bg-gray-100 rounded-full px-6 py-2 mb-10" style={{ backgroundColor: '#EEEEEE' }}>
             <h2 className="text-xl text-gray-800">
@@ -502,7 +456,6 @@ const BrowseByIndustry = () => {
             {categories.map(item => (
               <CategoryItem key={item.title} imageUrl={item.img} title={item.title} />
             ))}
-            
             <a href="#" className="flex flex-col items-center justify-center text-center group">
               <span className="text-sm font-medium text-blue-600 group-hover:text-pink-600" style={{ color: '#2563EB' }}>
                 See More →
@@ -517,27 +470,19 @@ const BrowseByIndustry = () => {
           </h3>
           <div className="space-y-6 mb-10">
             {questions.map((question, index) => (
-              <p 
-                key={index} 
-                className="text-sm hover:underline cursor-pointer"
-                style={{ color: '#2563EB' }}
-              >
+              <p key={index} className="text-sm hover:underline cursor-pointer" style={{ color: '#2563EB' }}>
                 {question}
               </p>
             ))}
           </div>
         </div>
-        
       </div>
     </section>
   );
 };
 
 const StateStatBox = ({ value, label }) => (
-  <div 
-    className="text-center p-4 rounded-lg" 
-    style={{ border: '2px solid #EE008D' }} 
-  >
+  <div className="text-center p-4 rounded-lg" style={{ border: '2px solid #EE008D' }} >
     <p className="text-2xl font-bold" style={{ color: '#EE008D' }}>{value}</p>
     <p className="text-sm text-gray-600">{label}</p>
   </div>
@@ -545,35 +490,19 @@ const StateStatBox = ({ value, label }) => (
 
 const BrowseByState = () => {
   const [activeState, setActiveState] = React.useState('Andhra Pradesh');
-  
-  const states = [
-    'Andhra Pradesh', 
-    'Gujarat', 
-    'Karnataka', 
-    'Maharastra', 
-    'Telangana', 
-    'Uttar Pradesh', 
-    'Tamil Nadu'
-  ];
-
+  const states = [ 'Andhra Pradesh', 'Gujarat', 'Karnataka', 'Maharastra', 'Telangana', 'Uttar Pradesh', 'Tamil Nadu' ];
   const stateData = {
     'Andhra Pradesh': {
-      name: 'Andhra Pradesh',
-      mapUrl: ap,
-      description: "Andhra Pradesh is the second largest producer of cotton and raw silk in India. The state has a strong textile industry base consisting of looms, handicrafts, spinning and processing units. The state has integrated apparel city in Vizag with an innovative concept of 'Fibre to score'. The government is providing a lot of initiatives for the sector such as offering land for the establishment of textile and apparel parks, training programs, etc. The state has a good number of textile industries in the districts of Guntur, Chittoor, kadapa and Kurnool.",
-      stats: [
-        { value: '15+', label: 'Projects Completed' },
-        { value: '20+', label: 'Textile Consultants' }
-      ]
+      name: 'Andhra Pradesh', mapUrl: ap,
+      description: "Andhra Pradesh is the second largest producer of cotton and raw silk in India...",
+      stats: [ { value: '15+', label: 'Projects Completed' }, { value: '20+', label: 'Textile Consultants' } ]
     },
   };
-
   const currentData = stateData[activeState];
 
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        
         <div className="bg-gray-100 rounded-full px-6 py-2 mb-10" style={{ backgroundColor: '#EEEEEE' }}>
           <h2 className="text-xl  text-gray-800">
             Business Opportunities in States
@@ -583,14 +512,8 @@ const BrowseByState = () => {
         <div className="flex space-x-8 border-b border-gray-200 mb-10">
           {states.map(state => (
             <button
-              key={state}
-              onClick={() => setActiveState(state)}
-              className={`pb-3  text-md transition-colors
-                ${activeState === state 
-                  ? 'text-blue-600 border-b-2 border-blue-600'
-                  : 'text-gray-500 hover:text-gray-800' 
-                }
-              `}
+              key={state} onClick={() => setActiveState(state)}
+              className={`pb-3  text-md transition-colors ${activeState === state ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-800' }`}
             >
               {state}
             </button>
@@ -600,17 +523,11 @@ const BrowseByState = () => {
         {currentData ? (
           <div className="flex  gap-12 items-center">
             <div className="flex  justify-center">
-              <img 
-                src={currentData.mapUrl} 
-                alt={`${currentData.name} map`} 
-                className="max-h-[8000px] object-contain"
-              />
+              <img src={currentData.mapUrl} alt={`${currentData.name} map`} className="max-h-[8000px] object-contain" />
             </div>
-            
             <div>
               <h3 className="text-3xl font-semibold text-gray-900 mb-6">{currentData.name}</h3>
               <p className="text-gray-700 text-lg leading-relaxed mb-8">{currentData.description}</p>
-              
               <div className="flex space-x-6">
                 {currentData.stats.map(stat => (
                   <StateStatBox key={stat.label} value={stat.value} label={stat.label} />
@@ -623,7 +540,6 @@ const BrowseByState = () => {
             <p className="text-gray-500">Select a state to see the details.</p>
           </div>
         )}
-        
       </div>
     </section>
   );
@@ -631,17 +547,10 @@ const BrowseByState = () => {
 
 const RecommendedCard = ({ imageUrl, title, subtitle }) => (
   <div className="relative w-full h-80 rounded-2xl bg-black overflow-hidden shadow-lg group">
-    <img 
-      src={imageUrl}
-      alt={title}
-      className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-    />
-    
-    
+    <img src={imageUrl} alt={title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
     <div className="relative z-10 flex flex-col justify-end h-full p-2 text-white">
       <h3 className="text-2xl font-bold">{title}</h3>
       <p className="text-sm text-white text-opacity-90 mb-4">{subtitle}</p>
-      
       <button className="w-full py-1 bg-white bg-opacity-30 text-black font-medium rounded-xl backdrop-blur-sm hover:bg-opacity-40 transition-all">
         Explore
       </button>
@@ -654,13 +563,12 @@ const MarketInsightsBox = () => (
     <div>
       <div className="flex justify-between items-center mb-6">
         <h3 className="text-lg font-semibold text-gray-900">Key Market Insights</h3>
-        <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0h6m6 0v-6a2 2 0 00-2-2h-2a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2z"></path></svg>
+        <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0h6m6 0v-6a2 2 0 00-2-2h-2a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2z"></path></svg>
       </div>
       <div className="mb-5">
         <p className="text-xs text-gray-500 mb-1">Revenue of the market research industry worldwide</p>
         <a href="#" className="text-lg font-semibold text-blue-600 hover:underline">53.9B USD</a>
       </div>
-      
       <div>
         <p className="text-xs text-gray-500 mb-1">Annual growth of global market research revenue</p>
         <p className="text-lg font-semibold text-blue-600">4.8%</p>
@@ -674,66 +582,65 @@ const MarketInsightsBox = () => (
 
 const RelatedBlogs = () => {
   const projects = [
-    {
-      title: 'Flipkart',
-      subtitle: 'E-commerce & Online retail',
-      imageUrl: flipkart, 
-    },
-    {
-      title: 'Meesho',
-      subtitle: 'E-commerce & Online retail',
-      imageUrl: meesho, 
-    },
-    {
-      title: 'CureSkin',
-      subtitle: 'Healthtech & Fintech',
-      imageUrl: cureskin, 
-    },
-    {
-      title: 'ReecyKal',
-      subtitle: 'Recycle tech Platform',
-      imageUrl: recykal, 
-    }
+    { title: 'Flipkart', subtitle: 'E-commerce & Online retail', imageUrl: flipkart },
+    { title: 'Meesho', subtitle: 'E-commerce & Online retail', imageUrl: meesho },
+    { title: 'CureSkin', subtitle: 'Healthtech & Fintech', imageUrl: cureskin },
+    { title: 'ReecyKal', subtitle: 'Recycle tech Platform', imageUrl: recykal }
   ];
 
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        
         <div className="bg-gray-100 rounded-full px-6 py-2 mb-10" style={{ backgroundColor: '#EEEEEE' }}>
-          <h2 className="text-xl text-gray-800">
-            Recommended Project Reports
-          </h2>
+          <h2 className="text-xl text-gray-800">Recommended Project Reports</h2>
         </div>
-        
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          
           {projects.map((project, index) => (
-            <RecommendedCard
-              key={index}
-              imageUrl={project.imageUrl}
-              title={project.title}
-              subtitle={project.subtitle}
-            />
+            <RecommendedCard key={index} imageUrl={project.imageUrl} title={project.title} subtitle={project.subtitle} />
           ))}
-          
           <MarketInsightsBox />
-          
         </div>
       </div>
     </section>
   );
 };
+
+// --- MAIN LISTING COMPONENT ---
 function IndBiSolListing() {
+  // 1. STATE: Control Flags
+  const [flags, setFlags] = useState({
+    showHeader: true,
+    showReportGrid: true,
+    showAIBanner: true,
+    showAIHero: true,
+    showIndustryBrowse: true,
+    showStateBrowse: true,
+    showRelatedBlogs: true
+  });
+
+  // 2. FETCH: Get visibility settings from backend
+  useEffect(() => {
+    axios.get("http://localhost:5000/api/indbisol-listing/flags")
+      .then((res) => {
+        if (res.data) {
+          setFlags(res.data);
+        }
+      })
+      .catch((err) => {
+        console.error("Error fetching flags:", err);
+      });
+  }, []);
+
+  // 3. RENDER: Conditional Logic
   return (
     <div className="min-h-screen font-sans antialiased bg-white" style={{ maxWidth: '1440px', margin: '0 auto' }}>
-      <Header />
-      <ReportCardGrid />
-      <AIBanner />
-      <AIHero />
-      <BrowseByIndustry />
-      <BrowseByState />
-      <RelatedBlogs />
+      {flags.showHeader && <Header />}
+      {flags.showReportGrid && <ReportCardGrid />}
+      {flags.showAIBanner && <AIBanner />}
+      {flags.showAIHero && <AIHero />}
+      {flags.showIndustryBrowse && <BrowseByIndustry />}
+      {flags.showStateBrowse && <BrowseByState />}
+      {flags.showRelatedBlogs && <RelatedBlogs />}
     </div>
   );
 }

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Chatbot from "../../components/Chatbot"; // Ensure this path is correct
 
-import Chatbot from "../../components/Chatbot";
-
+// --- ASSET IMPORTS ---
 import comp1 from "../../assets/IndBiSol/comp1.png";
 import comp2 from "../../assets/IndBiSol/comp2.png";
 import comp3 from "../../assets/IndBiSol/comp3.png";
@@ -23,44 +24,21 @@ import i from "../../assets/BusSol/9.jpg";
 import j from "../../assets/BusSol/10.jpg";
 
 import { 
-  Search, 
-  Mic, 
-  MapPin, 
-  Filter, 
-  MoreHorizontal, 
-  ArrowRight, 
-  CheckCircle,
-  Star,
-  Briefcase,
-  Utensils,
-  Home,
-  Calendar,
-  Dumbbell,
-  Bed,
-  GraduationCap,
-  Car,
-  Key,
-  Menu,
-  X
+  Search, Mic, MapPin, Filter, MoreHorizontal, ArrowRight, 
+  CheckCircle, Star, Briefcase, Utensils, Home, Calendar, 
+  Dumbbell, Bed, GraduationCap, Car, Key, Menu, X
 } from 'lucide-react';
 
-// --- Components ---
-
-
+// --- HARDCODED SUB-COMPONENTS ---
 
 const Hero = () => {
   return (
     <section className="text-center py-16 px-4 max-w-5xl mx-auto">
       <h1 className="text-4xl md:text-6xl font-extrabold text-black mb-12 leading-tight" 
-      style={{
-                fontFamily: "Space Grotesk, sans-serif",
-                fontWeight: 800,
-                color: 'black',
-              }}>
+      style={{ fontFamily: "Space Grotesk, sans-serif", fontWeight: 800, color: 'black' }}>
         Get Business <br /> Insights Faster
       </h1>
 
-      {/* Search Bar Container */}
       <Chatbot />
 
       <p className="mt-8 text-gray-600 max-w-lg mx-auto">
@@ -69,34 +47,34 @@ const Hero = () => {
 
       {/* Logos */}
       <div className="flex items-center justify-center gap-4 mt-10 mb-10">
-                      <div className="flex items-center justify-center h-[40px] rounded-full w-[40px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
-                        <img className="h-[40px] w-auto " src={comp1} alt="" />
-                      </div>
-                      <div className="flex items-center justify-center h-[50px] rounded-full w-[50px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
-                        <img className="h-[30px] w-auto " src={comp2} alt="" />
-                      </div>
-                      <div className="flex items-center justify-center h-[60px] rounded-full w-[60px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
-                        <img className="h-[35px] w-auto " src={comp3} alt="" />
-                      </div>
-                      <div className="flex items-center justify-center h-[70px] rounded-full w-[70px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
-                        <img className="h-[30px] w-auto " src={comp4} alt="" />
-                      </div>
-                      <div className="flex items-center justify-center h-[80px] rounded-full w-[80px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
-                        <img className="h-[40px] w-auto " src={comp5} alt="" />
-                      </div>
-                      <div className="flex items-center justify-center h-[70px] rounded-full w-[70px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
-                        <img className="h-[20px] w-auto " src={comp6} alt="" />
-                      </div>
-                      <div className="flex items-center justify-center h-[60px] rounded-full w-[60px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
-                        <img className="h-[35px] w-auto " src={comp7} alt="" />
-                      </div>
-                      <div className="flex items-center justify-center h-[50px] rounded-full w-[50px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
-                        <img className="h-[20px] w-auto " src={comp8} alt="" />
-                      </div>
-                      <div className="flex items-center justify-center h-[40px] rounded-full w-[40px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
-                        <img className="h-[20px] w-auto " src={comp9} alt="" />
-                      </div>
-                    </div>
+          <div className="flex items-center justify-center h-[40px] rounded-full w-[40px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
+            <img className="h-[40px] w-auto " src={comp1} alt="" />
+          </div>
+          <div className="flex items-center justify-center h-[50px] rounded-full w-[50px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
+            <img className="h-[30px] w-auto " src={comp2} alt="" />
+          </div>
+          <div className="flex items-center justify-center h-[60px] rounded-full w-[60px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
+            <img className="h-[35px] w-auto " src={comp3} alt="" />
+          </div>
+          <div className="flex items-center justify-center h-[70px] rounded-full w-[70px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
+            <img className="h-[30px] w-auto " src={comp4} alt="" />
+          </div>
+          <div className="flex items-center justify-center h-[80px] rounded-full w-[80px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
+            <img className="h-[40px] w-auto " src={comp5} alt="" />
+          </div>
+          <div className="flex items-center justify-center h-[70px] rounded-full w-[70px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
+            <img className="h-[20px] w-auto " src={comp6} alt="" />
+          </div>
+          <div className="flex items-center justify-center h-[60px] rounded-full w-[60px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
+            <img className="h-[35px] w-auto " src={comp7} alt="" />
+          </div>
+          <div className="flex items-center justify-center h-[50px] rounded-full w-[50px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
+            <img className="h-[20px] w-auto " src={comp8} alt="" />
+          </div>
+          <div className="flex items-center justify-center h-[40px] rounded-full w-[40px]  px-[10px] py-[10px] shadow-[0_4px_6px_rgba(0,0,0,0.2)]">
+            <img className="h-[20px] w-auto " src={comp9} alt="" />
+          </div>
+      </div>
       
       <p className="mt-8 text-sm text-gray-400">Find the right information from more than 560+ Companies</p>
     </section>
@@ -213,20 +191,13 @@ const Community = () => {
         
         {/* Left Image Section */}
         <div className="relative w-full lg:w-1/2 flex justify-center">
-            {/* Red Circle Background */}
             <div className="absolute w-[300px] h-[300px] md:w-[450px] md:h-[450px] bg-red-700 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[206px] z-0"></div>
-            {/* Person Image */}
-            <img 
-                src={e}
-                alt="Professional" 
-                className="relative z-10 w-3/4 max-w-sm drop-shadow-2xl rounded-b-full mask-image-gradient"
-            />
+            <img src={e} alt="Professional" className="relative z-10 w-3/4 max-w-sm drop-shadow-2xl rounded-b-full mask-image-gradient"/>
         </div>
 
         {/* Right Content Section */}
         <div className="w-full lg:w-1/2">
             <div className="flex items-center gap-2 mb-6">
-                 {/* Logo mark roughly matching screenshot */}
                 <div className="text-3xl font-bold flex items-center">
                     <span className="text-teal-600">lem</span>
                     <span className="text-yellow-500">iCi</span>
@@ -267,13 +238,9 @@ const Community = () => {
 const SafetySection = () => {
   return (
     <section className="relative w-full py-24 px-4 bg-black overflow-hidden">
-        {/* Abstract Background - Using a dark, red-tinged placeholder or gradient */}
+        {/* Abstract Background */}
         <div className="absolute inset-0 z-0">
-             <img 
-                src={f}
-                alt="Abstract background" 
-                className="w-full h-full object-cover opacity-60 mix-blend-color-dodge"
-             />
+             <img src={f} alt="Abstract background" className="w-full h-full object-cover opacity-60 mix-blend-color-dodge"/>
              <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black"></div>
              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
         </div>
@@ -299,30 +266,10 @@ const SafetySection = () => {
 
 const FeaturedBusinesses = () => {
     const businesses = [
-        {
-            name: "Denim Jeans",
-            location: "Himayat nagar • Hyderabad",
-            rating: 5,
-            image: `${g}`
-        },
-        {
-            name: "Vandana Silk Centre",
-            location: "Shampur • Rishikesh",
-            rating: 5,
-            image: `${h}`
-        },
-        {
-            name: "Arcade Gaming",
-            location: "Sector 29 • Chandigarh",
-            rating: 5,
-            image: `${i}`
-        },
-        {
-            name: "Khadi Store",
-            location: "Langat Singh • Patna",
-            rating: 4,
-            image: `${j}`
-        }
+        { name: "Denim Jeans", location: "Himayat nagar • Hyderabad", rating: 5, image: `${g}` },
+        { name: "Vandana Silk Centre", location: "Shampur • Rishikesh", rating: 5, image: `${h}` },
+        { name: "Arcade Gaming", location: "Sector 29 • Chandigarh", rating: 5, image: `${i}` },
+        { name: "Khadi Store", location: "Langat Singh • Patna", rating: 4, image: `${j}` }
     ];
 
     return (
@@ -333,11 +280,7 @@ const FeaturedBusinesses = () => {
                 {businesses.map((biz, idx) => (
                     <div key={idx} className="group cursor-pointer">
                         <div className="rounded-xl overflow-hidden h-48 mb-4">
-                            <img 
-                                src={biz.image} 
-                                alt={biz.name} 
-                                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                            />
+                            <img src={biz.image} alt={biz.name} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"/>
                         </div>
                         <h4 className="font-bold text-xl text-gray-800 mb-1">{biz.name}</h4>
                         <div className="flex text-yellow-400 mb-2">
@@ -365,12 +308,9 @@ const Stats = () => {
         <section className="py-16 px-4 max-w-7xl mx-auto ">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {statsData.map((stat, idx) => (
-                    <div 
-                        key={idx} 
-                        className={`rounded-2xl p-8 text-center flex flex-col justify-center items-center h-64 shadow-sm ${
-                            stat.theme === 'red' ? 'bg-red-700 text-white' : 'bg-white text-black'
-                        }`}
-                    >
+                    <div key={idx} className={`rounded-2xl p-8 text-center flex flex-col justify-center items-center h-64 shadow-sm ${
+                        stat.theme === 'red' ? 'bg-red-700 text-white' : 'bg-white text-black'
+                    }`}>
                         <h3 className="text-4xl md:text-5xl font-extrabold mb-4">{stat.value}</h3>
                         <p className={`text-lg ${stat.theme === 'red' ? 'text-gray-100' : 'text-gray-600'}`}>
                             {stat.label}
@@ -382,18 +322,43 @@ const Stats = () => {
     );
 };
 
-
+// --- MAIN APP COMPONENT ---
 
 const App = () => {
+  // 1. STATE: Initialize control flags
+  const [flags, setFlags] = useState({
+    showHero: true,
+    showCategories: true,
+    showFeatures: true,
+    showCommunity: true,
+    showSafety: true,
+    showFeaturedBusinesses: true,
+    showStats: true
+  });
+
+  // 2. FETCH: Get visibility control from Backend
+  useEffect(() => {
+    axios.get("http://localhost:5000/api/business-solutions/flags")
+      .then((res) => {
+        if (res.data) {
+          setFlags(res.data);
+        }
+      })
+      .catch((err) => {
+        console.error("Error fetching flags:", err);
+      });
+  }, []);
+
+  // 3. RENDER: Conditional logic
   return (
     <div className="font-sans bg-white min-h-screen text-gray-900">
-      <Hero />
-      <Categories />
-      <Features />
-      <Community />
-      <SafetySection />
-      <FeaturedBusinesses />
-      <Stats />
+      {flags.showHero && <Hero />}
+      {flags.showCategories && <Categories />}
+      {flags.showFeatures && <Features />}
+      {flags.showCommunity && <Community />}
+      {flags.showSafety && <SafetySection />}
+      {flags.showFeaturedBusinesses && <FeaturedBusinesses />}
+      {flags.showStats && <Stats />}
     </div>
   );
 };

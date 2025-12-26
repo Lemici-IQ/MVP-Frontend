@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { ArrowRight, Send } from 'lucide-react';
 import a from "../../assets/Resources/1.jpg";
 import b from "../../assets/Resources/2.jpg";
@@ -182,12 +183,36 @@ const DataAndLicensing = () => (
 );
 
 export default function Explore() {
+    // 1. STATE: Initialize flags to TRUE so page isn't empty on first load if fetch fails
+    const [flags, setFlags] = useState({
+        showHero: true,
+        showEvents: true,
+        showInsights: true,
+        showDataLicensing: true
+    });
+
+    // 2. FETCH: Get the flags from backend
+    useEffect(() => {
+        axios.get("http://localhost:5000/api/explore/flags")
+            .then((res) => {
+                // Update state with backend flags
+                if (res.data) {
+                    setFlags(res.data);
+                }
+            })
+            .catch((err) => {
+                console.error("Error fetching flags, using defaults:", err);
+            });
+    }, []);
+
+    // 3. RENDER: Conditional Logic
+    // If a flag is false, that component will not render (null)
     return (
         <div className="bg-white" style={{ fontFamily: 'Inter, sans-serif' }}>
-            <Hero />
-            <EventsAndIndia />
-            <Insights />
-            <DataAndLicensing />
+            {flags.showHero && <Hero />}
+            {flags.showEvents && <EventsAndIndia />}
+            {flags.showInsights && <Insights />}
+            {flags.showDataLicensing && <DataAndLicensing />}
         </div>
     );
 }
