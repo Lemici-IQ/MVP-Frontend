@@ -19,13 +19,16 @@ import {
   FaTools,
 } from "react-icons/fa";
 import Chart from "chart.js/auto";
+import { IKImage } from "imagekitio-react";
+import { fetchFranchiseDetails } from "../../../../../lib/api";
 const IndFranchiseFood = () => {
   const chartRef = useRef(null);
   let chartInstance = null;
 
   // Franchise Details
+//   https://ik.imagekit.io/lemiciiq/LeMiCi/menu.png
   const franchiseData = {
-    logo: "/abhinay/franchise/single/ktt.jpg",
+    logo: "/FranchiseHomePage/DetailsPageImages/single/ktt.jpg",
     name: "Kathi Junction",
     verified: true,
     year: "2009",
@@ -34,13 +37,13 @@ const IndFranchiseFood = () => {
     rating: 5,
     likes: 107,
     socialMedia: {
-      youtube: "abhinay/youtube-logo.png",
-      pinterest: "abhinay/pintrest-logo.png",
-      instagram: "abhinay/insta-logo.png",
-      twitter: "abhinay/x-logo.png",
-      facebook: "abhinay/facebook-logo.png"
+      youtube: "FranchiseHomePage/DetailsPageImages/youtube-logo.png",
+      pinterest: "FranchiseHomePage/DetailsPageImages/pintrest-logo.png",
+      instagram: "FranchiseHomePage/DetailsPageImages/insta-logo.png",
+      twitter: "FranchiseHomePage/DetailsPageImages/x-logo.png",
+      facebook: "FranchiseHomePage/DetailsPageImages/facebook-logo.png"
     },
-    profileImage: "/abhinay/franchise/single/nat.jpg",
+    profileImage: "/FranchiseHomePage/DetailsPageImages/single/nat.jpg",
     industry: "Food & Beverage - Quick Service Restaurant (QSR)",
     headquarters: "Dehradun, Uttarakhand, India",
     parentCompany: "Kathi Junction Foods Private Limited",
@@ -133,74 +136,69 @@ const IndFranchiseFood = () => {
       window.removeEventListener("mouseup", handleMouseUp);
     };
   }, [isDragging, dragOffset]);
-
-  const images = [
-    "abhinay/images/kathi1.jpg",
-    "abhinay/images/kathi2.jpg",
-    "abhinay/images/kathi3.jpg",
-  ];
+  
   const franchises1 = [
     {
       name: "Wow! Momos",
       category: "Education & Training",
-      image: "/abhinay/1f1.png",
+      image: "/FranchiseHomePage/DetailsPageImages/1f1.png",
     },
     {
       name: "Tea Time",
       category: "Fitness & Wellness",
-      image: "/abhinay/2f2.png",
+      image: "/FranchiseHomePage/DetailsPageImages/2f2.png",
     },
     {
       name: "Amul Ice Cream",
       category: "Salon & Beauty",
-      image: "/abhinay/3f3.png",
+      image: "/FranchiseHomePage/DetailsPageImages/3f3.png",
     },
     {
       name: "Subway",
       category: "Category 4",
-      image: "/abhinay/4f4.png",
+      image: "/FranchiseHomePage/DetailsPageImages/4f4.png",
     },
     {
       name: "Domino’s Pizza",
       category: "Category 5",
-      image: "/abhinay/5f5.png",
+      image: "/FranchiseHomePage/DetailsPageImages/5f5.png",
     },
     {
       name: "Rolfi",
       category: "Category 6",
-      image: "/abhinay/6f6.png",
+      image: "/FranchiseHomePage/DetailsPageImages/6f6.png",
     },
     {
       name: "Zoca Cafe",
       category: "Category 7",
-      image: "/abhinay/7f7.png",
+      image: "/FranchiseHomePage/DetailsPageImages/7f7.png",
     },
     {
       name: "Lassi Corner",
       category: "Category 8",
-      image: "/abhinay/8ff8.png",
+      image: "/FranchiseHomePage/DetailsPageImages/8ff8.png",
     },
   ];
   const franchises2 = [
     {
       name: "KidZee",
       category: "Education & Training",
-      image: "/abhinay/unif.png",
+      image: "/FranchiseHomePage/DetailsPageImages/unif.png",
     },
     {
       name: "Jetts India",
       category: "Fitness & Wellness",
-      image: "/abhinay/second.png",
+      image: "/FranchiseHomePage/DetailsPageImages/second.png",
     },
     {
       name: "Lakme Salon",
       category: "Salon & Beauty",
-      image: "/abhinay/third.png",
+      image: "/FranchiseHomePage/DetailsPageImages/third.png",
     },
     {
       name: "Carzspa",
       category: "Automotive",
-      image: "/abhinay/car.png",
+      image: "/FranchiseHomePage/DetailsPageImages/car.png",
     },
   ];
 
@@ -214,63 +212,100 @@ const IndFranchiseFood = () => {
     "What kind of training and support does the franchisor provide?",
     "In which locations does a food franchise work best in India?",
   ];
-  const info = [
+  
+
+  const [franchiseDataBackend, setFranchiseDataBackend] = useState(null);
+
+  useEffect(() => {
+    fetchFranchiseDetails()
+      .then((res) => {
+        setFranchiseDataBackend(res);   // store data in variable (state)
+      console.log('a', res);
+
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+const rating = franchiseDataBackend?.data?.basicInfo?.rating?.average || 0;
+
+const fullStars = Math.floor(rating);      // 4
+const hasHalfStar = rating % 1 !== 0;      // true
+const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+const investment =
+  franchiseDataBackend?.data?.franchiseOverview?.initialInvestment;
+
+const investmentValue = investment
+  ? `₹${investment.min / 100000}–${investment.max / 100000} Lakhs`
+  : "-";
+const turnover =
+  franchiseDataBackend?.data?.franchiseOverview?.avgTurnoverPerMonth;
+const turnoverValue = turnover
+  ? `₹${turnover.min / 100000}–${turnover.max / 100000} Lakhs`
+  : "-";
+  const franchiseFees =
+  franchiseDataBackend?.data?.franchiseOverview?.franchiseFees;
+const franchiseFeesValue = franchiseFees
+  ? `₹${franchiseFees.min / 100000}–${franchiseFees.max / 100000} Lakhs`
+  : "-";
+
+const info = [
     {
       label: "Initial Investment",
-      value: "₹6–18 Lakhs",
-      icon: <img src="/abhinay/1a1.png" />,
+      value: investmentValue,
+      icon: <IKImage path="/FranchiseHomePage/DetailsPageImages/1a1.png" />,
     },
     {
       label: "Unit as of 2025",
-      value: "150+ Outlets",
-      icon: <img src="/abhinay/2a2.png" />,
+      value: `${franchiseDataBackend?.data?.franchiseOverview?.numberOfUnits?.total}+ Outlets`,
+      icon: <IKImage path="/FranchiseHomePage/DetailsPageImages/2a2.png" />,
     },
     {
       label: "Space requirement",
-      value: "200–1500 sq. ft.",
-      icon: <img src="/abhinay/3b3.png" />,
+      value: `${franchiseDataBackend?.data?.franchiseOverview?.spaceRequirement?.min}-${franchiseDataBackend?.data?.franchiseOverview?.spaceRequirement?.max} sq. ft.`,
+      icon: <IKImage path="/FranchiseHomePage/DetailsPageImages/3b3.png" />,
     },
     {
       label: "Industry",
-      value: "Food & Beverage - QSR",
-      icon: <img src="/abhinay/4c4.png" />,
+      value: franchiseDataBackend?.data?.basicInfo?.category,
+      icon: <IKImage path="/FranchiseHomePage/DetailsPageImages/4c4.png" />,
     },
     {
       label: "Parent company",
-      value: "Kathi Junction Foods Pvt Ltd",
-      icon: <img src="/abhinay/5d5.png" />,
+      value: franchiseDataBackend?.data?.companyInfo?.parentCompany,
+      icon: <IKImage path="/FranchiseHomePage/DetailsPageImages/5d5.png" />,
     },
     {
       label: "Business type",
-      value: "Private Limited Company",
-      icon: <img src="/abhinay/6d6.png" />,
+      value: franchiseDataBackend?.data?.companyInfo?.businessType,
+      icon: <IKImage path="/FranchiseHomePage/DetailsPageImages/6d6.png" />,
     },
     {
       label: "Leadership",
-      value: "Navneet Sajwan (Founder)",
-      icon: <img src="/abhinay/7e7.png" />,
+      value: franchiseDataBackend?.data?.companyInfo?.leadership,
+      icon: <IKImage path="/FranchiseHomePage/DetailsPageImages/7e7.png" />,
     },
     {
       label: "E-mail",
-      value: "info@kathijunction.com",
-      icon: <img src="/abhinay/8f8.png" />,
+      value: franchiseDataBackend?.data?.companyInfo?.email,
+      icon: <IKImage path="/FranchiseHomePage/DetailsPageImages/8f8.png" />,
     },
     {
-      label: "Avg. turnover per/month",
-      value: "₹2–6 Lakhs",
-      icon: <img src="/abhinay/9g9.png" />,
-    },
+  label: "Avg. turnover per/month",
+  value: turnoverValue,
+  icon: <IKImage path="/FranchiseHomePage/DetailsPageImages/9g9.png" />,
+},
     {
-      label: "Franchise Fees",
-      value: "₹3 Lakhs",
-      icon: <img src="/abhinay/10h.png" />,
-    },
+  label: "Franchise Fees",
+  value: franchiseFeesValue,
+  icon: <IKImage path="/FranchiseHomePage/DetailsPageImages/10h.png" />,
+},
     {
       label: "Payback Period",
-      value: "12–18 months",
-      icon: <img src="/abhinay/11i.png" />,
+      value: `${franchiseDataBackend?.data?.franchiseOverview?.paybackPeriod?.min}–${franchiseDataBackend?.data?.franchiseOverview?.paybackPeriod?.max} months`,
+      icon: <IKImage path="/FranchiseHomePage/DetailsPageImages/11i.png" />,
     },
-    { label: "Royalties", value: "4%", icon: <img src="/abhinay/12j.png" /> },
+    { label: "Royalties", value: franchiseDataBackend?.data?.franchiseOverview?.royalties?.percentage, icon: <IKImage path="/FranchiseHomePage/DetailsPageImages/12j.png" /> },
   ];
   return (
     <div className="max-w-7xl mx-auto p-4">
@@ -280,7 +315,7 @@ const IndFranchiseFood = () => {
             onClick={() => window.history.back()} 
             className="flex items-center justify-center w-5 h-5 rounded-full bg-gray-100 hover:bg-gray-200 transition-all cursor-pointer"
           >
-            <img src="/abhinay/backer.png" alt="" />
+            <IKImage path="/FranchiseHomePage/DetailsPageImages/backer.png" alt="" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </button>
         </div>
@@ -288,18 +323,18 @@ const IndFranchiseFood = () => {
       <div className="bg-white rounded-2xl shadow-md p-6 border border-gray-200 relative mt-2">
         {/* Action Icons - Top Right */}
         <div className="absolute top-6 right-6 flex items-center space-x-3">
-          <img
-            src="abhinay/franchise/share.png"
+          <IKImage
+            path="FranchiseHomePage/DetailsPageImages/share.png"
             alt="Share"
             className="w-4 h-4 cursor-pointer hover:scale-110 transition-transform"
           />
-          <img
-            src="abhinay/franchise/book.png"
+          <IKImage
+            path="FranchiseHomePage/DetailsPageImages/book.png"
             alt="Book"
             className="w-4 h-4 cursor-pointer hover:scale-110 transition-transform"
           />
-          <img
-            src="abhinay/franchise/menu.png"
+          <IKImage
+            path="FranchiseHomePage/DetailsPageImages/menu.png"
             alt="Menu"
             className="w-4 h-4 cursor-pointer hover:scale-110 transition-transform"
           />
@@ -309,21 +344,21 @@ const IndFranchiseFood = () => {
           {/* Left Section */}
           <div className="flex flex-col items-start space-x-4">
             <div className="flex">
-              <img
-                src={franchiseData.logo}
+              <IKImage
+                path={franchiseDataBackend?.data?.basicInfo?.logo.url}
                 alt={`${franchiseData.name} Logo`}
                 className="w-16 h-16 rounded-full object-cover"
               />
               <div className="">
                 <div className="flex items-center space-x-1 flex-wrap">
-                  <h2 className="text-2xl font-bold">{franchiseData.name}</h2>
+                  <h2 className="text-2xl font-bold">{franchiseDataBackend?.data?.basicInfo?.brand}</h2>
                   {franchiseData.verified && (
-                    <img src="/abhinay/blue-tick.svg" alt="" className="w-4" />
+                    <img src="/FranchiseHomePage/DetailsPageImages/blue-tick.svg" alt="" className="w-4" />
                   )}
                 </div>
                 <div className="flex flex-wrap items-center gap-2 text-sm text-gray-500 mt-1">
                   <span className="bg-gray-100 px-2 py-0.5 rounded">
-                    {franchiseData.year}
+                    {franchiseDataBackend?.data?.basicInfo?.since}
                   </span>
                   {franchiseData.badges.map((badge, index) => (
                     <span key={index} className="bg-gray-100 px-2 py-0.5 rounded">
@@ -335,7 +370,7 @@ const IndFranchiseFood = () => {
             </div>
             <div>
               <p className="text-gray-700 mt-3 text-sm md:text-base max-w-2xl">
-                {franchiseData.description}
+                {franchiseDataBackend?.data?.basicInfo?.description}
               </p>
               <div className="flex flex-wrap space-x-3 mt-4">
                 <button className="bg-[#4A53FA] text-white px-12 py-3 rounded-[25px] hover:bg-indigo-700 w-full sm:w-auto">
@@ -346,11 +381,30 @@ const IndFranchiseFood = () => {
                 </button>
               </div>
               <div className="flex items-center mt-3 space-x-1 text-yellow-500">
-                {[...Array(franchiseData.rating)].map((_, i) => (
-                  <span key={i}>★</span>
-                ))}
-                <span className="text-gray-600 text-sm ml-2">{franchiseData.likes} likes</span>
-              </div>
+  {/* Full stars */}
+  {[...Array(fullStars)].map((_, i) => (
+    <span key={`full-${i}`}>★</span>
+  ))}
+
+  {/* Half star */}
+  {hasHalfStar && (
+    <span className="relative inline-block">
+      <span className="text-gray-300">★</span>
+      <span className="absolute top-0 left-0 overflow-hidden" style={{width: '50%'}}>
+        <span>★</span>
+      </span>
+    </span>
+  )}
+
+  {/* Empty stars */}
+  {[...Array(emptyStars)].map((_, i) => (
+    <span key={`empty-${i}`} className="text-gray-300">★</span>
+  ))}
+                <span className="text-gray-600 text-sm ml-2">{franchiseDataBackend?.data?.basicInfo?.rating?.count || franchiseData.likes} likes</span>
+
+</div>
+
+              
             </div>
           </div>
         </div>
@@ -358,11 +412,11 @@ const IndFranchiseFood = () => {
         {/* Social Media Icons - Bottom Right */}
         <div className="absolute bottom-6 right-6">
           <div className="flex items-center space-x-3 text-xl text-gray-600">
-            <img src={franchiseData.socialMedia.youtube} alt="" className="w-5 h-5" />
-            <img src={franchiseData.socialMedia.pinterest} alt="" className="w-5 h-5" />
-            <img src={franchiseData.socialMedia.instagram} alt="" className="w-5 h-5" />
-            <img src={franchiseData.socialMedia.twitter} alt="" className="w-5 h-5" />
-            <img src={franchiseData.socialMedia.facebook} alt="" className="w-5 h-5" />
+            <IKImage path={franchiseData.socialMedia.youtube } alt="" className="w-5 h-5" />
+            <IKImage path={franchiseData.socialMedia.pinterest} alt="" className="w-5 h-5" />
+            <IKImage path={franchiseData.socialMedia.instagram } alt="" className="w-5 h-5" />
+            <IKImage path={franchiseData.socialMedia.twitter } alt="" className="w-5 h-5" />
+            <IKImage path={franchiseData.socialMedia.facebook } alt="" className="w-5 h-5" />
           </div>
         </div>
 
@@ -377,15 +431,15 @@ const IndFranchiseFood = () => {
           onMouseDown={handleMouseDown}
         >
           <div className="relative">
-            <img
-              src={franchiseData.profileImage}
+            <IKImage
+              path={franchiseData.profileImage}
               alt="Profile"
               className="w-14 h-14 rounded-full border-2 border-gray-300 shadow-lg hover:scale-110 transition-transform select-none"
               draggable="false"
             />
-            <img 
+            <IKImage 
               className="w-6 h-6 rounded-full absolute -bottom-0.5 -right-0.5 bg-white border border-gray-200" 
-              src="/abhinay/caller.png" 
+              path="/FranchiseHomePage/DetailsPageImages/caller.png" 
               alt="" 
             />
           </div>
@@ -416,19 +470,24 @@ const IndFranchiseFood = () => {
           `}
         </style>
         <div className="flex space-x-4 animate-scroll mt-8">
-          {images.concat(images).map((img, idx) => (
-            <div
-              key={idx}
-              className="shrink-0 w-80 sm:w-[410px] h-52 sm:h-60 rounded-xl overflow-hidden shadow-md"
-            >
-              <img
-                src={img}
-                alt={`kathi ${idx + 1}`}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ))}
-        </div>
+  {(
+    franchiseDataBackend?.data?.gallery
+      ? [...franchiseDataBackend.data.gallery, ...franchiseDataBackend.data.gallery]
+      : []
+  ).map((img, idx) => (
+    <div
+      key={idx}
+      className="shrink-0 w-80 sm:w-[410px] h-52 sm:h-60 rounded-xl overflow-hidden shadow-md"
+    >
+      <IKImage
+        path={typeof img === "string" ? img : img.url}
+        alt={typeof img === "string" ? `kathi ${idx + 1}` : img.alt || `kathi ${idx + 1}`}
+        className="w-full h-full object-cover"
+      />
+    </div>
+  ))}
+</div>
+
       </div>
       <div className="max-w-7xl mx-auto px-4 py-8">
         <h2 className="text-2xl sm:text-3xl font-bold text-center">
@@ -487,41 +546,18 @@ const IndFranchiseFood = () => {
             <div>
               <h2 className="text-lg font-bold">Products</h2>
               <ul className="list-disc pl-5 mt-3 space-y-1 text-gray-700">
-                <li>Fast Food Items (burgers, pizzas, sandwiches, fries)</li>
-                <li>Beverages (soft drinks, shakes, smoothies, coffee, tea)</li>
-                <li>Desserts (ice cream, cakes, pastries, donuts)</li>
-                <li>
-                  Packaged Food (ready-to-eat meals, frozen snacks, sauces)
-                </li>
-                <li>
-                  Healthy Options (salads, wraps, fresh juices, organic snacks)
-                </li>
-                <li>
-                  Regional/Traditional Cuisine (Indian thali, South Indian
-                  meals, street food)
-                </li>
-                <li>Meal Combos & Family Packs</li>
-                <li>Kids’ Special Menu</li>
+                {franchiseDataBackend?.data?.productsAndServices?.productRange?.map((product, index) => (
+                  <li key={index}>{product}</li>
+                ))}
               </ul>
             </div>
 
             <div>
               <h2 className="text-lg font-bold">Services</h2>
               <ul className="list-disc pl-5 mt-3 space-y-1 text-gray-700">
-                <li>Dine-in Facility</li>
-                <li>Takeaway & Delivery</li>
-                <li>Online Ordering (app/website integration)</li>
-                <li>Catering Services (parties, events, corporate orders)</li>
-                <li>Loyalty & Membership Programs</li>
-                <li>
-                  Customized Meals (diet-specific, vegetarian/vegan options)
-                </li>
-                <li>
-                  Franchise Training & Support (staff training, recipe
-                  standardization)
-                </li>
-                <li>Food Safety & Quality Control</li>
-                <li>Marketing & Branding Support</li>
+                {franchiseDataBackend?.data?.productsAndServices?.services?.map((service, index) => (
+                  <li key={index}>{service}</li>
+                ))}
               </ul>
             </div>
           </div>
@@ -560,8 +596,8 @@ const IndFranchiseFood = () => {
                     key={index}
                     className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition bg-white"
                   >
-                    <img
-                      src={item.image}
+                    <IKImage
+                      path={item.image}
                       alt={item.name}
                       className="w-full h-48 object-cover"
                     />
@@ -610,8 +646,8 @@ const IndFranchiseFood = () => {
                 key={index}
                 className="min-w-[220px] h-full rounded-xl overflow-hidden border shadow-sm hover:shadow-md transition relative group"
               >
-                <img
-                  src={item.image}
+                <IKImage
+                  path={item.image}
                   alt={item.name}
                   className="w-full h-full object-cover"
                 />
