@@ -35,6 +35,7 @@ import ScrollToTop from "./abhinay-s/components/ScrollToTop";
 // import Header from "./abhinay-s/components/Header";
 import UserRoutes from "./routes/UserRoutes";
 import SouravRoutes from "./sourav/SouravRoutes";
+import MRListing from "./sourav/pages/MarketResearch/MRListing"
 
 function App() {
   console.log(testAlias);
@@ -51,7 +52,7 @@ function App() {
           {/* Abhinay Pages */}
           {/* {AbhinayRoutes()} */}
           {UserRoutes()}
-          <Route path="/" element={<AbhinayLayout />}>
+          <Route path="/" element={<MRListing />}>
             {HariRoutes()}
             {AbhinayRoutes()}
             {SouravRoutes()}

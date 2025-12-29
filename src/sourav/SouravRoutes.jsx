@@ -7,6 +7,8 @@ import Resources from "./pages/Resources/resources";
 import BusinessSol from "./pages/BusinessSol/BusSolHome";
 import Solution from "./pages/Solution/Solution";
 import SchemeListings from "./pages/GovNavigator/SchemeListings";
+import MRListing from "./pages/MarketResearch/MRListing";
+
 
 function SouravRoutes() {
   return (
@@ -23,6 +25,7 @@ function SouravRoutes() {
       <Route path="/business-solutions/home" element={<BusinessSol />} />
       <Route path="/solution" element={<Solution />} />
       <Route path="/project-reports-listing" element={<IndBiSolListing />} />
+      <Route path="/market-research-listing" element={<MRListing />}/>
     </>
   );
 }
