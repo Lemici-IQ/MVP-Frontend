@@ -6,7 +6,7 @@ import React, {
   useState,
 } from "react";
 import { IKImage } from "imagekitio-react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { FcardGrid } from "./Fcard";
 import {
   FaCar,
@@ -66,9 +66,15 @@ import { fetchFranchiseHome } from "../../../../../lib/api.js";
 import TopFranchiseOpportunities from "./TopFranchiseOpportunities.jsx";
 import DistributionCategories from "./DistributionCategories.jsx";
 import Cities from "./Cities.jsx";
+import ExploreByCategories from "./ExploreByCategories.jsx";
 // Insights import was unused; removed to avoid lint warnings
 export default function Franchise() {
   //order is so important here
+  const navigate = useNavigate();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const questionFromUrl = queryParams.get('question') || "";
+  const autoSubmit = queryParams.get('autoSubmit') === 'true';
 
   const categories = [
     { name: "Automobiles", icon: <FaCar /> },
@@ -132,12 +138,13 @@ export default function Franchise() {
   }, []);
 
   const tabs1 = ["Franchise", "Brand Leasing", "Dealer", "Super Stockist"];
-  const [activeTab1, setActiveTab1] = useState("Franchise");
+  const [activeTab1, setAtiveTab1] = useState("Franchise");
   const [logoRowData, setLogoRowData] = useState(null);
   const [topFranchiseData, setTopFranchiseData] = useState(null);
 const [popularListingsnew, setPopularListingsnew] = useState([]);
 const [distributionData, setDistributionData] = React.useState(null);
 const [citiesData, setCitiesData] = useState(null);
+const [exploreCategoriesData, setExploreCategoriesData] = useState(null);
   const [showAll, setShowAll] = useState(false);
 
 useEffect(() => {
@@ -146,7 +153,6 @@ useEffect(() => {
       if (!res.success) return;
 
       const sections = res.data?.sections || [];
-
       // HERO
       const heroSection = sections.find((s) => s.type === "hero" && s.enabled);
       if (heroSection) {
@@ -160,7 +166,6 @@ useEffect(() => {
       if (topFranchiseSection) {
         setTopFranchiseData(topFranchiseSection.data);
       }
-
       // POPULAR LISTINGS
       const popularListingSection = sections.find(
         (s) => s.type === "popular_listings" && s.enabled
@@ -168,7 +173,7 @@ useEffect(() => {
       if (popularListingSection) {
         setPopularListingsnew(popularListingSection.data);
       }
-
+    //   console.log(popularListingSection.data)
       // DISTRIBUTION CATEGORIES
       const distributionSection = sections.find(
         (s) => s.type === "distribution_categories" && s.enabled
@@ -181,6 +186,14 @@ useEffect(() => {
       const citiesSection = sections.find((s) => s.type === "cities" && s.enabled);
       if (citiesSection) {
         setCitiesData(citiesSection.data);
+      }
+
+      // EXPLORE BY CATEGORIES
+      const exploreCategoriesSection = sections.find(
+        (s) => s.type === "explore_by_categories" && s.enabled
+      );
+      if (exploreCategoriesSection) {
+        setExploreCategoriesData(exploreCategoriesSection.data);
       }
     })
     .catch((err) => {
@@ -316,6 +329,8 @@ useEffect(() => {
           <ChatbotSub
             placeholder="Ask about franchises (e.g., 'suggest biryani franchise in Ghaziabad with 20% ROI')"
             context="franchise"
+            initialQuery={questionFromUrl}
+            autoSubmit={autoSubmit}
           />
 
           {/* Subtext */}
@@ -350,44 +365,15 @@ useEffect(() => {
         </p>
 
         {/* Content */}
-       {distributionData && (
-  <DistributionCategories data={distributionData} />
+       {true && (
+  <DistributionCategories daata={distributionData} />
 )}
 
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          {/* Heading */}
-          <h2 className="text-3xl font-bold text-gray-900">
-            Explore by Industry
-          </h2>
-          <p className="text-gray-500 mt-2">
-            Tailored insights across 25+ industries—from food & beverage to
-            education and beyond.
-          </p>
+        {exploreCategoriesData && (
+          <ExploreByCategories daata={exploreCategoriesData} />
+        )}
 
-          {/* Pills */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-6">
-            {indust.map((item, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-start gap-2 py-5 px-7 bg-[#EEF0FF] text-sm text-gray-700 rounded-2xl cursor-pointer hover:bg-[#E2E6FF] w-full"
-              >
-                <IKImage
-                  path={item.path}
-                  alt={item.name}
-                  className="w-6 h-6 object-cover flex-shrink-0"
-                  loading="lazy"
-                />
-                <span className="text-xs leading-tight break-words flex-1">
-                  {item.name}
-                </span>
-              </div>
-            ))}
-          </div>
 
-          <p className="text-blue-600 text-sm mt-6 cursor-pointer">
-            View All →
-          </p>
-        </div>
       </div>
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="bg-[#4A53FA] rounded-2xl flex flex-col md:flex-row items-center justify-between p-8 md:p-12 mb-8">
@@ -401,7 +387,10 @@ useEffect(() => {
               business is in your hands.
             </p>
 
-            <button className="mt-5 bg-white text-black px-6 py-2.5 rounded-2xl text-sm font-semibold hover:bg-gray-100 transition">
+            <button 
+              className="mt-5 bg-white text-black px-6 py-2.5 rounded-2xl text-sm font-semibold hover:bg-gray-100 transition"
+              onClick={() => navigate('/Individual-listingpage')}
+            >
               Start Exploring
             </button>
           </div>
@@ -474,7 +463,7 @@ useEffect(() => {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 xl:px-20 mb-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 xl:px-20 mb-8">
         <p className="text-center text-black text-3xl font-bold">
           Why you should choose LeMiCi
         </p>
@@ -498,11 +487,11 @@ useEffect(() => {
             </div>
           ))}
         </div> */}
-        {citiesData && <Cities data={citiesData} />}
+        {true && <Cities daata={citiesData} />}
 
         <div className="w-full flex justify-end">
           <button
-            className="border p-2 rounded-xl text-sm border-2 border-gray-300 font-semibold mt-2 hover:underline"
+            className="border p-2 rounded-xl text-sm border-2 border-gray-300 font-semibold mt-16 hover:underline"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             aria-label="Back to top"
           >
@@ -514,7 +503,7 @@ useEffect(() => {
         {/* Show Stats*/}
         {showStats && <ShowStats stats={data.stats} />}
       </div>
-      <div className="w-full flex items-center justify-center gap-3 my-8">
+      {/* <div className="w-full flex items-center justify-center gap-3 my-8">
         <NavLink
           to="/franchise/oppurtunties"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -557,7 +546,7 @@ useEffect(() => {
         >
           3
         </NavLink>
-      </div>
+      </div> */}
     </div>
   );
 }

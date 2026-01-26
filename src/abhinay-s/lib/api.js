@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000";
-const DYNAMIC_URL = "http://localhost:8080";
+const BASE_URL = "https://backend-demo-b36h.onrender.com";
+const DYNAMIC_URL = "http://localhost:3000";
 async function request(path, options = {}) {
   const url = path.startsWith("http") ? path : `${BASE_URL}${path}`;
   const resp = await fetch(url, {

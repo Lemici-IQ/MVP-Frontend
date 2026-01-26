@@ -1,0 +1,356 @@
+{
+  "success": true,
+  "timestamp": "2026-01-26T08:00:00Z",
+  "data": {
+    "pageId": "franchise_home",
+    "sections": [
+      {
+        "type": "hero",
+        "enabled": true,
+        "data": {
+          "topBrandLogos": [
+            {
+              "brandId": "uuid-1111",
+              "name": "Golf Zone",
+              "logo": {
+                "url": "/FranchiseHomePage/golf.jpg",
+                "alt": "Golf Zone"
+              },
+              "slug": "golf-zone"
+            },
+            {
+              "brandId": "uuid-2222",
+              "name": "Urban Cafe",
+              "logo": {
+                "url": "/FranchiseHomePage/golf.jpg",
+                "alt": "Urban Cafe"
+              },
+              "slug": "urban-cafe"
+            },
+             {
+              "brandId": "uuid-1111",
+              "name": "Golf Zone",
+              "logo": {
+                "url": "/FranchiseHomePage/golf.jpg",
+                "alt": "Golf Zone"
+              },
+              "slug": "golf-zone"
+            },
+            {
+              "brandId": "uuid-2222",
+              "name": "Urban Cafe",
+              "logo": {
+                "url": "/FranchiseHomePage/golf.jpg",
+                "alt": "Urban Cafe"
+              },
+              "slug": "urban-cafe"
+            },
+             {
+              "brandId": "uuid-1111",
+              "name": "Golf Zone",
+              "logo": {
+                "url": "/FranchiseHomePage/golf.jpg",
+                "alt": "Golf Zone"
+              },
+              "slug": "golf-zone"
+            },
+            {
+              "brandId": "uuid-2222",
+              "name": "Urban Cafe",
+              "logo": {
+                "url": "/FranchiseHomePage/golf.jpg",
+                "alt": "Urban Cafe"
+              },
+              "slug": "urban-cafe"
+            }
+          ]
+        }
+      },
+      {
+        "type": "top_franchise_opportunities",
+        "enabled": true,
+        "data": {
+          "industries": [
+            {
+              "id": "uuid-3333",
+              "name": "Food & Beverage",
+              "icon_url": "/FranchiseHomePage/golf.jpg",
+              "slug": "food-and-beverage"
+            },
+            {
+              "id": "uuid-4444",
+              "name": "Sports & Fitness",
+              "icon_url": "/FranchiseHomePage/golf.jpg",
+              "slug": "sports-and-fitness"
+            },
+             {
+              "id": "uuid-3333",
+              "name": "Food & Beverage",
+              "icon_url": "/FranchiseHomePage/golf.jpg",
+              "slug": "food-and-beverage"
+            },
+            {
+              "id": "uuid-4444",
+              "name": "Sports & Fitness",
+              "icon_url": "/FranchiseHomePage/golf.jpg",
+              "slug": "sports-and-fitness"
+            },
+             {
+              "id": "uuid-3333",
+              "name": "Food & Beverage",
+              "icon_url": "/FranchiseHomePage/golf.jpg",
+              "slug": "food-and-beverage"
+            },
+            {
+              "id": "uuid-4444",
+              "name": "Sports & Fitness",
+              "icon_url": "/FranchiseHomePage/golf.jpg",
+              "slug": "sports-and-fitness"
+            },
+            {
+              "id": "uuid-3333",
+              "name": "Food & Beverage",
+              "icon_url": "/FranchiseHomePage/golf.jpg",
+              "slug": "food-and-beverage"
+            },
+            {
+              "id": "uuid-4444",
+              "name": "Sports & Fitness",
+              "icon_url": "/FranchiseHomePage/golf.jpg",
+              "slug": "sports-and-fitness"
+            },
+             {
+              "id": "uuid-3333",
+              "name": "Food & Beverage",
+              "icon_url": "/FranchiseHomePage/golf.jpg",
+              "slug": "food-and-beverage"
+            },
+            {
+              "id": "uuid-4444",
+              "name": "Sports & Fitness",
+              "icon_url": "/FranchiseHomePage/golf.jpg",
+              "slug": "sports-and-fitness"
+            }
+          ]
+        }
+      },
+      {
+        "type": "popular_listings",
+        "enabled": true,
+        "data": [
+            {
+              "id": "uuid-5555",
+              "brand": "Golf Zone",
+              "description": "Own a Natural Salon Franchise – where beauty meets wellness with eco-friendly products, sustainable care, and a luxurious experience for every client..",
+              "category": "Sports & Fitness",
+              "year_of_establishment": 2015,
+              "rating": 4.5,
+              "location": "Bangalore",
+               "tags": [
+                "Unit",
+                "Verified",
+                "2022",
+                "Beauty & Health",
+                "High Brand Recall"
+              ],
+              "space": {
+                "minSpace": "800",
+                "maxSpace": "1500",
+                "spaceUnit": "sqft"
+              },
+              "no_of_outlets": 120,
+              "investmentRange": {
+                "minInvestment": "30",
+                "maxInvestment": "50",
+                "investmentUnit": "Lakhs"
+              },
+              "logo": {
+                "url": "/FranchiseHomePage/golf.jpg",
+                "alt": "Golf Zone"
+              },
+              "slug": "golf-zone",
+              "color": "#1E7F4F"
+            },
+            
+            {
+              "id": "uuid-5555",
+              "brand": "Golf Zone",
+              "description": "Own a Natural Salon Franchise – where beauty meets wellness with eco-friendly products, sustainable care, and a luxurious experience for every client..",
+              "category": "Sports & Fitness",
+              "year_of_establishment": 2015,
+              "rating": 4.5,
+              "location": "Bangalore",
+               "tags": [
+                "Unit",
+                "Verified",
+                "2022",
+                "Beauty & Health",
+                "High Brand Recall"
+              ],
+              "space": {
+                "minSpace": "800",
+                "maxSpace": "1500",
+                "spaceUnit": "sqft"
+              },
+              "no_of_outlets": 120,
+              "investmentRange": {
+                "minInvestment": "30",
+                "maxInvestment": "50",
+                "investmentUnit": "Lakhs"
+              },
+              "logo": {
+                "url": "/FranchiseHomePage/golf.jpg",
+                "alt": "Golf Zone"
+              },
+              "slug": "golf-zone",
+              "color": "#1E7F4F"
+            },
+            
+            {
+              "id": "uuid-5555",
+              "brand": "Golf Zone",
+              "description": "Own a Natural Salon Franchise – where beauty meets wellness with eco-friendly products, sustainable care, and a luxurious experience for every client..",
+              "category": "Sports & Fitness",
+              "year_of_establishment": 2015,
+              "rating": 4.5,
+              "location": "Bangalore",
+               "tags": [
+                "Unit",
+                "Verified",
+                "2022",
+                "Beauty & Health",
+                "High Brand Recall"
+              ],
+              "space": {
+                "minSpace": "800",
+                "maxSpace": "1500",
+                "spaceUnit": "sqft"
+              },
+              "no_of_outlets": 120,
+              "investmentRange": {
+                "minInvestment": "30",
+                "maxInvestment": "50",
+                "investmentUnit": "Lakhs"
+              },
+              "logo": {
+                "url": "/FranchiseHomePage/golf.jpg",
+                "alt": "Golf Zone"
+              },
+              "slug": "golf-zone",
+              "color": "#1E7F4F"
+            },
+            
+            {
+              "id": "uuid-5555",
+              "brand": "Golf Zone",
+              "description": "Own a Natural Salon Franchise – where beauty meets wellness with eco-friendly products, sustainable care, and a luxurious experience for every client..",
+              "category": "Sports & Fitness",
+              "year_of_establishment": 2015,
+              "rating": 4.5,
+              "location": "Bangalore",
+               "tags": [
+                "Unit",
+                "Verified",
+                "2022",
+                "Beauty & Health",
+                "High Brand Recall"
+              ],
+              "space": {
+                "minSpace": "800",
+                "maxSpace": "1500",
+                "spaceUnit": "sqft"
+              },
+              "no_of_outlets": 120,
+              "investmentRange": {
+                "minInvestment": "30",
+                "maxInvestment": "50",
+                "investmentUnit": "Lakhs"
+              },
+              "logo": {
+                "url": "/FranchiseHomePage/golf.jpg",
+                "alt": "Golf Zone"
+              },
+              "slug": "golf-zone",
+              "color": "#1E7F4F"
+            },
+            
+            {
+              "id": "uuid-5555",
+              "brand": "Golf Zone",
+              "description": "Own a Natural Salon Franchise – where beauty meets wellness with eco-friendly products, sustainable care, and a luxurious experience for every client..",
+              "category": "Sports & Fitness",
+              "year_of_establishment": 2015,
+              "rating": 4.5,
+              "location": "Bangalore",
+               "tags": [
+                "Unit",
+                "Verified",
+                "2022",
+                "Beauty & Health",
+                "High Brand Recall"
+              ],
+              "space": {
+                "minSpace": "800",
+                "maxSpace": "1500",
+                "spaceUnit": "sqft"
+              },
+              "no_of_outlets": 120,
+              "investmentRange": {
+                "minInvestment": "30",
+                "maxInvestment": "50",
+                "investmentUnit": "Lakhs"
+              },
+              "logo": {
+                "url": "/FranchiseHomePage/golf.jpg",
+                "alt": "Golf Zone"
+              },
+              "slug": "golf-zone",
+              "color": "#1E7F4F"
+            }
+            
+        ]
+      },
+      {
+        "type": "explore_by_categories",
+        "enabled": true,
+        "data": {
+          "categories":
+           [
+          
+  { "id": "uuid-1", "name": "Category 1", "icon_url": "/FranchiseHomePage/icons/1.svg", "slug": "category-1" },
+  { "id": "uuid-2", "name": "Category 2", "icon_url": "/FranchiseHomePage/icons/2.svg", "slug": "category-2" },
+  { "id": "uuid-3", "name": "Category 3", "icon_url": "/FranchiseHomePage/icons/3.svg", "slug": "category-3" },
+  { "id": "uuid-4", "name": "Category 4", "icon_url": "/FranchiseHomePage/icons/4.svg", "slug": "category-4" },
+  { "id": "uuid-5", "name": "Category 5", "icon_url": "/FranchiseHomePage/icons/5.svg", "slug": "category-5" },
+  { "id": "uuid-6", "name": "Category 6", "icon_url": "/FranchiseHomePage/icons/6.svg", "slug": "category-6" },
+  { "id": "uuid-7", "name": "Category 7", "icon_url": "/FranchiseHomePage/icons/7.svg", "slug": "category-7" },
+  { "id": "uuid-8", "name": "Category 8", "icon_url": "/FranchiseHomePage/icons/8.svg", "slug": "category-8" },
+  { "id": "uuid-9", "name": "Category 9", "icon_url": "/FranchiseHomePage/icons/9.svg", "slug": "category-9" },
+  { "id": "uuid-10", "name": "Category 10", "icon_url": "/FranchiseHomePage/icons/10.svg", "slug": "category-10" },
+  { "id": "uuid-11", "name": "Category 11", "icon_url": "/FranchiseHomePage/icons/11.svg", "slug": "category-11" },
+  { "id": "uuid-12", "name": "Category 12", "icon_url": "/FranchiseHomePage/icons/12.svg", "slug": "category-12" },
+  { "id": "uuid-13", "name": "Category 13", "icon_url": "/FranchiseHomePage/icons/13.svg", "slug": "category-13" },
+  { "id": "uuid-14", "name": "Category 14", "icon_url": "/FranchiseHomePage/icons/14.svg", "slug": "category-14" },
+  { "id": "uuid-15", "name": "Category 15", "icon_url": "/FranchiseHomePage/icons/15.svg", "slug": "category-15" },
+  { "id": "uuid-16", "name": "Category 16", "icon_url": "/FranchiseHomePage/icons/16.svg", "slug": "category-16" },
+  { "id": "uuid-17", "name": "Category 17", "icon_url": "/FranchiseHomePage/icons/17.svg", "slug": "category-17" },
+  { "id": "uuid-18", "name": "Category 18", "icon_url": "/FranchiseHomePage/icons/18.svg", "slug": "category-18" }
+
+           ]
+        }
+      }
+    ]
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+

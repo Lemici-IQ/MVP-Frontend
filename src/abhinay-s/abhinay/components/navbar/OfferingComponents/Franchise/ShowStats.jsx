@@ -2,7 +2,7 @@ import React from "react";
 
 const ShowStats = ({ stats }) => {
   return (
-    <div className="mt-2">
+    <div className="mt-">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {stats &&
           stats.map((stat, idx) => (
@@ -29,6 +29,8 @@ const ShowStats = ({ stats }) => {
             </div>
           ))}
       </div>
+
+      
     </div>
   );
 };

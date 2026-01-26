@@ -1,0 +1,658 @@
+{
+  "success": true,
+  "timestamp": "2025-12-21T10:30:00Z",
+  "data": {
+    "franchiseId": "fr_frozen_bottle_001",
+    "slug": "frozen-bottle-bengaluru",
+    "basicInfo": {
+      "brand": "Frozen Bottle",
+      "tagline": "Premium Gelato & Dessert Cafe",
+      "category": "Food & Beverage (Ice Cream & Dairy Retail)",
+      "subIndustry": "Premium Gelato & Dessert Cafe (Ice Cream, Milkshakes, Waffles)",
+      "sector": "F&B – Contemporary Specialty Segment",
+      "since": 2017,
+      "location": "Bengaluru, Karnataka, India",
+      "verified": true,
+      "rating": {
+        "average": 4.5,
+        "count": 150
+      },
+      "description": "Fresh Naturellace Creme is a dessert brand known for its fresh, natural ingredients and smooth, cre amy textures, offering a wholesome and refreshing ice-cream experience with a focus on purity and real flavors.",
+      "logo": {
+        "url": "logo-main.png",
+        "width": 150,
+        "height": 150,
+        "alt": "Frozen Bottle Logo"
+      },
+      "coverImage": {
+        "url": "logo-main.png",
+        "width": 1200,
+        "height": 400,
+        "alt": "Frozen Bottle Cover"
+      }
+    },
+    "companyInfo": {
+      "companyName": "Munchbox Frozen Foods Pvt. Ltd.",
+      "parentCompany": "Munchbox Frozen Foods Pvt. Ltd.",
+      "businessType": "Private Limited Company",
+      "establishmentYear": 2017,
+      "yearsInOperation": 8,
+      "website": "https://www.frozenbottle.com",
+      "leadership": "Arun Suvarna, Pranshul Yadav (Founders)",
+      "corporateAddress": "35, K.R. Colony, Krishna Reddy Layout, Amarjyoti Layout, Domlur, Bengaluru, Karnataka 5600 71",
+      "headquarters": "Bengaluru, Karnataka, India",
+      "email": "franchise@frozenbottle.in",
+      "gstin": "Not publicly disclosed",
+      "companyBrochure": {
+        "available": true,
+        "notes": "Available upon request from franchise team"
+      },
+      "companyVideo": {
+        "available": true,
+        "notes": "Available through official website and Franchise Bazar"
+      }
+    },
+    "gallery": [
+      {
+        "url": "logo-main.png",
+        "width": 800,
+        "height": 600,
+        "alt": "Frozen Bottle Interior"
+      },
+      {
+        "url": "logo-main.png",
+        "width": 800,
+        "height": 600,
+        "alt": "Frozen Bottle Outlet"
+      },
+      {
+        "url": "logo-main.png",
+        "width": 800,
+        "height": 600,
+        "alt": "Frozen Bottle Products"
+      }
+    ],
+    "socialMedia": {
+      "instagram": "@frozenbottle_official",
+      "facebook": "Frozen Bottle"
+    },
+    "franchiseOverview": {
+      "initialInvestment": {
+        "min": 1500000,
+        "max": 6000000
+      },
+      "investmentByFormat": {
+        "standard": {
+          "min": 1500000,
+          "max": 2000000
+        },
+        "premium": {
+          "min": 3000000,
+          "max": 6000000
+        }
+      },
+      "numberOfUnits": {
+        "total": 200,
+        "franchised": 200,
+        "owned": 200
+      },
+      "spaceRequirement": {
+        "min": 250,
+        "max": 500,
+        "unit": "sq. ft.",
+        "minimumWithFrontage": "200-250 sq ft minimum with 12+ ft frontage",
+        "type": "Commercial"
+      },
+      "yearOfLaunchingFranchise": 2017,
+      "paybackPeriod": {
+        "min": 18,
+        "max": 20,
+        "unit": "months"
+      },
+      "avgTurnoverPerMonth": {
+        "min": 400000,
+        "max": 1000000,
+        "notes": "Location dependent"
+      },
+      "royalties": {
+        "percentage": 8,
+        "basis": "monthly revenue"
+      },
+      "franchiseFees": {
+        "min": 500000,
+        "max": 1000000,
+        "notes": "Franchise rights & support"
+      },
+      "roi": {
+        "min": 25,
+        "max": 35,
+        "unit": "percentage",
+        "notes": "annualized (18-20 months payback)"
+      },
+      "standardFranchiseAgreement": true,
+      "termDuration": {
+        "years": 5,
+        "notes": "Standard"
+      },
+      "isTermRenewable": true,
+      "renewalNotes": "Terms to be negotiated",
+      "franchiseSupport": true
+    },
+    "productsAndServices": {
+      "mainProducts": [
+        "Gelato",
+        "Overloaded Milkshakes",
+        "Waffle Jars",
+        "Ice Cream Sundaes"
+      ],
+      "productRange": [
+        "Premium ice creams",
+        "Gelato specialty",
+        "Shakes",
+        "Smoothies",
+        "Waffles",
+        "Desserts"
+      ],
+      "productCategory": "ICE-CREAMS",
+      "services": [
+        "Signature thick shakes",
+        "Ice cream jars (Gudbud Jar concept)",
+        "Gourmet sundaes",
+        "Cold coffee & frappes",
+        "Hand-crafted ice creams",
+        "Seasonal specialties",
+        "100% vegetarian products"
+      ],
+      "concept": "Contemporary frozen dessert café | Jar-based premium concept | Trendy ambiance for youth | Social media-friendly products | Innovative menu approach | Modern café experience"
+    },
+    "trainingAndSupport": {
+      "ongoingSupport": true,
+      "ongoingSupportNotes": "Continuous operational support & timely audits",
+      "marketingSupport": true,
+      "marketingSupportNotes": "Launch marketing and ongoing campaigns",
+      "onTheJobTraining": true,
+      "onTheJobTrainingNotes": "Comprehensive on-site training provided",
+      "classroomTraining": true,
+      "classroomTrainingNotes": "Provided at Bengaluru HQ",
+      "fieldAssistance": true,
+      "fieldAssistanceNotes": "Expert operations team for field support",
+      "franchiseeTrainingProgram": true,
+      "franchiseeTrainingNotes": "Training for smooth retail operations",
+      "detailedOperatingManuals": false,
+      "itSystemRequired": true,
+      "itSystemNotes": "Robust IT systems for inventory, POS, analytics, and online ordering",
+      "headOfficeAssistance": true
+    },
+    "expansionMetrics": {
+      "numberOfUnitsByYear": "200+ outlets across 50+ Indian cities + International presence",
+      "growthOverTime": "200+ outlets across 50+ Indian cities + International presence",
+      "currentFocus": "Targeting further expansion in North India and tier 2 cities",
+      "fundraisingSince": null,
+      "numberOfEmployees": 50
+    },
+    "investmentDetails": {
+      "category": "Modern Frozen Desserts & Ice Cream Café",
+      "requiredProperty": "Commercial",
+      "floorAreaByFormat": {
+        "kioskMall": {
+          "min": 150,
+          "max": 250,
+          "unit": "sq.ft"
+        },
+        "standard": {
+          "min": 250,
+          "max": 350,
+          "unit": "sq.ft"
+        },
+        "premiumStandalone": {
+          "min": 350,
+          "max": 500,
+          "unit": "sq.ft"
+        }
+      },
+      "preferredLocation": [
+        "Shopping malls",
+        "High-traffic commercial zones",
+        "Upscale neighborhoods",
+        "Food courts",
+        "Tier 1 & Tier 2 cities"
+      ],
+      "singleUnitInvestmentByFormat": {
+        "kioskMall": {
+          "min": 1500000,
+          "max": 2000000
+        },
+        "standard": {
+          "min": 2000000,
+          "max": 3000000
+        },
+        "premiumStandalone": {
+          "min": 3000000,
+          "max": 4000000
+        }
+      },
+      "expectedInvestmentRange": {
+        "min": 2000000,
+        "max": 4000000,
+        "notes": "Depends on format and location"
+      },
+      "investmentIncludes": [
+        "Franchise Fee",
+        "Equipment",
+        "Furniture & Fixtures",
+        "Interiors",
+        "Initial Inventory",
+        "Staff Training",
+        "Support"
+      ],
+      "brandFranchiseFee": {
+        "unitFranchise": {
+          "min": 500000,
+          "max": 800000,
+          "type": "One-time"
+        },
+        "masterFranchise": {
+          "min": 1500000,
+          "max": 2000000,
+          "notes": "Master franchise available"
+        }
+      },
+      "equipmentAndFF": {
+        "min": 600000,
+        "max": 1000000,
+        "notes": "Commercial kitchen equipment, refrigeration, POS systems"
+      },
+      "furnitureAndFixtures": {
+        "min": 300000,
+        "max": 500000,
+        "notes": "Modern interior design, brand aesthetics, sitting area setup"
+      }
+    },
+    "investmentBreakdown": {
+      "initialInvestmentByFormat": {
+        "standard": {
+          "min": 2000000,
+          "max": 3000000
+        },
+        "premiumStandalone": {
+          "min": 3000000,
+          "max": 4000000
+        }
+      },
+      "breakdown": {
+        "franchiseFee": {
+          "min": 500000,
+          "max": 800000
+        },
+        "equipment": {
+          "min": 600000,
+          "max": 1000000
+        },
+        "interiors": {
+          "min": 400000,
+          "max": 600000
+        },
+        "furniture": {
+          "min": 300000,
+          "max": 500000
+        },
+        "others": {
+          "min": 200000,
+          "max": 500000
+        }
+      },
+      "franchiseFee": {
+        "min": 500000,
+        "max": 800000,
+        "type": "One-time investment"
+      },
+      "ongoingCosts": {
+        "royalty": {
+          "percentage": 8,
+          "basis": "monthly turnover"
+        },
+        "otherCharges": "No other charges",
+        "advertisingCost": "Minimal"
+      },
+      "franchiseAgreementDuration": {
+        "years": 5,
+        "renewable": true
+      },
+      "otherNotes": [
+        "200+ outlets operational pan-India (2024-2025)",
+        "Founded in Bangalore",
+        "35-55% profit margin",
+        "12-18 months payback period",
+        "100% vegetarian products",
+        "Innovative frozen dessert concept"
+      ]
+    },
+    "operationalDetails": {
+      "advertisingMarketing": [
+        "Complete brand support provided",
+        "Store launch marketing",
+        "Social media marketing support",
+        "Press releases",
+        "Point-of-sale materials",
+        "Digital platform tie-ups"
+      ],
+      "officeStaffRequired": {
+        "standard": "3-5 persons",
+        "large": "5-7 persons"
+      },
+      "computerSystem": {
+        "posSystem": true,
+        "crmIntegrated": true
+      },
+      "internetConnection": {
+        "required": true,
+        "notes": "Essential for operations and delivery platform integration"
+      },
+      "expectedPaybackPeriod": {
+        "min": 12,
+        "max": 18,
+        "unit": "months",
+        "notes": "Fast payback model | Quick ROI realization"
+      },
+      "expectedROI": {
+        "profitMargin": {
+          "min": 35,
+          "max": 55,
+          "unit": "percentage"
+        },
+        "roiTarget": {
+          "min": 40,
+          "max": 50,
+          "unit": "percentage"
+        },
+        "notes": "Strong margins potential"
+      },
+      "anyOtherInvestmentNeeded": {
+        "workingCapital": {
+          "min": 175000,
+          "max": 200000,
+          "unit": "per month"
+        },
+        "rent": {
+          "min": 40000,
+          "max": 75000,
+          "unit": "per month",
+          "notes": "depending on location"
+        }
+      },
+      "lookingExpansionAreas": [
+        "Pan India expansion",
+        "Tier 1, 2, 3 cities focus",
+        "200+ outlets planned",
+        "Middle East & Southeast Asia expansion"
+      ]
+    },
+    "franchiseCategory": {
+      "category": "Modern Frozen Desserts & Ice Cream Café",
+      "sector": "F&B – Contemporary Specialty Segment",
+      "concept": "Contemporary frozen dessert café | Jar-based premium concept | Trendy ambiance for youth | Social media-friendly products | Innovative menu approach | Modern café experience"
+    },
+    "franchiseRequirements": {
+      "qualificationsRequired": [
+        "Business acumen",
+        "Market understanding",
+        "Capital availability",
+        "Entrepreneurial drive",
+        "Can execute brand standards",
+        "Customer service orientation"
+      ],
+      "educationLevel": "Any educational background welcome | Business acumen important | Financial literacy beneficial",
+      "skillset": [
+        "Customer service excellence",
+        "Business management",
+        "Financial handling",
+        "Quality consciousness",
+        "Can follow SOPs",
+        "Entrepreneurial drive"
+      ],
+      "businessSeeks": [
+        "Independent entrepreneurs",
+        "Capital availability (₹20-40L)",
+        "Commitment to brand standards",
+        "Time and dedication",
+        "System-oriented individuals"
+      ],
+      "previousExperience": "F&B or retail experience beneficial | Contemporary market understanding helpful | Not mandatory but valued"
+    },
+    "franchiseOptions": {
+      "absenteeOwnership": {
+        "allowed": true,
+        "notes": "Possible with professional management | Requires dedicated operations team | Strong system adherence needed"
+      },
+      "homeBasedMobileUnit": {
+        "allowed": false,
+        "notes": "Not Suitable | Requires permanent retail location with full kitchen setup"
+      },
+      "partTime": {
+        "allowed": false,
+        "notes": "Not Possible | Requires full-time professional operations and staff"
+      },
+      "exclusiveTerritories": {
+        "available": true,
+        "notes": "Yes | Territorial exclusivity available | Multi-unit ownership possible | Master franchise opportunities available"
+      }
+    },
+    "regionalExpansion": {
+      "regions": {
+        "north": "Active",
+        "south": "Active",
+        "east": "Growing",
+        "west": "Active",
+        "central": "Growing",
+        "unionTerritories": "Growing"
+      }
+    },
+    "recentUpdates": [
+      "200+ outlets operational (2024-2025)",
+      "Present in 50+ Indian cities",
+      "Bangalore headquarters",
+      "35-55% profit margins",
+      "12-18 months payback",
+      "Multi-unit franchises growing",
+      "International expansion to Middle East & Southeast Asia"
+    ],
+    "relatedSections": {
+      "featuredCategories": {
+        "title": "Featured food franchise categories",
+        "subtitle": "Explore a wide variety of food categories that suit every entrepreneurial interest",
+        "categories": [
+          {
+            "id": "cat_wow_momos",
+            "brand": "Wow! Momos",
+            "image": {
+              "url": "logo-main.png",
+              "width": 200,
+              "height": 200,
+              "alt": "Wow Momos"
+            },
+            "slug": "wow-momos"
+          },
+          {
+            "id": "cat_tea_time",
+            "brand": "Tea Time",
+            "image": {
+              "url": "logo-main.png",
+              "width": 200,
+              "height": 200,
+              "alt": "Tea Time"
+            },
+            "slug": "tea-time"
+          },
+          {
+            "id": "cat_amul_ice_cream",
+            "brand": "Amul Ice Cream",
+            "image": {
+              "url": "logo-main.png",
+              "width": 200,
+              "height": 200,
+              "alt": "Amul Ice Cream"
+            },
+            "slug": "amul-ice-cream"
+          },
+          {
+            "id": "cat_subway",
+            "brand": "Subway",
+            "image": {
+              "url": "logo-main.png",
+              "width": 200,
+              "height": 200,
+              "alt": "Subway"
+            },
+            "slug": "subway"
+          },
+          {
+            "id": "cat_dominos_pizza",
+            "brand": "Domino's Pizza",
+            "image": {
+              "url": "logo-main.png",
+              "width": 200,
+              "height": 200,
+              "alt": "Domino's Pizza"
+            },
+            "slug": "dominos-pizza"
+          },
+          {
+            "id": "cat_rollii",
+            "brand": "Rollii",
+            "image": {
+              "url": "logo-main.png",
+              "width": 200,
+              "height": 200,
+              "alt": "Rollii"
+            },
+            "slug": "rollii"
+          },
+          {
+            "id": "cat_zoca_cafe",
+            "brand": "Zoca Cafe",
+            "image": {
+              "url": "logo-main.png",
+              "width": 200,
+              "height": 200,
+              "alt": "Zoca Cafe"
+            },
+            "slug": "zoca-cafe"
+          },
+          {
+            "id": "cat_lassi_corner",
+            "brand": "Lassi Corner",
+            "image": {
+              "url": "logo-main.png",
+              "width": 200,
+              "height": 200,
+              "alt": "Lassi Corner"
+            },
+            "slug": "lassi-corner"
+          }
+        ]
+      },
+      "categoryQuestions": {
+        "title": "Understanding Category franchise",
+        "questions": [
+          {
+            "id": "q1",
+            "question": "What is a category franchise in the context of the Food industry?",
+            "slug": "what-is-category-franchise"
+          },
+          {
+            "id": "q2",
+            "question": "Who is the target customer for a Food franchise in India?",
+            "slug": "target-customer-food-franchise"
+          },
+          {
+            "id": "q3",
+            "question": "What is the typical business model used by food franchises?",
+            "slug": "business-model-food-franchises"
+          },
+          {
+            "id": "q4",
+            "question": "What are the main services offered in a food franchise?",
+            "slug": "main-services-food-franchise"
+          },
+          {
+            "id": "q5",
+            "question": "What kind of infrastructure or space is required?",
+            "slug": "infrastructure-space-required"
+          },
+          {
+            "id": "q6",
+            "question": "What is the expected investment and ROI for a food franchise?",
+            "slug": "investment-roi-food-franchise"
+          }
+        ]
+      },
+      "recommendedFranchises": {
+        "title": "Recommended Franchise",
+        "subtitle": "Discover top-rated franchises handpicked based on your preferences and investment range",
+        "items": [
+          {
+            "id": "rec_1",
+            "brand": "Kidzee",
+            "category": "Events",
+            "image": {
+              "url": "logo-main.png",
+              "width": 300,
+              "height": 200,
+              "alt": "Kidzee Franchise"
+            },
+            "slug": "kidzee-preschool"
+          },
+          {
+            "id": "rec_2",
+            "brand": "Jetts India",
+            "category": "Gyms",
+            "image": {
+              "url": "logo-main.png",
+              "width": 300,
+              "height": 200,
+              "alt": "Jetts India Franchise"
+            },
+            "slug": "jetts-india-gym"
+          },
+          {
+            "id": "rec_3",
+            "brand": "Lakme Salon",
+            "category": "Salon",
+            "image": {
+              "url": "logo-main.png",
+              "width": 300,
+              "height": 200,
+              "alt": "Lakme Salon Franchise"
+            },
+            "slug": "lakme-salon-beauty"
+          },
+          {
+            "id": "rec_4",
+            "brand": "Caraspa",
+            "category": "Wellness",
+            "image": {
+              "url": "logo-main.png",
+              "width": 300,
+              "height": 200,
+              "alt": "Carespa Franchise"
+            },
+            "slug": "carespa-wellness"
+          }
+        ]
+      },
+      "keyMarketInsights": {
+        "title": "Key Market Insights",
+        "insights": [
+          {
+            "title": "Market trend",
+            "description": "Golf is evolving from an elite outdoor sport to an accessible indoor entertainment and training ex perience through simulators and golf lounges"
+          },
+          {
+            "title": "Growth factor",
+            "description": "The indoor golf simulator market in India is growing at a CAGR of 17-20%, driven by rising dispo sable income in premium experiences, space and tech adoption"
+          }
+        ]
+      }
+    }
+  }
+}

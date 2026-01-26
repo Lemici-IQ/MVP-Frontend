@@ -33,14 +33,14 @@ export default function Header(props) {
     >
       {/* Floating container */}
       <div className="mx-auto max-w-4xl px-3 sm:px-4">
+        {/* rgba(235, 235, 236, 1) */}
+        {/* rgba(237, 237, 237, 0.2)  */}
         <div
           className={[
             "mt-3 flex items-center justify-between",
-            "rounded-[18px] border backdrop-blur-xl",
+            "rounded-[18px] border-9 border-[#fdfbfb] backdrop-blur-xl",
             "transition-all duration-300",
-            atTop
-              ? "bg-[#F0EAF4] border-white/30 shadow-[0_2px_20px_rgba(0,0,0,0.06)]"
-              : "bg-[#F0EAF4] border-black/5 shadow-[0_6px_30px_rgba(0,0,0,0.10)]",
+            "bg-[rgba(235,235,236,1)]"
           ].join(" ")}
         >
           {/* Left: logo */}

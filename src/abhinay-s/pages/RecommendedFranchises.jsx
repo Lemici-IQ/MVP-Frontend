@@ -12,7 +12,7 @@ const RecommendedFranchises = ({ data = [] }) => {
       {data.map((item, index) => (
         <div
           key={item.id || index}
-          className="min-w-[220px] h-full rounded-xl overflow-hidden border shadow-sm hover:shadow-md transition relative group cursor-pointer"
+          className="min-w-[220px] h-[280px] rounded-xl overflow-hidden border shadow-sm hover:shadow-md transition relative group cursor-pointer"
           onClick={() => navigate(`/franchise/${item.slug}`)}
         >
           <IKImage

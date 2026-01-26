@@ -38,7 +38,6 @@ import UserRoutes from "./routes/UserRoutes";
 import SouravRoutes from "./sourav/SouravRoutes";
 
 function App() {
-  console.log(testAlias);
   return (
     <ChatbotProvider>
       <Router>

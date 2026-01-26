@@ -8,7 +8,56 @@ import Footernew from "@/abhinay-s/components/Footernew";
 import FloatingChatbot from "./FloatingChatbot";
 import { useChatbot } from "./ChatbotContext";
 import { getHomeMetrics } from "@/abhinay-s/lib/api";
+const GlowBackground = ({ brightness = 0.4 }) => {
+  const containerStyle = {
+    position: 'relative',
+    width: '100%',
+    height: '100vh',
+    backgroundColor: '#ffffff', // Base background color
+    overflow: 'hidden',
+    zIndex: -1,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  };
 
+  const blobBaseStyle = {
+    position: 'absolute',
+    borderRadius: '50%',
+    filter: 'blur(60px)', // This creates the "soft" feel
+    opacity: brightness,
+    width: '220px',
+    height: '220px',
+  };
+
+  return (
+    <div style={containerStyle}>
+      {/* Purple Blob */}
+      <div style={{
+        ...blobBaseStyle,
+        background: '#6D3E93',
+        top: '10%',
+        left: '35%',
+      }} />
+
+      {/* Teal Blob */}
+      <div style={{
+        ...blobBaseStyle,
+        background: '#14A79D',
+        top: '5%',
+        left: '50%',
+      }} />
+
+      {/* Yellow Blob */}
+      <div style={{
+        ...blobBaseStyle,
+        background: '#F4B400',
+        top: '15%',
+        left: '45%',
+      }} />
+    </div>
+  );
+};
 const PilotProgramSection = ({ showPricing, pricingInfo }) => {
   const [billing, setBilling] = useState("monthly");
 
@@ -400,15 +449,18 @@ const NewHomePage = () => {
   };
 
   return (
-    <div>
-      <div className="min-h-screen">
-        <div className="bg-white py-8">
+    <div className="relative">
+      <div className="min-h-screen relative">
+        <div className="absolute inset-0 w-full h-full -z-10">
+          <GlowBackground brightness={0.4} />
+        </div>
+        
+        <div className="py-8">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <div
               className="bg-cover bg-center"
               style={{
-                backgroundImage:
-                  "url('https://ik.imagekit.io/lemiciiq/LeMiCi/HomePageImages/terhy.png')",
+                
               }}
             >
               {/* Overlay */}
@@ -478,7 +530,7 @@ const NewHomePage = () => {
         {/* <div><p className='text-gray-600 text-center mb-6'>Structure of Business</p></div> */}
         <div className="w-full flex justify-center px-2 sm:px-4 md:px-8 lg:px-2">
           <div
-            className="w-full max-w-6xl mx-auto flex justify-center bg-white relative"
+            className="w-full max-w-6xl mx-auto flex justify-center bg-white relative mt-16"
             style={{ minHeight: "400px" }}
           >
             <Usables2 />

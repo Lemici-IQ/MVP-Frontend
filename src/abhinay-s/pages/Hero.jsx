@@ -7,7 +7,7 @@ const Hero = ({ data }) => {
     <div className="space-y-4">
       {/* Heading */}
       <h2 className="text-2xl sm:text-3xl font-bold">
-        {data.title}
+        Explore All Franchise Opportunities
       </h2>
 
       {/* Description */}

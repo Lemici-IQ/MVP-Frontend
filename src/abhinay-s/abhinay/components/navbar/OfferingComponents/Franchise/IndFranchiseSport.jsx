@@ -5,6 +5,8 @@ import {
   FaPinterest,
   FaYoutube,
 } from "react-icons/fa";
+import { IKImage } from "imagekitio-react";
+
 import {
   FaEnvelope,
   FaIndustry,
@@ -18,10 +20,8 @@ import {
   FaUtensils,
   FaTools,
 } from "react-icons/fa";
-import Chart from "chart.js/auto";
+import FranchiseTabs from "./FranchiseTabs";
 const IndFranchiseSport = () => {
-  const chartRef = useRef(null);
-  let chartInstance = null;
 
   // Franchise Details
   const franchiseData = {
@@ -49,50 +49,6 @@ const IndFranchiseSport = () => {
     leadership: "Jared Solomon – Co-Founder & CEO (Global); Manesh Patel – CEO (India)"
   };
 
-  useEffect(() => {
-    if (chartInstance) chartInstance.destroy();
-
-    const ctx = chartRef.current.getContext("2d");
-
-    chartInstance = new Chart(ctx, {
-      type: "line",
-      data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-        datasets: [
-          {
-            label: "Sales",
-            data: [5000, 7000, 12000, 18000, 23000, 26000],
-            borderWidth: 3,
-            borderColor: "#2563eb",
-            tension: 0.4,
-          },
-          {
-            label: "Expenses",
-            data: [3000, 4000, 6000, 9000, 14000, 17000],
-            borderWidth: 3,
-            borderColor: "#10b981",
-            tension: 0.4,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: "bottom",
-            labels: { color: "#444" },
-          },
-        },
-        scales: {
-          x: { ticks: { color: "#444" } },
-          y: { ticks: { color: "#444" } },
-        },
-      },
-    });
-
-    return () => chartInstance.destroy();
-  }, []);
   const [position, setPosition] = React.useState({
     x: window.innerWidth - 100,
     y: 224,
@@ -289,21 +245,21 @@ const IndFranchiseSport = () => {
 
         {/* Action Icons - Top Right */}
         <div className="absolute top-6 right-6 flex items-center space-x-3">
-          <img
-            src="abhinay/franchise/share.png"
-            alt="Share"
-            className="w-4 h-4 cursor-pointer hover:scale-110 transition-transform"
-          />
-          <img
-            src="abhinay/franchise/book.png"
-            alt="Book"
-            className="w-4 h-4 cursor-pointer hover:scale-110 transition-transform"
-          />
-          <img
-            src="abhinay/franchise/menu.png"
-            alt="Menu"
-            className="w-4 h-4 cursor-pointer hover:scale-110 transition-transform"
-          />
+           <IKImage
+                      path="FranchiseHomePage/d2.png"
+                      alt="Share"
+                      className="w-4 h-4 cursor-pointer hover:scale-110 transition-transform"
+                    />
+                    <IKImage
+                      path="FranchiseHomePage/d3.png"
+                      alt="Book"
+                      className="w-4 h-4 cursor-pointer hover:scale-110 transition-transform"
+                    />
+                    <IKImage
+                      path="FranchiseHomePage/d6.png"
+                      alt="Menu"
+                      className="w-4 h-4 cursor-pointer hover:scale-110 transition-transform"
+                    />
         </div>
 
         <div className="flex flex-col md:flex-row items-start justify-between gap-6 w-full">
@@ -463,74 +419,7 @@ const IndFranchiseSport = () => {
         </div>
       </div>
 
-      <div className="w-full rounded-3xl p-8 flex flex-col">
-        {/* Header Tabs */}
-        <div className="flex text-xl font-semibold text-gray-700">
-          {['Business Overview','Investment requirement','Operation'].map((tab, i) => (
-            <button
-              key={i}
-              onClick={() => setActiveTab(tab)}
-              className={
-                `relative px-6 py-3 rounded-t-lg transition-all w-1/3 ` +
-                (activeTab === tab 
-                  ? 'bg-blue-50 text-[#268BFF]' 
-                  : 'text-gray-600 hover:text-blue-500 bg-white hover:bg-gray-50')
-              }
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 bg-blue-50 p-6 rounded-lg">
-          {/* Left Section */}
-          <div className="flex flex-col gap-3">
-            <div>
-              <h2 className="text-lg font-bold">Products</h2>
-              <ul className="list-disc pl-5 mt-3 space-y-1 text-gray-700">
-                <li>Golf Simulators (TrackMan Technology)</li>
-                <li>Golf Lessons & Coaching Programs</li>
-                <li>Club Fittings & Custom Equipment</li>
-                <li>Golf Merchandise & Retail</li>
-                <li>Golf League Memberships</li>
-                <li>Event Space Rentals (Corporate & Private)</li>
-                <li>Full-Service Bar & Gourmet Food Menu</li>
-                <li>Virtual Golf Experiences (Multiple Courses)</li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="text-lg font-bold">Services</h2>
-              <ul className="list-disc pl-5 mt-3 space-y-1 text-gray-700">
-                <li>Indoor Golf Simulator Experience</li>
-                <li>Professional Golf Training & Coaching</li>
-                <li>Corporate Events & Team Building</li>
-                <li>Private Parties & Social Events</li>
-                <li>Golf Club Fitting Services</li>
-                <li>Membership & Loyalty Programs</li>
-                <li>Community Golf Leagues & Tournaments</li>
-                <li>Food & Beverage Service (Bar & Restaurant)</li>
-                <li>Franchise Training & Operational Support</li>
-                <li>Technology Setup & Software Support</li>
-                <li>Marketing & Branding Assistance</li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Right Section */}
-          <div className="flex flex-col gap-8">
-            <h2 className="text-lg font-bold">Training & Support</h2>
-            <p className="text-gray-700 leading-relaxed">
-              Five Iron Golf provides comprehensive training and ongoing support including 10 weeks of on-the-job training, 1-2 weeks of classroom training, detailed operating manuals, field assistance, and technology setup. We offer logistics setup, marketing support (national media, social media, SEO, loyalty programs), operational guidance, and access to purchasing co-ops, conventions, newsletters, toll-free support line, and franchisee intranet platform.
-            </p>
-
-            {/* Chart.js Canvas */}
-            <div className="bg-white rounded-2xl shadow p-6 w-full h-[20rem]">
-              <canvas ref={chartRef}></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
+      <FranchiseTabs />
       {/*
        */}
       <div className="w-full px-6 py-10 bg-white">
@@ -542,7 +431,7 @@ const IndFranchiseSport = () => {
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
               {franchises1.map((item, index) => (
-                <div>
+                <div key={index}>
                   <div
                     key={index}
                     className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition bg-white"

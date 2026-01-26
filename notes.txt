@@ -95,3 +95,686 @@ src/
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  "success": true,
+  "timestamp": "2025-12-21T10:30:00Z",
+  "data": {
+    "pageId": "franchise_home",
+    "sections": [
+      {
+        "type": "hero",
+        "enabled": true,
+        "data": {
+          "topBrandLogos": [
+            {
+              "brandId": "br_001",
+              "name": "Subway",
+              "logo": {
+                "url": "FranchiseHomePage/1.png",
+                "width": 120,
+                "height": 60,
+                "alt": "Amul"
+              },
+              "slug": "amul"
+            },
+            {
+              "brandId": "br_001",
+              "name": "Starbucks",
+              "logo": {
+                "url": "FranchiseHomePage/2.png",
+                "width": 120,
+                "height": 60,
+                "alt": "Haldiram's"
+              },
+              "slug": "haldirams"
+            },
+            {
+              "brandId": "br_001",
+              "name": "Amul",
+              "logo": {
+                "url": "FranchiseHomePage/3.png",
+                "width": 120,
+                "height": 60,
+                "alt": "Starbucks"
+              },
+              "slug": "sarbucks"
+            },
+            {
+              "brandId": "br_001",
+              "name": "Burger King",
+              "logo": {
+                "url": "FranchiseHomePage/4.png",
+                "width": 120,
+                "height": 60,
+                "alt": "Burger King Logo"
+              },
+              "slug": "burger-king"
+            },
+            {
+              "brandId": "br_001",
+              "name": "McDonald's",
+              "logo": {
+                "url": "FranchiseHomePage/5.png",
+                "width": 120,
+                "height": 60,
+                "alt": "McDonald's Logo"
+              },
+              "slug": "mcdonalds"
+            },
+            {
+              "brandId": "br_001",
+              "name": "Pizza Wings",
+              "logo": {
+                "url": "FranchiseHomePage/6.png",
+                "width": 120,
+                "height": 60,
+                "alt": "Subway Logo"
+              },
+              "slug": "subway"
+            },
+            {
+              "brandId": "br_001",
+              "name": "KFC",
+              "logo": {
+                "url": "FranchiseHomePage/7.png",
+                "width": 120,
+                "height": 60,
+                "alt": "KFC Logo"
+              },
+              "slug": "kfc"
+            },
+            {
+              "brandId": "br_001",
+              "name": "Haldiram's",
+              "logo": {
+                "url": "FranchiseHomePage/8.png",
+                "width": 120,
+                "height": 60,
+                "alt": "Domino's Logo"
+              },
+              "slug": "dominos"
+            },
+            {
+              "brandId": "br_001",
+              "name": "Lakme",
+              "logo": {
+                "url": "FranchiseHomePage/n.png",
+                "width": 120,
+                "height": 60,
+                "alt": "Pizza Logo"
+              },
+              "slug": "pizza"
+            }
+          ]
+        }
+      },
+      {
+        "type": "top_franchise_opportunities",
+        "enabled": true,
+        "data": {
+          "industries": [
+            {
+              "id": "cat_automobiles",
+              "name": "Automobiles",
+              "icon_url": "FranchiseHomePage/industry-automobiles.png",
+              "slug": "beauty-salon"
+            },
+            {
+              "id": "cat_beauty_salon",
+              "name": "Beauty & Salon",
+              "icon_url": "FranchiseHomePage/industry-beauty-salon.png",
+              "slug": "beauty-salon"
+            },
+            {
+              "id": "cat_business",
+              "name": "Business",
+              "icon_url": "FranchiseHomePage/industry-business.png",
+              "slug": "beauty-salon"
+            },
+            {
+              "id": "cat_food",
+              "name": "Food",
+              "icon_url": "FranchiseHomePage/industry-food.png",
+              "slug": "beauty-salon"
+            },
+            {
+              "id": "cat_health_and_wellness",
+              "name": "Health & Wellness",
+              "icon_url": "FranchiseHomePage/industry-health-wellness.png",
+              "slug": "beauty-salon"
+            },
+            {
+              "id": "cat_dealers_and_distribution",
+              "name": "Dealers & Distribution",
+              "icon_url": "FranchiseHomePage/industry-dealers-distribution.png",
+              "slug": "beauty-salon"
+            },
+            {
+              "id": "cat_education",
+              "name": "Education",
+              "icon_url": "FranchiseHomePage/Education",
+              "slug": "beauty-salon"
+            },
+            {
+              "id": "cat_retail",
+              "name": "Retail",
+              "icon_url": "FranchiseHomePage/industry-retail.png",
+              "slug": "beauty-salon"
+            },
+            {
+              "id": "cat_logostic",
+              "name": "Courier Logistics",
+              "icon_url": "FranchiseHomePage/industry-courier-logistics.png",
+              "slug": "beauty-salon"
+            }
+          ]
+        }
+      },
+      {
+        "type": "popular_listings",
+        "enabled": true,
+        "data": [
+          {
+            "id": "uuid",
+            "brand": "Natural Salon",
+            "description": "Own a Natural Salon Franchise – where beauty meets wellness with eco-friendly products, sustainable care, and a luxurious experience for every client..",
+            "category": "Beauty & Fashion",
+            "since": 2022,
+            "rating": 4.5,
+            "location": "Gurgaon, India",
+            "tags": [
+              "Unit",
+              "Verified",
+              "2022",
+              "Beauty & Health",
+              "High Brand Recall"
+            ],
+            "space": "100 - 150 sq ft.",
+            "no_of_outlets": "350",
+            "investmentRange": {
+              "min": 5000000,
+              "max": 10000000
+            },
+            "logo": {
+              "url": "rrom.jpg",
+              "width": 320,
+              "height": 200,
+              "alt": "Natural Salon Franchise"
+            },
+            "slug": "natural-salon-india",
+            "color": "#ffd4fe"
+          },
+          {
+            "id": "uuid",
+            "brand": "Haldiram’s",
+            "description": "Own a Haldiram’s Franchise – bringing India’s favorite snacks, sweets, and authentic flavors to your community with a trusted brand legacy.",
+            "category": "Food & Beverage",
+            "since": 1937,
+            "rating": 4.5,
+            "location": "Gurgaon, India",
+            "tags": [
+              "Unit",
+              "Verified",
+              "2022",
+              "Food & Beverage",
+              "Pan-India presence"
+            ],
+            "space": "150 - 250 sq ft.",
+            "no_of_outlets": "350",
+            "investmentRange": {
+              "min": 2500000,
+              "max": 3500000
+            },
+            "logo": {
+              "url": "FranchiseHomePage/8.png",
+              "width": 320,
+              "height": 200,
+              "alt": "Haldiram’s Franchise"
+            },
+            "slug": "haldirams-india",
+            "color": "#ff6b6b"
+          },
+          {
+            "id": "uuid",
+            "brand": "GolfEdge Academy",
+            "description": "Own a GolfEdge Academy Franchise – delivering professional golf training with structured programs, expert coaching, and a premium sports learning experience.",
+            "category": "Beauty & Health",
+            "since": 1997,
+            "rating": 4.2,
+            "location": "India",
+            "tags": [
+              "Unit",
+              "Verified",
+              "2022",
+              "Beauty & Health",
+              "Niche sports academy"
+            ],
+            "space": "150 - 250 sq ft.",
+            "no_of_outlets": "350",
+            "investmentRange": {
+              "min": 1500000,
+              "max": 2500000
+            },
+            "logo": {
+              "url": "FranchiseHomePage/golf.jpg",
+              "width": 320,
+              "height": 200,
+              "alt": "GolfEdge Academy Franchise"
+            },
+            "slug": "golfedge-academy-india",
+            "color": "#a8d9bd"
+          },
+          {
+            "id": "uuid",
+            "brand": "Haldiram’s",
+            "description": "Own a Haldiram’s Franchise – bringing India’s favorite snacks, sweets, and authentic flavors to your community with a trusted brand legacy.",
+            "category": "Food & Beverage",
+            "since": 1937,
+            "rating": 4.5,
+            "location": "Gurgaon, India",
+            "tags": [
+              "Unit",
+              "Verified",
+              "2022",
+              "Food & Beverage",
+              "Pan-India presence"
+            ],
+            "space": "150 - 250 sq ft.",
+            "no_of_outlets": "350",
+            "investmentRange": {
+              "min": 2500000,
+              "max": 3500000
+            },
+            "logo": {
+              "url": "FranchiseHomePage/8.png",
+              "width": 320,
+              "height": 200,
+              "alt": "Haldiram’s Franchise"
+            },
+            "slug": "haldirams-india",
+            "color": "#ff6b6b"
+          },
+          {
+            "id": "uuid",
+            "brand": "GolfEdge Academy",
+            "description": "Own a GolfEdge Academy Franchise – delivering professional golf training with structured programs, expert coaching, and a premium sports learning experience.",
+            "category": "Beauty & Health",
+            "since": 1997,
+            "rating": 4.2,
+            "location": "India",
+            "tags": [
+              "Unit",
+              "Verified",
+              "2022",
+              "Beauty & Health",
+              "Niche sports academy"
+            ],
+            "space": "150 - 250 sq ft.",
+            "no_of_outlets": "350",
+            "investmentRange": {
+              "min": 1500000,
+              "max": 2500000
+            },
+            "logo": {
+              "url": "FranchiseHomePage/golf.jpg",
+              "width": 320,
+              "height": 200,
+              "alt": "GolfEdge Academy Franchise"
+            },
+            "slug": "golfedge-academy-india",
+            "color": "#9dd2b5"
+          },
+          {
+            "id": "uuid",
+            "brand": "GolfEdge Academy",
+            "description": "Own a GolfEdge Academy Franchise – delivering professional golf training with structured programs, expert coaching, and a premium sports learning experience.",
+            "category": "Beauty & Health",
+            "since": 1997,
+            "rating": 4.2,
+            "location": "India",
+            "tags": [
+              "Unit",
+              "Verified",
+              "2022",
+              "Beauty & Health",
+              "Niche sports academy"
+            ],
+            "space": "150 - 250 sq ft.",
+            "no_of_outlets": "350",
+            "investmentRange": {
+              "min": 1500000,
+              "max": 2500000
+            },
+            "logo": {
+              "url": "FranchiseHomePage/golf.jpg",
+              "width": 320,
+              "height": 200,
+              "alt": "GolfEdge Academy Franchise"
+            },
+            "slug": "golfedge-academy-india",
+            "color": "#a8d9bd"
+          },
+          {
+            "id": "uuid",
+            "brand": "Haldiram’s",
+            "description": "Own a Haldiram’s Franchise – bringing India’s favorite snacks, sweets, and authentic flavors to your community with a trusted brand legacy.",
+            "category": "Food & Beverage",
+            "since": 1937,
+            "rating": 4.5,
+            "location": "Gurgaon, India",
+            "tags": [
+              "Unit",
+              "Verified",
+              "2022",
+              "Food & Beverage",
+              "Pan-India presence"
+            ],
+            "space": "150 - 250 sq ft.",
+            "no_of_outlets": "350",
+            "investmentRange": {
+              "min": 2500000,
+              "max": 3500000
+            },
+            "logo": {
+              "url": "FranchiseHomePage/8.png",
+              "width": 320,
+              "height": 200,
+              "alt": "Haldiram’s Franchise"
+            },
+            "slug": "haldirams-india",
+            "color": "#ff6b6b"
+          }
+        ]
+      },
+      {
+        "type": "distribution_categories",
+        "enabled": true,
+        "data": {
+          "categories": [
+            {
+              "id": "dist_golf_clubs",
+              "name": "Golf Clubs",
+              "description": "Premium golf equipment distribution",
+              "image": {
+                "url": "https://ik.imagekit.io/lemici/distribution/golf-clubs.jpg",
+                "width": 400,
+                "height": 300,
+                "alt": "Golf Clubs Distribution"
+              },
+              "slug": "golf-clubs-distribution",
+              "opportunityCount": 12
+            },
+           {
+              "id": "dist_golf_carts",
+              "name": "Golf Carts",
+              "description": "Distributor, C&F Agent Electric/Manual trolleys, golf carts (Toro, Yamaha)",
+              "image": {
+                "url": "FranchiseHomePage/image.png",
+                "width": 400,
+                "height": 300,
+                "alt": "Golf Carts Distribution"
+              },
+              "slug": "golf-carts-distribution",
+              "opportunityCount": 12
+            },
+
+            {
+              "id": "dist_golf_balls",
+              "name": "Golf Balls",
+              "description": "Stockist, C&F Agent Branded and private-label balls (Callaway, Titleist, etc.)",
+              "image": {
+                "url": "FranchiseHomePage/image.png",
+                "width": 400,
+                "height": 300,
+                "alt": "Golf Balls Distribution"
+              },
+              "slug": "golf-balls-distribution",
+              "opportunityCount": 12
+            },
+            {
+              "id": "dist_accessories_apparel",
+              "name": "Accessories & Apparel",
+              "description": "Distributor, Stockist Gloves, tees, caps, golf bags, apparel",
+              "image": {
+                "url": "FranchiseHomePage/image.png",
+                "width": 400,
+                "height": 300,
+                "alt": "Golf Accessories and Apparel Distribution"
+              },
+              "slug": "accessories-apparel-distribution",
+              "opportunityCount": 12
+            }
+          ]
+        }
+      },
+      {
+        "type": "Explore by Industry",
+        "enabled": true,
+        "data": {
+          "categories": [
+            {
+              "id": "uuid",
+              "name": "Restaurant Franchise",
+              "icon_url": "FranchiseHomePage/icons/1.svg",
+              "slug": "restaurant-franchise"
+            },
+            {
+              "id": "uuid",
+              "name": "Business professional",
+              "icon_url": "FranchiseHomePage/icons/2.svg",
+              "slug": "restaurant-franchise"
+            },
+            {
+              "id": "uuid",
+              "name": "Business opportunities",
+              "icon_url": "FranchiseHomePage/icons/3.svg",
+              "slug": "restaurant-franchise"
+            },
+            {
+              "id": "uuid",
+              "name": "Cleaning Franchise",
+              "icon_url": "FranchiseHomePage/icons/19.svg",
+              "slug": "restaurant-franchise"
+            },
+            {
+              "id": "uuid",
+              "name": "Property & Real estate",
+              "icon_url": "FranchiseHomePage/icons/17.svg",
+              "slug": "restaurant-franchise"
+            },
+            {
+              "id": "uuid",
+              "name": "Education franchise",
+              "icon_url": "FranchiseHomePage/icons/14.svg",
+              "slug": "restaurant-franchise"
+            },
+            {
+              "id": "uuid",
+              "name": "Health care franchise",
+              "icon_url": "FranchiseHomePage/icons/7.svg",
+              "slug": "restaurant-franchise"
+            },
+            {
+              "id": "uuid",
+              "name": "Home based franchise",
+              "icon_url": "FranchiseHomePage/icons/8.svg",
+              "slug": "restaurant-franchise"
+            },
+            {
+              "id": "uuid",
+              "name": "Home services franchise",
+              "icon_url": "FranchiseHomePage/icons/9.svg",
+              "slug": "restaurant-franchise"
+            },
+            {
+              "id": "uuid",
+              "name": "Retail franchise",
+              "icon_url": "FranchiseHomePage/icons/11.svg",
+              "slug": "restaurant-franchise"
+            },
+            {
+              "id": "uuid",
+              "name": "Franchise services provider",
+              "icon_url": "FranchiseHomePage/icons/12.svg",
+              "slug": "restaurant-franchise"
+            },
+            {
+              "id": "uuid",
+              "name": "Pet franchise",
+              "icon_url": "FranchiseHomePage/icons/12.svg",
+              "slug": "restaurant-franchise"
+            },
+            {
+              "id": "uuid",
+              "name": "Pet franchise",  
+              "icon_url": "FranchiseHomePage/icons/12.svg",
+              "slug": "restaurant-franchise"
+            },
+            {
+              "id": "uuid",
+              "name": "Pet franchise",
+              "icon_url": "FranchiseHomePage/icons/12.svg",
+              "slug": "restaurant-franchise"
+            },
+            {
+              "id": "uuid",
+              "name": "Pet franchise",
+              "icon_url": "FranchiseHomePage/icons/12.svg",
+              "slug": "restaurant-franchise"
+            },{
+              "id": "uuid",
+              "name": "Pet franchise",
+              "icon_url": "FranchiseHomePage/icons/12.svg",
+              "slug": "restaurant-franchise"
+            },{
+              "id": "uuid",
+              "name": "Pet franchise",
+              "icon_url": "FranchiseHomePage/icons/12.svg",
+              "slug": "restaurant-franchise"
+            }
+          ]
+        }
+      },
+      {
+        "type": "cities",
+        "enabled": true,
+        "data": {
+          "cities": [
+            {
+              "cityId": "city_delhi",
+              "name": "Delhi",
+              "state": "Delhi",
+              "image": {
+                "url": "FranchiseHomePage/delhi.jpg",
+                "width": 300,
+                "height": 200,
+                "alt": "Delhi City"
+              },
+              "slug": "delhi"
+            },
+            {
+              "cityId": "city_bangalore",
+              "name": "Bangalore",
+              "state": "Bangalore",
+              "image": {
+                "url": "FranchiseHomePage/cities/bengaluru.jpg",
+                "width": 300,
+                "height": 200,
+                "alt": "Bangalore City"
+              },
+              "slug": "bangalore"
+            },
+            {
+              "cityId": "city_delhi",
+              "name": "Delhi",
+              "state": "Delhi",
+              "image": {
+                "url": "FranchiseHomePage/cities/delhi.jpg",
+                "width": 300,
+                "height": 200,
+                "alt": "Delhi City"
+              },
+              "slug": "delhi"
+            },
+            {
+              "cityId": "city_delhi",
+              "name": "Delhi",
+              "state": "Delhi",
+              "image": {
+                "url": "FranchiseHomePage/cities/delhi.jpg",
+                "width": 300,
+                "height": 200,
+                "alt": "Delhi City"
+              },
+              "slug": "delhi"
+            },
+            {
+              "cityId": "city_delhi",
+              "name": "Delhi",
+              "state": "Delhi",
+              "image": {
+                "url": "FranchiseHomePage/cities/delhi.jpg",
+                "width": 300,
+                "height": 200,
+                "alt": "Delhi City"
+              },
+              "slug": "delhi"
+            },
+            {
+              "cityId": "city_delhi",
+              "name": "Delhi",
+              "state": "Delhi",
+              "image": {
+                "url": "FranchiseHomePage/cities/delhi.jpg",
+                "width": 300,
+                "height": 200,
+                "alt": "Delhi City"
+              },
+              "slug": "delhi"
+            },
+            {
+              "cityId": "city_delhi",
+              "name": "Delhi",
+              "state": "Delhi",
+              "image": {
+                "url": "FranchiseHomePage/cities/delhi.jpg",
+                "width": 300,
+                "height": 200,
+                "alt": "Delhi City"
+              },
+              "slug": "delhi"
+            },
+            {
+              "cityId": "city_delhi",
+              "name": "Delhi",
+              "state": "Delhi",
+              "image": {
+                "url": "FranchiseHomePage/cities/delhi.jpg",
+                "width": 300,
+                "height": 200,
+                "alt": "Delhi City"
+              },
+              "slug": "delhi"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

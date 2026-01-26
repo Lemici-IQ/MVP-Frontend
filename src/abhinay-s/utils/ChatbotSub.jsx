@@ -331,7 +331,9 @@ const TextContent = ({ data }) => (
 const ChatbotSub = ({ 
     placeholder = "Ask me anything...", 
     context = "general",
-    quickActions = []
+    quickActions = [],
+    initialQuery = "",
+    autoSubmit = false
 }) => {
     const [query, setQuery] = useState("");
     const [messages, setMessages] = useState([]);
@@ -341,6 +343,7 @@ const ChatbotSub = ({
     const [showModal, setShowModal] = useState(false);
     const [apiKey] = useState(claudeApi);
     const [tavilyApiKey] = useState(tavilyApi);
+    const [hasAutoSubmitted, setHasAutoSubmitted] = useState(false);
     const inputRef = useRef(null);
     const recognitionRef = useRef(null);
     const messagesEndRef = useRef(null);
@@ -714,6 +717,25 @@ const ChatbotSub = ({
         inputRef.current?.focus();
     };
 
+    // Auto-submit initial query if provided
+    useEffect(() => {
+        if (initialQuery && autoSubmit && !hasAutoSubmitted && !isGenerating) {
+            setHasAutoSubmitted(true);
+            setQuery(initialQuery);
+            setShowModal(true);
+            setIsGenerating(true);
+
+            setMessages([{
+                role: 'user',
+                content: initialQuery
+            }]);
+
+            callClaudeAPI(initialQuery).then(() => {
+                setIsGenerating(false);
+            });
+        }
+    }, [initialQuery, autoSubmit, hasAutoSubmitted, isGenerating]);
+
     // Lock body scroll when modal is open
     useEffect(() => {
         if (showModal) {
@@ -845,6 +867,213 @@ const ChatbotSub = ({
                  </div>
                </div>
              </div>
+
+             {/* Full-Screen Modal for AI Response */}
+             {showModal && (
+                <div className="fixed inset-0 z-[9999] bg-white overflow-hidden">
+                    <div className="relative w-full h-full flex flex-col">
+                        {/* Close Button - Top Right */}
+                        <div className="absolute top-4 right-4 z-10">
+                            <button
+                                onClick={closeModal}
+                                className="p-2 rounded-full hover:bg-gray-100 transition-colors bg-white shadow-md"
+                                aria-label="Close modal"
+                            >
+                                <X className="w-5 h-5 text-gray-600" />
+                            </button>
+                        </div>
+
+                        {/* Messages Container */}
+                        <div ref={modalContentRef} className="flex-1 overflow-y-auto p-4">
+                            <div className="max-w-4xl mx-auto space-y-4">
+                                {messages.map((message, index) => (
+                                    <div key={index}>
+                                        {message.role === 'user' ? (
+                                            <div className="flex justify-end mb-4">
+                                                <div className="max-w-[80%] bg-indigo-600 text-white rounded-lg p-4">
+                                                    <p className="whitespace-pre-wrap">{message.content}</p>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-4">
+                                                {message.hadSearch && (
+                                                    <div className="flex items-center gap-2 text-xs text-indigo-600 mb-4 pb-3 border-b border-gray-200">
+                                                        <Search className="w-4 h-4" />
+                                                        <span>Searched the web: {message.searchQuery}</span>
+                                                    </div>
+                                                )}
+
+                                                {message.isSearching ? (
+                                                    <div className="flex items-center gap-2">
+                                                        <Loader2 className="w-5 h-5 animate-spin text-indigo-600" />
+                                                        <span className="text-gray-700">{message.content}</span>
+                                                    </div>
+                                                ) : message.isError ? (
+                                                    <p className="text-red-600">{message.content}</p>
+                                                ) : message.isStructured && message.content.components ? (
+                                                    <div className="space-y-6">
+                                                        {message.content.components.map((component, idx) => (
+                                                            <ComponentRenderer
+                                                                key={idx}
+                                                                data={component}
+                                                                onQueryClick={handleRelatedQueryClick}
+                                                            />
+                                                        ))}
+                                                    </div>
+                                                ) : (
+                                                    <p className="text-gray-700 whitespace-pre-wrap">{message.content}</p>
+                                                )}
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+
+                                {isGenerating && (
+                                    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                                        <div className="flex items-center gap-3 text-gray-600">
+                                            <Loader2 className="w-5 h-5 animate-spin" />
+                                            <span>Analyzing and preparing your response...</span>
+                                        </div>
+                                    </div>
+                                )}
+
+                                <div ref={messagesEndRef} />
+                            </div>
+                        </div>
+
+                        {/* Footer - Input stays at bottom */}
+                        <div className="bg-white border-gray-200 pl-4 pr-4 pb-4">
+                            <div className="max-w-4xl mx-auto">
+                                <div className="border-2 rounded-[20px] border-gray-300">
+                                    <div className="relative bg-white rounded-3xl pt-6 pl-3">
+                                        <div className="flex items-center space-x-3 mt-1 mb-9 ml-2">
+                                            <input
+                                                ref={inputRef}
+                                                type="text"
+                                                placeholder={placeholder}
+                                                className="flex-1 text-gray-700 placeholder-gray-400 bg-transparent border-none outline-none text-base"
+                                                value={query}
+                                                onChange={(e) => setQuery(e.target.value)}
+                                                onKeyDown={handleKeyDown}
+                                                disabled={isGenerating}
+                                            />
+                                        </div>
+
+                                        {/* Search Controls */}
+                                        <div className="flex items-center justify-between mb-1">
+                                            {quickActions.length > 0 ? (
+                                                <div className="flex items-center space-x-2">
+                                                    {quickActions.map((action, idx) => (
+                                                        <div key={idx} className={`flex items-center gap-1 ${action.bgClass || 'bg-gray-100'} p-1 rounded-[8px]`}>
+                                                            {action.icons?.map((icon, iconIdx) => (
+                                                                <img
+                                                                    key={iconIdx}
+                                                                    onClick={() => action.onClick ? action.onClick(icon.label) : quickGo(icon.label)}
+                                                                    className="hover:bg-white rounded-[8px] p-1 transition-colors cursor-pointer"
+                                                                    src={icon.src}
+                                                                    alt={icon.alt}
+                                                                />
+                                                            ))}
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            ) : (
+                                                <div className="flex items-center space-x-2">
+                                                    <div className="flex items-center gap-1 bg-[#e8f6f6] rounded-[6px]">
+                                                        <img
+                                                            onClick={() => quickGo("show offerings")}
+                                                            className="hover:bg-white rounded-[6px] p-1 transition-colors cursor-pointer w-8 h-8"
+                                                            src="/abhinay/aaaa.png"
+                                                            alt="Icon A"
+                                                        />
+                                                    </div>
+                                                    <div className="flex items-center gap-1 bg-[#FCEFE0] rounded-[6px] p-1">
+                                                        <img
+                                                            onClick={() => quickGo("pricing plans")}
+                                                            className="hover:bg-white rounded-[6px] p-1 transition-colors cursor-pointer w-6 h-6"
+                                                            src="/abhinay/bbbb.png"
+                                                            alt="Icon B"
+                                                        />
+                                                        <img
+                                                            onClick={() => quickGo("startups zone")}
+                                                            className="hover:bg-white rounded-[6px] p-1 transition-colors cursor-pointer w-6 h-6"
+                                                            src="/abhinay/cccc.png"
+                                                            alt="Icon C"
+                                                        />
+                                                    </div>
+                                                    <div className="flex items-center gap-1 bg-[#F0EAF4] rounded-[6px] p-1">
+                                                        <img
+                                                            onClick={() => quickGo("Investor page")}
+                                                            className="hover:bg-white rounded-[6px] p-1 transition-colors cursor-pointer w-6 h-6"
+                                                            src="/abhinay/dddd.png"
+                                                            alt="Icon D"
+                                                        />
+                                                        <img
+                                                            onClick={() => quickGo("franchise opportunities")}
+                                                            className="hover:bg-white rounded-[6px] p-1 transition-colors cursor-pointer w-6 h-6"
+                                                            src="/abhinay/eeee.png"
+                                                            alt="Icon E"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            {/* Mic and Send Buttons */}
+                                            <div className="text-white p-2 rounded-lg hover:opacity-90 transition-opacity flex items-center gap-2">
+                                                <button
+                                                    onClick={toggleListening}
+                                                    disabled={!speechSupported || isGenerating}
+                                                    title={
+                                                        speechSupported
+                                                            ? isListening
+                                                                ? "Listening… click to stop"
+                                                                : "Speak your query"
+                                                            : "Voice input not supported"
+                                                    }
+                                                    className={`rounded-md p-1 transition-colors ${isListening ? "bg-red-100" : "bg-transparent"
+                                                        } ${!speechSupported || isGenerating
+                                                            ? "opacity-50 cursor-not-allowed"
+                                                            : "cursor-pointer"
+                                                        }`}
+                                                >
+                                                    <svg
+                                                        width="14"
+                                                        height="20"
+                                                        viewBox="0 0 14 20"
+                                                        fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                    >
+                                                        <path
+                                                            d="M7 19V16.5455M7 16.5455C5.4087 16.5455 3.88258 15.8558 2.75736 14.6283C1.63214 13.4008 1 11.736 1 10M7 16.5455C8.5913 16.5455 10.1174 15.8558 11.2426 14.6283C12.3679 13.4008 13 11.736 13 10M7 14.0909C4.9375 14.0909 3.25 12.3138 3.25 10.1407V4.95018C3.25 2.77709 4.9375 1 7 1C9.0625 1 10.75 2.77709 10.75 4.95018V10.1407C10.75 12.3138 9.0625 14.0909 7 14.0909Z"
+                                                            stroke={isListening ? "#ef4444" : "black"}
+                                                            strokeOpacity={isListening ? "0.8" : "0.3"}
+                                                            strokeWidth="1.5"
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                        />
+                                                    </svg>
+                                                </button>
+                                                <button
+                                                    onClick={handleSubmit}
+                                                    disabled={isGenerating || !query.trim()}
+                                                    aria-label="Submit query"
+                                                >
+                                                    <div className={`w-6 h-6 bg-white rounded-sm opacity-90 flex items-center justify-center ${isGenerating || !query.trim()
+                                                            ? "cursor-not-allowed opacity-50"
+                                                            : "cursor-pointer"
+                                                        }`}>
+                                                        <img src="/abhinay/cube.png" alt="send" />
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
            </>
     );
 };

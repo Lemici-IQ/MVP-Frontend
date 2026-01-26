@@ -1,6 +1,8 @@
 import { IKImage } from "imagekitio-react";
+import { useNavigate } from "react-router-dom";
 
 const Hero = ({ data }) => {
+  const navigate = useNavigate();
   const logos = data?.topBrandLogos || [];
   const totalLogos = logos.length;
   const middleIndex = Math.floor(totalLogos / 2);
@@ -24,8 +26,9 @@ const Hero = ({ data }) => {
         return (
           <div
             key={brand.brandId}
-            className={`${sizeClass} rounded-full bg-white shadow-md flex items-center justify-center p-2 sm:p-3 hover:shadow-lg transition-all duration-200 hover:scale-105 active:scale-95`}
+            className={`${sizeClass} rounded-full bg-white shadow-md flex items-center justify-center p-2 sm:p-3 hover:shadow-lg transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer`}
             title={brand.name}
+            onClick={() => navigate('/newFranchise1')}
           >
             <IKImage
               

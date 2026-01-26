@@ -1,9 +1,65 @@
 import React, { useState } from "react";
 import { IKImage } from "imagekitio-react";
 
-const DistributionCategories = ({ data }) => {
+const DistributionCategories = ({ daata }) => {
+    const data = {
+          "categories": [
+            {
+              "id": "dist_golf_clubs",
+              "name": "Golf Clubs",
+              "description": "Premium golf equipment distribution",
+              "image": {
+                "url": "FranchiseHomePage/image.png",
+                "width": 400,
+                "height": 300,
+                "alt": "Golf Clubs Distribution"
+              },
+              "slug": "golf-clubs-distribution",
+              "opportunityCount": 12
+            },
+           {
+              "id": "dist_golf_carts",
+              "name": "Golf Carts",
+              "description": "Distributor, C&F Agent Electric/Manual trolleys, golf carts (Toro, Yamaha)",
+              "image": {
+                "url": "FranchiseHomePage/image.png",
+                "width": 400,
+                "height": 300,
+                "alt": "Golf Carts Distribution"
+              },
+              "slug": "golf-carts-distribution",
+              "opportunityCount": 12
+            },
+
+            {
+              "id": "dist_golf_balls",
+              "name": "Golf Balls",
+              "description": "Stockist, C&F Agent Branded and private-label balls (Callaway, Titleist, etc.)",
+              "image": {
+                "url": "FranchiseHomePage/image.png",
+                "width": 400,
+                "height": 300,
+                "alt": "Golf Balls Distribution"
+              },
+              "slug": "golf-balls-distribution",
+              "opportunityCount": 12
+            },
+            {
+              "id": "dist_accessories_apparel",
+              "name": "Accessories & Apparel",
+              "description": "Distributor, Stockist Gloves, tees, caps, golf bags, apparel",
+              "image": {
+                "url": "FranchiseHomePage/image.png",
+                "width": 400,
+                "height": 300,
+                "alt": "Golf Accessories and Apparel Distribution"
+              },
+              "slug": "accessories-apparel-distribution",
+              "opportunityCount": 12
+            }
+          ]
+        }
   const [showAll, setShowAll] = useState(false);
-    console.log('S', data)
   if (!data || !Array.isArray(data.categories)) return null;
 
   // Decide which categories to show

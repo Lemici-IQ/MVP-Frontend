@@ -2,7 +2,7 @@ import React from "react";
 import { IKImage } from "imagekitio-react";
 
 const TopFranchiseOpportunities = ({ data }) => {
-  if (!data?.categories?.length) return null;
+  if (!data?.industries?.length) return null;
 
   return (
     <div className="w-full">
@@ -18,7 +18,7 @@ const TopFranchiseOpportunities = ({ data }) => {
 
         {/* Grid */}
         <div className="max-w-9xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 px-4 sm:px-8 lg:px-12 xl:px-20">
-          {data.categories.map((item) => (
+          {data.industries.map((item) => (
             <div
               key={item.id}
               className="bg-[#E6EDFF] rounded-2xl h-28 flex flex-col items-center justify-center gap-2 cursor-pointer hover:scale-105 transition-transform duration-200 ease-out"

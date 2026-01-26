@@ -18,12 +18,10 @@ import {
   FaUtensils,
   FaTools,
 } from "react-icons/fa";
-import Chart from "chart.js/auto";
 import { IKImage } from "imagekitio-react";
 import { fetchFranchiseDetails } from "../../../../../lib/api";
+import FranchiseTabs from "./FranchiseTabs";
 const IndFranchiseFood = () => {
-  const chartRef = useRef(null);
-  let chartInstance = null;
 
   // Franchise Details
 //   https://ik.imagekit.io/lemiciiq/LeMiCi/menu.png
@@ -53,50 +51,6 @@ const IndFranchiseFood = () => {
     gstin: "07AAGCN0838A2ZU"
   };
 
-  useEffect(() => {
-    if (chartInstance) chartInstance.destroy();
-
-    const ctx = chartRef.current.getContext("2d");
-
-    chartInstance = new Chart(ctx, {
-      type: "line",
-      data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-        datasets: [
-          {
-            label: "Sales",
-            data: [5000, 7000, 12000, 18000, 23000, 26000],
-            borderWidth: 3,
-            borderColor: "#2563eb",
-            tension: 0.4,
-          },
-          {
-            label: "Expenses",
-            data: [3000, 4000, 6000, 9000, 14000, 17000],
-            borderWidth: 3,
-            borderColor: "#10b981",
-            tension: 0.4,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: "bottom",
-            labels: { color: "#444" },
-          },
-        },
-        scales: {
-          x: { ticks: { color: "#444" } },
-          y: { ticks: { color: "#444" } },
-        },
-      },
-    });
-
-    return () => chartInstance.destroy();
-  }, []);
   const [position, setPosition] = React.useState({
     x: window.innerWidth - 100,
     y: 224,
@@ -316,7 +270,6 @@ const info = [
             className="flex items-center justify-center w-5 h-5 rounded-full bg-gray-100 hover:bg-gray-200 transition-all cursor-pointer"
           >
             <IKImage path="/FranchiseHomePage/DetailsPageImages/backer.png" alt="" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </button>
         </div>
       {/* Top Card */}
@@ -324,17 +277,17 @@ const info = [
         {/* Action Icons - Top Right */}
         <div className="absolute top-6 right-6 flex items-center space-x-3">
           <IKImage
-            path="FranchiseHomePage/DetailsPageImages/share.png"
+            path="FranchiseHomePage/d2.png"
             alt="Share"
             className="w-4 h-4 cursor-pointer hover:scale-110 transition-transform"
           />
           <IKImage
-            path="FranchiseHomePage/DetailsPageImages/book.png"
+            path="FranchiseHomePage/d3.png"
             alt="Book"
             className="w-4 h-4 cursor-pointer hover:scale-110 transition-transform"
           />
           <IKImage
-            path="FranchiseHomePage/DetailsPageImages/menu.png"
+            path="FranchiseHomePage/d6.png"
             alt="Menu"
             className="w-4 h-4 cursor-pointer hover:scale-110 transition-transform"
           />
@@ -521,189 +474,138 @@ const info = [
         </div>
       </div>
 
-      <div className="w-full rounded-3xl p-8 flex flex-col">
-        {/* Header Tabs */}
-        <div className="flex text-xl font-semibold text-gray-700">
-          {['Business Overview','Investment requirement','Operation'].map((tab, i) => (
-            <button
-              key={i}
-              onClick={() => setActiveTab(tab)}
-              className={
-                `relative px-6 py-3 rounded-t-lg transition-all w-1/3 ` +
-                (activeTab === tab 
-                  ? 'bg-blue-50 text-[#268BFF]' 
-                  : 'text-gray-600 hover:text-blue-500 bg-white hover:bg-gray-50')
-              }
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 bg-blue-50 p-6 rounded-lg">
-          {/* Left Section */}
-          <div className="flex flex-col gap-3">
-            <div>
-              <h2 className="text-lg font-bold">Products</h2>
-              <ul className="list-disc pl-5 mt-3 space-y-1 text-gray-700">
-                {franchiseDataBackend?.data?.productsAndServices?.productRange?.map((product, index) => (
-                  <li key={index}>{product}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="text-lg font-bold">Services</h2>
-              <ul className="list-disc pl-5 mt-3 space-y-1 text-gray-700">
-                {franchiseDataBackend?.data?.productsAndServices?.services?.map((service, index) => (
-                  <li key={index}>{service}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Right Section */}
-          <div className="flex flex-col gap-8">
-            <h2 className="text-lg font-bold">Training & Support</h2>
-            <p className="text-gray-700 leading-relaxed">
-              We provide complete training and ongoing support to help our
-              franchise partners succeed. From operational guidance and
-              marketing assistance to technology setup and staff training, our
-              team ensures you have the knowledge and tools to run your
-              franchise efficiently and confidently.
-            </p>
-
-            {/* Chart.js Canvas */}
-            <div className="bg-white rounded-2xl shadow p-6 w-full h-[20rem]">
-              <canvas ref={chartRef}></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
+      <FranchiseTabs />
       {/*
        */}
+      
+
       <div className="w-full px-6 py-10 bg-white">
-        <div className="flex gap-6">
-          {/* Left side - Franchise grid */}
-          <div className="w-[80%]">
-            <h2 className="text-2xl font-semibold mb-6">
-              Featured food franchise categories
-            </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-              {franchises1.map((item, index) => (
-                <div>
-                  <div
-                    key={index}
-                    className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition bg-white"
-                  >
-                    <IKImage
-                      path={item.image}
-                      alt={item.name}
-                      className="w-full h-48 object-cover"
-                    />
-                  </div>
-                  <div className="text-center p-2">
-                    <p className="font-medium text-gray-800">{item.name}</p>
-                  </div>
-                </div>
-              ))}
+  <div className="flex gap-6">
+    {/* Left side - Franchise grid */}
+    <div className="w-[80%]">
+      <h2 className="text-2xl font-semibold mb-6">
+        Featured food franchise categories
+      </h2>
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        {(
+          franchiseDataBackend?.data?.relatedSections?.featuredCategories?.categories || []
+        ).map((item, index) => (
+          <div key={index}>
+            <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition bg-white">
+              <IKImage
+                path={item.image?.url || item.image}
+                alt={item.image?.alt || item.name || item.brand}
+                className="w-full h-48 object-cover"
+              />
             </div>
-            {/* View more link */}
-            <div className="mt-4 text-right">
-              <a href="#" className="text-blue-600 hover:underline">
-                View more →
-              </a>
+            <div className="text-center p-2">
+              <p className="font-medium text-gray-800">
+                {item.brand || item.name}
+              </p>
             </div>
           </div>
+        ))}
+      </div>
 
-          {/* Right side - Insights */}
-          <div className="border rounded-xl px-4 py-2 bg-gray-50">
-            <h3 className="text-2xl font-bold mb-4">
-              Understanding Category franchise
+      {/* View more link */}
+      <div className="mt-4 text-right">
+        <a href="#" className="text-blue-600 hover:underline">
+          View more →
+        </a>
+      </div>
+    </div>
+
+    {/* Right side - Insights */}
+    <div className="border rounded-xl px-4 py-2 bg-gray-50">
+      <h3 className="text-2xl font-bold mb-4">
+        Understanding Category franchise
+      </h3>
+      <ul className="space-y-3">
+        {(
+          franchiseDataBackend?.data?.relatedSections?.categoryQuestions?.questions || []
+        ).map((q, i) => (
+          <li key={i}>
+            <a
+              href="#"
+              className="text-[#268BFF] hover:underline text-base leading-relaxed block"
+            >
+              {q.question || q}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div className="w-full px-6 py-10 bg-white">
+  <h2 className="text-2xl font-semibold mb-6">Recommended Franchise</h2>
+
+  <div className="grid md:grid-cols-4 gap-6">
+    {/* Left side: Franchise cards */}
+    <div className="md:col-span-3 overflow-x-auto flex gap-4 pb-2">
+      {(
+        franchiseDataBackend?.data?.relatedSections?.recommendedFranchises?.items || []
+      ).map((item, index) => (
+        <div
+          key={index}
+          className="min-w-[220px] h-full rounded-xl overflow-hidden border shadow-sm hover:shadow-md transition relative group"
+        >
+          <IKImage
+            path={item.image?.url || item.image}
+            alt={item.image?.alt || item.name || item.brand}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute bottom-1 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-1 pb-2">
+            <h3 className="font-semibold text-white text-lg">
+              {item.brand || item.name}
             </h3>
-            <ul className="space-y-3">
-              {insights.map((q, i) => (
-                <li key={i}>
-                  <a
-                    href="#"
-                    className="text-[#268BFF] hover:underline text-base leading-relaxed block"
-                  >
-                    {q}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <p className="text-sm text-gray-200 mt-1">{item.category}</p>
+            <button className="mt-3 bg-white w-full border-2 border-white px-4 py-1 rounded-full hover:bg-white hover:text-black transition">
+              Explore
+            </button>
           </div>
         </div>
-      </div>
-      <div className="w-full px-6 py-10 bg-white">
-        <h2 className="text-2xl font-semibold mb-6">Recommended Franchise</h2>
-        <div className="grid md:grid-cols-4 gap-6">
-          {/* Left side: Franchise cards */}
-          <div className="md:col-span-3 overflow-x-auto flex gap-4 pb-2">
-            {franchises2.map((item, index) => (
-              <div
-                key={index}
-                className="min-w-[220px] h-full rounded-xl overflow-hidden border shadow-sm hover:shadow-md transition relative group"
-              >
-                <IKImage
-                  path={item.image}
-                  alt={item.name}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute bottom-1 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-1 pb-2">
-                  <h3 className="font-semibold text-white text-lg">
-                    {item.name}
-                  </h3>
-                  <p className="text-sm text-gray-200 mt-1">{item.category}</p>
-                  <button className="mt-3 bg-white w-full border-2 border-white px-4 py-1 rounded-full hover:bg-white hover:text-black transition">
-                    Explore
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+      ))}
+    </div>
 
-          {/* Right side: Market insights */}
-          <div className="border border-[#EDEDED] rounded-xl p-6   ">
-            <h3 className="text-lg font-bold mb-3">Key Market insights</h3>
-            <div className="space-y-3">
-              <div>
-                <p className="text-[#268BFF] font-medium">Market Trend</p>
-                <p className="text-gray-600 text-sm mt-1">
-                  Golf is evolving from an elite outdoor sport to an accessible
-                  indoor entertainment and training experience through
-                  simulators and golf lounges.
-                </p>
-              </div>
-              <div>
-                <p className="text-[#268BFF] font-medium">Growth Rate</p>
-                <p className="text-gray-600 text-sm mt-1">
-                  The indoor golf simulator market in India is growing at a CAGR
-                  of 17–20%, driven by rising disposable income in premium
-                  experiences, and tech adoption.
-                </p>
-              </div>
-            </div>
+    {/* Right side: Market insights */}
+    <div className="border border-[#EDEDED] rounded-xl p-6">
+      <h3 className="text-lg font-bold mb-3">Key Market insights</h3>
+      <div className="space-y-3">
+        {(
+          franchiseDataBackend?.data?.relatedSections?.keyMarketInsights?.insights || []
+        ).map((insight, index) => (
+          <div key={index}>
+            <p className="text-[#268BFF] font-medium">
+              {insight.title}
+            </p>
+            <p className="text-gray-600 text-sm mt-1">
+              {insight.description}
+            </p>
           </div>
-        </div>
-
-        {/* Disclaimer */}
-        <p className="mt-6 text-xs text-gray-500 leading-relaxed">
-          <strong>Disclaimer:</strong> LeMiCi IQ is an integrated franchise
-          solution company since 2025 and an absolute authority on franchising
-          and licensing. FIHL (www.lemici.com) and the site sponsors accept no
-          liability for the accuracy of any information contained on this site
-          or other linked sites. We recommend you take advice from a lawyer,
-          accountant, and franchise consultant experienced in franchising before
-          you commit yourself. It is the user's responsibility to verify
-          accuracy and reliability. Please read the{" "}
-          <a href="#" className="text-blue-600 hover:underline">
-            terms & condition
-          </a>
-          .
-        </p>
+        ))}
       </div>
+    </div>
+  </div>
+
+  {/* Disclaimer */}
+  <p className="mt-6 text-xs text-gray-500 leading-relaxed">
+    <strong>Disclaimer:</strong> LeMiCi IQ is an integrated franchise solution
+    company since 2025 and an absolute authority on franchising and licensing.
+    FIHL (www.lemici.com) and the site sponsors accept no liability for the
+    accuracy of any information contained on this site or other linked sites.
+    We recommend you take advice from a lawyer, accountant, and franchise
+    consultant experienced in franchising before you commit yourself. It is
+    the user's responsibility to verify accuracy and reliability. Please read
+    the{" "}
+    <a href="#" className="text-blue-600 hover:underline">
+      terms & condition
+    </a>.
+  </p>
+</div>
+
     </div>
   );
 };

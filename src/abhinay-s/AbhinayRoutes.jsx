@@ -37,6 +37,8 @@ import DataLicensing from './pages/DataLicensing.jsx'
 import OurCulture from './pages/OurCulture.jsx'
 import NewFranchiseListing from './pages/NewFranchiseListing.jsx'
 import NewFranchiseListingGolf from './pages/NewFranchiseListingGolf.jsx'
+import CategoryListingPage from './pages/CategoryListingPage.jsx'
+import NewFranchiseListingAll from './pages/NewFranchiseListingAll.jsx'
 function AbhinayRoutes() {
    
 
@@ -73,8 +75,10 @@ function AbhinayRoutes() {
         <Route path="/community-page" element={<Community />} />
         <Route path="/data-licensing" element={<DataLicensing />} />
         <Route path="/our-culture" element={<OurCulture />} />
+        <Route path="/Individual-listingpage" element={<NewFranchiseListingAll />} />
         <Route path="/Individual-food-listingpage" element={<NewFranchiseListing />} />
         <Route path="/Individual-golf-listingpage" element={<NewFranchiseListingGolf />} />
+        <Route path="/category-listing-page" element={<CategoryListingPage />} />
     </>
   )
 }

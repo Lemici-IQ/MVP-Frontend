@@ -135,6 +135,7 @@ const FcardGrid = ({
 };
 
 export default function NewFranchiseListingGolf() {
+
   const images = [
     "abhinay/franchise/carousel-1.jpg",
     "abhinay/franchise/carousel-2.jpg",
@@ -435,14 +436,18 @@ export default function NewFranchiseListingGolf() {
   ];
   const [showLocal, setShowLocal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const fCat = { category: "Golf" };
+  const [activeFilters, setActiveFilters] = useState([fCat]);
+  
   return (
     <>
-      <section className="relative w-full h-72 sm:h-80 lg:h-[350px] flex items-center text-white bg-[#4A53FA]">
+     <section className="relative w-full h-72 sm:h-80 lg:h-[380px] flex items-center text-white bg-[#4A53FA] -mt-24">
+
         {/* Content */}
-        <div className="relative z-10 container mx-auto px-4 sm:px-8 lg:px-16 flex flex-col gap-4">
+        <div className="relative z-10 container mx-auto px-4 sm:px-8 lg:px-16 flex flex-col gap-4 mt-22">
           {/* Heading + description */}
           <h2 className="text-2xl sm:text-3xl font-bold">
-           Golf Franchise opportunities
+           {fCat.category} Franchise opportunities
           </h2>
           <p className="max-w-2xl text-xs sm:text-sm leading-relaxed">
             Step into the fastest-growing food and café market with our exciting franchise opportunity. As consumer demand for quality dining experiences continues  to rise, now is the perfect time to invest in a proven and profitable business model. Our brand blends authentic flavors, trendy...Read more
@@ -467,6 +472,28 @@ export default function NewFranchiseListingGolf() {
                 aria-label="Search franchises by industry, sector or brand name"
                 className="flex-1 outline-none text-black text-sm px-2 bg-transparent"
               />
+
+              {/* Active Filters */}
+              {activeFilters.length > 0 && (
+                <>
+                  {activeFilters.map((filter, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-blue-100 text-blue-700 px-2 py-1 rounded-lg text-xs font-medium flex items-center gap-1"
+                    >
+                      <span>{filter.category}</span>
+                      <button
+                        onClick={() => setActiveFilters(activeFilters.filter((_, i) => i !== idx))}
+                        className="hover:text-blue-900"
+                        aria-label="Remove filter"
+                      >
+                        ✕
+                      </button>
+                    </div>
+                  ))}
+                </>
+              )}
+
               {searchTerm && (
                 <button
                   onClick={() => setSearchTerm("")}
@@ -534,9 +561,10 @@ export default function NewFranchiseListingGolf() {
           <div className="flex gap-6">
             {/* Left side - Franchise grid */}
             <div className="w-[80%]">
-              <h2 className="text-2xl font-semibold mb-6">
-                Featured food franchise categories
+              <h2 className="text-2xl font-semibold mb-1">
+                Featured {fCat.category} franchise categories
               </h2>
+              <p className="mb-6">Explore a wide variety of food categories that suit every entrepreneurial interest.</p>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                 {franchises1.map((item, index) => (
                   <div>
@@ -584,77 +612,104 @@ export default function NewFranchiseListingGolf() {
             </div>
           </div>
         </div>
+    <div className="w-full bg-white px-6 py-10">
+      {/* Main layout */}
+      <div className="flex flex-col lg:flex-row gap-6">
+        
+        {/* LEFT SIDE */}
+        <div className="w-full lg:w-[70%]">
+          <h2 className="text-2xl font-semibold mb-1">
+            Recommended Franchise
+          </h2>
 
-        <div className="w-full px-6 py-10 bg-white">
-          <h2 className="text-2xl font-semibold mb-6">Recommended Franchise</h2>
-          <div className="grid md:grid-cols-4 gap-6">
-            {/* Left side: Franchise cards */}
-            <div className="md:col-span-3 overflow-x-auto flex gap-4 pb-2">
-              {franchises2.map((item, index) => (
-                <div
-                  key={index}
-                  className="min-w-[220px] h-full rounded-xl overflow-hidden border shadow-sm hover:shadow-md transition relative group"
-                >
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute bottom-1 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-1 pb-2">
-                    <h3 className="font-semibold text-white text-lg">
-                      {item.name}
-                    </h3>
-                    <p className="text-sm text-gray-200 mt-1">
-                      {item.category}
-                    </p>
-                    <button className="mt-3 bg-white w-full border-2 border-white px-4 py-1 rounded-full hover:bg-white hover:text-black transition">
-                      Explore
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <p className="mb-6 text-gray-600 max-w-2xl">
+            Discover top-rated franchises handpicked based on your preferences
+            and investment range.
+            Explore high-potential food businesses that are expanding fast.
+          </p>
 
-            {/* Right side: Market insights */}
-            <div className="border border-[#EDEDED] rounded-xl p-6   ">
-              <h3 className="text-lg font-bold mb-3">Key Market insights</h3>
-              <div className="space-y-3">
-                <div>
-                  <p className="text-[#268BFF] font-medium">Market Trend</p>
-                  <p className="text-gray-600 text-sm mt-1">
-                    Golf is evolving from an elite outdoor sport to an
-                    accessible indoor entertainment and training experience
-                    through simulators and golf lounges.
+          {/* Cards */}
+          <div className="flex gap-4 overflow-x-auto pb-3">
+            {franchises2.map((item, index) => (
+              <div
+                key={index}
+                className="min-w-[220px] h-[280px] rounded-xl overflow-hidden border bg-white shadow-sm hover:shadow-md transition relative"
+              >
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-full h-full object-cover"
+                />
+
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end p-3">
+                  <h3 className="font-semibold text-white text-lg">
+                    {item.name}
+                  </h3>
+
+                  <p className="text-sm text-gray-200">
+                    {item.category}
                   </p>
+
+                  <button className="mt-3 bg-white text-black text-sm font-medium w-full py-1.5 rounded-full hover:bg-gray-100 transition">
+                    Explore
+                  </button>
                 </div>
-                <div>
-                  <p className="text-[#268BFF] font-medium">Growth Rate</p>
-                  <p className="text-gray-600 text-sm mt-1">
-                    The indoor golf simulator market in India is growing at a
-                    CAGR of 17–20%, driven by rising disposable income in
-                    premium experiences, and tech adoption.
-                  </p>
-                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* RIGHT SIDE */}
+        <div className="w-full lg:w-[30%]">
+          <div className="border border-[#EDEDED] rounded-xl p-6 h-full">
+            <h3 className="text-lg font-bold mb-4">
+              Key Market Insights
+            </h3>
+
+            <div className="space-y-4">
+              <div>
+                <p className="text-[#268BFF] font-medium">
+                  Market Trend
+                </p>
+                <p className="text-gray-600 text-sm mt-1">
+                  Golf is evolving from an elite outdoor sport to an accessible
+                  indoor entertainment and training experience through simulators
+                  and golf lounges.
+                </p>
+              </div>
+
+              <div>
+                <p className="text-[#268BFF] font-medium">
+                  Growth Rate
+                </p>
+                <p className="text-gray-600 text-sm mt-1">
+                  The indoor golf simulator market in India is growing at a CAGR
+                  of 17–20%, driven by rising disposable income, premium
+                  experiences, and tech adoption.
+                </p>
               </div>
             </div>
           </div>
-
-          {/* Disclaimer */}
-          <p className="mt-6 text-xs text-gray-500 leading-relaxed">
-            <strong>Disclaimer:</strong> LeMiCi IQ is an integrated franchise
-            solution company since 2025 and an absolute authority on franchising
-            and licensing. FIHL (www.lemici.com) and the site sponsors accept no
-            liability for the accuracy of any information contained on this site
-            or other linked sites. We recommend you take advice from a lawyer,
-            accountant, and franchise consultant experienced in franchising
-            before you commit yourself. It is the user's responsibility to
-            verify accuracy and reliability. Please read the{" "}
-            <a href="#" className="text-blue-600 hover:underline">
-              terms & condition
-            </a>
-            .
-          </p>
         </div>
+      </div>
+
+      {/* DISCLAIMER */}
+      <p className="mt-6 text-xs text-gray-500 leading-relaxed">
+        <strong>Disclaimer:</strong> LeMiCi IQ is an integrated franchise solution
+        company since 2025 and an absolute authority on franchising and
+        licensing. FIHL (www.lemici.com) and the site sponsors accept no liability
+        for the accuracy of any information contained on this site or other
+        linked sites. We recommend you take advice from a lawyer, accountant, and
+        franchise consultant experienced in franchising before you commit
+        yourself. It is the user's responsibility to verify accuracy and
+        reliability. Please read the{" "}
+        <a href="#" className="text-blue-600 hover:underline">
+          terms & conditions
+        </a>.
+      </p>
+    </div>
+
       </div>
     </>
   );

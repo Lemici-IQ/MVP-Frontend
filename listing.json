@@ -1,0 +1,393 @@
+{
+  "success": true,
+  "timestamp": "2025-12-21T10:30:00Z",
+  "data": {
+    "pageId": "franchise_listing",
+    "sections": [
+      {
+        "type": "hero",
+        "enabled": true,
+        "data": {
+          "title": "Explore Top Food Franchise Opportunities",
+          "description": "With consumers demand for diverse dining experiences on the rise, explore food franchises that bring authentic flavors and a profitable business model"
+        }
+      },
+      {
+        "type": "franchise_listing",
+        "enabled": true,
+        "data": [
+          {
+            "id": "uuid",
+            "brand": "Natural Salon",
+            "description": "Own a Natural Salon Franchise - Where beauty meets wellness...",
+            "category": "Beauty & Fashion",
+            "since": 2022,
+            "rating": 4.5,
+            "location": "Gurgaon, India",
+            "tags": [
+              "Unit",
+              "Verified",
+              "2022",
+              "Beauty & Health",
+              "High Brand Recall"
+            ],
+            "space": "100 - 150 sq ft",
+            "no_of_outlets": "20",
+            "investmentRange": {
+              "min": 5000000,
+              "max": 10000000
+            },
+            "logo": {
+              "url": "logo-main.png",
+              "width": 320,
+              "height": 200,
+              "alt": "Natural Salon Franchise"
+            },
+            "slug": "natural-salon-india",
+            "color": "#FF8C42"
+          },
+          {
+            "id": "uuid-2",
+            "brand": "Natural Salon",
+            "description": "Own a Natural Salon Franchise - Where beauty meets wellness...",
+            "category": "Beauty & Fashion",
+            "since": 2022,
+            "rating": 4.5,
+            "location": "Gurgaon, India",
+            "tags": [
+              "Unit",
+              "Verified",
+              "2022",
+              "Beauty & Health",
+              "High Brand Recall"
+            ],
+            "space": "100 - 150 sq ft",
+            "no_of_outlets": "20",
+            "investmentRange": {
+              "min": 5000000,
+              "max": 10000000
+            },
+            "logo": {
+              "url": "logo-main.png",
+              "width": 320,
+              "height": 200,
+              "alt": "Natural Salon Franchise"
+            },
+            "slug": "natural-salon-india-2",
+            "color": "#4ECDC4"
+          },
+          {
+            "id": "uuid-3",
+            "brand": "Natural Salon",
+            "description": "Own a Natural Salon Franchise - Where beauty meets wellness...",
+            "category": "Beauty & Fashion",
+            "since": 2022,
+            "rating": 4.5,
+            "location": "Gurgaon, India",
+            "tags": [
+              "Unit",
+              "Verified",
+              "2022",
+              "Beauty & Health",
+              "High Brand Recall"
+            ],
+            "space": "100 - 150 sq ft",
+            "no_of_outlets": "20",
+            "investmentRange": {
+              "min": 5000000,
+              "max": 10000000
+            },
+            "logo": {
+              "url": "logo-main.png",
+              "width": 320,
+              "height": 200,
+              "alt": "Natural Salon Franchise"
+            },
+            "slug": "natural-salon-india-3",
+            "color": "#45B7D1"
+          },
+          {
+            "id": "uuid-4",
+            "brand": "Natural Salon",
+            "description": "Own a Natural Salon Franchise - Where beauty meets wellness...",
+            "category": "Beauty & Fashion",
+            "since": 2022,
+            "rating": 4.5,
+            "location": "Gurgaon, India",
+            "tags": [
+              "Unit",
+              "Verified",
+              "2022",
+              "Beauty & Health",
+              "High Brand Recall"
+            ],
+            "space": "100 - 150 sq ft",
+            "no_of_outlets": "20",
+            "investmentRange": {
+              "min": 5000000,
+              "max": 10000000
+            },
+            "logo": {
+              "url": "logo-main.png",
+              "width": 320,
+              "height": 200,
+              "alt": "Natural Salon Franchise"
+            },
+            "slug": "natural-salon-india-4",
+            "color": "#FFA07A"
+          },
+          {
+            "id": "uuid-5",
+            "brand": "Natural Salon",
+            "description": "Own a Natural Salon Franchise - Where beauty meets wellness...",
+            "category": "Beauty & Fashion",
+            "since": 2022,
+            "rating": 4.5,
+            "location": "Gurgaon, India",
+            "tags": [
+              "Unit",
+              "Verified",
+              "2022",
+              "Beauty & Health",
+              "High Brand Recall"
+            ],
+            "space": "100 - 150 sq ft",
+            "no_of_outlets": "20",
+            "investmentRange": {
+              "min": 5000000,
+              "max": 10000000
+            },
+            "logo": {
+              "url": "logo-main.png",
+              "width": 320,
+              "height": 200,
+              "alt": "Natural Salon Franchise"
+            },
+            "slug": "natural-salon-india-5",
+            "color": "#98D8C8"
+          },
+          {
+            "id": "uuid-6",
+            "brand": "Natural Salon",
+            "description": "Own a Natural Salon Franchise - Where beauty meets wellness...",
+            "category": "Beauty & Fashion",
+            "since": 2022,
+            "rating": 4.5,
+            "location": "Gurgaon, India",
+            "tags": [
+              "Unit",
+              "Verified",
+              "2022",
+              "Beauty & Health",
+              "High Brand Recall"
+            ],
+            "space": "100 - 150 sq ft",
+            "no_of_outlets": "20",
+            "investmentRange": {
+              "min": 5000000,
+              "max": 10000000
+            },
+            "logo": {
+              "url": "logo-main.png",
+              "width": 320,
+              "height": 200,
+              "alt": "Natural Salon Franchise"
+            },
+            "slug": "natural-salon-india-6",
+            "color": "#F7DC6F"
+          }
+        ]
+      },
+      {
+        "type": "featured_categories",
+        "enabled": true,
+        "data": [
+          {
+            "id": "cat_wow_momos",
+            "brand": "Wow! Momos",
+            "image": {
+              "url": "logo-main.png",
+              "width": 200,
+              "height": 200,
+              "alt": "Wow Momos"
+            },
+            "slug": "wow-momos"
+          },
+          {
+            "id": "cat_tea_time",
+            "brand": "Tea Time",
+            "image": {
+              "url": "logo-main.png",
+              "width": 200,
+              "height": 200,
+              "alt": "Tea Time"
+            },
+            "slug": "tea-time"
+          },
+          {
+            "id": "cat_amul_ice_cream",
+            "brand": "Amul Ice Cream",
+            "image": {
+              "url": "logo-main.png",
+              "width": 200,
+              "height": 200,
+              "alt": "Amul Ice Cream"
+            },
+            "slug": "amul-ice-cream"
+          },
+          {
+            "id": "cat_subway",
+            "brand": "Subway",
+            "image": {
+              "url": "logo-main.png",
+              "width": 200,
+              "height": 200,
+              "alt": "Subway"
+            },
+            "slug": "subway"
+          },
+          {
+            "id": "cat_dominos_pizza",
+            "brand": "Domino's Pizza",
+            "image": {
+              "url": "logo-main.png",
+              "width": 200,
+              "height": 200,
+              "alt": "Domino's Pizza"
+            },
+            "slug": "dominos-pizza"
+          },
+          {
+            "id": "cat_rollii",
+            "brand": "Rollii",
+            "image": {
+              "url": "logo-main.png",
+              "width": 200,
+              "height": 200,
+              "alt": "Rollii"
+            },
+            "slug": "rollii"
+          },
+          {
+            "id": "cat_zoca_cafe",
+            "brand": "Zoca Cafe",
+            "image": {
+              "url": "logo-main.png",
+              "width": 200,
+              "height": 200,
+              "alt": "Zoca Cafe"
+            },
+            "slug": "zoca-cafe"
+          },
+          {
+            "id": "cat_lassi_corner",
+            "brand": "Lassi Corner",
+            "image": {
+              "url": "logo-main.png",
+              "width": 200,
+              "height": 200,
+              "alt": "Lassi Corner"
+            },
+            "slug": "lassi-corner"
+          }
+        ]
+      },
+      {
+        "type": "category_questions",
+        "enabled": true,
+        "data": {
+          "questions": [
+            {
+              "id": "q1",
+              "question": "What is a category franchise in the context of the Food industry?"
+            },
+            {
+              "id": "q2",
+              "question": "Who is the target customer for a Food franchise in India?"
+            },
+            {
+              "id": "q3",
+              "question": "What is the typical business model used by food franchises?"
+            },
+            {
+              "id": "q4",
+              "question": "What are the main services offered in a food franchise?"
+            },
+            {
+              "id": "q5",
+              "question": "What kind of infrastructure or space is required?"
+            },
+            {
+              "id": "q6",
+              "question": "What is the expected investment and ROI for a food franchise?"
+            },
+            {
+              "id": "q7",
+              "question": "What kind of training and support does the franchisor provide?"
+            },
+            {
+              "id": "q8",
+              "question": "In which locations does a food franchise work best in India?"
+            }
+          ]
+        }
+      },
+      {
+        "type": "recommended_franchises",
+        "enabled": true,
+        "data": {
+          "items": [
+            {
+              "id": "rec_1",
+              "brand": "Kidzee",
+              "category": "Pre-School Training",
+              "image": {
+                "url": "logo-main.png",
+                "width": 300,
+                "height": 200,
+                "alt": "Kidzee Franchise"
+              },
+              "slug": "kidzee-preschool"
+            },
+            {
+              "id": "rec_2",
+              "brand": "Jetts India",
+              "category": "Gyms",
+              "image": {
+                "url": "logo-main.png",
+                "width": 300,
+                "height": 200,
+                "alt": "Jetts India Franchise"
+              },
+              "slug": "jetts-india-gym"
+            },
+            {
+              "id": "rec_3",
+              "brand": "Lakme Salon",
+              "category": "Beauty & Salon",
+              "image": {
+                "url": "logo-main.png",
+                "width": 300,
+                "height": 200,
+                "alt": "Lakme Salon Franchise"
+              },
+              "slug": "lakme-salon-beauty"
+            },
+            {
+              "id": "rec_4",
+              "brand": "Carespa",
+              "category": "Wellness",
+              "image": {
+                "url": "logo-main.png",
+                "width": 300,
+                "height": 200,
+                "alt": "Carespa Franchise"
+              },
+              "slug": "carespa-wellness"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

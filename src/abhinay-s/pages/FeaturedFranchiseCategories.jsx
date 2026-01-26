@@ -7,14 +7,14 @@ const FeaturedFranchiseCategories = ({
   showViewMore = true,
 }) => {
   if (!Array.isArray(data) || data.length === 0) return null;
-    console.log(data)
+    // console.log(data)
   return (
     <div className="w-[80%]">
       {/* Title */}
-      <h2 className="text-2xl font-semibold mb-6">
+      <h2 className="text-2xl font-semibold mb-1">
         {title}
       </h2>
-
+              <p className="mb-6">Explore a wide variety of categories that suit every entrepreneurial interest.</p>
       {/* Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {data.map((item, index) => (

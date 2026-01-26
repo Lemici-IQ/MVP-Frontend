@@ -197,6 +197,7 @@ const FcardGrid = ({
     </div>
   );
 };
+
 const mapFranchiseListingToCard = (items = []) => {
   if (!Array.isArray(items)) return [];
 
@@ -224,15 +225,12 @@ const mapFranchiseListingToCard = (items = []) => {
 };
 
 
-const fCat = { category: "food" };
-
-export default function NewFranchiseListing() {
+export default function NewFranchiseListingAll() {
     const [heroData, setHeroData] = useState(null);
 const [franchiseItems, setFranchiseItems] = useState([]);
 const [featuredCategories, setFeaturedCategories] = useState([]);
 const [categoryQuestions, setCategoryQuestions] = useState([]);
 const [recommendedFranchises, setRecommendedFranchises] = useState([]);
-const [activeFilters, setActiveFilters] = useState([fCat]);
 useEffect(() => {
   fetchFranchiseListing()
     .then((res) => {
@@ -337,28 +335,6 @@ const [showLocal, setShowLocal] = useState(false);
                 aria-label="Search franchises by industry, sector or brand name"
                 className="flex-1 outline-none text-black text-sm px-2 bg-transparent"
               />
-
-              {/* Active Filters */}
-              {activeFilters.length > 0 && (
-                <>
-                  {activeFilters.map((filter, idx) => (
-                    <div
-                      key={idx}
-                      className="bg-blue-100 text-blue-700 px-2 py-1 rounded-lg text-xs font-medium flex items-center gap-1"
-                    >
-                      <span>{filter.category}</span>
-                      <button
-                        onClick={() => setActiveFilters(activeFilters.filter((_, i) => i !== idx))}
-                        className="hover:text-blue-900"
-                        aria-label="Remove filter"
-                      >
-                        ✕
-                      </button>
-                    </div>
-                  ))}
-                </>
-              )}
-
               {searchTerm && (
                 <button
                   onClick={() => setSearchTerm("")}
@@ -428,7 +404,7 @@ const [showLocal, setShowLocal] = useState(false);
           <div className="flex gap-6">
             {/* Left side - Franchise grid */}
             {featuredCategories && <FeaturedFranchiseCategories
-  title={`Featured ${fCat.category} franchise categories`}
+  title="Featured all franchise categories"
   data={featuredCategories}   // backend mapped data
   showViewMore={true}
 />}
