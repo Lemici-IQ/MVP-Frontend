@@ -197,36 +197,49 @@ const FcardGrid = ({
     </div>
   );
 };
+const formatRange = (min, max, unit) => {
+  if (!min || !max) return "";
+  return `${min}-${max} ${unit}`;
+};
 const mapFranchiseListingToCard = (items = []) => {
+    
   if (!Array.isArray(items)) return [];
 
   return items.map((item) => ({
-    title: item.brand,
-    description: item.description,
-    since: item.since,
-    location: item.location,
-    rating: item.rating,
-    tags: item.tags || [],
-    logoUrl: item.logo?.url,
-    verified: item.tags?.includes("Verified"),
-
-    stats: {
-      space: item.space,
-      outlets: item.no_of_outlets,
-      investment: `₹${(item.investmentRange.min / 100000).toFixed(
-        1
-      )}L - ₹${(item.investmentRange.max / 100000).toFixed(1)}L`,
-    },
-
-    slug: item.slug,
-    c: item.color,
-  }));
+    // 🔑 BACKEND → FCARD PROPS MAPPING
+      title: item.brand,
+      description: item.description,
+      location: item.location,
+      since: item.year_of_establishment,
+      rating: item.rating,
+      tags: item.tags || [],
+      category:item.category,
+      verified: item.tags?.includes("Verified") || true,
+      logoUrl: item.logo?.url,
+     stats: {
+  space: formatRange(
+    item.space?.minSpace,
+    item.space?.maxSpace,
+    item.space?.spaceUnit
+  ),
+  outlets: item.no_of_outlets,
+  investment: formatRange(
+    item.investmentRange?.minInvestment,
+    item.investmentRange?.maxInvestment,
+    item.investmentRange?.investmentUnit
+  ),
+},
+      c: item.color,
+      slug: item.slug,
+}));
 };
 
 
 const fCat = { category: "food" };
 
 export default function NewFranchiseListing() {
+const [direction, setDirection] = React.useState("");
+
     const [heroData, setHeroData] = useState(null);
 const [franchiseItems, setFranchiseItems] = useState([]);
 const [featuredCategories, setFeaturedCategories] = useState([]);

@@ -17,184 +17,1479 @@
         "enabled": true,
         "data": [
           {
-            "id": "uuid",
-            "brand": "Natural Salon",
-            "description": "Own a Natural Salon Franchise - Where beauty meets wellness...",
-            "category": "Beauty & Fashion",
-            "since": 2022,
+            "id": "fb-001",
+            "brand": "Starbucks",
+            "category": "Food & Beverage",
+            "description": "International coffeehouse chain serving premium coffee and snacks.",
+            "year_of_establishment": 1971,
             "rating": 4.5,
-            "location": "Gurgaon, India",
-            "tags": [
-              "Unit",
-              "Verified",
-              "2022",
-              "Beauty & Health",
-              "High Brand Recall"
-            ],
-            "space": "100 - 150 sq ft",
-            "no_of_outlets": "20",
+            "location": "Mumbai",
+            "tags": ["aesthetic", "Cofyuuufee", "Global", "Cafe"],
+            "space": {
+              "minSpace": "400",
+              "maxSpace": "1200",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 150,
             "investmentRange": {
-              "min": 5000000,
-              "max": 10000000
+              "minInvestment": "50",
+              "maxInvestment": "90",
+              "investmentUnit": "Lakhs"
             },
             "logo": {
-              "url": "logo-main.png",
-              "width": 320,
-              "height": 200,
-              "alt": "Natural Salon Franchise"
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Starbucks"
             },
-            "slug": "natural-salon-india",
-            "color": "#FF8C42"
+            "slug": "starbucks",
+            "color": "#00704A"
           },
           {
-            "id": "uuid-2",
-            "brand": "Natural Salon",
-            "description": "Own a Natural Salon Franchise - Where beauty meets wellness...",
-            "category": "Beauty & Fashion",
-            "since": 2022,
-            "rating": 4.5,
-            "location": "Gurgaon, India",
-            "tags": [
-              "Unit",
-              "Verified",
-              "2022",
-              "Beauty & Health",
-              "High Brand Recall"
-            ],
-            "space": "100 - 150 sq ft",
-            "no_of_outlets": "20",
+            "id": "fb-002",
+            "brand": "Subway",
+            "category": "Food & Beverage",
+            "description": "Global sandwich & sub shop franchise offering fresh subs and salads.",
+            "year_of_establishment": 1965,
+            "rating": 4.2,
+            "location": "Delhi",
+            "tags": ["Fresh", "Healthy", "FastFood", "Sandwich"],
+            "space": {
+              "minSpace": "300",
+              "maxSpace": "1000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 200,
             "investmentRange": {
-              "min": 5000000,
-              "max": 10000000
+              "minInvestment": "30",
+              "maxInvestment": "60",
+              "investmentUnit": "Lakhs"
             },
             "logo": {
-              "url": "logo-main.png",
-              "width": 320,
-              "height": 200,
-              "alt": "Natural Salon Franchise"
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Subway"
             },
-            "slug": "natural-salon-india-2",
-            "color": "#4ECDC4"
+            "slug": "subway",
+            "color": "#FFD700"
           },
           {
-            "id": "uuid-3",
-            "brand": "Natural Salon",
-            "description": "Own a Natural Salon Franchise - Where beauty meets wellness...",
-            "category": "Beauty & Fashion",
-            "since": 2022,
-            "rating": 4.5,
-            "location": "Gurgaon, India",
-            "tags": [
-              "Unit",
-              "Verified",
-              "2022",
-              "Beauty & Health",
-              "High Brand Recall"
-            ],
-            "space": "100 - 150 sq ft",
-            "no_of_outlets": "20",
+            "id": "fb-003",
+            "brand": "McDonald's",
+            "category": "Food & Beverage",
+            "description": "Fast-food burger and fries chain with high brand recall.",
+            "year_of_establishment": 1940,
+            "rating": 4.4,
+            "location": "Bangalore",
+            "tags": ["Burger", "FastFood", "Global", "Franchise"],
+            "space": {
+              "minSpace": "500",
+              "maxSpace": "1500",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 250,
             "investmentRange": {
-              "min": 5000000,
-              "max": 10000000
+              "minInvestment": "40",
+              "maxInvestment": "80",
+              "investmentUnit": "Lakhs"
             },
             "logo": {
-              "url": "logo-main.png",
-              "width": 320,
-              "height": 200,
-              "alt": "Natural Salon Franchise"
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "McDonald's"
             },
-            "slug": "natural-salon-india-3",
-            "color": "#45B7D1"
+            "slug": "mcdonalds",
+            "color": "#FFCC00"
+          },
+
+          {
+            "id": "ret-001",
+            "brand": "Zara",
+            "category": "Retail",
+            "description": "Global fashion brand for men, women & children with premium clothing.",
+            "year_of_establishment": 1975,
+            "rating": 4.3,
+            "location": "Mumbai",
+            "tags": ["Fashionyyytt", "Style", "Global", "Clothing"],
+            "space": {
+              "minSpace": "800",
+              "maxSpace": "2000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 90,
+            "investmentRange": {
+              "minInvestment": "70",
+              "maxInvestment": "120",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Zara"
+            },
+            "slug": "zara",
+            "color": "#000000"
           },
           {
-            "id": "uuid-4",
-            "brand": "Natural Salon",
-            "description": "Own a Natural Salon Franchise - Where beauty meets wellness...",
-            "category": "Beauty & Fashion",
-            "since": 2022,
-            "rating": 4.5,
-            "location": "Gurgaon, India",
-            "tags": [
-              "Unit",
-              "Verified",
-              "2022",
-              "Beauty & Health",
-              "High Brand Recall"
-            ],
-            "space": "100 - 150 sq ft",
-            "no_of_outlets": "20",
+            "id": "ret-002",
+            "brand": "Reliance Digital",
+            "category": "Retail",
+            "description": "Consumer electronics and home appliance retail chain.",
+            "year_of_establishment": 2007,
+            "rating": 4.2,
+            "location": "Delhi",
+            "tags": ["Electronics", "Appliances", "Tech", "Retail"],
+            "space": {
+              "minSpace": "700",
+              "maxSpace": "1800",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 120,
             "investmentRange": {
-              "min": 5000000,
-              "max": 10000000
+              "minInvestment": "50",
+              "maxInvestment": "90",
+              "investmentUnit": "Lakhs"
             },
             "logo": {
-              "url": "logo-main.png",
-              "width": 320,
-              "height": 200,
-              "alt": "Natural Salon Franchise"
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Reliance Digital"
             },
-            "slug": "natural-salon-india-4",
-            "color": "#FFA07A"
+            "slug": "reliance-digital",
+            "color": "#1D3557"
           },
           {
-            "id": "uuid-5",
-            "brand": "Natural Salon",
-            "description": "Own a Natural Salon Franchise - Where beauty meets wellness...",
-            "category": "Beauty & Fashion",
-            "since": 2022,
-            "rating": 4.5,
-            "location": "Gurgaon, India",
-            "tags": [
-              "Unit",
-              "Verified",
-              "2022",
-              "Beauty & Health",
-              "High Brand Recall"
-            ],
-            "space": "100 - 150 sq ft",
-            "no_of_outlets": "20",
+            "id": "ret-003",
+            "brand": "FabIndia",
+            "category": "Retail",
+            "description": "Ethnic wear and lifestyle products with Indian craftsmanship.",
+            "year_of_establishment": 1960,
+            "rating": 4.4,
+            "location": "Bangalore",
+            "tags": ["Ethnic", "Lifestyle", "Artisan", "Clothing"],
+            "space": {
+              "minSpace": "600",
+              "maxSpace": "1600",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 80,
             "investmentRange": {
-              "min": 5000000,
-              "max": 10000000
+              "minInvestment": "30",
+              "maxInvestment": "60",
+              "investmentUnit": "Lakhs"
             },
             "logo": {
-              "url": "logo-main.png",
-              "width": 320,
-              "height": 200,
-              "alt": "Natural Salon Franchise"
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "FabIndia"
             },
-            "slug": "natural-salon-india-5",
-            "color": "#98D8C8"
+            "slug": "fabindia",
+            "color": "#FF6B6B"
+          },
+
+          {
+            "id": "bg-001",
+            "brand": "VLCC",
+            "category": "Beauty, Personal Care & Grooming",
+            "description": "Beauty & wellness clinics with premium grooming services.",
+            "year_of_establishment": 1989,
+            "rating": 4.5,
+            "location": "Delhi",
+            "tags": ["aesthetic", "Beauty", "Wellness", "Skincare"],
+            "space": {
+              "minSpace": "700",
+              "maxSpace": "1500",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 120,
+            "investmentRange": {
+              "minInvestment": "35",
+              "maxInvestment": "70",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "VLCC"
+            },
+            "slug": "vlcc",
+            "color": "#FF3366"
           },
           {
-            "id": "uuid-6",
-            "brand": "Natural Salon",
-            "description": "Own a Natural Salon Franchise - Where beauty meets wellness...",
-            "category": "Beauty & Fashion",
-            "since": 2022,
-            "rating": 4.5,
-            "location": "Gurgaon, India",
-            "tags": [
-              "Unit",
-              "Verified",
-              "2022",
-              "Beauty & Health",
-              "High Brand Recall"
-            ],
-            "space": "100 - 150 sq ft",
-            "no_of_outlets": "20",
+            "id": "bg-002",
+            "brand": "Naturals Salon",
+            "category": "Beauty, Personal Care & Grooming",
+            "description": "Premium hair & salon services across India.",
+            "year_of_establishment": 2000,
+            "rating": 4.4,
+            "location": "Mumbai",
+            "tags": ["aesthetic", "Beauty", "Wellness", "Skincare"],
+            "space": {
+              "minSpace": "600",
+              "maxSpace": "1400",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 150,
             "investmentRange": {
-              "min": 5000000,
-              "max": 10000000
+              "minInvestment": "25",
+              "maxInvestment": "50",
+              "investmentUnit": "Lakhs"
             },
             "logo": {
-              "url": "logo-main.png",
-              "width": 320,
-              "height": 200,
-              "alt": "Natural Salon Franchise"
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Naturals Salon"
             },
-            "slug": "natural-salon-india-6",
-            "color": "#F7DC6F"
+            "slug": "naturals-salon",
+            "color": "#FFA500"
+          },
+          {
+            "id": "bg-003",
+            "brand": "Lakme Salon",
+            "category": "Beauty, Personal Care & Grooming",
+            "description": "Beauty salon chain offering hair, skincare & spa services.",
+            "year_of_establishment": 1952,
+            "rating": 4.3,
+            "location": "Bangalore",
+            "tags": ["aesthetic", "Beauty", "Wellness", "Skincare"],
+            "space": {
+              "minSpace": "700",
+              "maxSpace": "1600",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 130,
+            "investmentRange": {
+              "minInvestment": "30",
+              "maxInvestment": "55",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Lakme Salon"
+            },
+            "slug": "lakme-salon",
+            "color": "#FF69B4"
+          },
+
+          {
+            "id": "hf-001",
+            "brand": "Gold's Gym",
+            "category": "Health & Fitness",
+            "description": "International fitness chain with state-of-the-art gyms.",
+            "year_of_establishment": 1965,
+            "rating": 4.5,
+            "location": "Mumbai",
+            "tags": ["Gym", "Fitness", "Wellness", "Training"],
+            "space": {
+              "minSpace": "1500",
+              "maxSpace": "4000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 100,
+            "investmentRange": {
+              "minInvestment": "50",
+              "maxInvestment": "90",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Gold's Gym"
+            },
+            "slug": "golds-gym",
+            "color": "#FF0000"
+          },
+          {
+            "id": "hf-002",
+            "brand": "Anytime Fitness",
+            "category": "Health & Fitness",
+            "description": "24/7 fitness centers with personalized training options.",
+            "year_of_establishment": 2002,
+            "rating": 4.3,
+            "location": "Bangalore",
+            "tags": ["Gym", "Fitness", "Wellness", "Training"],
+            "space": {
+              "minSpace": "1200",
+              "maxSpace": "3500",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 80,
+            "investmentRange": {
+              "minInvestment": "40",
+              "maxInvestment": "70",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Anytime Fitness"
+            },
+            "slug": "anytime-fitness",
+            "color": "#008000"
+          },
+          {
+            "id": "hf-003",
+            "brand": "Cult Fitness",
+            "category": "Health & Fitness",
+            "description": "Group training studios specializing in strength and functional workouts.",
+            "year_of_establishment": 2013,
+            "rating": 4.4,
+            "location": "Delhi",
+            "tags": ["Gym", "Fitness", "Wellness", "Training"],
+            "space": {
+              "minSpace": "1000",
+              "maxSpace": "3000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 60,
+            "investmentRange": {
+              "minInvestment": "30",
+              "maxInvestment": "60",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Cult Fitness"
+            },
+            "slug": "cult-fitness",
+            "color": "#FFA500"
+          },
+
+          {
+            "id": "edu-001",
+            "brand": "Kidzee",
+            "category": "Education & EdTech",
+            "description": "Largest preschool chain in Asia focusing on early childhood education.",
+            "year_of_establishment": 2003,
+            "rating": 4.6,
+            "location": "Mumbai",
+            "tags": ["Preschool", "Education", "EarlyLearning", "Kids"],
+            "space": {
+              "minSpace": "2000",
+              "maxSpace": "3000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 1900,
+            "investmentRange": {
+              "minInvestment": "12",
+              "maxInvestment": "20",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Kidzee"
+            },
+            "slug": "kidzee",
+            "color": "#FBB03B"
+          },
+          {
+            "id": "edu-002",
+            "brand": "BYJU'S Tuition Centre",
+            "category": "Education & EdTech",
+            "description": "Tech-enabled offline tuition centers for K-12 students.",
+            "year_of_establishment": 2011,
+            "rating": 4.1,
+            "location": "Bangalore",
+            "tags": ["EdTech", "Coaching", "Digital", "Tutoring"],
+            "space": {
+              "minSpace": "1500",
+              "maxSpace": "2500",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 300,
+            "investmentRange": {
+              "minInvestment": "50",
+              "maxInvestment": "80",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Byjus"
+            },
+            "slug": "byjus-tuition-centre",
+            "color": "#813588"
+          },
+          {
+            "id": "edu-003",
+            "brand": "Aptech Learning",
+            "category": "Education & EdTech",
+            "description": "Pioneer in IT training and professional skill development.",
+            "year_of_establishment": 1986,
+            "rating": 4.3,
+            "location": "Mumbai",
+            "tags": ["IT-Training", "Skills", "Professional", "Vocational"],
+            "space": {
+              "minSpace": "1000",
+              "maxSpace": "1500",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 800,
+            "investmentRange": {
+              "minInvestment": "20",
+              "maxInvestment": "35",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Aptech"
+            },
+            "slug": "aptech-learning",
+            "color": "#ED1C24"
+          },
+
+          {
+            "id": "auto-001",
+            "brand": "GoMechanic",
+            "category": "Automobile Services",
+            "description": "Smart car service centers providing technology-enabled car repairs.",
+            "year_of_establishment": 2016,
+            "rating": 4.4,
+            "location": "Gurgaon",
+            "tags": ["CarRepair", "Service", "Auto", "Tech"],
+            "space": {
+              "minSpace": "1500",
+              "maxSpace": "3000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 500,
+            "investmentRange": {
+              "minInvestment": "20",
+              "maxInvestment": "40",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "GoMechanic"
+            },
+            "slug": "gomechanic",
+            "color": "#FF2B2B"
+          },
+          {
+            "id": "auto-002",
+            "brand": "3M Car Care",
+            "category": "Automobile Services",
+            "description": "Premium car detailing and protection services.",
+            "year_of_establishment": 1902,
+            "rating": 4.7,
+            "location": "Bangalore",
+            "tags": ["Detailing", "CarWash", "Premium", "Protection"],
+            "space": {
+              "minSpace": "1000",
+              "maxSpace": "2000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 100,
+            "investmentRange": {
+              "minInvestment": "40",
+              "maxInvestment": "60",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "3M"
+            },
+            "slug": "3m-car-care",
+            "color": "#FF0000"
+          },
+          {
+            "id": "auto-003",
+            "brand": "Exide Care",
+            "category": "Automobile Services",
+            "description": "Authorized retail and service centers for automotive batteries.",
+            "year_of_establishment": 1947,
+            "rating": 4.2,
+            "location": "Kolkata",
+            "tags": ["Battery", "Service", "AutoParts", "Retail"],
+            "space": {
+              "minSpace": "300",
+              "maxSpace": "600",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 1000,
+            "investmentRange": {
+              "minInvestment": "10",
+              "maxInvestment": "20",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Exide"
+            },
+            "slug": "exide-care",
+            "color": "#E31E24"
+          },
+
+          {
+            "id": "home-001",
+            "brand": "Urban Company",
+            "category": "Home Services",
+            "description": "Technology platform offering home cleaning, repairs, and beauty services.",
+            "year_of_establishment": 2014,
+            "rating": 4.6,
+            "location": "Gurgaon",
+            "tags": ["Cleaning", "Repair", "App-based", "Maintenance"],
+            "space": {
+              "minSpace": "200",
+              "maxSpace": "500",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 50,
+            "investmentRange": {
+              "minInvestment": "5",
+              "maxInvestment": "15",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Urban Company"
+            },
+            "slug": "urban-company",
+            "color": "#000000"
+          },
+          {
+            "id": "home-002",
+            "brand": "Euroclean (Eureka Forbes)",
+            "category": "Home Services",
+            "description": "Professional home cleaning and sanitization experts.",
+            "year_of_establishment": 1982,
+            "rating": 4.3,
+            "location": "Mumbai",
+            "tags": ["Sanitization", "Vacuum", "Cleaning", "Hygiene"],
+            "space": {
+              "minSpace": "500",
+              "maxSpace": "1000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 200,
+            "investmentRange": {
+              "minInvestment": "15",
+              "maxInvestment": "25",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Eureka Forbes"
+            },
+            "slug": "euroclean",
+            "color": "#0054A6"
+          },
+          {
+            "id": "home-003",
+            "brand": "HiCare",
+            "category": "Home Services",
+            "description": "India's leading pest control and home hygiene brand.",
+            "year_of_establishment": 2004,
+            "rating": 4.5,
+            "location": "Mumbai",
+            "tags": ["PestControl", "Hygiene", "Safe", "Professional"],
+            "space": {
+              "minSpace": "400",
+              "maxSpace": "800",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 150,
+            "investmentRange": {
+              "minInvestment": "10",
+              "maxInvestment": "20",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "HiCare"
+            },
+            "slug": "hicare",
+            "color": "#009640"
+          },
+
+          {
+            "id": "bps-001",
+            "brand": "Regus",
+            "category": "Business & Professional Services",
+            "description": "Global provider of flexible workspace and office solutions.",
+            "year_of_establishment": 1989,
+            "rating": 4.4,
+            "location": "Luxembourg/Global",
+            "tags": ["Office", "Co-working", "Professional", "B2B"],
+            "space": {
+              "minSpace": "5000",
+              "maxSpace": "15000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 3000,
+            "investmentRange": {
+              "minInvestment": "100",
+              "maxInvestment": "500",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Regus"
+            },
+            "slug": "regus",
+            "color": "#2D3E50"
+          },
+          {
+            "id": "bps-002",
+            "brand": "Vakilsearch",
+            "category": "Business & Professional Services",
+            "description": "Legal, tax, and compliance platform for businesses and individuals.",
+            "year_of_establishment": 2011,
+            "rating": 4.1,
+            "location": "Chennai",
+            "tags": ["Legal", "Compliance", "Tax", "Consulting"],
+            "space": {
+              "minSpace": "500",
+              "maxSpace": "1000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 10,
+            "investmentRange": {
+              "minInvestment": "10",
+              "maxInvestment": "25",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Vakilsearch"
+            },
+            "slug": "vakilsearch",
+            "color": "#FFD200"
+          },
+          {
+            "id": "bps-003",
+            "brand": "Adecco",
+            "category": "Business & Professional Services",
+            "description": "World-leading HR solutions and recruitment services company.",
+            "year_of_establishment": 1996,
+            "rating": 4.3,
+            "location": "Global",
+            "tags": ["Recruitment", "HR", "Staffing", "Business"],
+            "space": {
+              "minSpace": "800",
+              "maxSpace": "1500",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 5000,
+            "investmentRange": {
+              "minInvestment": "25",
+              "maxInvestment": "50",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Adecco"
+            },
+            "slug": "adecco",
+            "color": "#DA291C"
+          },
+
+          {
+            "id": "re-001",
+            "brand": "RE/MAX",
+            "category": "Real Estate & Property Services",
+            "description": "Global real estate franchise system with high agent productivity.",
+            "year_of_establishment": 1973,
+            "rating": 4.5,
+            "location": "Denver/Global",
+            "tags": ["RealEstate", "Brokerage", "Property", "Global"],
+            "space": {
+              "minSpace": "500",
+              "maxSpace": "1200",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 8000,
+            "investmentRange": {
+              "minInvestment": "15",
+              "maxInvestment": "35",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "RE/MAX"
+            },
+            "slug": "remax",
+            "color": "#E11B22"
+          },
+          {
+            "id": "re-002",
+            "brand": "Square Yards",
+            "category": "Real Estate & Property Services",
+            "description": "Tech-led real estate brokerage and mortgage marketplace.",
+            "year_of_establishment": 2014,
+            "rating": 4.2,
+            "location": "Gurgaon",
+            "tags": ["PropTech", "Brokerage", "Mortgage", "Data"],
+            "space": {
+              "minSpace": "1000",
+              "maxSpace": "2000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 150,
+            "investmentRange": {
+              "minInvestment": "30",
+              "maxInvestment": "60",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Square Yards"
+            },
+            "slug": "square-yards",
+            "color": "#004B8D"
+          },
+          {
+            "id": "re-003",
+            "brand": "Colliers International",
+            "category": "Real Estate & Property Services",
+            "description": "Professional services and investment management for commercial real estate.",
+            "year_of_establishment": 1976,
+            "rating": 4.4,
+            "location": "Global",
+            "tags": ["Commercial", "Investment", "Consulting", "Enterprise"],
+            "space": {
+              "minSpace": "2000",
+              "maxSpace": "5000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 500,
+            "investmentRange": {
+              "minInvestment": "80",
+              "maxInvestment": "200",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Colliers"
+            },
+            "slug": "colliers",
+            "color": "#004A99"
+          },
+
+          {
+            "id": "log-001",
+            "brand": "Blue Dart",
+            "category": "Logistics & Delivery Services",
+            "description": "South Asia's premier express air and integrated transportation company.",
+            "year_of_establishment": 1983,
+            "rating": 4.6,
+            "location": "Mumbai",
+            "tags": ["Courier", "Logistics", "Shipping", "Express"],
+            "space": {
+              "minSpace": "300",
+              "maxSpace": "800",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 500,
+            "investmentRange": {
+              "minInvestment": "15",
+              "maxInvestment": "30",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Blue Dart"
+            },
+            "slug": "blue-dart",
+            "color": "#FFCC00"
+          },
+          {
+            "id": "log-002",
+            "brand": "Delhivery",
+            "category": "Logistics & Delivery Services",
+            "description": "India's largest fully integrated logistics provider for e-commerce.",
+            "year_of_establishment": 2011,
+            "rating": 4.2,
+            "location": "Gurgaon",
+            "tags": ["SupplyChain", "E-commerce", "LastMile", "Tech"],
+            "space": {
+              "minSpace": "500",
+              "maxSpace": "1500",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 2500,
+            "investmentRange": {
+              "minInvestment": "10",
+              "maxInvestment": "25",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Delhivery"
+            },
+            "slug": "delhivery",
+            "color": "#000000"
+          },
+          {
+            "id": "log-003",
+            "brand": "DTDC",
+            "category": "Logistics & Delivery Services",
+            "description": "Leading courier and cargo service provider with a massive reach.",
+            "year_of_establishment": 1990,
+            "rating": 4.3,
+            "location": "Bangalore",
+            "tags": ["Parcel", "Courier", "Network", "Affordable"],
+            "space": {
+              "minSpace": "200",
+              "maxSpace": "500",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 10000,
+            "investmentRange": {
+              "minInvestment": "5",
+              "maxInvestment": "12",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "DTDC"
+            },
+            "slug": "dtdc",
+            "color": "#003399"
+          },
+
+          {
+            "id": "ent-001",
+            "brand": "PVR Cinemas",
+            "category": "Entertainment & Leisure",
+            "description": "Premium film exhibition company with high-end multiplexes.",
+            "year_of_establishment": 1997,
+            "rating": 4.7,
+            "location": "Gurgaon",
+            "tags": ["Cinema", "Movies", "Multiplex", "Premium"],
+            "space": {
+              "minSpace": "15000",
+              "maxSpace": "40000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 170,
+            "investmentRange": {
+              "minInvestment": "500",
+              "maxInvestment": "1500",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "PVR"
+            },
+            "slug": "pvr-cinemas",
+            "color": "#E31E24"
+          },
+          {
+            "id": "ent-002",
+            "brand": "Smaaash",
+            "category": "Entertainment & Leisure",
+            "description": "Virtual reality gaming and active entertainment centers.",
+            "year_of_establishment": 2012,
+            "rating": 4.4,
+            "location": "Mumbai",
+            "tags": ["Gaming", "VR", "Sports", "Arcade"],
+            "space": {
+              "minSpace": "5000",
+              "maxSpace": "20000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 30,
+            "investmentRange": {
+              "minInvestment": "100",
+              "maxInvestment": "400",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Smaaash"
+            },
+            "slug": "smaaash",
+            "color": "#00AEEF"
+          },
+          {
+            "id": "ent-003",
+            "brand": "Amoeba",
+            "category": "Entertainment & Leisure",
+            "description": "Family entertainment centers featuring bowling and arcades.",
+            "year_of_establishment": 1990,
+            "rating": 4.2,
+            "location": "Bangalore",
+            "tags": ["Bowling", "Family", "Arcade", "Leisure"],
+            "space": {
+              "minSpace": "3000",
+              "maxSpace": "10000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 20,
+            "investmentRange": {
+              "minInvestment": "50",
+              "maxInvestment": "150",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Amoeba"
+            },
+            "slug": "amoeba",
+            "color": "#FFD200"
+          },
+
+          {
+            "id": "agri-001",
+            "brand": "UrbanKisaan",
+            "category": "Agriculture & Sustainability",
+            "description": "Sustainable hydroponic farming providing fresh local produce.",
+            "year_of_establishment": 2017,
+            "rating": 4.5,
+            "location": "Hyderabad",
+            "tags": ["Hydroponics", "Sustainability", "AgriTech", "Organic"],
+            "space": {
+              "minSpace": "500",
+              "maxSpace": "2000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 15,
+            "investmentRange": {
+              "minInvestment": "15",
+              "maxInvestment": "40",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "UrbanKisaan"
+            },
+            "slug": "urbankisaan",
+            "color": "#4CAF50"
+          },
+          {
+            "id": "agri-002",
+            "brand": "Loom Solar",
+            "category": "Agriculture & Sustainability",
+            "description": "Manufacturer of high-efficiency solar panels and systems.",
+            "year_of_establishment": 2018,
+            "rating": 4.3,
+            "location": "Faridabad",
+            "tags": ["Solar", "Renewable", "CleanEnergy", "Eco"],
+            "space": {
+              "minSpace": "300",
+              "maxSpace": "1000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 3500,
+            "investmentRange": {
+              "minInvestment": "5",
+              "maxInvestment": "15",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Loom Solar"
+            },
+            "slug": "loom-solar",
+            "color": "#003399"
+          },
+          {
+            "id": "agri-003",
+            "brand": "BigHaat",
+            "category": "Agriculture & Sustainability",
+            "description": "Digital marketplace providing high-quality agri-inputs to farmers.",
+            "year_of_establishment": 2015,
+            "rating": 4.4,
+            "location": "Bangalore",
+            "tags": ["AgriInput", "Farmers", "Marketplace", "Seeds"],
+            "space": {
+              "minSpace": "400",
+              "maxSpace": "800",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 100,
+            "investmentRange": {
+              "minInvestment": "8",
+              "maxInvestment": "20",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "BigHaat"
+            },
+            "slug": "bighaat",
+            "color": "#F9A825"
+          },
+
+          {
+            "id": "tm-001",
+            "brand": "Ola",
+            "category": "Transportation & Mobility",
+            "description": "Ride-hailing giant offering cabs, autos, and bike taxis.",
+            "year_of_establishment": 2010,
+            "rating": 4.2,
+            "location": "Bangalore",
+            "tags": ["Cabs", "Mobility", "RideSharing", "Tech"],
+            "space": {
+              "minSpace": "500",
+              "maxSpace": "1000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 50,
+            "investmentRange": {
+              "minInvestment": "20",
+              "maxInvestment": "50",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Ola"
+            },
+            "slug": "ola",
+            "color": "#A4C639"
+          },
+          {
+            "id": "tm-002",
+            "brand": "Zoomcar",
+            "category": "Transportation & Mobility",
+            "description": "Marketplace for self-drive car rentals and subscriptions.",
+            "year_of_establishment": 2013,
+            "rating": 4.0,
+            "location": "Bangalore",
+            "tags": ["CarRental", "SelfDrive", "Subscription", "Travel"],
+            "space": {
+              "minSpace": "1000",
+              "maxSpace": "2500",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 40,
+            "investmentRange": {
+              "minInvestment": "30",
+              "maxInvestment": "70",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Zoomcar"
+            },
+            "slug": "zoomcar",
+            "color": "#76BC21"
+          },
+          {
+            "id": "tm-003",
+            "brand": "Cars24",
+            "category": "Transportation & Mobility",
+            "description": "Leading platform for buying and selling pre-owned vehicles.",
+            "year_of_establishment": 2015,
+            "rating": 4.5,
+            "location": "Gurgaon",
+            "tags": ["UsedCars", "AutoRetail", "Refurbished", "Trusted"],
+            "space": {
+              "minSpace": "1500",
+              "maxSpace": "4000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 200,
+            "investmentRange": {
+              "minInvestment": "50",
+              "maxInvestment": "100",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Cars24"
+            },
+            "slug": "cars24",
+            "color": "#1C2434"
+          },
+
+          {
+            "id": "hosp-001",
+            "brand": "OYO Rooms",
+            "category": "Hospitality & Lodging",
+            "description": "Global platform for booking budget-friendly hotels and homes.",
+            "year_of_establishment": 2013,
+            "rating": 4.1,
+            "location": "Gurgaon",
+            "tags": ["Hotels", "Budget", "Travel", "Global"],
+            "space": {
+              "minSpace": "2000",
+              "maxSpace": "10000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 40000,
+            "investmentRange": {
+              "minInvestment": "25",
+              "maxInvestment": "100",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "OYO"
+            },
+            "slug": "oyo-rooms",
+            "color": "#EE2E24"
+          },
+          {
+            "id": "hosp-002",
+            "brand": "Lemon Tree Hotels",
+            "category": "Hospitality & Lodging",
+            "description": "Mid-scale hotel chain offering comfortable business and leisure stays.",
+            "year_of_establishment": 2002,
+            "rating": 4.5,
+            "location": "Delhi",
+            "tags": ["Hospitality", "Business", "Mid-scale", "Service"],
+            "space": {
+              "minSpace": "10000",
+              "maxSpace": "50000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 80,
+            "investmentRange": {
+              "minInvestment": "500",
+              "maxInvestment": "2000",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Lemon Tree"
+            },
+            "slug": "lemon-tree",
+            "color": "#F3E106"
+          },
+          {
+            "id": "hosp-003",
+            "brand": "Zostel",
+            "category": "Hospitality & Lodging",
+            "description": "India's first and largest chain of backpacker hostels.",
+            "year_of_establishment": 2013,
+            "rating": 4.7,
+            "location": "Gurgaon",
+            "tags": ["Hostel", "Backpacking", "Travel", "Youth"],
+            "space": {
+              "minSpace": "2000",
+              "maxSpace": "6000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 60,
+            "investmentRange": {
+              "minInvestment": "20",
+              "maxInvestment": "50",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Zostel"
+            },
+            "slug": "zostel",
+            "color": "#F26522"
+          },
+
+          {
+            "id": "fin-001",
+            "brand": "Muthoot Finance",
+            "category": "Financial Services",
+            "description": "Market leader in gold loans and financial diversification.",
+            "year_of_establishment": 1939,
+            "rating": 4.4,
+            "location": "Kochi",
+            "tags": ["GoldLoan", "Banking", "Finance", "Trust"],
+            "space": {
+              "minSpace": "500",
+              "maxSpace": "1200",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 5000,
+            "investmentRange": {
+              "minInvestment": "25",
+              "maxInvestment": "50",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Muthoot"
+            },
+            "slug": "muthoot-finance",
+            "color": "#E31E24"
+          },
+          {
+            "id": "fin-002",
+            "brand": "Paytm Money",
+            "category": "Financial Services",
+            "description": "Digital wealth management platform for stocks and mutual funds.",
+            "year_of_establishment": 2017,
+            "rating": 4.1,
+            "location": "Bangalore",
+            "tags": ["FinTech", "Wealth", "Stocks", "Investment"],
+            "space": {
+              "minSpace": "400",
+              "maxSpace": "1000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 20,
+            "investmentRange": {
+              "minInvestment": "15",
+              "maxInvestment": "30",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Paytm Money"
+            },
+            "slug": "paytm-money",
+            "color": "#00B9F1"
+          },
+          {
+            "id": "fin-003",
+            "brand": "HDFC Sales",
+            "category": "Financial Services",
+            "description": "Distribution arm for financial products including loans and insurance.",
+            "year_of_establishment": 2004,
+            "rating": 4.3,
+            "location": "Mumbai",
+            "tags": ["Loans", "Distribution", "Insurance", "Finance"],
+            "space": {
+              "minSpace": "800",
+              "maxSpace": "2000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 300,
+            "investmentRange": {
+              "minInvestment": "30",
+              "maxInvestment": "60",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "HDFC Sales"
+            },
+            "slug": "hdfc-sales",
+            "color": "#1C3F94"
+          },
+
+          {
+            "id": "print-001",
+            "brand": "Printo",
+            "category": "Printing, Publishing & Media",
+            "description": "One-stop-shop for personal and professional printing services.",
+            "year_of_establishment": 2005,
+            "rating": 4.5,
+            "location": "Bangalore",
+            "tags": ["Printing", "Personalized", "Business", "Retail"],
+            "space": {
+              "minSpace": "400",
+              "maxSpace": "1000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 30,
+            "investmentRange": {
+              "minInvestment": "20",
+              "maxInvestment": "45",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Printo"
+            },
+            "slug": "printo",
+            "color": "#E31E24"
+          },
+          {
+            "id": "print-002",
+            "brand": "Minuteman Press",
+            "category": "Printing, Publishing & Media",
+            "description": "Global design, print, and marketing center franchise.",
+            "year_of_establishment": 1973,
+            "rating": 4.4,
+            "location": "New York/Global",
+            "tags": ["Marketing", "Design", "Commercial", "Print"],
+            "space": {
+              "minSpace": "800",
+              "maxSpace": "1500",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 1000,
+            "investmentRange": {
+              "minInvestment": "50",
+              "maxInvestment": "120",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Minuteman"
+            },
+            "slug": "minuteman-press",
+            "color": "#0054A6"
+          },
+          {
+            "id": "print-003",
+            "brand": "Vistaprint",
+            "category": "Printing, Publishing & Media",
+            "description": "Provider of customized marketing materials for small businesses.",
+            "year_of_establishment": 1995,
+            "rating": 4.6,
+            "location": "Global",
+            "tags": ["Customized", "E-commerce", "Branding", "B2B"],
+            "space": {
+              "minSpace": "0",
+              "maxSpace": "0",
+              "spaceUnit": "online-model"
+            },
+            "no_of_outlets": 1,
+            "investmentRange": {
+              "minInvestment": "100",
+              "maxInvestment": "500",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Vistaprint"
+            },
+            "slug": "vistaprint",
+            "color": "#007B5E"
+          },
+
+          {
+            "id": "gov-001",
+            "brand": "CSC (Common Service Centres)",
+            "category": "Government & Utility Services",
+            "description": "Digital access points for government G2C services in rural India.",
+            "year_of_establishment": 2006,
+            "rating": 4.3,
+            "location": "Delhi/National",
+            "tags": ["DigitalIndia", "Rural", "G2C", "Services"],
+            "space": {
+              "minSpace": "100",
+              "maxSpace": "300",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 400000,
+            "investmentRange": {
+              "minInvestment": "1",
+              "maxInvestment": "3",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "CSC"
+            },
+            "slug": "csc-india",
+            "color": "#F9A825"
+          },
+          {
+            "id": "gov-002",
+            "brand": "VFS Global",
+            "category": "Government & Utility Services",
+            "description": "Global outsourcing and technology services specialist for governments.",
+            "year_of_establishment": 2001,
+            "rating": 4.2,
+            "location": "Global",
+            "tags": ["Visa", "Passport", "Government", "Tech"],
+            "space": {
+              "minSpace": "1000",
+              "maxSpace": "5000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 3000,
+            "investmentRange": {
+              "minInvestment": "50",
+              "maxInvestment": "150",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "VFS"
+            },
+            "slug": "vfs-global",
+            "color": "#004B8D"
+          },
+          {
+            "id": "gov-003",
+            "brand": "Tata Power EZ Charge",
+            "category": "Government & Utility Services",
+            "description": "EV charging infrastructure and utility service provider.",
+            "year_of_establishment": 2021,
+            "rating": 4.5,
+            "location": "Mumbai",
+            "tags": ["EVCharging", "Utility", "Infrastructure", "Green"],
+            "space": {
+              "minSpace": "200",
+              "maxSpace": "1000",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 1000,
+            "investmentRange": {
+              "minInvestment": "10",
+              "maxInvestment": "30",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Tata Power"
+            },
+            "slug": "tata-power-ez",
+            "color": "#0084C9"
+          },
+
+          {
+            "id": "misc-001",
+            "brand": "TumbleDry",
+            "category": "Miscellaneous & Specialized Services",
+            "description": "India's largest chain of professional laundry and dry cleaning services.",
+            "year_of_establishment": 2019,
+            "rating": 4.6,
+            "location": "Noida",
+            "tags": ["Laundry", "DryCleaning", "Hygiene", "Care"],
+            "space": {
+              "minSpace": "250",
+              "maxSpace": "600",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 500,
+            "investmentRange": {
+              "minInvestment": "15",
+              "maxInvestment": "25",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "TumbleDry"
+            },
+            "slug": "tumbledry",
+            "color": "#00AEEF"
+          },
+          {
+            "id": "misc-002",
+            "brand": "Aggarwal Packers and Movers",
+            "category": "Miscellaneous & Specialized Services",
+            "description": "Pioneer in the relocation industry for household and office shifting.",
+            "year_of_establishment": 1987,
+            "rating": 4.4,
+            "location": "Delhi",
+            "tags": ["Relocation", "Shifting", "Logistics", "Trust"],
+            "space": {
+              "minSpace": "500",
+              "maxSpace": "1500",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 100,
+            "investmentRange": {
+              "minInvestment": "10",
+              "maxInvestment": "20",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "APML"
+            },
+            "slug": "aggarwal-packers",
+            "color": "#E31E24"
+          },
+          {
+            "id": "misc-003",
+            "brand": "Groomingdale's (Pet Spa)",
+            "category": "Miscellaneous & Specialized Services",
+            "description": "Luxury pet grooming and spa boutique for premium pet care.",
+            "year_of_establishment": 2015,
+            "rating": 4.7,
+            "location": "Bangalore",
+            "tags": ["PetCare", "Grooming", "Luxury", "Spa"],
+            "space": {
+              "minSpace": "400",
+              "maxSpace": "800",
+              "spaceUnit": "sqft"
+            },
+            "no_of_outlets": 15,
+            "investmentRange": {
+              "minInvestment": "15",
+              "maxInvestment": "30",
+              "investmentUnit": "Lakhs"
+            },
+            "logo": {
+              "url": "/FranchiseHomePage/golf.jpg",
+              "alt": "Groomingdales"
+            },
+            "slug": "groomingdales-pet",
+            "color": "#FF69B4"
           }
         ]
       },
