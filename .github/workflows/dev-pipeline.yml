@@ -1,4 +1,4 @@
-name: Dev CI - Build Only
+name: Dev CI - Build + Quality
 
 on:
   push:
@@ -26,9 +26,11 @@ jobs:
       - name: Build (Vite)
         run: npm run build
 
-      - name: Verify build output
-        shell: bash
-        run: |
-          echo "Build directory contents:"
-          ls -la dist
-          test -f dist/index.html
+      - name: Lint
+        run: npm run -s lint --if-present
+
+      - name: Typecheck
+        run: npm run -s typecheck --if-present
+
+      - name: Unit tests
+        run: npm run -s test --if-present -- --passWithNoTests
