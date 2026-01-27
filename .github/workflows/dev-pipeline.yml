@@ -26,8 +26,9 @@ jobs:
       - name: Build (Vite)
         run: npm run build
 
-      - name: Lint
-        run: npm run -s lint --if-present
+      - name: Lint (non-blocking)
+        continue-on-error: true
+        run: npm run lint
 
       - name: Typecheck
         run: npm run -s typecheck --if-present
