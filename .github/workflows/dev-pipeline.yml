@@ -62,7 +62,12 @@ jobs:
         with:
           args: "--sbom=sbom.spdx.json --format=json --output=osv.json --verbosity=info"
         continue-on-error: true
-
+      - name: Upload OSV report
+        uses: actions/upload-artifact@v4
+        with:
+            name: osv-report
+            path: osv.json
+            
       - name: Security summary
         run: |
           echo "### Security Summary" >> $GITHUB_STEP_SUMMARY
