@@ -1,0 +1,46 @@
+rules:
+  # 1️⃣ Dangerous code execution
+  - id: no-eval
+    pattern: eval(...)
+    message: "Avoid use of eval() due to security risks (code injection)."
+    severity: ERROR
+    languages:
+      - javascript
+      - typescript
+
+  # 2️⃣ DOM-based XSS risks
+  - id: no-innerhtml
+    pattern: $EL.innerHTML = ...
+    message: "Avoid assigning to innerHTML directly. This can lead to DOM-based XSS."
+    severity: WARNING
+    languages:
+      - javascript
+      - typescript
+
+  - id: no-document-write
+    pattern: document.write(...)
+    message: "Avoid document.write() due to XSS and DOM clobbering risks."
+    severity: WARNING
+    languages:
+      - javascript
+      - typescript
+
+  # 3️⃣ Unsafe browser redirects
+  - id: no-location-href-assign
+    pattern: window.location.href = ...
+    message: "Avoid assigning window.location.href with untrusted data."
+    severity: WARNING
+    languages:
+      - javascript
+      - typescript
+
+  # 4️⃣ Console logging of potentially sensitive data
+  - id: no-sensitive-console-log
+    patterns:
+      - pattern: console.log(...)
+    message: "Avoid logging potentially sensitive data to the browser console."
+    severity: INFO
+    languages:
+      - javascript
+      - typescript
+
