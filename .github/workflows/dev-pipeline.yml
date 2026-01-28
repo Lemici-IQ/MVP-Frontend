@@ -60,8 +60,9 @@ jobs:
       - name: OSV dependency scan
         uses: google/osv-scanner@v1
         with:
-          sbom: sbom.spdx.json
-          severity: CRITICAL,HIGH
+          args: |
+           --sbom=sbom.spdx.json
+           --severity+CRITICAL,HIGH
         continue-on-error: true
 
       - name: Security summary
