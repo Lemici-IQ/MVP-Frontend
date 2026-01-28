@@ -39,11 +39,9 @@ jobs:
       - name: Gitleaks (secrets scan)
         uses: gitleaks/gitleaks-action@v2
         continue-on-error: true
+      
+      - name: Semgrep (SAST)
+        uses: returntocorp/semgrep-action@v1
         with:
-          args: "detect --source . --report-path=gitleaks-report.json --redact"
-      - name: Upload Gitleaks Report
-        if: always()  
-        uses: actions/upload-artifact@v4
-        with:
-          name: gitleaks-report
-          path: gitleaks-report.json
+          config: auto
+        continue-on-error: true  
