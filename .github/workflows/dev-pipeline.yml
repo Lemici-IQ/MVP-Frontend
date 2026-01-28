@@ -45,3 +45,22 @@ jobs:
         with:
           config: auto
         continue-on-error: true  
+
+      - name: Generate SBOM (Syft)
+        uses: anchore/sbom-action@v0
+        with:
+          format: spdx-json
+          output-file: sbom.spdx.json
+      - name: Upload SBOM artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom-dev
+          path: sbom.spdx.json
+
+
+      - name: OSV dependency scan
+        uses: google/osv-scanner-action@v1
+        with:
+          sbom: sbom.spdx.json
+        continue-on-error: true
+      
