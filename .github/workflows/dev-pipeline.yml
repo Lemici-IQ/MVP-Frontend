@@ -59,7 +59,7 @@ jobs:
 
 
       - name: OSV dependency scan
-        uses: google/osv-scanner-action@v1
+        uses: google/osv-scanner@v1
         with:
           sbom: sbom.spdx.json
         continue-on-error: true
