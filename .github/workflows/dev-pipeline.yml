@@ -171,7 +171,9 @@ jobs:
           aws s3 sync dist/ "s3://${{ vars.DEV_BUCKET }}/" --delete
 
       - name: Fix content-types + cache headers
+        shell: bash
         run: |
+          set -euo pipefail
           
             # index.html
             aws s3 cp "s3://${{ vars.DEV_BUCKET }}/index.html" \
@@ -182,24 +184,24 @@ jobs:
           
              # JS
             if aws s3 ls "s3://${{ vars.DEV_BUCKET }}/assets/" >/dev/null 2>&1; then
-             aws s3 cp "s3://${{ vars.DEV_BUCKET }}/assets/" \
-                "s3://${{ vars.DEV_BUCKET }}/assets/" \
-               --recursive \
-               --exclude "*" \
-               --include "*.js" \
-               --metadata-directive REPLACE \
-               --content-type "application/javascript" \
-               --cache-control "public, max-age=31536000, immutable"
+                aws s3 cp "s3://${{ vars.DEV_BUCKET }}/assets/" \
+                     "s3://${{ vars.DEV_BUCKET }}/assets/" \
+                  --recursive \
+                  --exclude "*" \
+                  --include "*.js" \
+                  --metadata-directive REPLACE \
+                  --content-type "application/javascript" \
+                  --cache-control "public, max-age=31536000, immutable"
 
             # CSS
-             aws s3 cp "s3://${{ vars.DEV_BUCKET }}/assets/" \
-                "s3://${{ vars.DEV_BUCKET }}/assets/" \
-              --recursive \
-              --exclude "*" \
-              --include "*.css" \
-              --metadata-directive REPLACE \
-              --content-type "text/css" \
-              --cache-control "public, max-age=31536000, immutable"
+                aws s3 cp "s3://${{ vars.DEV_BUCKET }}/assets/" \
+                     "s3://${{ vars.DEV_BUCKET }}/assets/" \
+                  --recursive \
+                  --exclude "*" \
+                  --include "*.css" \
+                  --metadata-directive REPLACE \
+                  --content-type "text/css" \
+                  --cache-control "public, max-age=31536000, immutable"
             fi    
 
       - name: CloudFront invalidate
