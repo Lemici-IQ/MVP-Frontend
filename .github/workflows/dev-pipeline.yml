@@ -3,11 +3,26 @@ name: Dev CI - Build + Quality
 on:
   push:
     branches: [dev]
+    paths:
+      - "frontend/**"
+      - ".github/workflows/**"
+
+concurrency:
+  group: deploy-dev
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  id-token: write
+  actions: read
 
 jobs:
   build_dev:
     name: Build (dev)
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
 
     steps:
       - name: Checkout code
@@ -22,9 +37,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Build (Vite)
-        run: npm run build
 
       - name: Lint
         continue-on-error: true
@@ -50,18 +62,19 @@ jobs:
         with:
           format: spdx-json
           output-file: sbom.spdx.json
+
       - name: Upload SBOM artifact
         uses: actions/upload-artifact@v4
         with:
           name: sbom-dev
           path: sbom.spdx.json
 
-
       - name: OSV dependency scan
         uses: google/osv-scanner@v1
         with:
           args: "--sbom=sbom.spdx.json --format=json --output=osv.json --verbosity=info"
         continue-on-error: true
+
       - name: Upload OSV report
         uses: actions/upload-artifact@v4
         with:
@@ -77,4 +90,123 @@ jobs:
           echo "- SBOM: generated using Syft" >> $GITHUB_STEP_SUMMARY
           echo "- OSV: dependency vulnerabilities scanned (HIGH/CRITICAL)" >> $GITHUB_STEP_SUMMARY
 
-      
+  build_and_deploy_dev:
+    name: Build + Publish Artifact + Deploy Dev (push to dev)
+    needs: build_dev
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment: dev
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Build (Vite)
+        run: npm run build
+
+      - name: Debug build output
+        run: |
+          ls -la dist
+          test -f dist/index.html
+          test -d dist/assets
+          ls -la dist/assets
+
+      - name: Create metadata manifest
+        run: |
+          mkdir -p build-meta
+          VERSION="$(node -p "require('./package.json').version" 2>/dev/null || echo '0.0.0')"
+          SHA="${GITHUB_SHA}"
+          RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          BUILD_TIME="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+
+          cat > build-meta/manifest.json <<EOF
+          {
+            "env": "dev",
+            "version": "${VERSION}",
+            "sha": "${SHA}",
+            "run_id": "${GITHUB_RUN_ID}",
+            "run_url": "${RUN_URL}",
+            "build_time_utc": "${BUILD_TIME}"
+          }
+          EOF
+
+          cat build-meta/manifest.json
+
+      - name: Package build as zip
+        run: |
+          rm -f frontend-build.zip
+          cd dist
+          zip -r ../frontend-build.zip .
+
+      - name: Upload GitHub artifact (backup)
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-build-${{ github.sha }}
+          path: |
+            frontend-build.zip
+            build-meta/manifest.json
+          retention-days: 14
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN_DEV }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Upload build artifact to S3 artifact bucket
+        run: |
+          aws s3 cp frontend-build.zip "s3://${{ vars.ARTIFACT_BUCKET }}/frontend/${GITHUB_SHA}.zip"
+          aws s3 cp build-meta/manifest.json "s3://${{ vars.ARTIFACT_BUCKET }}/frontend/${GITHUB_SHA}.manifest.json"
+
+      - name: Deploy to Dev S3 bucket (sync)
+        run: |
+          aws s3 sync dist/ "s3://${{ vars.DEV_BUCKET }}/" --delete
+
+      - name: Fix content-types + cache headers
+        run: |
+          # index.html should not be cached
+          aws s3 cp "s3://${{ vars.DEV_BUCKET }}/index.html" \
+                    "s3://${{ vars.DEV_BUCKET }}/index.html" \
+            --metadata-directive REPLACE \
+            --content-type "text/html" \
+            --cache-control "no-cache, no-store, must-revalidate"
+
+          # Vite hashed assets (JS/CSS)
+          if aws s3 ls "s3://${{ vars.DEV_BUCKET }}/assets/" >/dev/null 2>&1; then
+            aws s3 cp "s3://${{ vars.DEV_BUCKET }}/assets/" \
+                      "s3://${{ vars.DEV_BUCKET }}/assets/" \
+              --recursive \
+              --metadata-directive REPLACE \
+              --cache-control "public, max-age=31536000, immutable"
+          fi
+
+      - name: CloudFront invalidate
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ vars.DEV_CF_DIST_ID }}" \
+            --paths "/*"
+
+      - name: Output summary
+        run: |
+          VERSION="$(node -p "require('./package.json').version" 2>/dev/null || echo '0.0.0')"
+
+          {
+            echo "### Dev Deploy Summary"
+            echo ""
+            echo "- **URL:** ${{ vars.DEV_URL }}"
+            echo "- **Version:** ${VERSION}"
+            echo "- **SHA:** ${GITHUB_SHA}"
+            echo "- **Run:** ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          } >> $GITHUB_STEP_SUMMARY
