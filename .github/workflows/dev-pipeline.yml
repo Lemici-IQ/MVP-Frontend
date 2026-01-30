@@ -189,6 +189,8 @@ jobs:
                   --recursive \
                   --exclude "*" \
                   --include "*.js" \
+                  --include "*.js.gz" \
+                  --include "*.js.br" \
                   --metadata-directive REPLACE \
                   --content-type "application/javascript" \
                   --cache-control "public, max-age=31536000, immutable"
@@ -199,6 +201,8 @@ jobs:
                   --recursive \
                   --exclude "*" \
                   --include "*.css" \
+                  --include "*.css.gz" \
+                  --include "*.css.br" \
                   --metadata-directive REPLACE \
                   --content-type "text/css" \
                   --cache-control "public, max-age=31536000, immutable"
