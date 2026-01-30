@@ -172,27 +172,41 @@ jobs:
 
       - name: Fix content-types + cache headers
         run: |
-          # index.html should not be cached
-          aws s3 cp "s3://${{ vars.DEV_BUCKET }}/index.html" \
-                    "s3://${{ vars.DEV_BUCKET }}/index.html" \
-            --metadata-directive REPLACE \
-            --content-type "text/html" \
-            --cache-control "no-cache, no-store, must-revalidate"
+          
+            # index.html
+            aws s3 cp "s3://${{ vars.DEV_BUCKET }}/index.html" \
+                   "s3://${{ vars.DEV_BUCKET }}/index.html" \
+                --metadata-directive REPLACE \
+                --content-type "text/html" \
+                --cache-control "no-cache, no-store, must-revalidate"
+          
+             # JS
+            if aws s3 ls "s3://${{ vars.DEV_BUCKET }}/assets/" >/dev/null 2>&1; then
+             aws s3 cp "s3://${{ vars.DEV_BUCKET }}/assets/" \
+                "s3://${{ vars.DEV_BUCKET }}/assets/" \
+               --recursive \
+               --exclude "*" \
+               --include "*.js" \
+               --metadata-directive REPLACE \
+               --content-type "application/javascript" \
+               --cache-control "public, max-age=31536000, immutable"
 
-          # Vite hashed assets (JS/CSS)
-          if aws s3 ls "s3://${{ vars.DEV_BUCKET }}/assets/" >/dev/null 2>&1; then
-            aws s3 cp "s3://${{ vars.DEV_BUCKET }}/assets/" \
-                      "s3://${{ vars.DEV_BUCKET }}/assets/" \
+            # CSS
+             aws s3 cp "s3://${{ vars.DEV_BUCKET }}/assets/" \
+                "s3://${{ vars.DEV_BUCKET }}/assets/" \
               --recursive \
+              --exclude "*" \
+              --include "*.css" \
               --metadata-directive REPLACE \
+              --content-type "text/css" \
               --cache-control "public, max-age=31536000, immutable"
-          fi
+            fi    
 
       - name: CloudFront invalidate
         run: |
           aws cloudfront create-invalidation \
             --distribution-id "${{ vars.DEV_CF_DIST_ID }}" \
-            --paths "/*"
+            --paths "/index.html"
 
       - name: Output summary
         run: |
