@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { IKImage } from "imagekitio-react";
 import { MdVerified } from "react-icons/md";
 import { IoMdInformationCircleOutline } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { fetchFranchiseListing } from "../lib/api";
 import Hero from "./Hero";
 import FeaturedFranchiseCategories from "./FeaturedFranchiseCategories";
@@ -188,7 +188,7 @@ const FcardGrid = ({
               navigate(
                 item.title === "GolfEdge Academy"
                   ? "/newFranchise2"
-                  : "/newFranchise1"
+                  : "/franchise/details/:id"
               )
             }
           />
@@ -258,6 +258,7 @@ const CATEGORIES = [
 ];
 
 export default function NewFranchiseListingAll() {
+    const [searchParams, setSearchParams] = useSearchParams();
     const [heroData, setHeroData] = useState(null);
 const [franchiseItems, setFranchiseItems] = useState([]);
 const [featuredCategories, setFeaturedCategories] = useState([]);
@@ -266,6 +267,24 @@ const [recommendedFranchises, setRecommendedFranchises] = useState([]);
 const [selectedCategories, setSelectedCategories] = useState([]);
 const [showFilterModal, setShowFilterModal] = useState(false);
 const [activeFilterType, setActiveFilterType] = useState("All");
+// Initialize selected categories from URL params on mount
+useEffect(() => {
+  const catParam = searchParams.get('category');
+  if (catParam) {
+    const categories = catParam.split(',').filter(Boolean);
+    setSelectedCategories(categories);
+  }
+}, []);
+
+// Update URL when selected categories change
+useEffect(() => {
+  if (selectedCategories.length > 0) {
+    setSearchParams({ category: selectedCategories.join(',') });
+  } else {
+    setSearchParams({});
+  }
+}, [selectedCategories, setSearchParams]);
+
 
 useEffect(() => {
   fetchFranchiseListing()

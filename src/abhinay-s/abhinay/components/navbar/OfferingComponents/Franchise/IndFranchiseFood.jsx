@@ -374,7 +374,7 @@ const info = [
         </div>
 
         {/* Floating Profile Image */}
-        <div
+        {/* <div
           className="fixed z-50"
           style={{
             left: `${position.x}px`,
@@ -396,10 +396,10 @@ const info = [
               alt="" 
             />
           </div>
-        </div>
+        </div> */}
       </div>
 
-      {/* Image Scroll Section */}
+      {/* Image Scroll Section
       <div className="relative overflow-hidden py-3">
         <style>
           {`
@@ -441,7 +441,8 @@ const info = [
   ))}
 </div>
 
-      </div>
+      </div> */}
+
       <div className="max-w-7xl mx-auto px-4 py-8">
         <h2 className="text-2xl sm:text-3xl font-bold text-center">
           Franchising overview

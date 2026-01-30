@@ -70,12 +70,12 @@ function AbhinayRoutes() {
         {/* <Route path="data" element={<B />} /> */}
         {/* <Route path="newHomePage" element={<NewHomePage />} /> */}
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/newFranchise1" element={<IndFranchiseFood />} />
+        <Route path="/franchise/details/:id" element={<IndFranchiseFood />} />
         <Route path="/newFranchise2" element={<IndFranchiseSport />} />
         <Route path="/community-page" element={<Community />} />
         <Route path="/data-licensing" element={<DataLicensing />} />
         <Route path="/our-culture" element={<OurCulture />} />
-        <Route path="/Individual-listingpage" element={<NewFranchiseListingAll />} />
+        <Route path="/franchise/listingpage" element={<NewFranchiseListingAll />} />
         <Route path="/Individual-food-listingpage" element={<NewFranchiseListing />} />
         <Route path="/Individual-golf-listingpage" element={<NewFranchiseListingGolf />} />
         <Route path="/category-listing-page" element={<CategoryListingPage />} />

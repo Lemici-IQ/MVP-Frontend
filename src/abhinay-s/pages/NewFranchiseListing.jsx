@@ -188,7 +188,7 @@ const FcardGrid = ({
               navigate(
                 item.title === "GolfEdge Academy"
                   ? "/newFranchise2"
-                  : "/newFranchise1"
+                  : "/franchise/details/:id"
               )
             }
           />
