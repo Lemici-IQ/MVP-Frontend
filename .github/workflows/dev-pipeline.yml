@@ -208,7 +208,7 @@ jobs:
         run: |
           aws cloudfront create-invalidation \
             --distribution-id "${{ vars.DEV_CF_DIST_ID }}" \
-            --paths "/index.html"
+            --paths "/*"
 
       - name: Output summary
         run: |
