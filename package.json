@@ -25,6 +25,7 @@
     "express": "^5.2.1",
     "fs": "^0.0.1-security",
     "imagekitio-react": "^4.3.0",
+    "keycloak-js": "^26.2.3",
     "lucide-react": "^0.548.0",
     "path": "^0.12.7",
     "property-information": "^7.1.0",

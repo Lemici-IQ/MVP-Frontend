@@ -22,97 +22,26 @@ const DataLicensing = () => {
     setCurrentIndex((prev) => (prev + 1) % carouselItems.length);
   };
 
+  const [footerContent, setFooterContent] = useState("");
+  
+    useEffect(() => {
+      const fetchFooter = async () => {
+        try {
+          const res = await fetch("http://localhost:5040/api/data-licensing");
+          const data = await res.json();
+          setFooterContent(data.data);
+        } catch (error) {
+          console.error("Error fetching footer:", error);
+        }
+      };
+  
+      fetchFooter();
+    }, []);
+  
+
   return (
     <div className="max-w-7xl mx-auto p-2 sm:p-4">
-      <div className="px-4 sm:px-8 relative">
-        <img className="w-full h-auto" src="abhinay/bgnew.png" alt="" />
-        <div className="absolute top-8 sm:top-20 md:top-36 left-0 right-0 px-4 sm:px-8 py-4 sm:py-8">
-          <h1
-            className="text-2xl sm:text-3xl md:text-5xl lg:text-[64px] font-bold leading-[120%] sm:leading-[150%] tracking-[-1px] sm:tracking-[-2px] text-center mb-3 sm:mb-6"
-            style={{ fontFamily: "Space Grotesk" }}
-          >
-            Train Your AI Models with <br className="hidden sm:block" />
-            <span className="text-[#652C90]">Premium Multimodal Data</span>
-          </h1>
-          <p className="text-center text-sm sm:text-base md:text-lg lg:text-xl">
-            Access millions of licensable images, videos, and metadata to build
-            more <br className="hidden md:block" />
-            accurate, ethical, and innovative AI solutions
-          </p>
-        </div>
-      </div>
-      <div>
-        <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 md:mb-12">
-          Why leading companies rely on LEMICI data
-        </h1>
-        <div className="flex flex-col md:flex-row gap-3 md:gap-3">
-          <div className="flex-1 border-2 border-[#EBEBEC] rounded-lg flex flex-col items-center shadow justify-center px-3 sm:px-4 py-6 sm:py-8 text-center gap-2 sm:gap-3">
-            <img
-              className="rounded-full w-12 h-12 sm:w-16 sm:h-16"
-              src="abhinay/license1.jpg"
-              alt=""
-            />
-            <p className="font-bold text-sm sm:text-base">High-quality precision</p>
-            <p className="text-xs sm:text-sm">
-              Train your models with exceptionally accurate metadata that's
-              meticulously reviewed.
-            </p>
-          </div>
-          <div className="flex-1 border-2 border-[#EBEBEC] rounded-lg flex flex-col items-center shadow justify-center px-3 sm:px-4 py-6 sm:py-8 text-center gap-2 sm:gap-3">
-            <img
-              className="rounded-full w-12 h-12 sm:w-16 sm:h-16"
-              src="abhinay/license2.jpg"
-              alt=""
-            />
-            <p className="font-bold text-sm sm:text-base">Largest and most diverse library</p>
-            <p className="text-xs sm:text-sm">
-              Leverage 600M+ images, videos, music tracks, sound effects, 3D
-              models, and templates.
-            </p>
-          </div>
-          <div className="flex-1 border-2 border-[#EBEBEC] rounded-lg flex flex-col items-center shadow justify-center px-3 sm:px-4 py-6 sm:py-8 text-center gap-2 sm:gap-3">
-            <img
-              className="rounded-full w-12 h-12 sm:w-16 sm:h-16"
-              src="abhinay/license3.jpg"
-              alt=""
-            />
-            <p className="font-bold text-sm sm:text-base">Peace of mind</p>
-            <p className="text-xs sm:text-sm">
-              Work risk-free with fully licensable datasets curated to avoid
-              unwanted or unlawful content.
-            </p>
-          </div>
-          <div className="flex-1 border-2 border-[#EBEBEC] rounded-lg flex flex-col items-center shadow justify-center px-3 sm:px-4 py-6 sm:py-8 text-center gap-2 sm:gap-3">
-            <img
-              className="rounded-full w-12 h-12 sm:w-16 sm:h-16"
-              src="abhinay/license4.jpg"
-              alt=""
-            />
-            <p className="font-bold text-sm sm:text-base">Enterprise-tested procurement</p>
-            <p className="text-xs sm:text-sm">
-              Proven experience navigating complex enterprise legal and
-              procurement reviews—so onboarding doesn't slow you down.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className="relative mt-12 sm:mt-24 md:mt-48">
-        <img className="h-[300px] sm:h-[400px] md:h-[500px] w-full rounded-[16px] object-cover" src="abhinay/datasetbg.jpg" alt="" />
-        <div className="absolute top-0 left-0 right-0 bottom-0 bg-black/50 rounded-[16px]"></div>
-        <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center px-4 sm:px-8 text-white">
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center">Millions of datasets—and counting</h1>
-          <p className="mt-4 sm:mt-6 md:mt-8 text-center text-xs sm:text-sm md:text-base">
-            Download a pack of curated sample datasets, which feature premium
-            images and <br className="hidden md:block" /> relevant metadata from our world-class content library.
-          </p>
-          <p className="mt-4 sm:mt-6 md:mt-8 text-center text-xs sm:text-sm md:text-base">
-            560M+ images • 50M+ videos • 5M+ music tracks and SFX • 1M+ 3D
-            models • 600K <br className="hidden md:block" /> templates • 3M+ contributors from 150+ countries
-          </p>
-
-          <button className="bg-[#652C90] px-6 sm:px-8 md:px-11 py-2 sm:py-3 rounded-2xl mt-4 sm:mt-6 md:mt-8 text-sm sm:text-base">Download Samples</button>
-        </div>
-      </div>
+     <div dangerouslySetInnerHTML={{ __html: footerContent }} />
       <div className="mt-12 sm:mt-24 md:mt-48">
         <h1 className="text-center font-bold text-2xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 md:mb-12 px-4">Explore the different areas our AI training <br className="hidden md:block" /> data & services support</h1>
         <div className="relative flex items-center">

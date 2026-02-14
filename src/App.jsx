@@ -37,7 +37,7 @@ import ScrollToTop from "./abhinay-s/components/ScrollToTop";
 import UserRoutes from "./routes/UserRoutes";
 import SouravRoutes from "./sourav/SouravRoutes";
 
-function App() {
+function App({ keycloak }) {
   return (
     <ChatbotProvider>
       <Router>
@@ -50,7 +50,7 @@ function App() {
   
           {/* Abhinay Pages */}
           {/* {AbhinayRoutes()} */}
-          {UserRoutes()}
+          {UserRoutes(keycloak)}
           <Route path="/" element={<AbhinayLayout />}>
             {HariRoutes()}
             {AbhinayRoutes()}
