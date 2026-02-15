@@ -58,9 +58,10 @@ const SignIn = ({ keycloak }) => {
   };
 
   const handleSocialLogin = (provider) => {
-    // Redirect to Keycloak for social login
+    // Redirect to Keycloak for social login with explicit redirect
     keycloak.login({
       idpHint: provider, // 'google', 'facebook', 'apple'
+      redirectUri: window.location.origin + '/',
     });
   };
 
@@ -156,13 +157,22 @@ const SignIn = ({ keycloak }) => {
 
           {/* Social Login */}
           <div className="flex justify-center space-x-4">
-            <button className="border border-gray-300 rounded-lg p-2 hover:bg-gray-100 transition">
+            <button
+              onClick={() => handleSocialLogin('google')}
+              className="border border-gray-300 rounded-lg p-2 hover:bg-gray-100 transition"
+            >
               <FaGoogle className="text-xl" style={{ color: "#DB4437" }} />
             </button>
-            <button className="border border-gray-300 rounded-lg p-2 hover:bg-gray-100 transition">
+            <button
+              onClick={() => handleSocialLogin('apple')}
+              className="border border-gray-300 rounded-lg p-2 hover:bg-gray-100 transition"
+            >
               <FaApple className="text-xl text-black" />
             </button>
-            <button className="border border-gray-300 rounded-lg p-2 hover:bg-gray-100 transition">
+            <button
+              onClick={() => handleSocialLogin('facebook')}
+              className="border border-gray-300 rounded-lg p-2 hover:bg-gray-100 transition"
+            >
               <FaFacebook className="text-xl" style={{ color: "#1877F2" }} />
             </button>
           </div>
