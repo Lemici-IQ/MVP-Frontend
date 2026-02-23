@@ -9,10 +9,61 @@ import {
   FaArrowLeft,
 } from "react-icons/fa";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const SignIn = () => {
+const SignIn = ({ keycloak }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Get Keycloak token using Direct Access Grant (Resource Owner Password Credentials)
+      const tokenUrl = `${keycloak.authServerUrl}/realms/${keycloak.realm}/protocol/openid-connect/token`;
+      
+      const params = new URLSearchParams();
+      params.append('client_id', keycloak.clientId);
+      params.append('username', email);
+      params.append('password', password);
+      params.append('grant_type', 'password');
+
+      const response = await axios.post(tokenUrl, params, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+
+      // Set the token in keycloak instance
+      keycloak.token = response.data.access_token;
+      keycloak.refreshToken = response.data.refresh_token;
+      keycloak.authenticated = true;
+      keycloak.tokenParsed = JSON.parse(atob(response.data.access_token.split('.')[1]));
+
+      // Redirect to home or dashboard
+      navigate('/');
+    } catch (err) {
+      console.error('Login error:', err);
+      setError('Invalid email or password. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSocialLogin = (provider) => {
+    // Redirect to Keycloak for social login with explicit redirect
+    keycloak.login({
+      idpHint: provider, // 'google', 'facebook', 'apple'
+      redirectUri: window.location.origin + '/',
+    });
+  };
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-white mx-10 my-10">
@@ -37,8 +88,15 @@ const SignIn = () => {
             </p>
           </div>
 
+          {/* Error Message */}
+          {error && (
+            <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm">
+              {error}
+            </div>
+          )}
+
           {/* Form */}
-          <form className="space-y-5">
+          <form className="space-y-5" onSubmit={handleSubmit}>
             {/* Email */}
             <div>
               <label className="block text-sm font-medium mb-1">Email</label>
@@ -48,6 +106,8 @@ const SignIn = () => {
                   type="email"
                   placeholder="example@gmail.com"
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-purple-500 text-sm sm:text-base"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </div>
@@ -62,6 +122,8 @@ const SignIn = () => {
                   type={showPassword ? "text" : "password"}
                   placeholder="At least 8 characters"
                   className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-purple-500 text-sm sm:text-base"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                 />
                 <div
@@ -79,9 +141,10 @@ const SignIn = () => {
             {/* Sign In Button */}
             <button
               type="submit"
-              className="w-full bg-[#6D3E93] text-white py-2 rounded-lg font-medium hover:bg-[#5B2E7E] transition duration-200"
+              disabled={loading}
+              className="w-full bg-[#6D3E93] text-white py-2 rounded-lg font-medium hover:bg-[#5B2E7E] transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Sign in
+              {loading ? "Signing in..." : "Sign in"}
             </button>
           </form>
 
@@ -94,13 +157,22 @@ const SignIn = () => {
 
           {/* Social Login */}
           <div className="flex justify-center space-x-4">
-            <button className="border border-gray-300 rounded-lg p-2 hover:bg-gray-100 transition">
+            <button
+              onClick={() => handleSocialLogin('google')}
+              className="border border-gray-300 rounded-lg p-2 hover:bg-gray-100 transition"
+            >
               <FaGoogle className="text-xl" style={{ color: "#DB4437" }} />
             </button>
-            <button className="border border-gray-300 rounded-lg p-2 hover:bg-gray-100 transition">
+            <button
+              onClick={() => handleSocialLogin('apple')}
+              className="border border-gray-300 rounded-lg p-2 hover:bg-gray-100 transition"
+            >
               <FaApple className="text-xl text-black" />
             </button>
-            <button className="border border-gray-300 rounded-lg p-2 hover:bg-gray-100 transition">
+            <button
+              onClick={() => handleSocialLogin('facebook')}
+              className="border border-gray-300 rounded-lg p-2 hover:bg-gray-100 transition"
+            >
               <FaFacebook className="text-xl" style={{ color: "#1877F2" }} />
             </button>
           </div>

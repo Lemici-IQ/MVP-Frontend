@@ -8,10 +8,112 @@ import {
   FaArrowLeft,
 } from "react-icons/fa";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
-import { Link } from "react-router-dom"; 
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const SignUp = () => {
+const SignUp = ({ keycloak }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Register user with Keycloak
+      const adminToken = await getAdminToken();
+      
+      const userData = {
+        username: formData.email,
+        email: formData.email,
+        firstName: formData.fullName.split(' ')[0],
+        lastName: formData.fullName.split(' ').slice(1).join(' ') || '',
+        enabled: true,
+        attributes: {
+          phone: [formData.phone],
+        },
+        credentials: [
+          {
+            type: 'password',
+            value: formData.password,
+            temporary: false,
+          },
+        ],
+      };
+
+      const registerUrl = `${keycloak.authServerUrl}/admin/realms/${keycloak.realm}/users`;
+      
+      await axios.post(registerUrl, userData, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${adminToken}`,
+        },
+      });
+
+      // Auto-login after registration
+      const tokenUrl = `${keycloak.authServerUrl}/realms/${keycloak.realm}/protocol/openid-connect/token`;
+      
+      const params = new URLSearchParams();
+      params.append('client_id', keycloak.clientId);
+      params.append('username', formData.email);
+      params.append('password', formData.password);
+      params.append('grant_type', 'password');
+
+      const response = await axios.post(tokenUrl, params, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+
+      // Set the token in keycloak instance
+      keycloak.token = response.data.access_token;
+      keycloak.refreshToken = response.data.refresh_token;
+      keycloak.authenticated = true;
+      keycloak.tokenParsed = JSON.parse(atob(response.data.access_token.split('.')[1]));
+
+      // Redirect to home
+      navigate('/');
+    } catch (err) {
+      console.error('Registration error:', err);
+      if (err.response?.status === 409) {
+        setError('An account with this email already exists.');
+      } else {
+        setError('Registration failed. Please try again.');
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getAdminToken = async () => {
+    // This requires admin credentials - you'll need to set up a backend endpoint
+    // For now, using a simple registration flow
+    // In production, use Keycloak's registration flow or backend API
+    throw new Error('Admin token needed - use keycloak.register() instead');
+  };
+
+  const handleKeycloakRegister = () => {
+    // Use Keycloak's built-in registration with your custom redirect
+    keycloak.register({
+      redirectUri: window.location.origin + '/',
+    });
+  };
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-white mx-10 my-10">
@@ -35,8 +137,15 @@ const SignUp = () => {
             </p>
           </div>
 
+          {/* Error Message */}
+          {error && (
+            <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm">
+              {error}
+            </div>
+          )}
+
           {/* Form */}
-          <form className="space-y-5">
+          <form className="space-y-5" onSubmit={handleSubmit}>
             {/* Full Name */}
             <div>
               <label className="block text-sm font-medium mb-1">
@@ -46,8 +155,11 @@ const SignUp = () => {
                 <FaUser className="absolute left-3 top-3 text-gray-400" />
                 <input
                   type="text"
+                  name="fullName"
                   placeholder="Type name here"
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-purple-500 text-sm sm:text-base"
+                  value={formData.fullName}
+                  onChange={handleChange}
                   required
                 />
               </div>
@@ -60,8 +172,11 @@ const SignUp = () => {
                 <FaEnvelope className="absolute left-3 top-3 text-gray-400" />
                 <input
                   type="email"
+                  name="email"
                   placeholder="example@gmail.com"
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-purple-500 text-sm sm:text-base"
+                  value={formData.email}
+                  onChange={handleChange}
                   required
                 />
               </div>
@@ -76,8 +191,11 @@ const SignUp = () => {
                 <FaPhoneAlt className="absolute left-3 top-3 text-gray-400" />
                 <input
                   type="tel"
+                  name="phone"
                   placeholder="123-456-7890"
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-purple-500 text-sm sm:text-base"
+                  value={formData.phone}
+                  onChange={handleChange}
                   required
                 />
               </div>
@@ -92,8 +210,11 @@ const SignUp = () => {
                 <FaLock className="absolute left-3 top-3 text-gray-400" />
                 <input
                   type={showPassword ? "text" : "password"}
+                  name="password"
                   placeholder="At least 8 characters"
                   className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-purple-500 text-sm sm:text-base"
+                  value={formData.password}
+                  onChange={handleChange}
                   required
                 />
                 <div
@@ -105,13 +226,15 @@ const SignUp = () => {
               </div>
             </div>
 
-            {/* Sign Up Button */}
+            {/* Sign Up Button - Using Keycloak's registration page with your UI redirect */}
             <button
-              type="submit"
+              type="button"
+              onClick={handleKeycloakRegister}
               className="w-full bg-[#6D3E93] text-white py-2 rounded-lg font-medium text-lg hover:bg-[#5B2E7E] transition duration-200"
             >
-              Sign Up
+              {loading ? "Creating account..." : "Sign Up"}
             </button>
+
           </form>
 
           {/* Footer */}
