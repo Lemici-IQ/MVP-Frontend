@@ -1,0 +1,85 @@
+name: Frontend PR Validation
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - "frontend/**"
+      - ".github/workflows/**"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  validate:
+    name: Lint + Unit + Security
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run -s typecheck --if-present
+
+      - name: Unit tests
+        run: npm run -s test --if-present -- --passWithNoTests
+
+      - name: Build validation
+        run: npm run build
+
+      - name: Gitleaks (Secrets Scan)
+        uses: gitleaks/gitleaks-action@v2
+
+      - name: Semgrep (SAST)
+        uses: returntocorp/semgrep-action@v1
+        with:
+          config: .semgrep.yml
+        continue-on-error: true
+
+      - name: Generate SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          format: spdx-json
+          output-file: sbom.spdx.json
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom
+          path: sbom.spdx.json
+
+      - name: OSV Dependency Scan
+        uses: google/osv-scanner@v1
+        with:
+          args: "--sbom=sbom.spdx.json --format=json --output=osv.json"
+
+      - name: Upload OSV Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: osv-report
+          path: osv.json
+
+      - name: Security summary
+        run: |
+          echo "### Security Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Gitleaks: secrets scan executed" >> $GITHUB_STEP_SUMMARY
+          echo "- Semgrep: SAST scan executed (non-blocking)" >> $GITHUB_STEP_SUMMARY
+          echo "- SBOM: generated using Syft" >> $GITHUB_STEP_SUMMARY
+          echo "- OSV: dependency vulnerabilities scanned (HIGH/CRITICAL)" >> $GITHUB_STEP_SUMMARY

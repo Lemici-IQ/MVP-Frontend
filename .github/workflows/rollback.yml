@@ -1,0 +1,147 @@
+name: Frontend Production Rollback
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_version:
+        description: "Target version to rollback to (e.g. v1.2.3)"
+        required: true
+        type: string
+
+concurrency:
+  group: production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write
+  actions: read
+
+jobs:
+  rollback:
+    name: Rollback Production
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Validate version format
+        shell: bash
+        run: |
+          set -euo pipefail
+          V="${{ inputs.target_version }}"
+          [[ "$V" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || {
+            echo "Invalid version: $V (use vX.Y.Z)"
+            exit 1
+          }
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN_PROD }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Validate release folder exists
+        shell: bash
+        run: |
+          set -euo pipefail
+          V="${{ inputs.target_version }}"
+          echo "Checking release folder..."
+          aws s3 ls "s3://${{ vars.PROD_BUCKET }}/releases/${V}/index.html" >/dev/null
+
+      - name: Fetch CloudFront config + ETag
+        id: cf
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          aws cloudfront get-distribution-config \
+            --id "${{ vars.PROD_CF_DIST_ID }}" > /tmp/cf.json
+
+          echo "etag=$(jq -r '.ETag' /tmp/cf.json)" >> "$GITHUB_OUTPUT"
+
+          TARGET_ID="$(jq -r '.DistributionConfig.DefaultCacheBehavior.TargetOriginId' /tmp/cf.json)"
+          echo "target_id=${TARGET_ID}" >> "$GITHUB_OUTPUT"
+
+          CURRENT_PATH="$(jq -r --arg tid "$TARGET_ID" \
+            '.DistributionConfig.Origins.Items[] | select(.Id==$tid) | .OriginPath' \
+            /tmp/cf.json)"
+
+          echo "current_origin_path=${CURRENT_PATH}" >> "$GITHUB_OUTPUT"
+
+      - name: Switch CloudFront origin path
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          V="${{ inputs.target_version }}"
+          NEW_PATH="/releases/${V}"
+
+          echo "Switching origin path to: ${NEW_PATH}"
+
+          jq --arg tid "${{ steps.cf.outputs.target_id }}" \
+             --arg np "$NEW_PATH" '
+             .DistributionConfig.Origins.Items |=
+               (map(if .Id == $tid then .OriginPath = $np else . end))
+             | .DistributionConfig
+          ' /tmp/cf.json > /tmp/updated-config.json
+
+          aws cloudfront update-distribution \
+            --id "${{ vars.PROD_CF_DIST_ID }}" \
+            --if-match "${{ steps.cf.outputs.etag }}" \
+            --distribution-config file:///tmp/updated-config.json
+
+      - name: Wait for distribution deployment
+        shell: bash
+        run: |
+          set -euo pipefail
+          aws cloudfront wait distribution-deployed \
+            --id "${{ vars.PROD_CF_DIST_ID }}"
+
+      - name: Invalidate index.html
+        shell: bash
+        run: |
+          set -euo pipefail
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ vars.PROD_CF_DIST_ID }}" \
+            --paths "/index.html"
+
+      - name: Update ACTIVE_VERSION.json
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          V="${{ inputs.target_version }}"
+          TS="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+          RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+
+          cat > /tmp/active.json <<EOF
+          {
+            "env": "production",
+            "active_version": "${V}",
+            "rollback": true,
+            "rolled_back_at_utc": "${TS}",
+            "rolled_back_by": "${GITHUB_ACTOR}",
+            "workflow_run_url": "${RUN_URL}"
+          }
+          EOF
+
+          aws s3 cp /tmp/active.json \
+            "s3://${{ vars.PROD_BUCKET }}/releases/ACTIVE_VERSION.json" \
+            --cache-control "no-cache, no-store, must-revalidate" \
+            --content-type "application/json"
+
+      - name: Post-rollback smoke test
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL="${{ vars.PROD_URL }}"
+          [[ "$URL" =~ ^https?:// ]] || URL="https://${URL}"
+          curl -fsS "${URL}/index.html" >/dev/null
+
+      - name: Output summary
+        run: |
+          echo "### Production Rollback Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Rolled back to: ${{ inputs.target_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Previous origin path: ${{ steps.cf.outputs.current_origin_path }}" >> $GITHUB_STEP_SUMMARY
+          echo "- New origin path: /releases/${{ inputs.target_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- URL: ${{ vars.PROD_URL }}" >> $GITHUB_STEP_SUMMARY

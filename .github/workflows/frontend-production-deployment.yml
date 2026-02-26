@@ -1,0 +1,157 @@
+name: Frontend Production Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version (e.g. v1.2.3)"
+        required: true
+        type: string
+
+concurrency:
+  group: production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write
+  actions: read
+
+jobs:
+  release_prod:
+    name: Production Release
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout release branch
+        uses: actions/checkout@v4
+        with:
+          ref: release
+          fetch-depth: 0
+
+      - name: Validate version format
+        shell: bash
+        run: |
+          set -euo pipefail
+          V="${{ inputs.version }}"
+          [[ "$V" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || {
+            echo "Invalid version: $V (use vX.Y.Z)"
+            exit 1
+          }
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN_PROD }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Ensure release does not already exist
+        shell: bash
+        run: |
+          set -euo pipefail
+          V="${{ inputs.version }}"
+          if aws s3 ls "s3://${{ vars.PROD_BUCKET }}/releases/${V}/" >/dev/null 2>&1; then
+            echo "Release already exists."
+            exit 1
+          fi
+
+      - name: Upload to versioned release folder
+        shell: bash
+        run: |
+          set -euo pipefail
+          V="${{ inputs.version }}"
+          aws s3 sync dist/ \
+            "s3://${{ vars.PROD_BUCKET }}/releases/${V}/" \
+            --delete
+
+      - name: Fetch CloudFront config + ETag
+        id: cf
+        shell: bash
+        run: |
+          set -euo pipefail
+          aws cloudfront get-distribution-config \
+            --id "${{ vars.PROD_CF_DIST_ID }}" > /tmp/cf.json
+          echo "etag=$(jq -r '.ETag' /tmp/cf.json)" >> "$GITHUB_OUTPUT"
+          TARGET_ID="$(jq -r '.DistributionConfig.DefaultCacheBehavior.TargetOriginId' /tmp/cf.json)"
+          echo "target_id=${TARGET_ID}" >> "$GITHUB_OUTPUT"
+
+      - name: Switch CloudFront origin path
+        shell: bash
+        run: |
+          set -euo pipefail
+          V="${{ inputs.version }}"
+          NEW_PATH="/releases/${V}"
+
+          jq --arg tid "${{ steps.cf.outputs.target_id }}" \
+             --arg np "$NEW_PATH" '
+             .DistributionConfig.Origins.Items |=
+               (map(if .Id == $tid then .OriginPath = $np else . end))
+             | .DistributionConfig
+          ' /tmp/cf.json > /tmp/updated-config.json
+
+          aws cloudfront update-distribution \
+            --id "${{ vars.PROD_CF_DIST_ID }}" \
+            --if-match "${{ steps.cf.outputs.etag }}" \
+            --distribution-config file:///tmp/updated-config.json
+
+      - name: Wait for distribution deployment
+        run: |
+          aws cloudfront wait distribution-deployed \
+            --id "${{ vars.PROD_CF_DIST_ID }}"
+
+      - name: Invalidate index.html
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ vars.PROD_CF_DIST_ID }}" \
+            --paths "/index.html"
+
+      - name: Update ACTIVE_VERSION.json
+        shell: bash
+        run: |
+          set -euo pipefail
+          V="${{ inputs.version }}"
+          TS="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+
+          cat > /tmp/active.json <<EOF
+          {
+            "env": "production",
+            "active_version": "${V}",
+            "sha": "${GITHUB_SHA}",
+            "deployed_at_utc": "${TS}",
+            "deployed_by": "${GITHUB_ACTOR}"
+          }
+          EOF
+
+          aws s3 cp /tmp/active.json \
+            "s3://${{ vars.PROD_BUCKET }}/releases/ACTIVE_VERSION.json" \
+            --cache-control "no-cache, no-store, must-revalidate" \
+            --content-type "application/json"
+
+      - name: Post-deploy smoke test
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL="${{ vars.PROD_URL }}"
+          [[ "$URL" =~ ^https?:// ]] || URL="https://${URL}"
+          curl -fsS "${URL}/index.html" >/dev/null
+
+      - name: Output summary
+        run: |
+          echo "### Production Release Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Version: ${{ inputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- SHA: ${GITHUB_SHA}" >> $GITHUB_STEP_SUMMARY
+          echo "- URL: ${{ vars.PROD_URL }}" >> $GITHUB_STEP_SUMMARY
